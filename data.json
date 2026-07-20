@@ -5,7 +5,17 @@
     "1": "The air quality hindered a few of my activities, but I was able to make use of treadmills. I felt like I had to exert more effort on the treadmill than I would've outside. It was also very hot in the gym. On my long run I noticed a small flare up in the in knee pain, but I haven't fully started PT. I also had to stop midway through to use the bathroom. "
   },
   "dayEdits": {},
-  "dayOrders": {},
+  "dayOrders": {
+    "2": [
+      1,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
   "done": {
     "0_0": true,
     "0_1": true,
@@ -167,12 +177,6 @@
     }
   ],
   "stravaLastSync": 1784567031542,
-  "updatedAt": 1784568479524,
-  "comments": [
-    {
-      "name": "Aman",
-      "message": "what up boiii",
-      "ts": 1784568479524
-    }
-  ]
+  "updatedAt": 1784568643225,
+  "comments": []
 }
