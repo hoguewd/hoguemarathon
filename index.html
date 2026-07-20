@@ -342,15 +342,13 @@ a:hover{color:var(--text)}
   .content{height:calc(100vh - 132px);overflow:hidden}
   .pane.on:not(#pane-today){overflow-y:auto;height:100%}
   #pane-today.on{display:grid;grid-template-columns:420px 1fr;grid-template-rows:auto 1fr;grid-template-areas:"left hero" "left notes";height:100%;overflow:hidden}
-  .today-col-left{grid-area:left;overflow-y:auto;border-right:1px solid var(--border);order:unset}
+  .today-col-left{grid-area:left;overflow-y:hidden;border-right:1px solid var(--border);order:unset;display:flex;flex-direction:column}
   .today-hero{grid-area:hero;order:unset;padding:36px 48px 26px;border-bottom:1px solid var(--border)}
   .today-workout{font-size:27px}
   .notes-section{grid-area:notes;overflow-y:auto;order:unset;padding:28px 48px 36px}
-  .week-strip{padding:24px 24px 18px}
-  .day-list{padding:6px 24px 16px}
-  .week-nav{position:sticky;bottom:0;left:unset;right:unset;z-index:10}
-  .day-list{padding-bottom:0}
-  .week-nav{padding:15px 24px}
+  .week-strip{flex-shrink:0;padding:24px 24px 18px}
+  .day-list{flex:1;overflow-y:auto;padding:6px 24px 16px}
+  .week-nav{flex-shrink:0;position:static;left:unset;right:unset;z-index:10;padding:15px 24px}
   .ws-label{font-size:16px}
   .dl-workout{font-size:15px}
   .plan-list{padding:0 40px;max-width:980px}
