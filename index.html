@@ -764,7 +764,12 @@ const MKT_INIT_BAL = 10;
 
 function mktData(){
   if(!appData.market){
-    appData.market={b:MKT_B,q:[0,0,0,0],resolved:null,trades:[]};
+    // Starting odds set by AI based on Strava data analysis (Jul 2026):
+    // Current VDOT ~55 → marathon ~2:56-2:58 baseline
+    // 2024 best: 2:57 from similar base · 18 weeks training remaining
+    // <2:50: 15% · 2:50-2:55: 28% · 2:55-3:00: 38% · >3:00: 19%
+    // q values calculated via LMSR to produce these probabilities (b=20)
+    appData.market={b:MKT_B,q:[0,12.5,18.6,4.7],resolved:null,trades:[]};
   }
   if(!appData.portfolios) appData.portfolios={};
   return appData.market;
@@ -880,6 +885,7 @@ function renderBet(){
   <div class="mkt-hdr">
     <div class="mkt-title">Philadelphia Marathon Market</div>
     <div class="mkt-sub">Predict William's finish time · Everyone gets $10 of play money · Payouts after Nov 22</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5">Starting odds set by AI from Strava data: current VDOT ~55 → baseline ~2:56, 2024 best was 2:57. Odds move as people bet.</div>
   </div>
 
   ${resolved!==null?`<div class="mkt-resolved">🏁 Market resolved — winning outcome: <strong>${MKT_OUTCOMES[resolved]}</strong>${canWrite()&&resolved===null?'':''}</div>`:''}
