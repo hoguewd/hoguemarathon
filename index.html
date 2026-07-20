@@ -1524,6 +1524,7 @@ function renderStats(){
     ? appData.stravaActivities
     : JSON.parse(localStorage.getItem('philly_strava_activities')||'[]');
   const connected=stravaIsConnected();
+  const synced=localStorage.getItem('philly_strava_synced')||appData.stravaLastSync||null;
   const hasRemoteData=acts.length>0||Object.keys(appData.stravaActuals||{}).length>0;
   const pane=document.getElementById('pane-stats');
 
