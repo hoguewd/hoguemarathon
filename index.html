@@ -823,6 +823,7 @@ function applyStravaOracle(){
   implied.forEach((imp,i)=>{ mkt.q[i]+=(imp-current[i])*6; });
   mkt.oracleUpdate=Date.now();
   mkt.oracleVDOT=Math.round(workingVDOT*10)/10;
+  recordHistory();
   appData.updatedAt=Date.now();
   _mktWrite();
 }
@@ -892,6 +893,74 @@ function _mktWrite(){
   _doGhWrite();
 }
 
+
+function recordHistory(){
+  const mkt=mktData();
+  if(!Array.isArray(mkt.history))mkt.history=[];
+  const probs=lmsrProbs(mkt.q,mkt.b);
+  mkt.history.push({ts:Date.now(),probs:[...probs]});
+  if(mkt.history.length>300)mkt.history=mkt.history.slice(-300);
+}
+
+function drawOddsChart(canvasId){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas)return;
+  const mkt=mktData();
+  const hist=(mkt.history||[]);
+  // Always include the starting point + current point
+  const starting={ts:(hist[0]?.ts||Date.now())-1000,probs:lmsrProbs([0,12.5,18.6,4.7],mkt.b)};
+  const points=[starting,...hist,{ts:Date.now(),probs:lmsrProbs(mkt.q,mkt.b)}];
+  if(points.length<2)return;
+
+  const dpr=window.devicePixelRatio||1;
+  const CW=canvas.clientWidth,CH=canvas.clientHeight;
+  canvas.width=CW*dpr;canvas.height=CH*dpr;
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+
+  const isDark=!document.body.classList.contains('light');
+  const gridClr=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+  const textClr=isDark?'#6B6560':'#888580';
+  const COLORS=['#FF3B24','#5B9BD5','#3FD08A','#F5A623'];
+  const pad={l:36,r:8,t:10,b:28};
+  const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
+
+  const t0=points[0].ts,t1=points[points.length-1].ts;
+  const xOf=(ts)=>pad.l+(t1===t0?0.5:(ts-t0)/(t1-t0))*w;
+  const yOf=(p)=>pad.t+h-(p*h);
+
+  // Grid lines at 0%, 25%, 50%, 75%, 100%
+  [0,0.25,0.5,0.75,1].forEach(p=>{
+    const y=yOf(p);
+    ctx.strokeStyle=gridClr;ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
+    ctx.fillStyle=textClr;ctx.font=`10px var(--mono,'Courier New',monospace)`;ctx.textAlign='right';
+    ctx.fillText(Math.round(p*100)+'%',pad.l-4,y+3.5);
+  });
+
+  // X axis time labels
+  ctx.fillStyle=textClr;ctx.font='9px sans-serif';ctx.textAlign='center';
+  const fmtTs=(ts)=>{const d=new Date(ts);return(d.getMonth()+1)+'/'+(d.getDate());};
+  if(t1>t0){
+    [0,0.5,1].forEach(f=>{
+      const ts=t0+f*(t1-t0);
+      ctx.fillText(fmtTs(ts),xOf(ts),pad.t+h+16);
+    });
+  }
+
+  // Draw lines
+  MKT_OUTCOMES.forEach((_,oi)=>{
+    ctx.beginPath();
+    points.forEach((pt,i)=>{
+      const x=xOf(pt.ts),y=yOf(pt.probs[oi]);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.strokeStyle=COLORS[oi];ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
+    // Dot at current value
+    const last=points[points.length-1];
+    ctx.beginPath();ctx.arc(xOf(last.ts),yOf(last.probs[oi]),3.5,0,Math.PI*2);
+    ctx.fillStyle=COLORS[oi];ctx.fill();
+  });
+}
 function renderBet(){
   const pane=document.getElementById('pane-bet');
   if(!pane)return;
@@ -990,7 +1059,15 @@ function renderBet(){
       <span class="mkt-lb-val">$${p.totalVal.toFixed(2)} total value</span>
     </div>`).join('')}
   </div>`:''}
+  <div style="padding:14px 18px 0;border-top:1px solid var(--border)">
+    <div class="mkt-activity-title">Odds over time</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;font-size:11px">
+      ${MKT_OUTCOMES.map((o,i)=>`<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;border-radius:2px;display:inline-block;background:${['#FF3B24','#5B9BD5','#3FD08A','#F5A623'][i]}"></span>${o}</span>`).join('')}
+    </div>
+    <canvas id="odds-chart" style="width:100%;height:180px;display:block"></canvas>
+  </div>
   </div>`;
+  setTimeout(()=>drawOddsChart('odds-chart'),30);
 }
 
 function betPreview(i){
@@ -1057,6 +1134,7 @@ async function placeBet(i){
       portfolio.buyCosts[i]=(portfolio.buyCosts[i]||0)+actualCost;
       mkt.trades.unshift({name:betName,outcome:i,shares,amt:actualCost,price,type:'buy',ts:Date.now()});
       if(mkt.trades.length>50)mkt.trades.length=50;
+      recordHistory();
       appData.updatedAt=Date.now();
       _mktWrite();
       status.textContent=`✓ Bought ${shares.toFixed(1)} shares at ${(price*100).toFixed(0)}¢`;
@@ -1092,6 +1170,7 @@ async function cashOut(i){
       portfolio.buyCosts[i]=0;
       mkt.trades.unshift({name:betName,outcome:i,shares,amt:sellReturn,price,type:'sell',ts:Date.now()});
       if(mkt.trades.length>50)mkt.trades.length=50;
+      recordHistory();
       appData.updatedAt=Date.now();
       _mktWrite();
       status.textContent=`✓ Sold for $${sellReturn.toFixed(2)}`;
