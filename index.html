@@ -630,50 +630,6 @@ function renderVdot() {
   <div class="vdot-card">
     <div class="vdot-lbl" style="margin-bottom:8px">Effort log</div>
     ${effortHtml}
-  <div class="ref-sec">
-    <div class="ref-title">Strava sync</div>
-    ${stravaIsConnected()?`
-      <div style="font-size:13px;color:var(--green);margin-bottom:10px">Connected ✓</div>
-      <div style="display:flex;gap:8px;margin-bottom:8px">
-        <button onclick="stravaSync()" style="padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid #fc4c02;color:#fc4c02;font-family:Arial,sans-serif;border-radius:3px">Sync now</button>
-        <button onclick="stravaDisconnect()" style="padding:9px 16px;font-size:13px;cursor:pointer;background:none;border:1px solid var(--border2);color:var(--muted);font-family:Arial,sans-serif;border-radius:3px">Disconnect</button>
-      </div>
-    `:`
-      <div style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6">One-time setup — takes about 2 minutes. You'll need the Client ID and Client Secret from <a href="https://www.strava.com/settings/api" target="_blank" style="color:var(--accent)">strava.com/settings/api ↗</a></div>
-      <div style="margin-bottom:12px">
-        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">1. Enter your app credentials</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-          <input id="strava-client-id" placeholder="Client ID" value="${localStorage.getItem('philly_strava_client_id')||''}" style="background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px;width:100%">
-          <input id="strava-client-secret" type="password" placeholder="Client Secret" value="${localStorage.getItem('philly_strava_client_secret')||''}" style="background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px;width:100%">
-        </div>
-      </div>
-      <div style="margin-bottom:12px">
-        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">2. Authorize on Strava</div>
-        <button onclick="stravaOpenAuth()" style="padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid #fc4c02;color:#fc4c02;font-family:Arial,sans-serif;border-radius:3px">Open Strava authorization ↗</button>
-      </div>
-      <div id="strava-step3" style="display:${localStorage.getItem('philly_strava_client_id')?'block':'none'}">
-        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px">3. Paste the URL from your browser after authorizing</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:6px">Strava will redirect to a page that won't load — that's fine. Just copy the whole URL from your address bar and paste it here.</div>
-        <div style="display:flex;gap:8px">
-          <input id="strava-auth-code" placeholder="Paste full redirect URL here" style="background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px;width:100%" style="background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px;flex:1">
-          <button onclick="stravaConnect()" style="padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid #fc4c02;color:#fc4c02;font-family:Arial,sans-serif;border-radius:3px">Connect</button>
-        </div>
-      </div>
-    `}
-    <div id="strava-status" style="font-size:12px;color:var(--muted);margin-top:8px">
-      ${stravaIsConnected()?(Object.keys(stravaActuals).length>0?Object.keys(stravaActuals).length+' weeks synced':'Connected — click Sync to fetch runs'):'Not connected'}
-    </div>
-    ${Object.keys(stravaActuals).length>0?`
-    <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px">
-      ${W.map((wk,i)=>{
-        const actual=stravaActuals[i];
-        if(!actual)return'';
-        const diff=Math.round(actual-wk.mi);
-        const clr=diff>=-2?'var(--green)':'var(--amber)';
-        return'<div style="background:var(--card);padding:7px 8px;border-radius:3px"><div style="font-size:10px;color:var(--muted)">'+wk.lbl+'</div><div style="font-size:13px;font-weight:600;color:var(--text)">'+Math.round(actual)+'mi</div><div style="font-size:11px;color:'+clr+'">'+(diff>=0?'+':'')+diff+' vs plan</div></div>';
-      }).join('')}
-    </div>`:''} 
-  </div>
   </div>`;
 }
 
@@ -1124,6 +1080,51 @@ function expandWk(i){
 // ── Strava OAuth + Sync ──────────────────────────────────────────────────────
 let stravaActuals = JSON.parse(localStorage.getItem('philly_strava_actuals')||'{}');
 
+
+function stravaConnectHtml(){
+  const INP='background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px;width:100%;box-sizing:border-box';
+  const BTN='padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid #fc4c02;color:#fc4c02;font-family:Arial,sans-serif;border-radius:3px';
+  const DBTN='padding:9px 16px;font-size:13px;cursor:pointer;background:none;border:1px solid var(--border2);color:var(--muted);font-family:Arial,sans-serif;border-radius:3px';
+  const synced=localStorage.getItem('philly_strava_synced');
+  const syncAgo=synced?Math.round((Date.now()-parseInt(synced))/60000):null;
+  const syncLbl=syncAgo===null?'Never synced':syncAgo<2?'Just now':syncAgo<60?syncAgo+'m ago':Math.round(syncAgo/60)+'h ago';
+  if(stravaIsConnected()){
+    return`<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div>
+        <span style="font-size:13px;color:var(--green);font-weight:500">Connected ✓</span>
+        <span style="font-size:12px;color:var(--muted);margin-left:10px">${syncLbl}</span>
+        <div id="strava-status" style="font-size:12px;color:var(--muted);margin-top:3px"></div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="statsSyncAndRender()" style="${BTN}">↺ Sync now</button>
+        <button onclick="stravaDisconnect()" style="${DBTN}">Disconnect</button>
+      </div>
+    </div>`;
+  }
+  return`<div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">One-time setup. You'll need the Client ID and Client Secret from <a href="https://www.strava.com/settings/api" target="_blank" style="color:var(--accent)">strava.com/settings/api ↗</a></div>
+    <div style="margin-bottom:12px">
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">1. Enter your app credentials</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <input id="strava-client-id" placeholder="Client ID" value="${localStorage.getItem('philly_strava_client_id')||''}" style="${INP}">
+        <input id="strava-client-secret" type="password" placeholder="Client Secret" value="${localStorage.getItem('philly_strava_client_secret')||''}" style="${INP}">
+      </div>
+    </div>
+    <div style="margin-bottom:12px">
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">2. Authorize on Strava</div>
+      <button onclick="stravaOpenAuth()" style="${BTN}">Open Strava authorization ↗</button>
+    </div>
+    <div id="strava-step3" style="display:${localStorage.getItem('philly_strava_client_id')?'block':'none'}">
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px">3. Paste the URL from your browser after authorizing</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:6px">Strava redirects to localhost which won't load — just copy the full URL from your address bar and paste it here.</div>
+      <div style="display:flex;gap:8px">
+        <input id="strava-auth-code" placeholder="Paste full redirect URL" style="${INP};flex:1;width:auto">
+        <button onclick="stravaConnect()" style="${BTN}">Connect</button>
+      </div>
+      <div id="strava-status" style="font-size:12px;color:var(--muted);margin-top:8px"></div>
+    </div>
+  </div>`;
+}
 function stravaIsConnected() {
   return !!localStorage.getItem('philly_strava_refresh_token');
 }
@@ -1262,9 +1263,9 @@ async function _stravaFetchAndStore(token, statusEl) {
 
 function stravaDisconnect() {
   if(!confirm('Disconnect Strava and clear synced data?')) return;
-  ['philly_strava_access_token','philly_strava_refresh_token','philly_strava_expires_at','philly_strava_actuals'].forEach(k=>localStorage.removeItem(k));
+  ['philly_strava_access_token','philly_strava_refresh_token','philly_strava_expires_at','philly_strava_actuals','philly_strava_activities','philly_strava_synced'].forEach(k=>localStorage.removeItem(k));
   stravaActuals={};
-  renderRef();
+  renderStats();
 }
 
 
@@ -1358,10 +1359,12 @@ function renderStats(){
   const pane=document.getElementById('pane-stats');
 
   if(!connected){
-    pane.innerHTML=`<div class="dash-no-data">
-      <div class="dash-no-data-title">Connect Strava to see your dashboard</div>
-      <div class="dash-no-data-sub">Set up your Strava connection in the Reference tab,<br>then come back here to see your training analytics.</div>
-      <button class="dash-connect-btn" onclick="showTab('ref',document.querySelector('[onclick*=ref]'))">Go to Reference ↗</button>
+    pane.innerHTML=`<div class="dash-hdr">
+      <span class="dash-hdr-title">Training Dashboard</span>
+    </div>
+    <div style="padding:24px 18px">
+      <div style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:16px">Connect Strava</div>
+      ${stravaConnectHtml()}
     </div>`;
     return;
   }
