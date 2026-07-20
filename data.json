@@ -184,7 +184,7 @@
     }
   ],
   "stravaLastSync": 1784576255085,
-  "updatedAt": 1784577090179,
+  "updatedAt": 1784577123752,
   "comments": [
     {
       "name": "John Boy and Bill",
@@ -194,7 +194,14 @@
     {
       "name": "Donald Trump",
       "message": "William, the GREAT American people are saying, SEND THE FEET PICS. Tremendous feet. Everybody’s talking about it. HUGE. Sad if you don’t!",
-      "ts": 1784574672879
+      "ts": 1784574672879,
+      "replies": [
+        {
+          "name": "William",
+          "message": "Hey DJT. Not a big fan. But for the right price I could be convinced.",
+          "ts": 1784577123752
+        }
+      ]
     },
     {
       "name": "Anonymous",
