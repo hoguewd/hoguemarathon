@@ -628,7 +628,7 @@ async function loadAppData(){
         Object.assign(appData,d);
         applyAppData();
         localStorage.setItem('philly_app_cache',JSON.stringify(appData));
-        renderToday();renderPlan();
+        renderToday();renderPlan();renderStats();
       }
     }
   }catch(e){}
@@ -1517,12 +1517,16 @@ function drawTrendChart(canvasId,data,colorFn,labelFn,invertY,yFmt){
 }
 
 function renderStats(){
-  const acts=JSON.parse(localStorage.getItem('philly_strava_activities')||'[]');
-  const synced=localStorage.getItem('philly_strava_synced');
+  // Use appData as primary source (populated from data.json on all devices)
+  // Fall back to localStorage for the device that did the sync
+  const acts=(appData.stravaActivities||[]).length>0
+    ? appData.stravaActivities
+    : JSON.parse(localStorage.getItem('philly_strava_activities')||'[]');
   const connected=stravaIsConnected();
+  const hasRemoteData=acts.length>0||Object.keys(appData.stravaActuals||{}).length>0;
   const pane=document.getElementById('pane-stats');
 
-  if(!connected){
+  if(!connected && !hasRemoteData){
     pane.innerHTML=`<div class="dash-hdr">
       <span class="dash-hdr-title">Training Dashboard</span>
     </div>
