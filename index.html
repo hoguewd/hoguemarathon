@@ -775,16 +775,6 @@ function saveNotes(i){
   localStorage.setItem(lsKey('notes',i),val);
   const tick=document.getElementById('tick-'+i);
   if(tick){tick.style.opacity='1';setTimeout(()=>tick.style.opacity='0',1500);}
-  // Update display text if visible
-  const ndt=document.getElementById('ndt-'+i);
-  if(ndt)ndt.innerHTML=escHtml(val);
-  // Switch to display mode if advice already exists
-  if(loadRecs(i)&&val){
-    const dw=document.getElementById('ndw-'+i);
-    const ew=document.getElementById('new-'+i);
-    if(dw)dw.style.display='block';
-    if(ew)ew.style.display='none';
-  }
   renderPlan();
 }
 function loadNotes(i){return localStorage.getItem(lsKey('notes',i))||'';}
