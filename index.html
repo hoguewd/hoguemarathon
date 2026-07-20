@@ -120,7 +120,7 @@ a:hover{color:var(--text)}
 .dg-done::after{content:"";display:block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin:0 auto}
 
 .day-list{padding:6px 20px 16px}
-.dl-item{align-items:flex-start;padding:10px 0 10px 14px;border-left:2px solid var(--border2);margin-bottom:3px;cursor:pointer;transition:border-color .12s,background .12s}
+.dl-item{align-items:center;padding:10px 0 10px 14px;border-left:2px solid var(--border2);margin-bottom:3px;cursor:pointer;transition:border-color .12s,background .12s}
 .dl-item:hover{border-left-color:var(--muted)}
 .dl-item.sel{border-left-color:var(--accent);background:var(--card);padding:10px 12px 10px 12px;border-radius:0 3px 3px 0}
 .dl-item.q{border-left-color:var(--blue)}
@@ -1198,13 +1198,13 @@ function renderToday(){
     const isSwapSrc=swapPickIdx===displayIdx;
     const isSwapTgt=swapPickIdx!==null&&swapPickIdx!==displayIdx;
     const isOrderChanged=dataIdx!==displayIdx;
-    return`<div class="dl-item${isSel?' sel':''}${done?' done-run':''} ${t}${isSwapSrc?' swap-source':''}${isSwapTgt?' swap-target':''}" style="display:flex;align-items:flex-start">
+    return`<div class="dl-item${isSel?' sel':''}${done?' done-run':''} ${t}${isSwapSrc?' swap-source':''}${isSwapTgt?' swap-target':''}" style="display:flex;align-items:center">
       <div class="dl-inner" onclick="${isSwapTgt?`pickSwap(${displayIdx})`:`selDay=${displayIdx};renderToday()`}" style="flex:1;min-width:0;cursor:pointer">
         <div class="dl-day">${DAY_NAMES[displayIdx]}${displayIdx===todayDay&&selWeek===todayWk?' · Today':''}${edited?'<span class="day-edited-mark">✎</span>':''}${isOrderChanged?'<span style="font-size:10px;color:var(--muted);margin-left:4px">↕</span>':''}</div>
         <div class="dl-workout ${t}">${isSwapTgt?'<span style="color:var(--accent);font-size:11px">Tap to swap here</span><br>':''} ${disp}</div>
         ${isSel&&g?`<div class="dl-meta">${g}</div>`:''}
       </div>
-      <div style="display:flex;align-items:center;gap:3px;padding-top:1px">
+      <div style="display:flex;align-items:center;gap:3px">
         ${swapPickIdx===null||isSwapSrc?`<button class="day-swap-btn${isSwapSrc?' swap-pick':''}" onclick="event.stopPropagation();pickSwap(${displayIdx})" title="${isSwapSrc?'Cancel move':'Move this day'}">⇅</button>`:''}
         <button id="day-eb-${selWeek}-${displayIdx}" class="day-edit-btn" onclick="event.stopPropagation();startEditDay(${selWeek},${dataIdx})" title="Edit">✎</button>
         <div class="chk${done?' on':''}" onclick="event.stopPropagation();toggleDone(${selWeek},${displayIdx})">✓</div>
