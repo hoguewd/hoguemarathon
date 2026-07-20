@@ -834,12 +834,9 @@ const MKT_LABELS   = ['Sub-2:50','2:50–2:55','2:55–3:00','Over 3:00'];
 const MKT_INIT_BAL = 10;
 
 function mktData(){
-  if(!appData.market){
-    // Starting odds set by AI based on Strava data analysis (Jul 2026):
-    // Current VDOT ~55 → marathon ~2:56-2:58 baseline
-    // 2024 best: 2:57 from similar base · 18 weeks training remaining
-    // <2:50: 15% · 2:50-2:55: 28% · 2:55-3:00: 38% · >3:00: 19%
-    // q values calculated via LMSR to produce these probabilities (b=20)
+  // Detect stale cache: old equal-odds init had q=[0,0,0,0]
+  const stale=appData.market&&appData.market.q&&appData.market.q.every(v=>v===0);
+  if(!appData.market||stale){
     appData.market={b:MKT_B,q:[0,12.5,18.6,4.7],resolved:null,trades:[]};
   }
   if(!appData.portfolios) appData.portfolios={};
