@@ -877,20 +877,30 @@ function resetDayEdit(w,d){
 
 // ── IT Band Risk ─────────────────────────────────────────────────────────────
 function itbRisk(wkIdx) {
-  const cur = W[wkIdx].mi;
-  const prev = wkIdx > 0 ? W[wkIdx-1].mi : 28;
+  // Use actual miles from Strava where available, fall back to plan
+  const actualCur  = stravaActuals[wkIdx]   != null ? stravaActuals[wkIdx]   : null;
+  const actualPrev = stravaActuals[wkIdx-1] != null ? stravaActuals[wkIdx-1] : null;
+  const cur  = actualCur  != null ? actualCur  : W[wkIdx].mi;
+  const prev = actualPrev != null ? actualPrev : (wkIdx > 0 ? W[wkIdx-1].mi : 28);
   const jump = prev > 0 ? (cur - prev) / prev : 0;
+
+  // Quality sessions and long run from plan (structure risk)
   const quals = W[wkIdx].days.filter(d => d[1]==='q').length;
   const lr = W[wkIdx].days.reduce((mx,d) => {
     if (d[1]!=='l') return mx;
     const m = d[0].match(/(\d+)mi/); return m ? Math.max(mx,+m[1]) : mx;
   }, 0);
-  if (jump>0.45||(quals>=2&&jump>0.3)||(lr>=20&&jump>0.35)) return 'red';
-  if (jump>0.28||(quals>=2&&jump>0.1)||lr>=20) return 'amber';
+
+  // Flag if actual miles are tracking significantly over plan
+  const overPlan = actualCur != null ? actualCur - W[wkIdx].mi : 0;
+
+  if (jump>0.45||(quals>=2&&jump>0.3)||(lr>=20&&jump>0.35)||overPlan>8) return 'red';
+  if (jump>0.28||(quals>=2&&jump>0.1)||lr>=20||overPlan>4) return 'amber';
   return 'green';
 }
 function itbLabel(r) {
-  return r==='green'?'Load: manageable':r==='amber'?'Load: watch knee':'Load: high — protect knee';
+  const src = (stravaActuals[selWeek]!=null||stravaActuals[selWeek-1]!=null) ? '' : ' (plan)';
+  return r==='green'?`Load: manageable${src}`:r==='amber'?`Load: watch knee${src}`:`Load: high — protect knee${src}`;
 }
 function itbDot(r) { return '●'; }
 
