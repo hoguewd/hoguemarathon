@@ -366,6 +366,26 @@ a:hover{color:var(--text)}
   .dash-no-data{padding:80px 40px}
 }
 
+
+.crew-header{padding:22px 18px 14px;border-bottom:1px solid var(--border)}
+.crew-title{font-family:var(--display);font-size:24px;font-weight:800;color:var(--text);letter-spacing:.02em;margin-bottom:3px}
+.crew-sub{font-size:13px;color:var(--muted)}
+.crew-form{padding:16px 18px;border-bottom:1px solid var(--border)}
+.crew-inp{width:100%;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:14px;padding:10px 12px;margin-bottom:8px;border-radius:var(--radius)}
+.crew-inp:focus{outline:none;border-color:var(--accent)}
+.crew-ta{width:100%;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:14px;padding:10px 12px;margin-bottom:8px;resize:vertical;border-radius:var(--radius);min-height:80px}
+.crew-ta:focus{outline:none;border-color:var(--accent)}
+.crew-btn{padding:10px 24px;font-size:13px;font-weight:700;cursor:pointer;background:var(--accent);border:none;color:white;font-family:var(--sans);border-radius:var(--radius)}
+.crew-btn:disabled{opacity:.4;cursor:default}
+.crew-status{font-size:12px;color:var(--muted);margin-top:6px;min-height:16px}
+.crew-list{padding:0 18px}
+.crew-empty{font-size:14px;color:var(--muted);padding:32px 0;text-align:center}
+.crew-comment{padding:16px 0;border-bottom:1px solid var(--border)}
+.crew-comment:last-child{border-bottom:none}
+.crew-comment-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.crew-name{font-size:14px;font-weight:700;color:var(--accent)}
+.crew-time{font-size:11px;color:var(--muted)}
+.crew-msg{font-size:14px;color:var(--text);line-height:1.55}
 </style>
 </head>
 <body>
@@ -386,6 +406,7 @@ a:hover{color:var(--text)}
     <button class="tab" onclick="showTab('ref',this)">Reference</button>
     <button class="tab" onclick="showTab('gym',this)">Gym</button>
     <button class="tab" onclick="showTab('stats',this)">Stats</button>
+    <button class="tab" onclick="showTab('crew',this)">Crew</button>
   </div>
   <div class="content">
     <div class="pane on" id="pane-today"></div>
@@ -476,6 +497,73 @@ const LIFT_B=[
 ];
 
 // ── VDOT calculation (Daniels & Gilbert) ─────────────────────────
+
+
+// ── Crew comments tab ─────────────────────────────────────────────────────────
+function timeAgo(ts){
+  const d=Date.now()-ts,m=Math.floor(d/60000),h=Math.floor(d/3600000),days=Math.floor(d/86400000);
+  if(m<2)return'just now';if(m<60)return m+'m ago';if(h<24)return h+'h ago';return days+'d ago';
+}
+
+function renderCrew(){
+  const pane=document.getElementById('pane-crew');
+  const comments=Array.isArray(appData.comments)?appData.comments:[];
+  pane.innerHTML=`
+    <div class="crew-header">
+      <div class="crew-title">Crew</div>
+      <div class="crew-sub">Leave a message for William · visible to everyone</div>
+    </div>
+    <div class="crew-form">
+      <input class="crew-inp" id="crew-name" placeholder="Your name" maxlength="50" autocomplete="given-name">
+      <textarea class="crew-ta" id="crew-msg" placeholder="What's on your mind?" maxlength="500" rows="3"></textarea>
+      <button class="crew-btn" onclick="postComment()">Post</button>
+      <div class="crew-status" id="crew-status"></div>
+    </div>
+    <div class="crew-list">
+      ${comments.length===0?'<div class="crew-empty">No messages yet — be the first</div>':
+        comments.map(c=>`
+          <div class="crew-comment">
+            <div class="crew-comment-hdr">
+              <span class="crew-name">${c.name||'Anonymous'}</span>
+              <span class="crew-time">${timeAgo(c.ts||0)}</span>
+            </div>
+            <div class="crew-msg">${(c.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+          </div>`).join('')}
+    </div>`;
+}
+
+async function postComment(){
+  const nameEl=document.getElementById('crew-name');
+  const msgEl=document.getElementById('crew-msg');
+  const status=document.getElementById('crew-status');
+  const btn=document.querySelector('.crew-btn');
+  const name=(nameEl?.value||'').trim();
+  const message=(msgEl?.value||'').trim();
+  if(!name){status.textContent='Add your name first';return;}
+  if(!message){status.textContent='Write something first';return;}
+  status.textContent='Posting…';
+  if(btn)btn.disabled=true;
+  try{
+    const res=await fetch('/comment',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,message})
+    });
+    const data=await res.json();
+    if(!data.ok)throw new Error(data.error||'Failed to post');
+    if(msgEl)msgEl.value='';
+    status.textContent='✓ Posted!';
+    // Refetch data.json to show new comment
+    try{
+      const r=await fetch(GH_RAW+'?t='+Date.now());
+      if(r.ok){const d=await r.json();if(d.updatedAt>=(appData.updatedAt||0)){Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}
+    }catch(e){}
+    setTimeout(()=>{status.textContent='';renderCrew();},800);
+  }catch(e){
+    status.textContent='Error: '+e.message;
+    if(btn)btn.disabled=false;
+  }
+}
 
 // ── Cross-device sync via GitHub ─────────────────────────────────────────────
 const GH_REPO = 'hoguewd/hoguemarathon';
@@ -1641,6 +1729,7 @@ function showTab(id,btn){
   document.getElementById('pane-'+id).classList.add('on');
   document.querySelector('.content').scrollTop=0;
   if(id==='stats')renderStats();
+  if(id==='crew')renderCrew();
   if(id==='vdot'){}  // removed
 }
 
