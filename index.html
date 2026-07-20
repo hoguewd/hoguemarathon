@@ -541,7 +541,8 @@ function renderCrew(){
 
 function deleteComment(idx){
   if(!canWrite())return;
-  if(!confirm('Delete this comment?'))return;
+  const pw=prompt('Enter password to delete:');
+  if(pw!=='done')return;
   if(!Array.isArray(appData.comments))return;
   appData.comments.splice(idx,1);
   writeAppData();
