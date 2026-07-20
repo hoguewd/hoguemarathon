@@ -27,7 +27,9 @@
     "1_0": true,
     "1_1": true,
     "1_2": true,
-    "1_3": true
+    "1_3": true,
+    "1_4": true,
+    "1_5": true
   },
   "vdot": 55,
   "stravaActuals": {
@@ -181,7 +183,7 @@
     }
   ],
   "stravaLastSync": 1784572473103,
-  "updatedAt": 1784574864223,
+  "updatedAt": 1784574865141,
   "comments": [
     {
       "name": "Donald Trump",
