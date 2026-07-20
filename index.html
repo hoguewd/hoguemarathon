@@ -512,8 +512,15 @@ function renderCrew(){
   const savedName=localStorage.getItem('philly_crew_name')||'';
   pane.innerHTML=`
     <div class="crew-header">
-      <div class="crew-title">Comments</div>
-      <div class="crew-sub">Leave a message for William · visible to everyone</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="crew-title">Comments</div>
+          <div class="crew-sub">Leave a message for William · visible to everyone</div>
+        </div>
+        <a href="https://www.paypal.com/donate?business=hoguewd%40gmail.com&currency_code=USD" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#0070BA;color:white;font-family:var(--sans);font-size:12px;font-weight:700;padding:7px 12px;border-radius:4px;text-decoration:none;white-space:nowrap;flex-shrink:0;margin-left:12px">
+          ☕ Buy me a coffee
+        </a>
+      </div>
     </div>
     <div class="crew-form">
       <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:5px">Your name <span style="color:var(--accent)">*</span></label>
