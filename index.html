@@ -143,7 +143,8 @@ a:hover{color:var(--text)}
 .dl-item.done-run .dl-workout{opacity:.36;text-decoration:line-through;text-decoration-color:var(--muted)}
 .dl-item.done-run .dl-day{opacity:.5}
 
-.week-nav{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-top:1px solid var(--border);position:sticky;bottom:0;background:var(--bg);z-index:10}
+.week-nav{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-top:1px solid var(--border);position:fixed;bottom:0;left:0;right:0;background:var(--bg);z-index:20}
+.day-list{padding-bottom:60px}
 .wnav-btn{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;padding:8px 0}
 .wnav-btn:hover{color:var(--accent)}
 .wnav-btn:disabled{opacity:.3;cursor:default}
@@ -347,6 +348,8 @@ a:hover{color:var(--text)}
   .notes-section{grid-area:notes;overflow-y:auto;order:unset;padding:28px 48px 36px}
   .week-strip{padding:24px 24px 18px}
   .day-list{padding:6px 24px 16px}
+  .week-nav{position:sticky;bottom:0;left:unset;right:unset;z-index:10}
+  .day-list{padding-bottom:0}
   .week-nav{padding:15px 24px}
   .ws-label{font-size:16px}
   .dl-workout{font-size:15px}
