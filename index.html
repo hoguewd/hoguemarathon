@@ -659,12 +659,15 @@ async function loadAppData(){
     if(cached){ const c=JSON.parse(cached); Object.assign(appData,c); applyAppData(); }
   }catch(e){}
 
-  // 2. Fetch fresh from GitHub in background
+  // 2. Fetch fresh via GitHub API (no CDN cache — always current)
   try{
-    const r=await fetch(GH_RAW+'?t='+Date.now());
+    const headers={'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon'};
+    if(ghToken())headers['Authorization']='Bearer '+ghToken();
+    const r=await fetch(GH_API,{headers});
     if(r.ok){
-      const d=await r.json();
-      // Only update if GitHub is newer
+      const file=await r.json();
+      const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
+      const d=JSON.parse(new TextDecoder().decode(bytes));
       if(d.updatedAt>=(appData.updatedAt||0)){
         Object.assign(appData,d);
         applyAppData();
@@ -672,7 +675,13 @@ async function loadAppData(){
         renderToday();renderPlan();renderStats();
       }
     }
-  }catch(e){}
+  }catch(e){
+    // Fallback to raw URL if API fails
+    try{
+      const r=await fetch(GH_RAW+'?t='+Date.now());
+      if(r.ok){const d=await r.json();if(d.updatedAt>=(appData.updatedAt||0)){Object.assign(appData,d);applyAppData();localStorage.setItem('philly_app_cache',JSON.stringify(appData));renderToday();renderPlan();renderStats();}}
+    }catch(e2){}
+  }
 }
 
 function applyAppData(){
