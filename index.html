@@ -401,6 +401,47 @@ a:hover{color:var(--text)}
 .crew-reply-submit{padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;background:var(--accent);border:none;color:white;font-family:var(--sans);border-radius:var(--radius)}
 .crew-reply-cancel{padding:6px 12px;font-size:12px;cursor:pointer;background:none;border:1px solid var(--border2);color:var(--muted);font-family:var(--sans);border-radius:var(--radius);margin-left:6px}
 .crew-reply-status{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* ── Prediction market ────────────────────────────────────────────────────── */
+.mkt-wrap{padding:0}
+.mkt-hdr{padding:20px 18px 14px;border-bottom:1px solid var(--border)}
+.mkt-title{font-family:var(--display);font-size:22px;font-weight:800;color:var(--text);letter-spacing:.02em;margin-bottom:3px}
+.mkt-sub{font-size:13px;color:var(--muted)}
+.mkt-bal-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--card);border-bottom:1px solid var(--border)}
+.mkt-bal{font-size:15px;font-weight:700;color:var(--green)}
+.mkt-name-row{display:flex;gap:8px;align-items:center}
+.mkt-name-inp{background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:13px;padding:6px 10px;border-radius:3px;width:130px}
+.mkt-name-inp:focus{outline:none;border-color:var(--accent)}
+.mkt-name-btn{padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;background:var(--card2);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);border-radius:3px}
+.mkt-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin:0}
+.mkt-card{background:var(--bg);padding:16px 14px;display:flex;flex-direction:column;gap:8px}
+.mkt-card-label{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.mkt-card-time{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text)}
+.mkt-card-prob{font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent);line-height:1}
+.mkt-card-price{font-size:12px;color:var(--muted);margin-top:-4px}
+.mkt-card-pos{font-size:12px;color:var(--muted);padding:6px 8px;background:var(--card);border-radius:3px;min-height:36px}
+.mkt-card-pos-val{font-weight:600;color:var(--text)}
+.mkt-card-pos-pnl{font-size:11px}
+.mkt-card-pos-pnl.up{color:var(--green)}.mkt-card-pos-pnl.dn{color:#e05555}
+.mkt-bet-inp{display:flex;gap:6px;margin-top:2px}
+.mkt-bet-input{flex:1;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:14px;padding:8px 10px;border-radius:3px}
+.mkt-bet-input:focus{outline:none;border-color:var(--accent)}
+.mkt-buy-btn{padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;background:var(--accent);border:none;color:white;font-family:var(--sans);border-radius:3px}
+.mkt-sell-btn{padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid var(--green);color:var(--green);font-family:var(--sans);border-radius:3px;width:100%}
+.mkt-preview{font-size:11px;color:var(--muted);margin-top:2px;min-height:14px}
+.mkt-activity{padding:14px 18px;border-top:1px solid var(--border)}
+.mkt-activity-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.mkt-trade-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border);color:var(--muted)}
+.mkt-trade-row:last-child{border-bottom:none}
+.mkt-trade-name{font-weight:600;color:var(--text)}
+.mkt-leaderboard{padding:14px 18px;border-top:1px solid var(--border)}
+.mkt-lb-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.mkt-lb-row:last-child{border-bottom:none}
+.mkt-lb-name{font-weight:600;color:var(--text)}
+.mkt-lb-val{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mkt-resolved{padding:20px 18px;background:var(--green-bg);border:1px solid var(--green-border);margin:14px 18px;border-radius:4px;font-size:14px;color:var(--green);font-weight:600}
+.mkt-status{font-size:12px;color:var(--muted);padding:6px 18px;min-height:20px}
+@media(min-width:768px){.mkt-grid{grid-template-columns:1fr 1fr 1fr 1fr}}
 </style>
 </head>
 <body>
@@ -422,6 +463,7 @@ a:hover{color:var(--text)}
     <button class="tab" onclick="showTab('gym',this)">Gym</button>
     <button class="tab" onclick="showTab('stats',this)">Stats</button>
     <button class="tab" onclick="showTab('crew',this)">Comments</button>
+    <button class="tab" onclick="showTab('bet',this)">Bet</button>
   </div>
   <div class="content">
     <div class="pane on" id="pane-today"></div>
@@ -430,6 +472,7 @@ a:hover{color:var(--text)}
     <div class="pane" id="pane-gym"></div>
     <div class="pane" id="pane-stats"></div>
     <div class="pane" id="pane-crew"></div>
+    <div class="pane" id="pane-bet"></div>
   </div>
 </div>
 <script>
@@ -712,6 +755,253 @@ async function _postCommentViaFunction(name,message){
   try{const r=await fetch(GH_RAW+'?t='+Date.now());if(r.ok){const d=await r.json();Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}catch(e){}
 }
 
+
+// ── Prediction Market (LMSR) ─────────────────────────────────────────────────
+const MKT_B = 20; // liquidity param — higher = less price movement per $
+const MKT_OUTCOMES = ['< 2:50','2:50–2:55','2:55–3:00','> 3:00'];
+const MKT_LABELS   = ['Sub-2:50','2:50–2:55','2:55–3:00','Over 3:00'];
+const MKT_INIT_BAL = 10;
+
+function mktData(){
+  if(!appData.market){
+    appData.market={b:MKT_B,q:[0,0,0,0],resolved:null,trades:[]};
+  }
+  if(!appData.portfolios) appData.portfolios={};
+  return appData.market;
+}
+
+function mktGetOrCreate(name){
+  if(!appData.portfolios[name]){
+    appData.portfolios[name]={balance:MKT_INIT_BAL,positions:[0,0,0,0],buyCosts:[0,0,0,0]};
+  }
+  return appData.portfolios[name];
+}
+
+function lmsrCost(q,b){
+  return b*Math.log(q.reduce((s,qi)=>s+Math.exp(qi/b),0));
+}
+function lmsrProbs(q,b){
+  const exps=q.map(qi=>Math.exp(qi/b));
+  const sum=exps.reduce((a,v)=>a+v,0);
+  return exps.map(e=>e/sum);
+}
+function lmsrBuyCost(q,i,shares,b){
+  const nq=[...q]; nq[i]+=shares;
+  return lmsrCost(nq,b)-lmsrCost(q,b);
+}
+function lmsrSellReturn(q,i,shares,b){
+  const nq=[...q]; nq[i]=Math.max(0,nq[i]-shares);
+  return lmsrCost(q,b)-lmsrCost(nq,b);
+}
+function lmsrSharesForDollars(q,i,dollars,b){
+  let lo=0,hi=dollars*50;
+  for(let k=0;k<60;k++){
+    const mid=(lo+hi)/2;
+    lmsrBuyCost(q,i,mid,b)<dollars?lo=mid:hi=mid;
+  }
+  return(lo+hi)/2;
+}
+
+let betName=localStorage.getItem('philly_bet_name')||'';
+
+function saveBetName(){
+  const n=document.getElementById('bet-name-inp')?.value.trim();
+  if(!n)return;
+  betName=n;
+  localStorage.setItem('philly_bet_name',n);
+  mktGetOrCreate(n);
+  _mktWrite();
+  renderBet();
+}
+
+function _mktWrite(){
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+  _doGhWrite();
+}
+
+function renderBet(){
+  const pane=document.getElementById('pane-bet');
+  if(!pane)return;
+  const mkt=mktData();
+  const probs=lmsrProbs(mkt.q,mkt.b);
+  const portfolio=betName?mktGetOrCreate(betName):null;
+  const resolved=mkt.resolved;
+
+  const outcomeCard=(i)=>{
+    const prob=probs[i];
+    const priceEa=prob.toFixed(2);
+    const pos=portfolio?portfolio.positions[i]:0;
+    const buyCostTotal=portfolio?portfolio.buyCosts[i]:0;
+    const sellVal=pos>0?lmsrSellReturn(mkt.q,i,pos,mkt.b):0;
+    const pnl=pos>0?sellVal-buyCostTotal:0;
+    const isWinner=resolved===i;
+    const winVal=pos>0&&isWinner?pos:0;
+
+    return`<div class="mkt-card${isWinner?' sel':''}">
+      <div class="mkt-card-label">${MKT_LABELS[i]}</div>
+      <div class="mkt-card-time">${MKT_OUTCOMES[i]}</div>
+      <div class="mkt-card-prob">${Math.round(prob*100)}%</div>
+      <div class="mkt-card-price">${(prob*100).toFixed(1)}¢ per share · pays $1 if correct</div>
+      ${pos>0?`<div class="mkt-card-pos">
+        <span class="mkt-card-pos-val">${pos.toFixed(1)} shares</span>
+        ${resolved!==null
+          ?(isWinner?`<div class="mkt-card-pos-pnl up">Won $${winVal.toFixed(2)}!</div>`:`<div class="mkt-card-pos-pnl dn">Lost</div>`)
+          :`<div class="mkt-card-pos-pnl ${pnl>=0?'up':'dn'}">${pnl>=0?'+':'-'}$${Math.abs(pnl).toFixed(2)} current P&L</div>`}
+        ${resolved===null&&pos>0?`<button class="mkt-sell-btn" onclick="cashOut(${i})">Cash out $${sellVal.toFixed(2)}</button>`:''}
+      </div>`:''}
+      ${resolved===null&&betName?`<div class="mkt-bet-inp">
+        <input class="mkt-bet-input" id="bet-inp-${i}" type="number" placeholder="$" min="0.50" step="0.50" oninput="betPreview(${i})">
+        <button class="mkt-buy-btn" onclick="placeBet(${i})">Buy</button>
+      </div>
+      <div class="mkt-preview" id="bet-prev-${i}"></div>`:''}
+    </div>`;
+  };
+
+  const trades=(mkt.trades||[]).slice(0,8).map(t=>`
+    <div class="mkt-trade-row">
+      <span><span class="mkt-trade-name">${t.name}</span> ${t.type==='sell'?'sold':'bet'} $${t.amt.toFixed(2)} on ${MKT_OUTCOMES[t.outcome]}</span>
+      <span>${t.shares.toFixed(1)} shares @ ${(t.price*100).toFixed(0)}¢</span>
+    </div>`).join('');
+
+  // Leaderboard — total portfolio value
+  const lb=Object.entries(appData.portfolios||{}).map(([name,p])=>{
+    let totalVal=p.balance;
+    if(resolved!==null){
+      totalVal+=p.positions[resolved]||0;
+    } else {
+      p.positions.forEach((sh,i)=>{
+        if(sh>0)totalVal+=lmsrSellReturn(mkt.q,i,sh,mkt.b);
+      });
+    }
+    return{name,totalVal,balance:p.balance};
+  }).sort((a,b)=>b.totalVal-a.totalVal).slice(0,8);
+
+  pane.innerHTML=`<div class="mkt-wrap">
+  <div class="mkt-hdr">
+    <div class="mkt-title">Philadelphia Marathon Market</div>
+    <div class="mkt-sub">Predict William's finish time · Everyone gets $10 of play money · Payouts after Nov 22</div>
+  </div>
+
+  ${resolved!==null?`<div class="mkt-resolved">🏁 Market resolved — winning outcome: <strong>${MKT_OUTCOMES[resolved]}</strong>${canWrite()&&resolved===null?'':''}</div>`:''}
+
+  <div class="mkt-bal-bar">
+    <div class="mkt-bal">${betName?`$${(portfolio?.balance||0).toFixed(2)} balance`:'Enter your name to play'}</div>
+    <div class="mkt-name-row">
+      <input class="mkt-name-inp" id="bet-name-inp" placeholder="Your name" value="${betName}" maxlength="30">
+      <button class="mkt-name-btn" onclick="saveBetName()">${betName?'Switch':'Play →'}</button>
+    </div>
+  </div>
+
+  <div class="mkt-grid">${[0,1,2,3].map(outcomeCard).join('')}</div>
+
+  <div class="mkt-status" id="mkt-status"></div>
+
+  ${canWrite()&&resolved===null?`<div style="padding:8px 18px;border-top:1px solid var(--border)">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Admin: resolve market after Nov 22</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      ${MKT_OUTCOMES.map((o,i)=>`<button onclick="resolveMarket(${i})" style="font-size:12px;padding:5px 10px;cursor:pointer;background:var(--card2);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);border-radius:3px">Resolve: ${o}</button>`).join('')}
+    </div>
+  </div>`:''}
+
+  ${trades?`<div class="mkt-activity">
+    <div class="mkt-activity-title">Recent activity</div>
+    ${trades}
+  </div>`:''}
+
+  ${lb.length?`<div class="mkt-leaderboard">
+    <div class="mkt-activity-title">Leaderboard</div>
+    ${lb.map((p,rank)=>`<div class="mkt-lb-row">
+      <span class="mkt-lb-name">${rank+1}. ${p.name}</span>
+      <span class="mkt-lb-val">$${p.totalVal.toFixed(2)} total value</span>
+    </div>`).join('')}
+  </div>`:''}
+  </div>`;
+}
+
+function betPreview(i){
+  const mkt=mktData();
+  const inp=document.getElementById('bet-inp-'+i);
+  const prev=document.getElementById('bet-prev-'+i);
+  if(!inp||!prev)return;
+  const dollars=parseFloat(inp.value)||0;
+  if(dollars<=0){prev.textContent='';return;}
+  const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
+  const probs=lmsrProbs(mkt.q,mkt.b);
+  prev.textContent=`→ ${shares.toFixed(1)} shares at ${(probs[i]*100).toFixed(1)}¢ each`;
+}
+
+async function placeBet(i){
+  const mkt=mktData();
+  const status=document.getElementById('mkt-status');
+  if(!betName){status.textContent='Enter your name first';return;}
+  const inp=document.getElementById('bet-inp-'+i);
+  const dollars=parseFloat(inp?.value)||0;
+  if(dollars<0.50){status.textContent='Minimum bet is $0.50';return;}
+  const portfolio=mktGetOrCreate(betName);
+  if(dollars>portfolio.balance){status.textContent=`Not enough balance (have $${portfolio.balance.toFixed(2)})`;return;}
+
+  const probs=lmsrProbs(mkt.q,mkt.b);
+  const price=probs[i];
+  const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
+  const actualCost=lmsrBuyCost(mkt.q,i,shares,mkt.b);
+
+  mkt.q[i]+=shares;
+  portfolio.balance-=actualCost;
+  portfolio.positions[i]=(portfolio.positions[i]||0)+shares;
+  portfolio.buyCosts[i]=(portfolio.buyCosts[i]||0)+actualCost;
+  mkt.trades.unshift({name:betName,outcome:i,shares,amt:actualCost,price,type:'buy',ts:Date.now()});
+  if(mkt.trades.length>50)mkt.trades.length=50;
+  appData.updatedAt=Date.now();
+
+  status.textContent=`✓ Bought ${shares.toFixed(1)} shares of "${MKT_OUTCOMES[i]}" for $${actualCost.toFixed(2)}`;
+  _mktWrite();
+  renderBet();
+}
+
+async function cashOut(i){
+  const mkt=mktData();
+  const status=document.getElementById('mkt-status');
+  if(!betName)return;
+  const portfolio=mktGetOrCreate(betName);
+  const shares=portfolio.positions[i]||0;
+  if(shares<=0){status.textContent='No shares to sell';return;}
+
+  const sellReturn=lmsrSellReturn(mkt.q,i,shares,mkt.b);
+  const probs=lmsrProbs(mkt.q,mkt.b);
+  const price=probs[i];
+
+  mkt.q[i]=Math.max(0,mkt.q[i]-shares);
+  portfolio.balance+=sellReturn;
+  portfolio.positions[i]=0;
+  portfolio.buyCosts[i]=0;
+  mkt.trades.unshift({name:betName,outcome:i,shares,amt:sellReturn,price,type:'sell',ts:Date.now()});
+  if(mkt.trades.length>50)mkt.trades.length=50;
+  appData.updatedAt=Date.now();
+
+  status.textContent=`✓ Sold ${shares.toFixed(1)} shares for $${sellReturn.toFixed(2)}`;
+  _mktWrite();
+  renderBet();
+}
+
+async function resolveMarket(i){
+  if(!canWrite())return;
+  const pw=prompt('Password to resolve:');
+  if(pw!=='done')return;
+  const mkt=mktData();
+  mkt.resolved=i;
+  // Pay out winners
+  Object.entries(appData.portfolios||{}).forEach(([name,p])=>{
+    const winShares=p.positions[i]||0;
+    if(winShares>0){
+      p.balance+=winShares;
+      p.positions[i]=0;
+    }
+  });
+  appData.updatedAt=Date.now();
+  _mktWrite();
+  renderBet();
+}
+
 // ── Cross-device sync via GitHub ─────────────────────────────────────────────
 const GH_REPO = 'hoguewd/hoguemarathon';
 const GH_DATA  = 'data.json';
@@ -771,8 +1061,8 @@ async function loadAppData(){
         applyAppData();
         localStorage.setItem('philly_app_cache',JSON.stringify(appData));
         renderToday();renderPlan();renderStats();
-        // Re-render crew tab if it's open so fresh comments appear
         if(document.getElementById('pane-crew')?.classList.contains('on'))renderCrew();
+        if(document.getElementById('pane-bet')?.classList.contains('on'))renderBet();
       }
     }
   }catch(e){
@@ -1928,6 +2218,7 @@ function showTab(id,btn){
   document.querySelector('.content').scrollTop=0;
   if(id==='stats')renderStats();
   if(id==='crew'){renderCrew();loadAppData();}
+  if(id==='bet'){renderBet();loadAppData();}
   if(id==='vdot'){}  // removed
 }
 
