@@ -943,7 +943,9 @@ function toggleDone(wk,d){
   const key=wk+'_'+d;
   if(appData.done[key])delete appData.done[key];
   else appData.done[key]=true;
-  writeAppData();
+  // Write immediately (no debounce) — checkboxes must sync reliably
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+  _doGhWrite();
   renderToday();renderPlan();
 }
 function saveNotes(i){
