@@ -556,46 +556,62 @@ async function postComment(){
   const btn=document.querySelector('.crew-btn');
   const name=(nameEl?.value||'').trim();
   const message=(msgEl?.value||'').trim();
-  if(!name){
-    document.getElementById('crew-name')?.focus();
-    status.textContent='Name is required ↑';
-    return;
-  }
+  if(!name){document.getElementById('crew-name')?.focus();status.textContent='Name is required ↑';return;}
   if(!message){status.textContent='Write something first';return;}
   status.textContent='Posting…';
   if(btn)btn.disabled=true;
   try{
-    let res;
-    try{
-      res=await fetch('/comment',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name,message})
-      });
-    }catch(e){
-      throw new Error('Could not reach the server. Check your connection.');
+    if(canWrite()){
+      // Token holder: write directly to GitHub
+      await _postCommentDirect(name,message);
+    } else {
+      // Friends: use Cloudflare function
+      await _postCommentViaFunction(name,message);
     }
-    // Handle non-JSON responses (e.g. 404 if function not deployed)
-    const text=await res.text();
-    let data;
-    try{data=JSON.parse(text);}catch(e){
-      if(res.status===404)throw new Error('Comments service not set up yet — ask William to enable it.');
-      throw new Error('Server error ('+res.status+')');
-    }
-    if(!data.ok)throw new Error(data.error||'Failed to post');
     if(msgEl)msgEl.value='';
-    localStorage.setItem('philly_crew_name', name);
+    localStorage.setItem('philly_crew_name',name);
     status.textContent='✓ Posted!';
-    // Refetch data.json to show new comment
-    try{
-      const r=await fetch(GH_RAW+'?t='+Date.now());
-      if(r.ok){const d=await r.json();if(d.updatedAt>=(appData.updatedAt||0)){Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}
-    }catch(e){}
     setTimeout(()=>{status.textContent='';renderCrew();},800);
   }catch(e){
     status.textContent='⚠ '+e.message;
     if(btn)btn.disabled=false;
   }
+}
+
+async function _postCommentDirect(name,message){
+  const token=ghToken();
+  const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json','User-Agent':'hoguemarathon'};
+  const r=await fetch(GH_API,{headers});
+  if(!r.ok)throw new Error('Could not load data.json');
+  const file=await r.json();
+  const sha=file.sha;
+  const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
+  const data=JSON.parse(new TextDecoder().decode(bytes));
+  if(!Array.isArray(data.comments))data.comments=[];
+  data.comments.unshift({name,message,ts:Date.now()});
+  if(data.comments.length>200)data.comments.length=200;
+  data.updatedAt=Date.now();
+  const json=JSON.stringify(data,null,2);
+  const content=btoa(String.fromCharCode(...new TextEncoder().encode(json)));
+  const put=await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify({message:'Comment from '+name,content,sha})});
+  if(!put.ok){const e=await put.json();throw new Error(e.message||'Write failed');}
+  Object.assign(appData,data);
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+}
+
+async function _postCommentViaFunction(name,message){
+  let res;
+  try{res=await fetch('/comment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,message})});}
+  catch(e){throw new Error('Could not reach server — check your connection.');}
+  const text=await res.text();
+  let data;
+  try{data=JSON.parse(text);}catch(e){
+    if(res.status===404)throw new Error('Comments service not set up yet.');
+    throw new Error('Server error ('+res.status+')');
+  }
+  if(!data.ok)throw new Error(data.error||'Failed to post');
+  // Refetch to sync
+  try{const r=await fetch(GH_RAW+'?t='+Date.now());if(r.ok){const d=await r.json();Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}catch(e){}
 }
 
 // ── Cross-device sync via GitHub ─────────────────────────────────────────────
