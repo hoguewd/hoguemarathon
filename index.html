@@ -539,8 +539,12 @@ async function loadAppData(){
 }
 
 function applyAppData(){
-  // Apply loaded data to global variables
   stravaActuals = appData.stravaActuals||{};
+  // Write to localStorage so stats tab and other consumers can read
+  if(appData.stravaActuals && Object.keys(appData.stravaActuals).length>0)
+    localStorage.setItem('philly_strava_actuals', JSON.stringify(appData.stravaActuals));
+  if(appData.stravaActivities && appData.stravaActivities.length>0)
+    localStorage.setItem('philly_strava_activities', JSON.stringify(appData.stravaActivities));
   if(appData.vdot&&appData.vdot!==workingVDOT){
     workingVDOT=appData.vdot;
     const el=document.getElementById('vdot-hdr');
