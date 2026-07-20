@@ -406,7 +406,7 @@ a:hover{color:var(--text)}
     <button class="tab" onclick="showTab('ref',this)">Reference</button>
     <button class="tab" onclick="showTab('gym',this)">Gym</button>
     <button class="tab" onclick="showTab('stats',this)">Stats</button>
-    <button class="tab" onclick="showTab('crew',this)">Crew</button>
+    <button class="tab" onclick="showTab('crew',this)">Comments</button>
   </div>
   <div class="content">
     <div class="pane on" id="pane-today"></div>
@@ -512,7 +512,7 @@ function renderCrew(){
   const savedName=localStorage.getItem('philly_crew_name')||'';
   pane.innerHTML=`
     <div class="crew-header">
-      <div class="crew-title">Crew</div>
+      <div class="crew-title">Comments</div>
       <div class="crew-sub">Leave a message for William · visible to everyone</div>
     </div>
     <div class="crew-form">
