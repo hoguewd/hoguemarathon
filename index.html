@@ -476,6 +476,78 @@ const LIFT_B=[
 ];
 
 // ── VDOT calculation (Daniels & Gilbert) ─────────────────────────
+
+// ── Cross-device sync via GitHub ─────────────────────────────────────────────
+const GH_REPO = 'hoguewd/hoguemarathon';
+const GH_DATA  = 'data.json';
+const GH_RAW   = `https://raw.githubusercontent.com/${GH_REPO}/main/${GH_DATA}`;
+const GH_API   = `https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA}`;
+
+let appData = {
+  v:1, notes:{}, dayEdits:{}, dayOrders:{}, done:{},
+  vdot:55, stravaActuals:{}, stravaActivities:[], stravaLastSync:0, updatedAt:0
+};
+
+function ghToken(){ return localStorage.getItem('philly_gh_token')||''; }
+function canWrite(){ return !!ghToken(); }
+
+// Debounced GitHub write
+let _ghTimer=null;
+function writeAppData(){
+  // Instant local cache
+  localStorage.setItem('philly_app_cache', JSON.stringify(appData));
+  if(!canWrite()) return;
+  clearTimeout(_ghTimer);
+  _ghTimer=setTimeout(_doGhWrite, 1500);
+}
+
+async function _doGhWrite(){
+  const token=ghToken(); if(!token)return;
+  const body=JSON.stringify({...appData, updatedAt:Date.now()}, null, 2);
+  const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};
+  try{
+    let sha=null;
+    const r=await fetch(GH_API,{headers});
+    if(r.ok){ const d=await r.json(); sha=d.sha; }
+    const payload={message:'Sync app data',content:btoa(unescape(encodeURIComponent(body)))};
+    if(sha)payload.sha=sha;
+    await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify(payload)});
+  }catch(e){ /* silent fail — data stays in cache */ }
+}
+
+async function loadAppData(){
+  // 1. Load from localStorage cache immediately (fast, enables offline)
+  try{
+    const cached=localStorage.getItem('philly_app_cache');
+    if(cached){ const c=JSON.parse(cached); Object.assign(appData,c); applyAppData(); }
+  }catch(e){}
+
+  // 2. Fetch fresh from GitHub in background
+  try{
+    const r=await fetch(GH_RAW+'?t='+Date.now());
+    if(r.ok){
+      const d=await r.json();
+      // Only update if GitHub is newer
+      if(d.updatedAt>=(appData.updatedAt||0)){
+        Object.assign(appData,d);
+        applyAppData();
+        localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+        renderToday();renderPlan();
+      }
+    }
+  }catch(e){}
+}
+
+function applyAppData(){
+  // Apply loaded data to global variables
+  stravaActuals = appData.stravaActuals||{};
+  if(appData.vdot&&appData.vdot!==workingVDOT){
+    workingVDOT=appData.vdot;
+    const el=document.getElementById('vdot-hdr');
+    if(el)el.textContent=workingVDOT.toFixed(1);
+  }
+}
+
 let workingVDOT = parseFloat(localStorage.getItem('philly_2026_vdot') || '55');
 
 function calcVDOT(distM, timeMins) {
@@ -509,6 +581,7 @@ function getDynPaces(vdot) {
 function setWorkingVDOT(v) {
   workingVDOT = v;
   localStorage.setItem('philly_2026_vdot', v);
+  appData.vdot = v; writeAppData();
   const el = document.getElementById('vdot-hdr');
   if (el) el.textContent = v.toFixed(1);
   // Refresh reference paces if visible
@@ -703,25 +776,28 @@ function fmtDate(d){return d.toLocaleDateString('en-US',{weekday:'long',month:'s
 let todayWk=getWeekIdx(),todayDay=getDayIdx();
 let selWeek=todayWk,selDay=todayDay;
 
-// Storage helpers
-function lsKey(prefix,i){return'philly_2026_'+prefix+'_'+i;}
-function isDone(wk,d){return!!localStorage.getItem(lsKey('done',wk+'_'+d));}
+// Storage helpers — backed by GitHub data.json for cross-device sync
+function isDone(wk,d){return!!(appData.done||{})[wk+'_'+d];}
 function toggleDone(wk,d){
-  const key=lsKey('done',wk+'_'+d);
-  if(localStorage.getItem(key))localStorage.removeItem(key);
-  else localStorage.setItem(key,'1');
+  if(!appData.done)appData.done={};
+  const key=wk+'_'+d;
+  if(appData.done[key])delete appData.done[key];
+  else appData.done[key]=true;
+  writeAppData();
   renderToday();renderPlan();
 }
 function saveNotes(i){
   const el=document.getElementById('notes-'+i);
   if(!el)return;
   const val=el.value;
-  localStorage.setItem(lsKey('notes',i),val);
+  if(!appData.notes)appData.notes={};
+  if(val)appData.notes[i]=val; else delete appData.notes[i];
+  writeAppData();
   const tick=document.getElementById('tick-'+i);
   if(tick){tick.style.opacity='1';setTimeout(()=>tick.style.opacity='0',1500);}
   renderPlan();
 }
-function loadNotes(i){return localStorage.getItem(lsKey('notes',i))||'';}
+function loadNotes(i){return(appData.notes||{})[i]||'';}
 
 function wxCls(f){return f<=65?'wx-good':f<=76?'wx-warm':'wx-hot';}
 
@@ -808,17 +884,17 @@ async function loadWx(dateStr){
 
 // ── Day ordering / swap ───────────────────────────────────────────────────────
 function getDayOrder(wkIdx){
-  try{
-    const s=localStorage.getItem('philly_2026_order_'+wkIdx);
-    if(s){const a=JSON.parse(s);if(a.length===7)return a;}
-  }catch(e){}
+  try{const a=(appData.dayOrders||{})[wkIdx];if(a&&a.length===7)return a;}catch(e){}
   return[0,1,2,3,4,5,6];
 }
 function saveDayOrder(wkIdx,order){
-  localStorage.setItem('philly_2026_order_'+wkIdx,JSON.stringify(order));
+  if(!appData.dayOrders)appData.dayOrders={};
+  appData.dayOrders[wkIdx]=order;
+  writeAppData();
 }
 function resetDayOrder(wkIdx){
-  localStorage.removeItem('philly_2026_order_'+wkIdx);
+  if(appData.dayOrders)delete appData.dayOrders[wkIdx];
+  writeAppData();
 }
 
 let swapPickIdx=null;
@@ -846,9 +922,13 @@ function pickSwap(displayIdx){
 }
 
 // ── Day edit ─────────────────────────────────────────────────────────────────
-function lsDayKey(w,d){return'philly_2026_day_'+w+'_'+d;}
-function loadDayEdit(w,d){try{return localStorage.getItem(lsDayKey(w,d));}catch(e){return null;}}
-function saveDayEdit(w,d,val){try{if(val===null)localStorage.removeItem(lsDayKey(w,d));else localStorage.setItem(lsDayKey(w,d),val);}catch(e){}}
+function loadDayEdit(w,d){try{return(appData.dayEdits||{})[w+'_'+d]||null;}catch(e){return null;}}
+function saveDayEdit(w,d,val){
+  if(!appData.dayEdits)appData.dayEdits={};
+  if(val===null)delete appData.dayEdits[w+'_'+d];
+  else appData.dayEdits[w+'_'+d]=val;
+  writeAppData();
+}
 
 function startEditDay(w,d){
   const wrap=document.getElementById('day-ew-'+w+'-'+d);
@@ -1081,6 +1161,13 @@ function stravaConnectHtml(){
     </div>
   </div>`;
 }
+function saveGhToken(){
+  const val=document.getElementById('gh-token-inp').value.trim();
+  if(val)localStorage.setItem('philly_gh_token',val);
+  else localStorage.removeItem('philly_gh_token');
+  renderRef();
+  if(val)writeAppData(); // push current data immediately
+}
 function stravaIsConnected() {
   return !!localStorage.getItem('philly_strava_refresh_token');
 }
@@ -1212,6 +1299,10 @@ async function _stravaFetchAndStore(token, statusEl) {
   activities.sort((a,b)=>b.date.localeCompare(a.date));
   stravaActuals=newActuals;
   localStorage.setItem('philly_strava_actuals',JSON.stringify(stravaActuals));
+  appData.stravaActuals=stravaActuals;
+  appData.stravaActivities=activities;
+  appData.stravaLastSync=Date.now();
+  writeAppData();
   localStorage.setItem('philly_strava_activities',JSON.stringify(activities));
   localStorage.setItem('philly_strava_synced',Date.now());
   if(statusEl) statusEl.textContent=runs.length+' runs synced · '+Object.keys(newActuals).length+' training weeks';
@@ -1520,6 +1611,21 @@ function renderRef(){
       <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">@20 · @45 · @70 · @90(C) · @110 · @130(C) · @150min</span>
     </div>
   </div>
+  <div class="ref-sec">
+    <div class="ref-title">Cross-device sync</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.5">Enter your GitHub token to sync notes, check-offs and Strava data across all your devices. Anyone viewing the app sees your data automatically — no token needed to read.</div>
+    <div style="display:flex;gap:8px;margin-bottom:6px">
+      <input id="gh-token-inp" type="password"
+        style="flex:1;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px"
+        placeholder="GitHub personal access token (ghp_...)"
+        value="${ghToken()}">
+      <button onclick="saveGhToken()"
+        style="padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid var(--green-border);color:var(--green);font-family:Arial,sans-serif;border-radius:3px;white-space:nowrap">
+        Save
+      </button>
+    </div>
+    <div style="font-size:12px;color:var(--muted)">${canWrite()?'● Write access enabled — your data syncs automatically':'○ Read-only — enter token to enable sync'}</div>
+  </div>
   </div>`;
 }
 
@@ -1567,6 +1673,8 @@ updateCountdown();
 const _vhdr=document.getElementById('vdot-hdr');if(_vhdr)_vhdr.textContent=workingVDOT.toFixed(1);
 initTheme();
 renderToday();renderPlan();renderRef();renderGym();
+// Load cross-device data from GitHub after initial render
+loadAppData();
 
 // Auto-sync Strava on open if connected and last sync was >1 hour ago
 (async()=>{
