@@ -389,6 +389,21 @@ body{margin:0}
   .trend-canvas-wrap{height:110px}
   .dash-no-data{padding:80px 40px}
 }
+
+.rr-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.rr-card{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--bg);gap:12px}
+.rr-card.rr-done{background:var(--card)}
+.rr-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.rr-date{font-size:11px;color:var(--muted)}
+.rr-vdot{font-size:12px;color:var(--accent);margin-top:4px;font-weight:500}
+.rr-time{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);text-align:right}
+.rr-clear{background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:4px;margin-left:4px}
+.rr-clear:hover{color:var(--text)}
+.rr-input{background:var(--card);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:14px;padding:7px 10px;width:100px;text-align:center}
+.rr-input:focus{outline:none;border-color:var(--accent)}
+.rr-save{padding:7px 14px;font-size:12px;font-weight:600;cursor:pointer;background:var(--accent);border:none;color:#fff;font-family:var(--sans);border-radius:20px;white-space:nowrap}
+.rr-badge{font-size:11px;color:var(--muted);background:var(--card2);padding:4px 10px;border-radius:20px}
+.rr-vdot-chip{font-size:11px;background:rgba(240,112,48,.12);color:var(--accent);border:1px solid rgba(240,112,48,.25);padding:3px 10px;border-radius:20px;margin-top:4px;display:inline-block}
 </style>
 </head>
 <body>
@@ -408,7 +423,6 @@ body{margin:0}
     <button class="tab" onclick="showTab('plan',this)">Plan</button>
     <button class="tab" onclick="showTab('ref',this)">Reference</button>
     <button class="tab" onclick="showTab('gym',this)">Gym</button>
-    <button class="tab" onclick="showTab('vdot',this)">VDOT</button>
     <button class="tab" onclick="showTab('stats',this)">Stats</button>
   </div>
   <div class="content">
@@ -416,7 +430,6 @@ body{margin:0}
     <div class="pane" id="pane-plan"></div>
     <div class="pane" id="pane-ref"></div>
     <div class="pane" id="pane-gym"></div>
-    <div class="pane" id="pane-vdot"></div>
     <div class="pane" id="pane-stats"></div>
   </div>
 </div>
@@ -549,94 +562,46 @@ function parseTime(str) {
   return null;
 }
 
-const DISTS = [
-  ["1 mile",1609.34],["1500m",1500],["3K",3000],["5K",5000],
-  ["8K",8046.72],["10K",10000],["15K",15000],["10 miles",16093.4],
-  ["20K",20000],["Half marathon",21097.5],["25K",25000],["30K",30000],
-  ["Marathon",42194.98]
+// ── Race tracker ─────────────────────────────────────────────────────────────
+const RACE_TRACKER = [
+  {dateStr:"Jul 26", isoDate:"2026-07-26", name:"5 Mile",              dist:8046.72},
+  {dateStr:"Sep 13", isoDate:"2026-09-13", name:"1 Mile",              dist:1609.34},
+  {dateStr:"Sep 19", isoDate:"2026-09-19", name:"10 Mile",             dist:16093.4},
+  {dateStr:"Oct 11", isoDate:"2026-10-11", name:"Half Marathon",       dist:21097.5},
+  {dateStr:"Nov 22", isoDate:"2026-11-22", name:"Philadelphia Marathon",dist:42195}
 ];
 
-function loadEfforts() {
-  try { return JSON.parse(localStorage.getItem('philly_2026_efforts')||'[]'); }
-  catch(e) { return []; }
+function parseRaceTime(s){
+  const p=s.trim().split(':').map(Number);
+  if(p.some(isNaN)||p.length<2||p.length>3)return null;
+  return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];
 }
-function saveEfforts(arr) {
-  localStorage.setItem('philly_2026_efforts', JSON.stringify(arr));
+function loadRaceResult(i){
+  try{return JSON.parse(localStorage.getItem('philly_race_result_'+i));}catch(e){return null;}
 }
-
-function calcAndShow() {
-  const distSel = document.getElementById('vf-dist');
-  const timeInp = document.getElementById('vf-time');
-  const distM = parseFloat(distSel.value);
-  const timeMins = parseTime(timeInp.value);
-  if (!distM || !timeMins || timeMins <= 0) {
-    alert('Enter a valid distance and time (MM:SS or H:MM:SS).');
-    return;
+function saveRaceResult(idx){
+  const inp=document.getElementById('race-time-'+idx);
+  if(!inp)return;
+  const secs=parseRaceTime(inp.value);
+  if(!secs){alert('Enter time as H:MM:SS or M:SS');return;}
+  const dist=RACE_TRACKER[idx].dist;
+  const vdot=calcVDOT(dist,secs/60);
+  const pps=secs/(dist/1609.34);
+  const pace=Math.floor(pps/60)+':'+String(Math.round(pps%60)).padStart(2,'0');
+  localStorage.setItem('philly_race_result_'+idx,JSON.stringify({time:inp.value.trim(),vdot:Math.round(vdot*10)/10,pace}));
+  updateWorkingVDOTFromRaces();
+  renderStats();
+}
+function clearRaceResult(idx){
+  localStorage.removeItem('philly_race_result_'+idx);
+  updateWorkingVDOTFromRaces();
+  renderStats();
+}
+function updateWorkingVDOTFromRaces(){
+  for(let i=RACE_TRACKER.length-1;i>=0;i--){
+    const r=loadRaceResult(i);
+    if(r&&r.vdot){setWorkingVDOT(r.vdot);return;}
   }
-  const vdot = calcVDOT(distM, timeMins);
-  const paces = getDynPaces(vdot);
-  const res = document.getElementById('vf-result');
-  res.style.display = 'block';
-  res.innerHTML = `<div class="vdot-lbl">Calculated VDOT</div>
-    <div class="vf-result-vdot">${vdot.toFixed(1)}</div>
-    <div class="vf-result-paces">${paces.map(([k,v])=>`${k}: ${v}`).join('<br>')}</div>
-    <button class="vf-btn primary" style="margin-top:10px" onclick="useVDOT(${vdot}, '${distSel.options[distSel.selectedIndex].text}', '${timeInp.value.trim()}', ${distM}, ${timeMins})">Set ${vdot.toFixed(1)} as working VDOT →</button>`;
-}
-
-function useVDOT(vdot, distName, timeStr, distM, timeMins) {
-  setWorkingVDOT(vdot);
-  // Save to effort log
-  const efforts = loadEfforts();
-  efforts.unshift({date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}),dist:distName,time:timeStr,vdot});
-  saveEfforts(efforts);
-  renderVdot();
-}
-
-function deleteEffort(i) {
-  const arr = loadEfforts();
-  arr.splice(i,1);
-  saveEfforts(arr);
-  renderVdot();
-}
-
-function renderVdot() {
-  const efforts = loadEfforts();
-  const effortHtml = efforts.length ? efforts.map((e,i)=>`
-    <div class="effort-item">
-      <div class="effort-left">
-        <div class="effort-name">${e.dist} · ${e.date}</div>
-        <div class="effort-detail">${e.time}</div>
-      </div>
-      <div style="text-align:right">
-        <div class="effort-vdot">${parseFloat(e.vdot).toFixed(1)}</div>
-        <div class="effort-use" onclick="setWorkingVDOT(${e.vdot});renderVdot()">use this ↗</div>
-      </div>
-      <button class="del-btn" onclick="deleteEffort(${i})" title="Delete">✕</button>
-    </div>`).join('') : '<div style="font-size:13px;color:var(--muted);padding:8px 0">No efforts logged yet.</div>';
-
-  document.getElementById('pane-vdot').innerHTML = `
-  <div class="vdot-card" style="border-bottom:1px solid var(--border)">
-    <div class="vdot-lbl">Working VDOT</div>
-    <div class="vdot-big">${workingVDOT.toFixed(1)}</div>
-    <div class="vdot-sub">Paces in reference tab update automatically</div>
-  </div>
-  <div class="vdot-card" style="border-bottom:1px solid var(--border)">
-    <div class="vdot-lbl" style="margin-bottom:12px">Log an effort</div>
-    <div class="vf-row"><span class="vf-label">Distance</span>
-      <select class="vf-select" id="vf-dist">
-        ${DISTS.map(([n,v])=>`<option value="${v}">${n}</option>`).join('')}
-      </select>
-    </div>
-    <div class="vf-row"><span class="vf-label">Time</span>
-      <input class="vf-input" id="vf-time" placeholder="18:04 or 1:22:45" type="text">
-    </div>
-    <button class="vf-btn primary" onclick="calcAndShow()">Calculate VDOT →</button>
-    <div class="vf-result" id="vf-result"></div>
-  </div>
-  <div class="vdot-card">
-    <div class="vdot-lbl" style="margin-bottom:8px">Effort log</div>
-    ${effortHtml}
-  </div>`;
 }
 
 const LIFT_A1=[
@@ -1450,6 +1415,29 @@ function renderStats(){
     </div>
   </div>
 
+  <div class="dash-sec" style="margin-top:0;padding-top:0;border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:22px">
+    <div class="dash-sec-title">Races</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Working VDOT: <span style="color:var(--accent);font-weight:700">${workingVDOT.toFixed(1)}</span> · paces in Reference update automatically</div>
+    <div class="rr-list">
+    ${RACE_TRACKER.map((race,i)=>{
+      const result=loadRaceResult(i);
+      const rd=new Date(race.isoDate+'T12:00:00');
+      const isPast=rd<new Date();
+      if(result){return`<div class="rr-card rr-done">
+        <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div><div class="rr-vdot-chip">VDOT ${result.vdot} · ${result.pace}/mi</div></div>
+        <div style="display:flex;align-items:center"><div class="rr-time">${result.time}</div><button class="rr-clear" onclick="clearRaceResult(${i})" title="Clear">✕</button></div>
+      </div>`;}
+      if(isPast){return`<div class="rr-card">
+        <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div></div>
+        <div style="display:flex;gap:6px;align-items:center"><input id="race-time-${i}" class="rr-input" placeholder="H:MM:SS"><button class="rr-save" onclick="saveRaceResult(${i})">Save</button></div>
+      </div>`;}
+      return`<div class="rr-card">
+        <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div></div>
+        <div class="rr-badge">Upcoming</div>
+      </div>`;
+    }).join('')}
+    </div>
+  </div>
   <div class="dash-sec" style="margin-top:22px">
     <div class="dash-sec-title">Recent runs</div>
   </div>
@@ -1541,6 +1529,7 @@ function showTab(id,btn){
   document.getElementById('pane-'+id).classList.add('on');
   document.querySelector('.content').scrollTop=0;
   if(id==='stats')renderStats();
+  if(id==='vdot'){}  // removed
 }
 
 function updateCountdown(){
@@ -1575,7 +1564,7 @@ setInterval(()=>{
 updateCountdown();
 const _vhdr=document.getElementById('vdot-hdr');if(_vhdr)_vhdr.textContent=workingVDOT.toFixed(1);
 initTheme();
-renderToday();renderPlan();renderRef();renderGym();renderVdot();
+renderToday();renderPlan();renderRef();renderGym();
 </script>
 </body>
 </html>
