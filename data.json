@@ -1,6 +1,8 @@
 {
   "v": 1,
-  "notes": {},
+  "notes": {
+    "0": "The heat got to me a bit. My legs felt strong. I didn't notice any knee pain. It was a good base. "
+  },
   "dayEdits": {},
   "dayOrders": {},
   "done": {},
@@ -8,5 +10,5 @@
   "stravaActuals": {},
   "stravaActivities": [],
   "stravaLastSync": 0,
-  "updatedAt": 1784566031795
+  "updatedAt": 1784566139491
 }
