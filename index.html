@@ -1465,7 +1465,7 @@ function renderStats(){
   setTimeout(()=>{
     drawVolChart('vol-chart');
     drawTrendChart('pace-chart',paceTrend,null,null,true,fmtPace);
-    drawTrendChart('cad-chart',cadTrend,null,null,false);
+    drawTrendChart('cad-chart',cadTrend,null,null,false,v=>Math.round(v));
   },30);
 }
 
