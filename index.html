@@ -525,15 +525,27 @@ function renderCrew(){
     </div>
     <div class="crew-list">
       ${comments.length===0?'<div class="crew-empty">No messages yet — be the first</div>':
-        comments.map(c=>`
+        comments.map((c,idx)=>`
           <div class="crew-comment">
             <div class="crew-comment-hdr">
               <span class="crew-name">${c.name||'Anonymous'}</span>
-              <span class="crew-time">${timeAgo(c.ts||0)}</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span class="crew-time">${timeAgo(c.ts||0)}</span>
+                ${canWrite()?`<button onclick="deleteComment(${idx})" style="font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0" title="Delete">✕</button>`:''}
+              </div>
             </div>
             <div class="crew-msg">${(c.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
           </div>`).join('')}
     </div>`;
+}
+
+function deleteComment(idx){
+  if(!canWrite())return;
+  if(!confirm('Delete this comment?'))return;
+  if(!Array.isArray(appData.comments))return;
+  appData.comments.splice(idx,1);
+  writeAppData();
+  renderCrew();
 }
 
 async function postComment(){
