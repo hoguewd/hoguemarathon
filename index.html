@@ -337,6 +337,52 @@ body{margin:0}
 .dl-item.swap-target{border:1px dashed var(--accent);background:var(--card2);cursor:pointer}
 .dl-item.swap-source{border:1px solid var(--accent);opacity:.7}
 .swap-hint{font-size:11px;color:var(--accent);padding:6px 14px;font-style:italic}
+
+/* ── Stats Dashboard ─────────────────────────────────────────────────────── */
+.dash{padding:0 0 40px}
+.dash-hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 18px 14px;border-bottom:1px solid var(--border)}
+.dash-hdr-title{font-size:15px;font-weight:600;color:var(--text)}
+.dash-sync-row{display:flex;align-items:center;gap:10px}
+.dash-sync-lbl{font-size:11px;color:var(--muted)}
+.dash-sync-btn{padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;background:none;border:1px solid #fc4c02;color:#fc4c02;font-family:Arial,sans-serif;border-radius:3px}
+.dash-sync-btn:hover{background:#fc4c0215}
+.stat-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-bottom:1px}
+.stat-card{background:var(--bg);padding:16px 18px}
+.stat-card-val{font-size:26px;font-weight:600;color:var(--text);line-height:1;margin-bottom:4px}
+.stat-card-lbl{font-size:11px;color:var(--muted)}
+.stat-card-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.dash-sec{padding:20px 18px 0}
+.dash-sec-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.vol-canvas-wrap{width:100%;height:140px}
+.run-cards{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.run-card{display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--bg);cursor:default}
+.run-card-bar{width:3px;height:36px;border-radius:2px;flex-shrink:0}
+.run-card-bar.easy{background:var(--muted);opacity:.4}
+.run-card-bar.mod{background:var(--accent)}
+.run-card-bar.hard{background:var(--green)}
+.run-card-body{flex:1;min-width:0}
+.run-card-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:3px}
+.run-card-name{font-size:13px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.run-card-dist{font-size:13px;font-weight:600;color:var(--text);flex-shrink:0;font-family:'Courier New',monospace}
+.run-card-meta{font-size:11px;color:var(--muted)}
+.run-card-date{font-size:11px;color:var(--muted);flex-shrink:0;text-align:right;min-width:56px}
+.trend-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--border)}
+.trend-cell{background:var(--bg);padding:16px 18px 14px}
+.trend-canvas-wrap{width:100%;height:90px;margin-top:8px}
+.dash-no-data{padding:48px 18px;text-align:center}
+.dash-no-data-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:8px}
+.dash-no-data-sub{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:20px}
+.dash-connect-btn{padding:10px 24px;font-size:13px;font-weight:600;cursor:pointer;background:none;border:1px solid #fc4c02;color:#fc4c02;font-family:Arial,sans-serif;border-radius:3px}
+@media(min-width:768px){
+  .stat-cards{grid-template-columns:repeat(4,1fr)}
+  .dash-hdr{padding:22px 40px 18px}
+  .dash-sec{padding:24px 40px 0}
+  .run-card{padding:12px 40px}
+  .trend-cell{padding:16px 40px 14px}
+  .vol-canvas-wrap{height:160px}
+  .trend-canvas-wrap{height:110px}
+  .dash-no-data{padding:80px 40px}
+}
 </style>
 </head>
 <body>
@@ -357,6 +403,7 @@ body{margin:0}
     <button class="tab" onclick="showTab('ref',this)">Reference</button>
     <button class="tab" onclick="showTab('gym',this)">Gym</button>
     <button class="tab" onclick="showTab('vdot',this)">VDOT</button>
+    <button class="tab" onclick="showTab('stats',this)">Stats</button>
   </div>
   <div class="content">
     <div class="pane on" id="pane-today"></div>
@@ -364,6 +411,7 @@ body{margin:0}
     <div class="pane" id="pane-ref"></div>
     <div class="pane" id="pane-gym"></div>
     <div class="pane" id="pane-vdot"></div>
+    <div class="pane" id="pane-stats"></div>
   </div>
 </div>
 <script>
@@ -1173,20 +1221,42 @@ async function _stravaFetchAndStore(token, statusEl) {
   if (!res.ok) throw new Error('Strava API error '+res.status);
   const acts = await res.json();
   const runs = acts.filter(a=>a.sport_type==='Run'||a.type==='Run');
+
   const newActuals = {};
+  const activities = [];
+
   runs.forEach(run=>{
     const d=new Date(run.start_date_local); d.setHours(0,0,0,0);
+    const dateStr=d.toISOString().split('T')[0];
+    let wkIdx=-1;
     for(let i=0;i<W.length;i++){
       const wkStart=parseLocal(W[i].start);
       const wkEnd=new Date(wkStart); wkEnd.setDate(wkEnd.getDate()+7);
-      if(d>=wkStart&&d<wkEnd){
-        if(!newActuals[i])newActuals[i]=0;
-        newActuals[i]+=run.distance/1609.34; break;
-      }
+      if(d>=wkStart&&d<wkEnd){ wkIdx=i; break; }
     }
+    if(wkIdx>=0){
+      if(!newActuals[wkIdx])newActuals[wkIdx]=0;
+      newActuals[wkIdx]+=run.distance/1609.34;
+    }
+    const mi=run.distance/1609.34;
+    const pace=run.moving_time>0&&mi>0?(run.moving_time/60)/mi:0;
+    activities.push({
+      id:run.id,date:dateStr,name:run.name,
+      mi:Math.round(mi*100)/100,
+      pace:Math.round(pace*100)/100,
+      duration:run.moving_time,
+      cadence:run.average_cadence||0,
+      effort:run.relative_effort||0,
+      elevation:Math.round((run.total_elevation_gain||0)*3.28084),
+      wkIdx:wkIdx
+    });
   });
+
+  activities.sort((a,b)=>b.date.localeCompare(a.date));
   stravaActuals=newActuals;
   localStorage.setItem('philly_strava_actuals',JSON.stringify(stravaActuals));
+  localStorage.setItem('philly_strava_activities',JSON.stringify(activities));
+  localStorage.setItem('philly_strava_synced',Date.now());
   if(statusEl) statusEl.textContent=runs.length+' runs synced · '+Object.keys(newActuals).length+' training weeks';
 }
 
@@ -1195,6 +1265,225 @@ function stravaDisconnect() {
   ['philly_strava_access_token','philly_strava_refresh_token','philly_strava_expires_at','philly_strava_actuals'].forEach(k=>localStorage.removeItem(k));
   stravaActuals={};
   renderRef();
+}
+
+
+// ── Stats Dashboard ───────────────────────────────────────────────────────────
+function fmtPace(p){const m=Math.floor(p),s=Math.round((p-m)*60);return m+':'+(s<10?'0':'')+s;}
+function fmtMi(m){return m.toFixed(1);}
+function fmtDur(s){const h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return h?h+'h '+m+'m':m+'m';}
+function runBarClass(e){return e>80?'hard':e>45?'mod':'easy';}
+
+function drawVolChart(canvasId){
+  const canvas=document.getElementById(canvasId);if(!canvas)return;
+  const dpr=window.devicePixelRatio||1;
+  const CW=canvas.clientWidth,CH=canvas.clientHeight;
+  canvas.width=CW*dpr;canvas.height=CH*dpr;
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  const isDark=!document.body.classList.contains('light');
+  const pad={l:28,r:6,t:8,b:22};
+  const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
+  const n=W.length,maxMi=75;
+  const borderClr=isDark?'#2A2724':'#DDD6C9';
+  const textClr=isDark?'#6B6560':'#857F77';
+  const barW=w/n;
+
+  [25,50,75].forEach(mi=>{
+    const y=pad.t+h-(mi/maxMi)*h;
+    ctx.strokeStyle=borderClr;ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
+    ctx.fillStyle=textClr;ctx.font='9px Arial';ctx.textAlign='right';
+    ctx.fillText(mi,pad.l-3,y+3);
+  });
+
+  W.forEach((wk,i)=>{
+    const x=pad.l+i*barW;
+    const bw=barW*0.38;
+    const planH=(wk.mi/maxMi)*h;
+    ctx.fillStyle=isDark?'rgba(91,155,213,0.18)':'rgba(37,99,171,0.15)';
+    ctx.fillRect(x+barW*0.05,pad.t+h-planH,bw,planH);
+
+    const actual=stravaActuals[i];
+    if(actual!=null){
+      const actH=(Math.min(actual,maxMi)/maxMi)*h;
+      const ok=actual>=wk.mi-2;
+      ctx.fillStyle=ok?(isDark?'#1a4030':'#B6E2C8'):(isDark?'#3A2800':'#EAD4A0');
+      ctx.fillRect(x+barW*0.52,pad.t+h-actH,bw,actH);
+    }
+    if(i%5===0||i===n-1){
+      ctx.fillStyle=textClr;ctx.font='9px Arial';ctx.textAlign='center';
+      ctx.fillText('W'+(i+1),x+barW/2,pad.t+h+14);
+    }
+  });
+}
+
+function drawTrendChart(canvasId,data,colorFn,labelFn,invertY){
+  const canvas=document.getElementById(canvasId);if(!canvas||data.length<2)return;
+  const dpr=window.devicePixelRatio||1;
+  const CW=canvas.clientWidth,CH=canvas.clientHeight;
+  canvas.width=CW*dpr;canvas.height=CH*dpr;
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  const isDark=!document.body.classList.contains('light');
+  const pad={l:6,r:6,t:6,b:6};
+  const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
+  const vals=data.map(d=>d.v);
+  let mn=Math.min(...vals),mx=Math.max(...vals);
+  if(mx-mn<0.5){mn-=0.25;mx+=0.25;}
+  const xOf=(i)=>pad.l+(i/(data.length-1))*w;
+  const yOf=(v)=>invertY?pad.t+((v-mn)/(mx-mn))*h:pad.t+h-((v-mn)/(mx-mn))*h;
+
+  ctx.beginPath();
+  data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
+  ctx.lineTo(xOf(data.length-1),pad.t+h);ctx.lineTo(pad.l,pad.t+h);ctx.closePath();
+  const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+h);
+  grad.addColorStop(0,isDark?'rgba(224,109,44,0.25)':'rgba(224,109,44,0.15)');
+  grad.addColorStop(1,'transparent');
+  ctx.fillStyle=grad;ctx.fill();
+
+  ctx.beginPath();
+  data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
+  ctx.strokeStyle='#E06D2C';ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
+
+  // dots
+  data.forEach((d,i)=>{
+    ctx.beginPath();ctx.arc(xOf(i),yOf(d.v),3,0,Math.PI*2);
+    ctx.fillStyle='#E06D2C';ctx.fill();
+  });
+}
+
+function renderStats(){
+  const acts=JSON.parse(localStorage.getItem('philly_strava_activities')||'[]');
+  const synced=localStorage.getItem('philly_strava_synced');
+  const connected=stravaIsConnected();
+  const pane=document.getElementById('pane-stats');
+
+  if(!connected){
+    pane.innerHTML=`<div class="dash-no-data">
+      <div class="dash-no-data-title">Connect Strava to see your dashboard</div>
+      <div class="dash-no-data-sub">Set up your Strava connection in the Reference tab,<br>then come back here to see your training analytics.</div>
+      <button class="dash-connect-btn" onclick="showTab('ref',document.querySelector('[onclick*=ref]'))">Go to Reference ↗</button>
+    </div>`;
+    return;
+  }
+
+  if(acts.length===0){
+    pane.innerHTML=`<div class="dash-hdr">
+      <span class="dash-hdr-title">Training Dashboard</span>
+      <div class="dash-sync-row">
+        <span class="dash-sync-lbl">No data yet</span>
+        <button class="dash-sync-btn" onclick="statsSyncAndRender()">Sync Strava</button>
+      </div>
+    </div>
+    <div class="dash-no-data">
+      <div class="dash-no-data-title">No runs synced yet</div>
+      <div class="dash-no-data-sub">Hit Sync to pull your training data from Strava.</div>
+    </div>`;
+    return;
+  }
+
+  // ── Compute summary stats ─────────────────────────────────────────────────
+  const now=new Date(); now.setHours(0,0,0,0);
+  const weekStart=new Date(now); weekStart.setDate(now.getDate()-now.getDay()+(now.getDay()===0?-6:1));
+  const thisWeek=acts.filter(a=>new Date(a.date)>=weekStart);
+  const thisWeekMi=thisWeek.reduce((s,a)=>s+a.mi,0);
+  const totalMi=acts.reduce((s,a)=>s+a.mi,0);
+  const easyRuns=acts.filter(a=>a.mi>2&&a.effort<65&&a.pace>0);
+  const avgPace=easyRuns.length>0?easyRuns.reduce((s,a)=>s+a.pace,0)/easyRuns.length:0;
+  const avgCad=acts.filter(a=>a.cadence>0).reduce((s,a,_,arr)=>s+a.cadence/arr.length,0);
+  const syncAgo=synced?Math.round((Date.now()-parseInt(synced))/60000):null;
+  const syncLbl=syncAgo===null?'Never':syncAgo<2?'Just now':syncAgo<60?syncAgo+'m ago':Math.round(syncAgo/60)+'h ago';
+
+  // ── Plan week for this week ───────────────────────────────────────────────
+  const curWkPlan=todayWk>=0&&todayWk<W.length?W[todayWk].mi:null;
+
+  // ── Pace trend (easy runs, last 12) ──────────────────────────────────────
+  const paceTrend=easyRuns.slice(0,12).reverse().map(a=>({v:a.pace,d:a.date}));
+  const cadTrend=acts.filter(a=>a.cadence>70).slice(0,12).reverse().map(a=>({v:a.cadence,d:a.date}));
+
+  pane.innerHTML=`<div class="dash">
+  <div class="dash-hdr">
+    <span class="dash-hdr-title">Training Dashboard</span>
+    <div class="dash-sync-row">
+      <span class="dash-sync-lbl">Synced ${syncLbl}</span>
+      <button class="dash-sync-btn" onclick="statsSyncAndRender()">↺ Sync</button>
+    </div>
+  </div>
+
+  <div class="stat-cards">
+    <div class="stat-card">
+      <div class="stat-card-val">${fmtMi(thisWeekMi)}</div>
+      <div class="stat-card-lbl">This week (mi)</div>
+      ${curWkPlan?`<div class="stat-card-sub">Plan: ${curWkPlan}mi</div>`:''}
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-val">${fmtMi(totalMi)}</div>
+      <div class="stat-card-lbl">Total this cycle</div>
+      <div class="stat-card-sub">${acts.length} runs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-val">${avgPace>0?fmtPace(avgPace):'—'}</div>
+      <div class="stat-card-lbl">Avg easy pace</div>
+      <div class="stat-card-sub">from ${easyRuns.length} easy runs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-val">${avgCad>0?Math.round(avgCad):'—'}</div>
+      <div class="stat-card-lbl">Avg cadence (spm)</div>
+      <div class="stat-card-sub">target: 80+</div>
+    </div>
+  </div>
+
+  <div class="dash-sec">
+    <div class="dash-sec-title">Weekly volume — planned vs actual</div>
+    <div class="vol-canvas-wrap"><canvas id="vol-chart" style="width:100%;height:100%"></canvas></div>
+    <div style="display:flex;gap:16px;margin-top:6px;font-size:11px;color:var(--muted)">
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:rgba(91,155,213,0.4);display:inline-block"></span>Planned</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#1a4030;display:inline-block"></span>Actual</span>
+    </div>
+  </div>
+
+  <div class="dash-sec" style="margin-top:22px">
+    <div class="dash-sec-title">Recent runs</div>
+  </div>
+  <div class="run-cards">
+    ${acts.slice(0,10).map(a=>`
+    <div class="run-card">
+      <div class="run-card-bar ${runBarClass(a.effort)}"></div>
+      <div class="run-card-body">
+        <div class="run-card-top">
+          <span class="run-card-name">${a.name}</span>
+          <span class="run-card-dist">${fmtMi(a.mi)} mi</span>
+        </div>
+        <div class="run-card-meta">${a.pace>0?fmtPace(a.pace)+'/mi · ':''}${a.duration>0?fmtDur(a.duration)+' · ':''}${a.cadence>0?'cad '+Math.round(a.cadence)+' · ':''}${a.effort>0?'RE '+a.effort:''}${a.elevation>0?' · '+a.elevation+'ft':''}</div>
+      </div>
+      <div class="run-card-date">${new Date(a.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
+    </div>`).join('')}
+  </div>
+
+  <div class="trend-grid" style="margin-top:1px">
+    <div class="trend-cell">
+      <div class="dash-sec-title" style="margin-bottom:0">Easy pace trend</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">last ${paceTrend.length} runs · lower = faster</div>
+      <div class="trend-canvas-wrap"><canvas id="pace-chart" style="width:100%;height:100%"></canvas></div>
+    </div>
+    <div class="trend-cell">
+      <div class="dash-sec-title" style="margin-bottom:0">Cadence trend</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">last ${cadTrend.length} runs · target 80+</div>
+      <div class="trend-canvas-wrap"><canvas id="cad-chart" style="width:100%;height:100%"></canvas></div>
+    </div>
+  </div>
+</div>`;
+
+  setTimeout(()=>{
+    drawVolChart('vol-chart');
+    drawTrendChart('pace-chart',paceTrend,null,null,true);
+    drawTrendChart('cad-chart',cadTrend,null,null,false);
+  },30);
+}
+
+async function statsSyncAndRender(){
+  const statusEl=document.getElementById('dash-status');
+  await stravaSync();
+  renderStats();
 }
 
 function renderRef(){
@@ -1246,6 +1535,7 @@ function showTab(id,btn){
   btn.classList.add('on');
   document.getElementById('pane-'+id).classList.add('on');
   document.querySelector('.content').scrollTop=0;
+  if(id==='stats')renderStats();
 }
 
 function updateCountdown(){
