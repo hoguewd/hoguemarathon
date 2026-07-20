@@ -963,23 +963,38 @@ function loadNotes(i){return(appData.notes||{})[i]||'';}
 
 function wxCls(f){return f<=65?'wx-good':f<=76?'wx-warm':'wx-hot';}
 
-function wxScore(feels,rain){
+function wxScore(feels,rain,aqi){
   let s;
   if(feels<25)s=20; else if(feels<35)s=45; else if(feels<45)s=72;
   else if(feels<=62)s=100; else if(feels<=68)s=85; else if(feels<=74)s=65;
   else if(feels<=80)s=40; else if(feels<=86)s=20; else s=8;
+  if(aqi>200)s-=60; else if(aqi>150)s-=40; else if(aqi>100)s-=20; else if(aqi>50)s-=8;
   return Math.max(0, s - (rain||0)*0.3);
 }
 
+function aqiLabel(v){
+  if(!v&&v!==0)return'';
+  if(v<=50)return'Good';if(v<=100)return'Moderate';
+  if(v<=150)return'Sensitive groups';if(v<=200)return'Unhealthy';
+  if(v<=300)return'Very unhealthy';return'Hazardous';
+}
+function aqiCls(v){
+  if(!v&&v!==0)return'';
+  if(v<=50)return'wx-good';if(v<=100)return'wx-warm';return'wx-hot';
+}
+
 function wxRec(am,pm){
-  if(am.feels>82&&pm.feels>82)
+  const aqiBad=v=>v&&v>150;
+  if(aqiBad(am.aqi)&&aqiBad(pm.aqi))
+    return{time:'Treadmill',why:`AQI ${Math.min(am.aqi,pm.aqi)}+ both windows — run inside`};
+  if(am.feels>82&&pm.feels>82&&!aqiBad(am.aqi))
     return{time:'Early AM',why:'Both windows very hot — aim for 5–6am or adjust effort'};
-  const d=wxScore(am.feels,am.rain)-wxScore(pm.feels,pm.rain);
-  if(d>18)return{time:'AM',why:`Feels ${am.feels}° at 7am vs ${pm.feels}° at 5pm`};
-  if(d>7) return{time:'AM',why:`Slightly cooler at 7am`};
-  if(d<-18)return{time:'PM',why:`Feels ${pm.feels}° at 5pm vs ${am.feels}° at 7am`};
-  if(d<-7) return{time:'PM',why:`Slightly better at 5pm`};
-  if(am.feels<=62&&pm.feels<=62)return{time:'Either',why:'Great running weather both windows'};
+  const d=wxScore(am.feels,am.rain,am.aqi||0)-wxScore(pm.feels,pm.rain,pm.aqi||0);
+  if(d>18)return{time:'AM',why:`Better at 7am (${am.feels}° feels, AQI ${am.aqi||'—'})`};
+  if(d>7) return{time:'AM',why:'Slightly better at 7am'};
+  if(d<-18)return{time:'PM',why:`Better at 7pm (${pm.feels}° feels, AQI ${pm.aqi||'—'})`};
+  if(d<-7) return{time:'PM',why:'Slightly better at 7pm'};
+  if(am.feels<=62&&pm.feels<=62)return{time:'Either',why:'Good running weather both windows'};
   return{time:'Either',why:'Similar conditions — pick what fits your schedule'};
 }
 
@@ -992,8 +1007,9 @@ function wxHtml(wx){
       <div class="wx-temp ${wxCls(d.feels)}">${d.temp}°</div>
       <div class="wx-feels">Feels ${d.feels}°</div>
       ${d.rain>10?`<div class="wx-rain">${d.rain}% rain</div>`:''}
+      ${d.aqi!=null?`<div class="wx-rain ${aqiCls(d.aqi)}">AQI ${d.aqi} · ${aqiLabel(d.aqi)}</div>`:''}
     </div>`;
-  wx.am.label='7 AM'; wx.pm.label='5 PM';
+  wx.am.label='7 AM'; wx.pm.label='7 PM';
   return`<div class="wx-wrap"><div class="wx-strip">
     ${col(wx.am)}
     <div class="wx-rec">
@@ -1028,13 +1044,17 @@ async function loadWx(dateStr){
   if(wxCache[dateStr]){el.innerHTML=wxHtml(wxCache[dateStr]);return;}
   el.innerHTML='<div class="wx-loading">Loading weather…</div>';
   try{
-    const url=`https://api.open-meteo.com/v1/forecast?latitude=40.7128&longitude=-74.006&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode&temperature_unit=fahrenheit&timezone=America%2FNew_York&start_date=${dateStr}&end_date=${dateStr}`;
-    const d=(await (await fetch(url)).json()).hourly;
+    const wxUrl=`https://api.open-meteo.com/v1/forecast?latitude=40.7128&longitude=-74.006&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode&temperature_unit=fahrenheit&timezone=America%2FNew_York&start_date=${dateStr}&end_date=${dateStr}`;
+    const aqUrl=`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=40.7128&longitude=-74.006&hourly=us_aqi&timezone=America%2FNew_York&start_date=${dateStr}&end_date=${dateStr}`;
+    const [wxRes,aqRes]=await Promise.all([fetch(wxUrl),fetch(aqUrl)]);
+    const d=(await wxRes.json()).hourly;
+    const aq=aqRes.ok?(await aqRes.json()).hourly:null;
     const fi=(hr)=>d.time.findIndex(t=>t.endsWith('T'+hr+':00'));
-    const ai=fi('07'),pi=fi('17');
+    const ai=fi('07'),pi=fi('19');
+    const getAqi=(idx)=>aq?Math.round(aq.us_aqi[idx]):null;
     const wx={
-      am:{temp:Math.round(d.temperature_2m[ai]),feels:Math.round(d.apparent_temperature[ai]),rain:d.precipitation_probability[ai],code:d.weathercode[ai]},
-      pm:{temp:Math.round(d.temperature_2m[pi]),feels:Math.round(d.apparent_temperature[pi]),rain:d.precipitation_probability[pi],code:d.weathercode[pi]}
+      am:{temp:Math.round(d.temperature_2m[ai]),feels:Math.round(d.apparent_temperature[ai]),rain:d.precipitation_probability[ai],code:d.weathercode[ai],aqi:getAqi(ai)},
+      pm:{temp:Math.round(d.temperature_2m[pi]),feels:Math.round(d.apparent_temperature[pi]),rain:d.precipitation_probability[pi],code:d.weathercode[pi],aqi:getAqi(pi)}
     };
     wxCache[dateStr]=wx;
     el.innerHTML=wxHtml(wx);
