@@ -552,12 +552,23 @@ async function postComment(){
   status.textContent='Posting…';
   if(btn)btn.disabled=true;
   try{
-    const res=await fetch('/comment',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name,message})
-    });
-    const data=await res.json();
+    let res;
+    try{
+      res=await fetch('/comment',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name,message})
+      });
+    }catch(e){
+      throw new Error('Could not reach the server. Check your connection.');
+    }
+    // Handle non-JSON responses (e.g. 404 if function not deployed)
+    const text=await res.text();
+    let data;
+    try{data=JSON.parse(text);}catch(e){
+      if(res.status===404)throw new Error('Comments service not set up yet — ask William to enable it.');
+      throw new Error('Server error ('+res.status+')');
+    }
     if(!data.ok)throw new Error(data.error||'Failed to post');
     if(msgEl)msgEl.value='';
     localStorage.setItem('philly_crew_name', name);
@@ -569,7 +580,7 @@ async function postComment(){
     }catch(e){}
     setTimeout(()=>{status.textContent='';renderCrew();},800);
   }catch(e){
-    status.textContent='Error: '+e.message;
+    status.textContent='⚠ '+e.message;
     if(btn)btn.disabled=false;
   }
 }
