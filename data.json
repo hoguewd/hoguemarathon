@@ -184,12 +184,19 @@
     }
   ],
   "stravaLastSync": 1784576255085,
-  "updatedAt": 1784577123752,
+  "updatedAt": 1784577136929,
   "comments": [
     {
       "name": "John Boy and Bill",
       "message": "Boy, you better be running quicker than two chickens fleeing the coop.",
-      "ts": 1784575648553
+      "ts": 1784575648553,
+      "replies": [
+        {
+          "name": "William",
+          "message": "I flee your coop",
+          "ts": 1784577136929
+        }
+      ]
     },
     {
       "name": "Donald Trump",
