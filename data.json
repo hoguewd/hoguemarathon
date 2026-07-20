@@ -184,7 +184,7 @@
     }
   ],
   "stravaLastSync": 1784576255085,
-  "updatedAt": 1784577136929,
+  "updatedAt": 1784579530869,
   "comments": [
     {
       "name": "John Boy and Bill",
@@ -200,7 +200,7 @@
     },
     {
       "name": "Donald Trump",
-      "message": "William, the GREAT American people are saying, SEND THE FEET PICS. Tremendous feet. Everybody’s talking about it. HUGE. Sad if you don’t!",
+      "message": "William, the GREAT American people are saying, SEND THE FEET PICS. Tremendous feet. Everybody\u2019s talking about it. HUGE. Sad if you don\u2019t!",
       "ts": 1784574672879,
       "replies": [
         {
@@ -222,5 +222,16 @@
         }
       ]
     }
-  ]
+  ],
+  "market": {
+    "b": 20,
+    "q": [
+      0,
+      12.5,
+      18.6,
+      4.7
+    ],
+    "resolved": null,
+    "trades": []
+  }
 }
