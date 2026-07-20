@@ -387,6 +387,20 @@ a:hover{color:var(--text)}
 .crew-name{font-size:14px;font-weight:700;color:var(--accent)}
 .crew-time{font-size:11px;color:var(--muted)}
 .crew-msg{font-size:14px;color:var(--text);line-height:1.55}
+
+.crew-reply{padding:8px 0 6px 14px;border-left:2px solid var(--border2);margin-top:8px}
+.crew-reply-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+.crew-reply-name{font-size:13px;font-weight:700;color:var(--accent)}
+.crew-reply-time{font-size:10px;color:var(--muted)}
+.crew-reply-msg{font-size:13px;color:var(--text);line-height:1.45}
+.crew-reply-btn{font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;padding:5px 0 0;font-family:var(--sans)}
+.crew-reply-btn:hover{color:var(--accent)}
+.crew-reply-form{margin-top:10px;padding:10px 12px;background:var(--card);border-left:2px solid var(--accent)}
+.crew-reply-form input,.crew-reply-form textarea{width:100%;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:13px;padding:7px 9px;margin-bottom:6px;border-radius:var(--radius)}
+.crew-reply-form input:focus,.crew-reply-form textarea:focus{outline:none;border-color:var(--accent)}
+.crew-reply-submit{padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;background:var(--accent);border:none;color:white;font-family:var(--sans);border-radius:var(--radius)}
+.crew-reply-cancel{padding:6px 12px;font-size:12px;cursor:pointer;background:none;border:1px solid var(--border2);color:var(--muted);font-family:var(--sans);border-radius:var(--radius);margin-left:6px}
+.crew-reply-status{font-size:11px;color:var(--muted);margin-top:4px}
 </style>
 </head>
 <body>
@@ -533,8 +547,9 @@ function renderCrew(){
     </div>
     <div class="crew-list">
       ${comments.length===0?'<div class="crew-empty">No messages yet — be the first</div>':
-        comments.map((c,idx)=>`
-          <div class="crew-comment">
+        comments.map((c,idx)=>{
+          const replies=(c.replies||[]);
+          return`<div class="crew-comment">
             <div class="crew-comment-hdr">
               <span class="crew-name">${c.name||'Anonymous'}</span>
               <div style="display:flex;align-items:center;gap:10px">
@@ -543,8 +558,83 @@ function renderCrew(){
               </div>
             </div>
             <div class="crew-msg">${(c.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-          </div>`).join('')}
+            ${replies.map(r=>`<div class="crew-reply">
+              <div class="crew-reply-hdr">
+                <span class="crew-reply-name">${r.name||'Anonymous'}</span>
+                <span class="crew-reply-time">${timeAgo(r.ts||0)}</span>
+              </div>
+              <div class="crew-reply-msg">${(r.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+            </div>`).join('')}
+            <button class="crew-reply-btn" onclick="showReplyForm(${idx})">↩ Reply</button>
+            <div class="crew-reply-form" id="reply-form-${idx}" style="display:none">
+              <input id="reply-name-${idx}" placeholder="Your name (required)" maxlength="50" value="${localStorage.getItem('philly_crew_name')||''}">
+              <textarea id="reply-msg-${idx}" placeholder="Your reply…" maxlength="500" rows="2"></textarea>
+              <div>
+                <button class="crew-reply-submit" onclick="postReply(${idx})">Post reply</button>
+                <button class="crew-reply-cancel" onclick="hideReplyForm(${idx})">Cancel</button>
+              </div>
+              <div class="crew-reply-status" id="reply-status-${idx}"></div>
+            </div>
+          </div>`;
+        }).join('')}
     </div>`;
+}
+
+
+function showReplyForm(idx){
+  document.querySelectorAll('.crew-reply-form').forEach(f=>f.style.display='none');
+  const f=document.getElementById('reply-form-'+idx);
+  if(f){f.style.display='block';f.querySelector('input')?.focus();}
+}
+function hideReplyForm(idx){
+  const f=document.getElementById('reply-form-'+idx);
+  if(f)f.style.display='none';
+}
+
+async function postReply(idx){
+  const nameEl=document.getElementById('reply-name-'+idx);
+  const msgEl=document.getElementById('reply-msg-'+idx);
+  const status=document.getElementById('reply-status-'+idx);
+  const name=(nameEl?.value||'').trim();
+  const message=(msgEl?.value||'').trim();
+  if(!name){nameEl?.focus();status.textContent='Name is required';return;}
+  if(!message){status.textContent='Write something first';return;}
+  status.textContent='Posting…';
+  try{
+    if(canWrite()){
+      await _postReplyDirect(idx,name,message);
+    } else {
+      await _postCommentViaFunction(name,message,idx);
+    }
+    localStorage.setItem('philly_crew_name',name);
+    if(msgEl)msgEl.value='';
+    status.textContent='✓ Posted!';
+    // Refresh
+    try{const r=await fetch(GH_API,{headers:{'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon','Authorization':'Bearer '+ghToken()}});if(r.ok){const file=await r.json();const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));const d=JSON.parse(new TextDecoder().decode(bytes));Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}catch(e){}
+    setTimeout(()=>{hideReplyForm(idx);renderCrew();},800);
+  }catch(e){
+    status.textContent='⚠ '+e.message;
+  }
+}
+
+async function _postReplyDirect(idx,name,message){
+  const token=ghToken();
+  const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json','User-Agent':'hoguemarathon'};
+  const r=await fetch(GH_API,{headers});
+  if(!r.ok)throw new Error('Could not load data.json');
+  const file=await r.json();
+  const sha=file.sha;
+  const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
+  const data=JSON.parse(new TextDecoder().decode(bytes));
+  if(!Array.isArray(data.comments[idx].replies))data.comments[idx].replies=[];
+  data.comments[idx].replies.push({name,message,ts:Date.now()});
+  data.updatedAt=Date.now();
+  const json=JSON.stringify(data,null,2);
+  const content=btoa(String.fromCharCode(...new TextEncoder().encode(json)));
+  const put=await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify({message:'Reply from '+name,content,sha})});
+  if(!put.ok){const e=await put.json();throw new Error(e.message||'Write failed');}
+  Object.assign(appData,data);
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
 }
 
 function deleteComment(idx){
