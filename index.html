@@ -893,6 +893,7 @@ function renderBet(){
   <div class="mkt-bal-bar">
     <div class="mkt-bal">${betName?`$${(portfolio?.balance||0).toFixed(2)} balance`:'Enter your name to play'}</div>
     <div class="mkt-name-row">
+      <button onclick="(async()=>{document.getElementById('mkt-status').textContent='Refreshing…';await loadAppData();renderBet();})()" style="font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;padding:4px 8px;font-family:var(--sans)">↻ Refresh</button>
       <input class="mkt-name-inp" id="bet-name-inp" placeholder="Your name" value="${betName}" maxlength="30">
       <button class="mkt-name-btn" onclick="saveBetName()">${betName?'Switch':'Play →'}</button>
     </div>
@@ -2271,7 +2272,19 @@ function showTab(id,btn){
   document.querySelector('.content').scrollTop=0;
   if(id==='stats')renderStats();
   if(id==='crew'){renderCrew();loadAppData();}
-  if(id==='bet'){renderBet();loadAppData();}
+  if(id==='bet'){
+    renderBet();
+    loadAppData().then(()=>renderBet());
+    // Poll for updated odds every 15s while tab is open
+    if(window._betPoll)clearInterval(window._betPoll);
+    window._betPoll=setInterval(async()=>{
+      if(!document.getElementById('pane-bet')?.classList.contains('on')){clearInterval(window._betPoll);return;}
+      await loadAppData();
+      renderBet();
+    },15000);
+  } else {
+    if(window._betPoll){clearInterval(window._betPoll);window._betPoll=null;}
+  }
   if(id==='vdot'){}  // removed
 }
 
