@@ -16,8 +16,156 @@
     "0_6": true
   },
   "vdot": 55,
-  "stravaActuals": {},
-  "stravaActivities": [],
-  "stravaLastSync": 0,
-  "updatedAt": 1784566244073
+  "stravaActuals": {
+    "0": 35.86911404675208,
+    "1": 40.61745808840891
+  },
+  "stravaActivities": [
+    {
+      "id": 19378270233,
+      "date": "2026-07-19",
+      "name": "Morning Run",
+      "mi": 10.52,
+      "pace": 8.01,
+      "duration": 5058,
+      "cadence": 79,
+      "effort": 0,
+      "elevation": 531,
+      "wkIdx": 1
+    },
+    {
+      "id": 19363947003,
+      "date": "2026-07-18",
+      "name": "Morning Run",
+      "mi": 5,
+      "pace": 8.32,
+      "duration": 2495,
+      "cadence": 77.1,
+      "effort": 0,
+      "elevation": 0,
+      "wkIdx": 1
+    },
+    {
+      "id": 19349253287,
+      "date": "2026-07-17",
+      "name": "Treadmill Threshold Workout",
+      "mi": 6.6,
+      "pace": 7.62,
+      "duration": 3019,
+      "cadence": 79.3,
+      "effort": 0,
+      "elevation": 0,
+      "wkIdx": 1
+    },
+    {
+      "id": 19335384634,
+      "date": "2026-07-16",
+      "name": "Wildfire Smoke, Legionnaires, Explosive Diarrhea Parasite, OH MY!",
+      "mi": 5.03,
+      "pace": 8.7,
+      "duration": 2625,
+      "cadence": 77.7,
+      "effort": 0,
+      "elevation": 269,
+      "wkIdx": 1
+    },
+    {
+      "id": 19322959784,
+      "date": "2026-07-15",
+      "name": "Ez with strides",
+      "mi": 7.31,
+      "pace": 8.16,
+      "duration": 3579,
+      "cadence": 78.5,
+      "effort": 0,
+      "elevation": 390,
+      "wkIdx": 1
+    },
+    {
+      "id": 19302190706,
+      "date": "2026-07-13",
+      "name": "Evening Run",
+      "mi": 6.15,
+      "pace": 7.93,
+      "duration": 2926,
+      "cadence": 78.6,
+      "effort": 0,
+      "elevation": 358,
+      "wkIdx": 1
+    },
+    {
+      "id": 19283636593,
+      "date": "2026-07-12",
+      "name": "Mini LR",
+      "mi": 8.45,
+      "pace": 7.96,
+      "duration": 4039,
+      "cadence": 79.4,
+      "effort": 0,
+      "elevation": 449,
+      "wkIdx": 0
+    },
+    {
+      "id": 19267744993,
+      "date": "2026-07-11",
+      "name": "Run before work",
+      "mi": 4,
+      "pace": 8.19,
+      "duration": 1967,
+      "cadence": 78.6,
+      "effort": 0,
+      "elevation": 161,
+      "wkIdx": 0
+    },
+    {
+      "id": 19255247110,
+      "date": "2026-07-10",
+      "name": "Morning Run",
+      "mi": 5.01,
+      "pace": 8.72,
+      "duration": 2622,
+      "cadence": 77.6,
+      "effort": 0,
+      "elevation": 154,
+      "wkIdx": 0
+    },
+    {
+      "id": 19249607021,
+      "date": "2026-07-09",
+      "name": "Evening Run",
+      "mi": 7.01,
+      "pace": 8.33,
+      "duration": 3502,
+      "cadence": 77.3,
+      "effort": 0,
+      "elevation": 381,
+      "wkIdx": 0
+    },
+    {
+      "id": 19228761463,
+      "date": "2026-07-08",
+      "name": "Wu,4x400 with 400 jog in between , cd",
+      "mi": 5.38,
+      "pace": 8,
+      "duration": 2584,
+      "cadence": 79.9,
+      "effort": 0,
+      "elevation": 207,
+      "wkIdx": 0
+    },
+    {
+      "id": 19214969791,
+      "date": "2026-07-07",
+      "name": "Morning Run",
+      "mi": 6.01,
+      "pace": 8.75,
+      "duration": 3154,
+      "cadence": 77.7,
+      "effort": 0,
+      "elevation": 249,
+      "wkIdx": 0
+    }
+  ],
+  "stravaLastSync": 1784566502634,
+  "updatedAt": 1784566504136
 }
