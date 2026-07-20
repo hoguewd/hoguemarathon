@@ -184,7 +184,7 @@
     }
   ],
   "stravaLastSync": 1784576255085,
-  "updatedAt": 1784576256587,
+  "updatedAt": 1784577090179,
   "comments": [
     {
       "name": "John Boy and Bill",
@@ -199,7 +199,14 @@
     {
       "name": "Anonymous",
       "message": "How do your feet look",
-      "ts": 1784568688344
+      "ts": 1784568688344,
+      "replies": [
+        {
+          "name": "William",
+          "message": "they bring disgust to all those who view them",
+          "ts": 1784577090179
+        }
+      ]
     }
   ]
 }
