@@ -936,6 +936,31 @@ function betPreview(i){
   prev.textContent=`→ ${shares.toFixed(1)} shares at ${(probs[i]*100).toFixed(1)}¢ each`;
 }
 
+async function _mktApiCall(payload, retries=2){
+  // Token holders write directly; friends use Cloudflare function
+  if(canWrite()){
+    // Apply locally and write direct
+    return true; // handled by caller
+  }
+  for(let attempt=0; attempt<=retries; attempt++){
+    try{
+      const res=await fetch('/bet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      const data=await res.json();
+      if(data.retry&&attempt<retries){await new Promise(r=>setTimeout(r,500+attempt*500));continue;}
+      if(!data.ok)throw new Error(data.error||'Bet failed');
+      // Sync fresh data back
+      if(data.newQ)appData.market.q=data.newQ;
+      if(data.portfolio&&payload.name)appData.portfolios[payload.name]=data.portfolio;
+      // Full refresh from GitHub
+      try{
+        const r=await fetch(GH_API,{headers:{'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon'}});
+        if(r.ok){const file=await r.json();const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));const d=JSON.parse(new TextDecoder().decode(bytes));Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}
+      }catch(e){}
+      return true;
+    }catch(e){if(attempt===retries)throw e;}
+  }
+}
+
 async function placeBet(i){
   const mkt=mktData();
   const status=document.getElementById('mkt-status');
@@ -946,22 +971,36 @@ async function placeBet(i){
   const portfolio=mktGetOrCreate(betName);
   if(dollars>portfolio.balance){status.textContent=`Not enough balance (have $${portfolio.balance.toFixed(2)})`;return;}
 
-  const probs=lmsrProbs(mkt.q,mkt.b);
-  const price=probs[i];
-  const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
-  const actualCost=lmsrBuyCost(mkt.q,i,shares,mkt.b);
+  const btn=inp?.nextElementSibling;
+  if(btn)btn.disabled=true;
+  status.textContent='Placing bet…';
 
-  mkt.q[i]+=shares;
-  portfolio.balance-=actualCost;
-  portfolio.positions[i]=(portfolio.positions[i]||0)+shares;
-  portfolio.buyCosts[i]=(portfolio.buyCosts[i]||0)+actualCost;
-  mkt.trades.unshift({name:betName,outcome:i,shares,amt:actualCost,price,type:'buy',ts:Date.now()});
-  if(mkt.trades.length>50)mkt.trades.length=50;
-  appData.updatedAt=Date.now();
-
-  status.textContent=`✓ Bought ${shares.toFixed(1)} shares of "${MKT_OUTCOMES[i]}" for $${actualCost.toFixed(2)}`;
-  _mktWrite();
-  renderBet();
+  try{
+    if(canWrite()){
+      // Direct write
+      const probs=lmsrProbs(mkt.q,mkt.b);
+      const price=probs[i];
+      const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
+      const actualCost=lmsrBuyCost(mkt.q,i,shares,mkt.b);
+      mkt.q[i]+=shares;
+      portfolio.balance-=actualCost;
+      portfolio.positions[i]=(portfolio.positions[i]||0)+shares;
+      portfolio.buyCosts[i]=(portfolio.buyCosts[i]||0)+actualCost;
+      mkt.trades.unshift({name:betName,outcome:i,shares,amt:actualCost,price,type:'buy',ts:Date.now()});
+      if(mkt.trades.length>50)mkt.trades.length=50;
+      appData.updatedAt=Date.now();
+      _mktWrite();
+      status.textContent=`✓ Bought ${shares.toFixed(1)} shares at ${(price*100).toFixed(0)}¢`;
+    } else {
+      await _mktApiCall({name:betName,outcome:i,dollars,action:'buy'});
+      status.textContent='✓ Bet placed!';
+    }
+    if(inp)inp.value='';
+    renderBet();
+  }catch(e){
+    status.textContent='⚠ '+e.message;
+    if(btn)btn.disabled=false;
+  }
 }
 
 async function cashOut(i){
@@ -971,22 +1010,30 @@ async function cashOut(i){
   const portfolio=mktGetOrCreate(betName);
   const shares=portfolio.positions[i]||0;
   if(shares<=0){status.textContent='No shares to sell';return;}
+  status.textContent='Selling…';
 
-  const sellReturn=lmsrSellReturn(mkt.q,i,shares,mkt.b);
-  const probs=lmsrProbs(mkt.q,mkt.b);
-  const price=probs[i];
-
-  mkt.q[i]=Math.max(0,mkt.q[i]-shares);
-  portfolio.balance+=sellReturn;
-  portfolio.positions[i]=0;
-  portfolio.buyCosts[i]=0;
-  mkt.trades.unshift({name:betName,outcome:i,shares,amt:sellReturn,price,type:'sell',ts:Date.now()});
-  if(mkt.trades.length>50)mkt.trades.length=50;
-  appData.updatedAt=Date.now();
-
-  status.textContent=`✓ Sold ${shares.toFixed(1)} shares for $${sellReturn.toFixed(2)}`;
-  _mktWrite();
-  renderBet();
+  try{
+    if(canWrite()){
+      const probs=lmsrProbs(mkt.q,mkt.b);
+      const price=probs[i];
+      const sellReturn=lmsrSellReturn(mkt.q,i,shares,mkt.b);
+      mkt.q[i]=Math.max(0,mkt.q[i]-shares);
+      portfolio.balance+=sellReturn;
+      portfolio.positions[i]=0;
+      portfolio.buyCosts[i]=0;
+      mkt.trades.unshift({name:betName,outcome:i,shares,amt:sellReturn,price,type:'sell',ts:Date.now()});
+      if(mkt.trades.length>50)mkt.trades.length=50;
+      appData.updatedAt=Date.now();
+      _mktWrite();
+      status.textContent=`✓ Sold for $${sellReturn.toFixed(2)}`;
+    } else {
+      await _mktApiCall({name:betName,outcome:i,action:'sell'});
+      status.textContent='✓ Cashed out!';
+    }
+    renderBet();
+  }catch(e){
+    status.textContent='⚠ '+e.message;
+  }
 }
 
 async function resolveMarket(i){
