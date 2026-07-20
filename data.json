@@ -1,7 +1,8 @@
 {
   "v": 1,
   "notes": {
-    "0": "The heat got to me a bit. My legs felt strong. I didn't notice any knee pain. It was a good base. "
+    "0": "The heat got to me a bit. My legs felt strong. I didn't notice any knee pain. It was a good base. ",
+    "1": "The air quality hindered a few of my activities, but I was able to make use of treadmills. I felt like I had to exert more effort on the treadmill than I would've outside. It was also very hot in the gym. On my long run I noticed a small flare up in the in knee pain, but I haven't fully started PT. I also had to stop midway through to use the bathroom. "
   },
   "dayEdits": {},
   "dayOrders": {},
@@ -18,5 +19,5 @@
   "stravaActuals": {},
   "stravaActivities": [],
   "stravaLastSync": 0,
-  "updatedAt": 1784566147008
+  "updatedAt": 1784566244073
 }
