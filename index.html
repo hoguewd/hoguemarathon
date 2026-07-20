@@ -12,10 +12,10 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0C0B10;--card:#141219;--card2:#1C1A22;
-  --text:#F0EBE1;--muted:#7A7485;--faint:#2A2730;
-  --border:#1E1C24;--border2:#2C2A36;
-  --accent:#F07030;
+  --bg:#0E0E0F;--card:#161617;--card2:#202022;
+  --text:#F0EBE1;--muted:#78787A;--faint:#2A2730;
+  --border:#1E1E20;--border2:#2A2A2C;
+  --accent:#3B7DD8;
   --blue:#60A5FA;--blue-bg:#0A1628;--blue-border:#1A3454;
   --green:#34D399;--green-bg:#041C14;--green-border:#0E3C2A;
   --amber:#FBBF24;--amber-bg:#1C1400;--amber-border:#3A2C00;
@@ -28,7 +28,7 @@ body.light{
   --bg:#F7F5F2;--card:#FFFFFF;--card2:#F0EDE6;
   --text:#1A1820;--muted:#857D90;--faint:#DDD8E4;
   --border:#E4E0EC;--border2:#CEC8DA;
-  --accent:#D45E14;
+  --accent:#1A5DBF;
   --blue:#2563AB;--blue-bg:#EBF2FC;--blue-border:#B6D2EC;
   --green:#059669;--green-bg:#E4F8F1;--green-border:#A7E8D2;
   --amber:#B45309;--amber-bg:#FEF9EC;--amber-border:#F5D98A;
@@ -40,7 +40,7 @@ html{background:var(--bg);min-height:100%}
 html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var(--sans)}
 body{margin:0}
 .app{max-width:420px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--bg)}
-.hdr{padding:18px 20px 14px;border-bottom:1px solid var(--border);flex-shrink:0;background:linear-gradient(to bottom,var(--card2) 0%,var(--bg) 100%)}
+.hdr{padding:18px 20px 14px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg)}
 .hdr-top{display:flex;justify-content:space-between;align-items:baseline}
 .hdr-title{font-size:22px;font-weight:700;letter-spacing:-.02em}
 .hdr-countdown{font-size:14px;color:var(--accent);font-weight:700;letter-spacing:.01em}
@@ -56,10 +56,10 @@ body{margin:0}
 .today-hero{padding:22px 20px 18px;border-bottom:1px solid var(--border)}
 .today-meta{font-size:12px;color:var(--muted);margin-bottom:8px}
 .today-pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 11px;margin-bottom:12px;border-radius:20px;letter-spacing:.05em;text-transform:uppercase}
-.today-pill.e{background:rgba(96,165,250,.12);color:var(--blue);border:1px solid rgba(96,165,250,.25)}
-.today-pill.q{background:rgba(240,112,48,.14);color:var(--accent);border:1px solid rgba(240,112,48,.3)}
-.today-pill.l{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.25)}
-.today-pill.r{background:rgba(251,191,36,.12);color:var(--amber);border:1px solid rgba(251,191,36,.25)}
+.today-pill.e{background:var(--card2);color:var(--muted);border:1px solid var(--border2)}
+.today-pill.q{background:rgba(59,125,216,.14);color:var(--accent);border:1px solid rgba(59,125,216,.3)}
+.today-pill.l{background:rgba(59,125,216,.1);color:var(--accent);border:1px solid rgba(59,125,216,.25)}
+.today-pill.r{background:rgba(59,125,216,.12);color:var(--accent);border:1px solid rgba(59,125,216,.25)}
 .today-pill.s{background:var(--card2);color:var(--muted);border:1px solid var(--border2)}
 .today-pill.q{border-color:var(--blue-border);color:var(--blue);background:var(--blue-bg)}
 .today-pill.l{border-color:var(--green-border);color:var(--green);background:var(--green-bg)}
@@ -101,9 +101,9 @@ body{margin:0}
 .dg-name{font-size:10px;font-weight:500;color:var(--muted);margin-bottom:4px}
 .dg-pip{width:7px;height:7px;margin:0 auto;border-radius:50%}
 .pip-e{background:var(--faint)}
-.pip-q{background:var(--blue)}
-.pip-l{background:var(--green)}
-.pip-r{background:var(--amber)}
+.pip-q{background:var(--accent)}
+.pip-l{background:var(--accent);opacity:.6}
+.pip-r{background:var(--accent);opacity:.8}
 .pip-s{background:var(--purple)}
 .pip-x{background:var(--border)}
 
@@ -318,8 +318,8 @@ body{margin:0}
 
 /* ── IT Band Flag ──────────────────────────────────────────────────────────── */
 .itb-flag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:.02em}
-.itb-flag.green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-.itb-flag.amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.itb-flag.green{background:var(--card2);color:var(--muted);border:1px solid var(--border2)}
+.itb-flag.amber{background:var(--card);color:var(--text);border:1px solid var(--border2)}
 .itb-flag.red{background:#200808;color:#e05555;border:1px solid #4a1515}
 
   .heat-grid{grid-template-columns:1fr 1fr 1fr 1fr}
@@ -355,10 +355,10 @@ body{margin:0}
 .stat-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-bottom:1px}
 .stat-card{background:var(--bg);padding:16px 18px}
 .stat-card-val{font-size:26px;font-weight:600;color:var(--text);line-height:1;margin-bottom:4px}
-.stat-card-lbl{font-size:11px;color:var(--muted)}
+.stat-card-lbl{font-size:12px;color:var(--muted)}
 .stat-card-sub{font-size:11px;color:var(--muted);margin-top:2px}
 .dash-sec{padding:20px 18px 0}
-.dash-sec-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.dash-sec-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px}
 .vol-canvas-wrap{width:100%;height:140px}
 .run-cards{display:flex;flex-direction:column;gap:1px;background:var(--border)}
 .run-card{display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--bg);cursor:default}
@@ -973,7 +973,7 @@ function renderToday(){
   const metaPrefix=!planStarted()?`Starts in ${daysToStart} day${daysToStart===1?'':'s'} · `:(isToday?'Today · ':'');
 
   document.getElementById('pane-today').innerHTML=`
-  <div class="today-hero" style="background:linear-gradient(160deg,${type==='q'?'rgba(240,112,48,0.09)':type==='l'?'rgba(52,211,153,0.07)':type==='r'?'rgba(251,191,36,0.07)':'transparent'} 0%,var(--bg) 55%)">
+  <div class="today-hero">
     <div class="today-meta">${metaPrefix}${fmtDate(date)} · ${wk.lbl}</div>
     ${(()=>{const r=itbRisk(selWeek);return`<div class="itb-flag ${r}">${itbDot(r)} ${itbLabel(r)}</div>`;})()} 
     <div class="today-pill ${type}">${TYPE_LABEL[type]}</div>
