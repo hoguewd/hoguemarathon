@@ -756,6 +756,77 @@ async function _postCommentViaFunction(name,message){
 }
 
 
+
+// ── Strava Oracle — nudges market odds toward training-implied probabilities ──
+function vdotMaraPaceMins(vdot){
+  // Returns marathon pace in min/mile using Daniels VO2 formula at 82%
+  const target=vdot*0.82;
+  const a=0.000104,b=0.182258,c=-(target+4.60);
+  const v=(-b+Math.sqrt(b*b-4*a*c))/(2*a);
+  return 1609.34/v;
+}
+
+function normCDF(x){
+  const t=1/(1+0.2316419*Math.abs(x));
+  const d=0.3989423*Math.exp(-x*x/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.7814779+t*(-1.8212560+t*1.3302744))));
+  return x>0?1-p:p;
+}
+
+function stravaImpliedProbs(){
+  const acts=(appData.stravaActivities||[]);
+  const easy=acts.filter(a=>a.mi>3&&a.effort<65&&a.pace>0);
+
+  let vdotEst=workingVDOT;
+
+  if(easy.length>=5){
+    // Pace trend: recent 5 vs next 5 — if getting faster, VDOT estimate rises
+    const recentPace=easy.slice(0,5).reduce((s,a)=>s+a.pace,0)/5;
+    const olderSlice=easy.slice(5,10);
+    if(olderSlice.length>=3){
+      const olderPace=olderSlice.reduce((s,a)=>s+a.pace,0)/olderSlice.length;
+      // Each 0.1 min/mi faster ≈ +0.5 VDOT (rough linear)
+      vdotEst=workingVDOT+(olderPace-recentPace)*5;
+    }
+  }
+  // Cap adjustment: Strava can only shift ±2.5 points from working VDOT
+  vdotEst=Math.max(workingVDOT-2.5,Math.min(workingVDOT+2.5,vdotEst));
+
+  // Project race-day VDOT (training gains over remaining weeks)
+  const weeksLeft=Math.max(0,(new Date('2026-11-22')-new Date())/(7*864e5));
+  const projectedVDOT=vdotEst+(weeksLeft/20)*3.5; // expect ~3.5 VDOT pts over full cycle
+
+  // Marathon time from projected VDOT
+  const projMinutes=vdotMaraPaceMins(projectedVDOT)*26.2;
+
+  // Uncertainty: wider early in training, tighter near race day
+  const sigma=7+weeksLeft*0.25;
+
+  // Bracket boundaries in minutes: <170, 170-175, 175-180, >180
+  const bounds=[170,175,180];
+  const probs=[
+    normCDF((bounds[0]-projMinutes)/sigma),
+    normCDF((bounds[1]-projMinutes)/sigma)-normCDF((bounds[0]-projMinutes)/sigma),
+    normCDF((bounds[2]-projMinutes)/sigma)-normCDF((bounds[1]-projMinutes)/sigma),
+    1-normCDF((bounds[2]-projMinutes)/sigma),
+  ].map(p=>Math.max(0.03,p));
+  const sum=probs.reduce((a,b)=>a+b,0);
+  return probs.map(p=>p/sum);
+}
+
+function applyStravaOracle(){
+  if(!(appData.stravaActivities||[]).length)return;
+  const mkt=mktData();
+  const implied=stravaImpliedProbs();
+  const current=lmsrProbs(mkt.q,mkt.b);
+  // Gentle nudge — each sync shifts prices at most ~2-3 percentage points
+  implied.forEach((imp,i)=>{ mkt.q[i]+=(imp-current[i])*6; });
+  mkt.oracleUpdate=Date.now();
+  mkt.oracleVDOT=Math.round(workingVDOT*10)/10;
+  appData.updatedAt=Date.now();
+  _mktWrite();
+}
+
 // ── Prediction Market (LMSR) ─────────────────────────────────────────────────
 const MKT_B = 20; // liquidity param — higher = less price movement per $
 const MKT_OUTCOMES = ['< 2:50','2:50–2:55','2:55–3:00','> 3:00'];
@@ -885,7 +956,7 @@ function renderBet(){
   <div class="mkt-hdr">
     <div class="mkt-title">Philadelphia Marathon Market</div>
     <div class="mkt-sub">Predict William's finish time · Everyone gets $10 of play money · Payouts after Nov 22</div>
-    <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5">Starting odds set by AI from Strava data: current VDOT ~55 → baseline ~2:56, 2024 best was 2:57. Odds move as people bet.</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5">Odds calibrated from Strava training data · market updates after each Strava sync · ${appData.market?.oracleUpdate?`Last oracle update: ${timeAgo(appData.market.oracleUpdate)} · VDOT ${appData.market.oracleVDOT||workingVDOT}`:'Sync Strava to update'}</div>
   </div>
 
   ${resolved!==null?`<div class="mkt-resolved">🏁 Market resolved — winning outcome: <strong>${MKT_OUTCOMES[resolved]}</strong>${canWrite()&&resolved===null?'':''}</div>`:''}
@@ -1935,6 +2006,8 @@ async function _stravaFetchAndStore(token, statusEl) {
   localStorage.setItem('philly_strava_activities',JSON.stringify(activities));
   localStorage.setItem('philly_strava_synced',Date.now());
   if(statusEl) statusEl.textContent=runs.length+' runs synced · '+Object.keys(newActuals).length+' training weeks';
+  // Nudge prediction market toward training-implied odds
+  try{applyStravaOracle();}catch(e){}
 }
 
 function stravaDisconnect() {
