@@ -5,10 +5,18 @@
   },
   "dayEdits": {},
   "dayOrders": {},
-  "done": {},
+  "done": {
+    "0_0": true,
+    "0_1": true,
+    "0_2": true,
+    "0_3": true,
+    "0_4": true,
+    "0_5": true,
+    "0_6": true
+  },
   "vdot": 55,
   "stravaActuals": {},
   "stravaActivities": [],
   "stravaLastSync": 0,
-  "updatedAt": 1784566139491
+  "updatedAt": 1784566147008
 }
