@@ -143,8 +143,8 @@ body{margin:0}
 .nbtn.primary{color:var(--accent);border-color:var(--accent)}
 .nbtn.primary:hover:not(:disabled){background:var(--card);color:var(--accent)}
 .nbtn:disabled{opacity:.4;cursor:default}
-.recs-box{margin-top:12px;padding:12px 14px;background:var(--card);border-left:2px solid var(--accent);font-size:14px;color:var(--text);line-height:1.65;white-space:pre-wrap;display:none}
-.recs-label{font-size:12px;font-weight:600;color:var(--accent);margin-bottom:6px}
+
+
 .saved-tick{font-size:12px;color:var(--green);margin-left:6px;opacity:0;transition:opacity .3s;font-weight:normal}
 
 /* Plan */
@@ -222,19 +222,19 @@ body{margin:0}
 .effort-use:hover{color:var(--accent)}
 .del-btn{font-size:11px;color:var(--faint);cursor:pointer;margin-left:10px;padding:2px 4px;border:none;background:none;font-family:var(--sans)}
 .del-btn:hover{color:#c0392b}
-.pc-row{display:flex;gap:8px;margin-top:8px;align-items:center}
-.pc-input{flex:1;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:14px;padding:8px 10px}
+
+
 .pc-input:focus{outline:none;border-color:var(--accent)}
-.pc-submit{padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer;background:var(--card2);border:1px solid var(--accent);color:var(--accent);font-family:var(--sans)}
+
 
 .notes-display-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .notes-display-label{font-size:12px;font-weight:600;color:var(--muted)}
 .edit-link{font-size:12px;color:var(--accent);background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;font-weight:500}
 .edit-link:hover{text-decoration:underline}
 .notes-display-text{font-size:14px;color:var(--text);line-height:1.6;background:var(--card);padding:11px 13px;border-left:2px solid var(--border2)}
-.regen-btn{margin-top:10px;font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0}
+
 .regen-btn:hover{color:var(--accent)}
-.pc-err{font-size:12px;color:#c0392b;margin-top:4px;display:none}
+
 .swim-block:last-child{border-bottom:none}
 .swim-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
 .swim-desc{font-size:13px;color:var(--muted);line-height:1.5}
@@ -733,31 +733,6 @@ function startEditNotes(i){
   if(ew){ew.style.display='block';const ta=document.getElementById('notes-'+i);if(ta)ta.focus();}
 }
 
-function requestAnalysis(wkIdx){
-  if(_unlocked){analyzeWeek(wkIdx);return;}
-  const box=document.getElementById('pc-box-'+wkIdx);
-  if(box){box.style.display='block';setTimeout(()=>{const inp=document.getElementById('pc-inp-'+wkIdx);if(inp)inp.focus();},50);}
-}
-function submitPasscode(wkIdx){
-  const inp=document.getElementById('pc-inp-'+wkIdx);
-  const err=document.getElementById('pc-err-'+wkIdx);
-  if(inp&&inp.value==='done'){
-    _unlocked=true;
-    sessionStorage.setItem('philly_unlocked','1');
-    document.getElementById('pc-box-'+wkIdx).style.display='none';
-    analyzeWeek(wkIdx);
-  } else {
-    if(err){err.textContent='Incorrect passcode.';err.style.display='block';}
-    if(inp){inp.value='';inp.focus();}
-  }
-}
-function doneKey(w,d){return'philly_2026_done_'+w+'_'+d;}
-function isDone(w,d){return localStorage.getItem(doneKey(w,d))==='1';}
-function toggleDone(w,d){
-  const cur=isDone(w,d);
-  localStorage.setItem(doneKey(w,d),cur?'0':'1');
-  renderToday();
-}
 
 function toggleTheme(){
   const isLight=document.body.classList.toggle('light');
@@ -813,75 +788,6 @@ function saveNotes(i){
   renderPlan();
 }
 function loadNotes(i){return localStorage.getItem(lsKey('notes',i))||'';}
-function saveRecs(i,txt){localStorage.setItem(lsKey('recs',i),txt);}
-function loadRecs(i){return localStorage.getItem(lsKey('recs',i))||'';}
-
-async function analyzeWeek(i){
-  const notesEl=document.getElementById('notes-'+i);
-  const notes=notesEl?notesEl.value.trim():'';
-  if(!notes){alert('Write some notes about how the week felt first.');return;}
-  saveNotes(i);
-  const btn=document.getElementById('abtn-'+i);
-  const box=document.getElementById('recs-'+i);
-  btn.disabled=true;btn.textContent='Analyzing…';
-  box.style.display='block';
-  box.innerHTML='<div class="recs-label">Recommendations</div><div style="color:var(--muted);font-size:13px">Reading your notes…</div>';
-
-  const wk=W[i],nxt=W[i+1];
-  const qSessions=wk.days.filter(d=>d[1]==='q').map(d=>d[0]);
-  const lRun=wk.days.filter(d=>d[1]==='l').map(d=>d[0]);
-  const prompt=`You are coaching William Hogue, a 30-year-old male targeting 2:50:00 at the Philadelphia Marathon on Nov 22, 2026. Working VDOT 55. History of Patellofemoral Pain Syndrome (PFPS) from a tight IT band and weak hips — stable but monitored. Peak 70 miles/week plan.
-
-Week completed: ${wk.lbl} — ${wk.ph} (${wk.mi} miles planned)
-Quality sessions: ${qSessions.length?qSessions.join(' / '):'none'}
-Long run: ${lRun.length?lRun[0]:'none'}
-
-William's notes: "${notes}"
-
-${nxt?`Next week planned: ${nxt.lbl} — ${nxt.ph} (${nxt.mi} miles)\nKey sessions next week: ${nxt.days.filter(d=>['q','l','r'].includes(d[1])).map(d=>d[0]).join(' / ')}`:'Next: Race week — Philadelphia Marathon'}
-
-Give 3-4 specific, brief recommendations for the week ahead based on William's feedback. Be direct and actionable. Flag PFPS / knee or fatigue concerns prominently. PFPS = Patellofemoral Pain Syndrome driven by tight IT band and weak hips. If all sounds good, confirm the plan and say so. Under 140 words.`;
-
-  try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:300,messages:[{role:'user',content:prompt}]})
-    });
-    const data=await resp.json();
-    const txt=data.content&&data.content[0]?data.content[0].text:'Could not get a response.';
-    saveRecs(i,txt);
-    box.innerHTML=`<div class="recs-label">Next week recommendations</div>${txt}`;
-    // Switch to display mode — show saved notes alongside advice
-    const savedN=loadNotes(i);
-    const dw=document.getElementById('ndw-'+i);
-    const ew=document.getElementById('new-'+i);
-    const ndt=document.getElementById('ndt-'+i);
-    if(savedN&&dw&&ew){
-      if(ndt)ndt.innerHTML=escHtml(savedN);
-      dw.style.display='block';
-      ew.style.display='none';
-    }
-  }catch(e){
-    box.innerHTML='<div class="recs-label">Error</div>Could not connect. Check your internet connection and try again.';
-  }
-  if(btn){btn.disabled=false;btn.textContent='Get next-week advice ↗';}
-}
-
-
-// ── Weather ─────────────────────────────────────────────────────────────────
-const wxCache={};
-
-function wmoIcon(c){
-  if(c===0)return'☀️';
-  if(c<=2)return'🌤️';
-  if(c<=3)return'☁️';
-  if(c<=48)return'🌫️';
-  if(c<=57)return'🌦️';
-  if(c<=67)return'🌧️';
-  if(c<=77)return'❄️';
-  if(c<=82)return'🌦️';
-  return'⛈️';
-}
 
 function wxCls(f){return f<=65?'wx-good':f<=76?'wx-warm':'wx-hot';}
 
@@ -1048,7 +954,6 @@ function renderToday(){
   const dateStr=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
   const isToday=selWeek===todayWk&&selDay===todayDay;
   const savedNotes=loadNotes(selWeek);
-  const savedRecs=loadRecs(selWeek);
 
   const dots=wk.days.map(([,t],i)=>{
     const isTd=i===todayDay&&selWeek===todayWk,isSel=i===selDay,done=isDone(selWeek,i);
@@ -1121,37 +1026,11 @@ function renderToday(){
   </div>
   </div>
   <div class="notes-section">
-
-    <!-- DISPLAY MODE: compact read-only notes shown alongside advice -->
-    <div id="ndw-${selWeek}" style="display:${savedRecs&&savedNotes?'block':'none'}">
-      <div class="notes-display-hdr">
-        <span class="notes-display-label">Your notes</span>
-        <button class="edit-link" onclick="startEditNotes(${selWeek})">Edit</button>
-      </div>
-      <div class="notes-display-text" id="ndt-${selWeek}">${escHtml(savedNotes)}</div>
+    <div class="notes-hdr">Week notes <span class="saved-tick" id="tick-${selWeek}">Saved ✓</span></div>
+    <textarea class="notes-input" id="notes-${selWeek}" placeholder="How did this week feel? Energy levels, any aches, how quality sessions went, PFPS / knee check-in...">${savedNotes}</textarea>
+    <div class="notes-actions">
+      <button class="nbtn" onclick="saveNotes(${selWeek})">Save notes</button>
     </div>
-
-    <!-- EDIT MODE: textarea shown when no advice yet, or when editing -->
-    <div id="new-${selWeek}" style="display:${savedRecs&&savedNotes?'none':'block'}">
-      <div class="notes-hdr">Week notes <span class="saved-tick" id="tick-${selWeek}">Saved ✓</span></div>
-      <textarea class="notes-input" id="notes-${selWeek}" placeholder="How did this week feel? Energy levels, any aches, how quality sessions went, PFPS / knee check-in, energy levels, any aches, how quality sessions went...">${savedNotes}</textarea>
-      <div class="notes-actions">
-        <button class="nbtn" onclick="saveNotes(${selWeek})">Save notes</button>
-        <button class="nbtn primary" id="abtn-${selWeek}" onclick="requestAnalysis(${selWeek})">Get next-week advice ↗</button>
-      </div>
-      <div id="pc-box-${selWeek}" style="display:none;padding:4px 0">
-        <div class="pc-row">
-          <input class="pc-input" id="pc-inp-${selWeek}" type="password" placeholder="Passcode" onkeydown="if(event.key==='Enter')submitPasscode(${selWeek})">
-          <button class="pc-submit" onclick="submitPasscode(${selWeek})">Submit</button>
-        </div>
-        <div class="pc-err" id="pc-err-${selWeek}"></div>
-      </div>
-    </div>
-
-    <!-- ADVICE (always visible once generated) -->
-    <div class="recs-box" id="recs-${selWeek}" style="display:${savedRecs?'block':'none'}">${savedRecs?`<div class="recs-label">Next week recommendations</div>${savedRecs}`:''}</div>
-    ${savedRecs?`<button class="regen-btn" onclick="requestAnalysis(${selWeek})">↺ Refresh advice</button>`:''}
-
   </div>`;
   loadWx(dateStr);
 }
