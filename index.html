@@ -1567,6 +1567,19 @@ updateCountdown();
 const _vhdr=document.getElementById('vdot-hdr');if(_vhdr)_vhdr.textContent=workingVDOT.toFixed(1);
 initTheme();
 renderToday();renderPlan();renderRef();renderGym();
+
+// Auto-sync Strava on open if connected and last sync was >1 hour ago
+(async()=>{
+  if(!stravaIsConnected())return;
+  const lastSync=parseInt(localStorage.getItem('philly_strava_last_sync')||'0');
+  const hourMs=60*60*1000;
+  if(Date.now()-lastSync<hourMs)return;
+  try{
+    await stravaSync();
+    localStorage.setItem('philly_strava_last_sync',Date.now().toString());
+    renderToday(); // refresh load flag with fresh data
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
