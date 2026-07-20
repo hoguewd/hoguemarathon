@@ -1072,11 +1072,14 @@ function getDayOrder(wkIdx){
 function saveDayOrder(wkIdx,order){
   if(!appData.dayOrders)appData.dayOrders={};
   appData.dayOrders[wkIdx]=order;
-  writeAppData();
+  // Write immediately — same as toggleDone, swaps must sync reliably
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+  _doGhWrite();
 }
 function resetDayOrder(wkIdx){
   if(appData.dayOrders)delete appData.dayOrders[wkIdx];
-  writeAppData();
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+  _doGhWrite();
 }
 
 let swapPickIdx=null;
@@ -1109,7 +1112,9 @@ function saveDayEdit(w,d,val){
   if(!appData.dayEdits)appData.dayEdits={};
   if(val===null)delete appData.dayEdits[w+'_'+d];
   else appData.dayEdits[w+'_'+d]=val;
-  writeAppData();
+  // Write immediately — user explicitly saved an edit
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+  _doGhWrite();
 }
 
 function startEditDay(w,d){
