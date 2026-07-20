@@ -1264,20 +1264,38 @@ function drawVolChart(canvasId){
   });
 }
 
-function drawTrendChart(canvasId,data,colorFn,labelFn,invertY){
+function drawTrendChart(canvasId,data,colorFn,labelFn,invertY,yFmt){
   const canvas=document.getElementById(canvasId);if(!canvas||data.length<2)return;
   const dpr=window.devicePixelRatio||1;
   const CW=canvas.clientWidth,CH=canvas.clientHeight;
   canvas.width=CW*dpr;canvas.height=CH*dpr;
   const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
   const isDark=!document.body.classList.contains('light');
-  const pad={l:6,r:6,t:6,b:6};
+  const textClr=isDark?'#7E7E86':'#888580';
+  const gridClr=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+  const lPad=yFmt?44:6;
+  const pad={l:lPad,r:6,t:8,b:6};
   const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
   const vals=data.map(d=>d.v);
   let mn=Math.min(...vals),mx=Math.max(...vals);
   if(mx-mn<0.5){mn-=0.25;mx+=0.25;}
   const xOf=(i)=>pad.l+(i/(data.length-1))*w;
   const yOf=(v)=>invertY?pad.t+((v-mn)/(mx-mn))*h:pad.t+h-((v-mn)/(mx-mn))*h;
+
+  // Y axis grid lines + labels
+  if(yFmt){
+    ctx.font=`10px var(--mono,'JetBrains Mono',monospace)`;
+    ctx.textAlign='right';
+    const steps=4;
+    for(let i=0;i<=steps;i++){
+      const v=mn+(i/steps)*(mx-mn);
+      const y=yOf(v);
+      ctx.strokeStyle=gridClr;ctx.lineWidth=0.5;
+      ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
+      ctx.fillStyle=textClr;
+      ctx.fillText(yFmt(v),pad.l-5,y+3.5);
+    }
+  }
 
   ctx.beginPath();
   data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
@@ -1291,7 +1309,6 @@ function drawTrendChart(canvasId,data,colorFn,labelFn,invertY){
   data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
   ctx.strokeStyle='#FF3B24';ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
 
-  // dots
   data.forEach((d,i)=>{
     ctx.beginPath();ctx.arc(xOf(i),yOf(d.v),3,0,Math.PI*2);
     ctx.fillStyle='#FF3B24';ctx.fill();
@@ -1447,7 +1464,7 @@ function renderStats(){
 
   setTimeout(()=>{
     drawVolChart('vol-chart');
-    drawTrendChart('pace-chart',paceTrend,null,null,true);
+    drawTrendChart('pace-chart',paceTrend,null,null,true,fmtPace);
     drawTrendChart('cad-chart',cadTrend,null,null,false);
   },30);
 }
