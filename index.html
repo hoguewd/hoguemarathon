@@ -1498,7 +1498,7 @@ async function statsSyncAndRender(){
 function renderRef(){
   const dynPaces=getDynPaces(workingVDOT);
   const paceHtml=dynPaces.map(([k,v])=>`<div class="ref-row"><span class="ref-key">${k}</span><span class="ref-val">${v}</span></div>`).join('');
-  const shoeHtml=SHOES.map(([n,u])=>`<div class="shoe-row"><span class="shoe-name">${n}</span><span class="shoe-use">${u}</span></div>`).join('');
+  const shoeHtml='';
   const raceHtml=RACES.map(([d,n,p,e])=>`<div class="race-row"><div class="race-date">${d}</div><div class="race-name">${n}</div><div class="race-pace">${p} · ${e}</div></div>`).join('');
 
 
@@ -1510,10 +1510,6 @@ function renderRef(){
   <div class="ref-sec">
     <div class="ref-title">Race calendar</div>
     ${raceHtml}
-  </div>
-  <div class="ref-sec">
-    <div class="ref-title">Shoe guide</div>
-    ${shoeHtml}
   </div>
 
 
