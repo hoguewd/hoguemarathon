@@ -768,6 +768,13 @@ let selWeek=todayWk,selDay=todayDay;
 
 // Storage helpers
 function lsKey(prefix,i){return'philly_2026_'+prefix+'_'+i;}
+function isDone(wk,d){return!!localStorage.getItem(lsKey('done',wk+'_'+d));}
+function toggleDone(wk,d){
+  const key=lsKey('done',wk+'_'+d);
+  if(localStorage.getItem(key))localStorage.removeItem(key);
+  else localStorage.setItem(key,'1');
+  renderToday();renderPlan();
+}
 function saveNotes(i){
   const el=document.getElementById('notes-'+i);
   if(!el)return;
