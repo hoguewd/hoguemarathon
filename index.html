@@ -681,6 +681,8 @@ async function loadAppData(){
         applyAppData();
         localStorage.setItem('philly_app_cache',JSON.stringify(appData));
         renderToday();renderPlan();renderStats();
+        // Re-render crew tab if it's open so fresh comments appear
+        if(document.getElementById('pane-crew')?.classList.contains('on'))renderCrew();
       }
     }
   }catch(e){
@@ -1802,7 +1804,7 @@ function showTab(id,btn){
   document.getElementById('pane-'+id).classList.add('on');
   document.querySelector('.content').scrollTop=0;
   if(id==='stats')renderStats();
-  if(id==='crew')renderCrew();
+  if(id==='crew'){renderCrew();loadAppData();}
   if(id==='vdot'){}  // removed
 }
 
