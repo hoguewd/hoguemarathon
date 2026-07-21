@@ -1228,7 +1228,31 @@ function writeAppData(){
 }
 
 async function _doGhWrite(){
-  const token=ghToken(); if(!token)return;
+  const token=ghToken();
+  if(!token){
+    // No token — use Cloudflare /sync function instead
+    // Only send fields that change on-device (not market/comments which have own functions)
+    const patch={
+      done:appData.done||{},
+      notes:appData.notes||{},
+      dayEdits:appData.dayEdits||{},
+      dayOrders:appData.dayOrders||{},
+      vdot:appData.vdot||null,
+      stravaActuals:appData.stravaActuals||{},
+      stravaActivities:appData.stravaActivities||[],
+      stravaLastSync:appData.stravaLastSync||0,
+    };
+    try{
+      const res=await fetch('/sync',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({patch})});
+      const d=await res.json();
+      if(d.retry){
+        // Conflict — retry once after a short delay
+        await new Promise(r=>setTimeout(r,800));
+        await _doGhWrite();
+      }
+    }catch(e){ /* silent fail */ }
+    return;
+  }
   const body=JSON.stringify({...appData, updatedAt:Date.now()}, null, 2);
   const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};
   try{
