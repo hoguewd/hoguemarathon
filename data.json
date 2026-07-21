@@ -8,8 +8,8 @@
   "dayOrders": {
     "2": [
       0,
-      2,
       1,
+      2,
       3,
       4,
       5,
@@ -198,7 +198,7 @@
     }
   ],
   "stravaLastSync": 1784597572477,
-  "updatedAt": 1784598830553,
+  "updatedAt": 1784598946402,
   "comments": [
     {
       "name": "John Boy and Bill",
