@@ -1835,16 +1835,16 @@ function renderToday(){
       </div>
       <div style="display:flex;align-items:center;gap:3px">
         ${swapPickIdx===null||isSwapSrc?`<button class="day-swap-btn${isSwapSrc?' swap-pick':''}" onclick="event.stopPropagation();pickSwap(${displayIdx})" title="${isSwapSrc?'Cancel move':'Move this day'}">⇅</button>`:''}
-        <button id="day-eb-${selWeek}-${displayIdx}" class="day-edit-btn" onclick="event.stopPropagation();startEditDay(${selWeek},${dataIdx})" title="Edit">✎</button>
+        <button id="day-eb-${selWeek}-${dataIdx}" class="day-edit-btn" onclick="event.stopPropagation();startEditDay(${selWeek},${dataIdx})" title="Edit">✎</button>
         <div class="chk${done?' on':''}" onclick="event.stopPropagation();toggleDone(${selWeek},${displayIdx})">✓</div>
       </div>
     </div>
     ${swapPickIdx===displayIdx?`<div class="swap-hint">Tap another day to swap with it · tap ⇅ again to cancel</div>`:''}
-    <div id="day-ew-${selWeek}-${displayIdx}" class="day-edit-wrap" style="display:none">
-      <textarea id="day-ta-${selWeek}-${displayIdx}" class="day-edit-ta">${disp}</textarea>
+    <div id="day-ew-${selWeek}-${dataIdx}" class="day-edit-wrap" style="display:none">
+      <textarea id="day-ta-${selWeek}-${dataIdx}" class="day-edit-ta">${disp}</textarea>
       <div class="day-edit-btns">
         <button class="day-save-btn" onclick="confirmEditDay(${selWeek},${dataIdx})">Save</button>
-        <button class="day-cancel-btn" onclick="cancelEditDay(${selWeek},${displayIdx})">Cancel</button>
+        <button class="day-cancel-btn" onclick="cancelEditDay(${selWeek},${dataIdx})">Cancel</button>
         ${edited?`<button class="day-reset-btn" onclick="resetDayEdit(${selWeek},${dataIdx})">Reset to plan</button>`:''}
       </div>
     </div>`;
