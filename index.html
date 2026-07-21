@@ -2071,7 +2071,7 @@ async function _stravaFetchAndStore(token, statusEl) {
 
   runs.forEach(run=>{
     const d=new Date(run.start_date_local); d.setHours(0,0,0,0);
-    const dateStr=d.toISOString().split('T')[0];
+    const dateStr=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     let wkIdx=-1;
     for(let i=0;i<W.length;i++){
       const wkStart=parseLocal(W[i].start);
@@ -2258,7 +2258,7 @@ function renderStats(){
   // ── Compute summary stats ─────────────────────────────────────────────────
   const now=new Date(); now.setHours(0,0,0,0);
   const weekStart=new Date(now); weekStart.setDate(now.getDate()-now.getDay()+(now.getDay()===0?-6:1));
-  const thisWeek=acts.filter(a=>new Date(a.date)>=weekStart);
+  const thisWeek=acts.filter(a=>new Date(a.date+'T00:00:00')>=weekStart);
   const thisWeekMi=thisWeek.reduce((s,a)=>s+a.mi,0);
   const totalMi=acts.reduce((s,a)=>s+a.mi,0);
   const easyRuns=acts.filter(a=>a.mi>2&&a.effort<65&&a.pace>0);
