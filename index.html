@@ -1203,7 +1203,29 @@ async function resolveMarket(i){
   renderBet();
 }
 
-// ── Cross-device sync via GitHub ─────────────────────────────────────────────
+// ── Swipe to switch tabs ──────────────────────────────────────────────────────
+(()=>{
+  let _sx=null,_sy=null;
+  const content=document.querySelector('.content');
+  if(!content)return;
+  content.addEventListener('touchstart',e=>{
+    _sx=e.touches[0].clientX;
+    _sy=e.touches[0].clientY;
+  },{passive:true});
+  content.addEventListener('touchend',e=>{
+    if(_sx===null)return;
+    const dx=e.changedTouches[0].clientX-_sx;
+    const dy=e.changedTouches[0].clientY-_sy;
+    _sx=null;_sy=null;
+    // Only horizontal swipes, with enough distance and dominant direction
+    if(Math.abs(dx)<50||Math.abs(dx)<Math.abs(dy)*1.5)return;
+    const tabs=[...document.querySelectorAll('.tab')];
+    const cur=tabs.findIndex(t=>t.classList.contains('on'));
+    const next=dx<0?cur+1:cur-1;
+    if(next<0||next>=tabs.length)return;
+    tabs[next].click();
+  },{passive:true});
+})(); ─────────────────────────────────────────────
 const GH_REPO = 'hoguewd/hoguemarathon';
 const GH_DATA  = 'data.json';
 const GH_RAW   = `https://raw.githubusercontent.com/${GH_REPO}/main/${GH_DATA}`;
