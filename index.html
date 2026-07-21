@@ -1225,7 +1225,9 @@ async function resolveMarket(i){
     if(next<0||next>=tabs.length)return;
     tabs[next].click();
   },{passive:true});
-})(); ─────────────────────────────────────────────
+})();
+
+// ── Cross-device sync via GitHub ──────────────────────────────
 const GH_REPO = 'hoguewd/hoguemarathon';
 const GH_DATA  = 'data.json';
 const GH_RAW   = `https://raw.githubusercontent.com/${GH_REPO}/main/${GH_DATA}`;
