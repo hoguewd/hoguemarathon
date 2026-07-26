@@ -288,7 +288,7 @@
     }
   ],
   "stravaLastSync": 1785073874051,
-  "updatedAt": 1785073875553,
+  "updatedAt": 1785074085123,
   "comments": [
     {
       "name": "John Boy and Bill",
@@ -304,7 +304,7 @@
     },
     {
       "name": "Donald Trump",
-      "message": "William, the GREAT American people are saying, SEND THE FEET PICS. Tremendous feet. Everybody’s talking about it. HUGE. Sad if you don’t!",
+      "message": "William, the GREAT American people are saying, SEND THE FEET PICS. Tremendous feet. Everybody\u2019s talking about it. HUGE. Sad if you don\u2019t!",
       "ts": 1784574672879,
       "replies": [
         {
@@ -856,6 +856,16 @@
         0,
         0
       ]
+    }
+  },
+  "raceResults": {
+    "0": {
+      "time": "31:06",
+      "pace": "6:08",
+      "vdot": 54.1,
+      "dist": "5mi",
+      "date": "Jul 26",
+      "note": "Team Champs \u00b7 107 PRs \u00b7 cadence 86.5"
     }
   }
 }
