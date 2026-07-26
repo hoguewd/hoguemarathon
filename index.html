@@ -1410,7 +1410,11 @@ function parseRaceTime(s){
   return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];
 }
 function loadRaceResult(i){
-  try{return JSON.parse(localStorage.getItem('philly_race_result_'+i));}catch(e){return null;}
+  try{
+    const r=(appData.raceResults||{})[String(i)];
+    if(r)return r;
+    return JSON.parse(localStorage.getItem('philly_race_result_'+i));
+  }catch(e){return null;}
 }
 function saveRaceResult(idx){
   const inp=document.getElementById('race-time-'+idx);
@@ -1422,6 +1426,9 @@ function saveRaceResult(idx){
   const pps=secs/(dist/1609.34);
   const pace=Math.floor(pps/60)+':'+String(Math.round(pps%60)).padStart(2,'0');
   localStorage.setItem('philly_race_result_'+idx,JSON.stringify({time:inp.value.trim(),vdot:Math.round(vdot*10)/10,pace}));
+  if(!appData.raceResults)appData.raceResults={};
+  appData.raceResults[String(idx)]={time:inp.value.trim(),vdot:Math.round(vdot*10)/10,pace};
+  _doGhWrite();
   updateWorkingVDOTFromRaces();
   renderStats();
 }
