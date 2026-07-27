@@ -16,28 +16,28 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0A0A0B;--card:#131316;--card2:#1C1C20;
-  --text:#F4F1EA;--muted:#7E7E86;--faint:#33333A;
-  --border:#1F1F23;--border2:#2C2C32;
-  --accent:#FF3B24;--accent-soft:rgba(255,59,36,.14);
-  --blue:#5B9BE0;--blue-bg:#0C1A2B;--blue-border:#1D3855;
-  --green:#3FD08A;--green-bg:#062016;--green-border:#124031;
-  --amber:#F5A623;--amber-bg:#221700;--amber-border:#40300A;
-  --purple:#A78BFA;--purple-bg:#150E28;--purple-border:#2A1E4A;
-  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
-  --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --display:'Saira Condensed','Archivo Narrow',sans-serif;
-  --radius:4px;
+ --bg:#0A0A0B;--card:#131316;--card2:#1C1C20;
+ --text:#F4F1EA;--muted:#7E7E86;--faint:#33333A;
+ --border:#1F1F23;--border2:#2C2C32;
+ --accent:#FF3B24;--accent-soft:rgba(255,59,36,.14);
+ --blue:#5B9BE0;--blue-bg:#0C1A2B;--blue-border:#1D3855;
+ --green:#3FD08A;--green-bg:#062016;--green-border:#124031;
+ --amber:#F5A623;--amber-bg:#221700;--amber-border:#40300A;
+ --purple:#A78BFA;--purple-bg:#150E28;--purple-border:#2A1E4A;
+ --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
+ --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+ --display:'Saira Condensed','Archivo Narrow',sans-serif;
+ --radius:4px;
 }
 body.light{
-  --bg:#EFECE4;--card:#FBF9F4;--card2:#F1EDE3;
-  --text:#16151A;--muted:#79746D;--faint:#D8D2C6;
-  --border:#E2DDD1;--border2:#CEC7B8;
-  --accent:#E5361F;--accent-soft:rgba(229,54,31,.12);
-  --blue:#25639F;--blue-bg:#E7F0FA;--blue-border:#BAD3EC;
-  --green:#0E8A57;--green-bg:#E1F5EC;--green-border:#A9E3CB;
-  --amber:#B4700A;--amber-bg:#FBF1DC;--amber-border:#EBCE93;
-  --purple:#6B34D6;--purple-bg:#EEE8FC;--purple-border:#D3C5F5;
+ --bg:#EFECE4;--card:#FBF9F4;--card2:#F1EDE3;
+ --text:#16151A;--muted:#79746D;--faint:#D8D2C6;
+ --border:#E2DDD1;--border2:#CEC7B8;
+ --accent:#E5361F;--accent-soft:rgba(229,54,31,.12);
+ --blue:#25639F;--blue-bg:#E7F0FA;--blue-border:#BAD3EC;
+ --green:#0E8A57;--green-bg:#E1F5EC;--green-border:#A9E3CB;
+ --amber:#B4700A;--amber-bg:#FBF1DC;--amber-border:#EBCE93;
+ --purple:#6B34D6;--purple-bg:#EEE8FC;--purple-border:#D3C5F5;
 }
 html{background:var(--bg);min-height:100%}
 html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -331,40 +331,40 @@ a:hover{color:var(--text)}
 .rr-vdot-chip{font-family:var(--mono);font-size:10px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(255,59,36,.28);padding:3px 9px;border-radius:3px;margin-top:5px;display:inline-block;text-transform:uppercase;letter-spacing:.03em}
 
 @media(min-width:768px){
-  .app{max-width:100%}
-  .hdr{padding:24px 40px 18px}
-  .hdr::before{left:40px}
-  .hdr-title{font-size:38px}
-  .hdr-sub{font-size:12px}
-  .hdr-countdown{font-size:17px}
-  .tabs{padding:0 28px}
-  .tab{flex:none;padding:14px 34px;font-size:15px}
-  .content{height:calc(100vh - 132px);overflow:hidden}
-  .pane.on:not(#pane-today){overflow-y:auto;height:100%}
-  #pane-today.on{display:grid;grid-template-columns:420px 1fr;grid-template-rows:auto 1fr;grid-template-areas:"left hero" "left notes";height:100%;overflow:hidden}
-  .today-col-left{grid-area:left;overflow-y:hidden;border-right:1px solid var(--border);order:unset;display:flex;flex-direction:column}
-  .today-hero{grid-area:hero;order:unset;padding:36px 48px 26px;border-bottom:1px solid var(--border)}
-  .today-workout{font-size:27px}
-  .notes-section{grid-area:notes;overflow-y:auto;order:unset;padding:28px 48px 36px}
-  .week-strip{flex-shrink:0;padding:24px 24px 18px}
-  .day-list{flex:1;overflow-y:auto;padding:6px 24px 16px}
-  .week-nav{flex-shrink:0;position:static;left:unset;right:unset;z-index:10;padding:15px 24px}
-  .ws-label{font-size:16px}
-  .dl-workout{font-size:15px}
-  .plan-list{padding:0 40px;max-width:980px}
-  .wk-lbl{font-size:20px}
-  .wk-expand{padding:8px 0 16px 6px}
-  .wk-exp-day{font-size:14px}
-  .ref{padding:32px 40px;max-width:860px;margin:0 auto;width:100%}
-  .vdot-card{padding:24px 40px}
-  .stat-cards{grid-template-columns:repeat(4,1fr)}
-  .dash-hdr{padding:24px 40px 20px}
-  .dash-sec{padding:26px 40px 0}
-  .run-card{padding:13px 40px}
-  .trend-cell{padding:16px 40px 14px}
-  .vol-canvas-wrap{height:160px}
-  .trend-canvas-wrap{height:110px}
-  .dash-no-data{padding:80px 40px}
+ .app{max-width:100%}
+ .hdr{padding:24px 40px 18px}
+ .hdr::before{left:40px}
+ .hdr-title{font-size:38px}
+ .hdr-sub{font-size:12px}
+ .hdr-countdown{font-size:17px}
+ .tabs{padding:0 28px}
+ .tab{flex:none;padding:14px 34px;font-size:15px}
+ .content{height:calc(100vh - 132px);overflow:hidden}
+ .pane.on:not(#pane-today){overflow-y:auto;height:100%}
+ #pane-today.on{display:grid;grid-template-columns:420px 1fr;grid-template-rows:auto 1fr;grid-template-areas:"left hero" "left notes";height:100%;overflow:hidden}
+ .today-col-left{grid-area:left;overflow-y:hidden;border-right:1px solid var(--border);order:unset;display:flex;flex-direction:column}
+ .today-hero{grid-area:hero;order:unset;padding:36px 48px 26px;border-bottom:1px solid var(--border)}
+ .today-workout{font-size:27px}
+ .notes-section{grid-area:notes;overflow-y:auto;order:unset;padding:28px 48px 36px}
+ .week-strip{flex-shrink:0;padding:24px 24px 18px}
+ .day-list{flex:1;overflow-y:auto;padding:6px 24px 16px}
+ .week-nav{flex-shrink:0;position:static;left:unset;right:unset;z-index:10;padding:15px 24px}
+ .ws-label{font-size:16px}
+ .dl-workout{font-size:15px}
+ .plan-list{padding:0 40px;max-width:980px}
+ .wk-lbl{font-size:20px}
+ .wk-expand{padding:8px 0 16px 6px}
+ .wk-exp-day{font-size:14px}
+ .ref{padding:32px 40px;max-width:860px;margin:0 auto;width:100%}
+ .vdot-card{padding:24px 40px}
+ .stat-cards{grid-template-columns:repeat(4,1fr)}
+ .dash-hdr{padding:24px 40px 20px}
+ .dash-sec{padding:26px 40px 0}
+ .run-card{padding:13px 40px}
+ .trend-cell{padding:16px 40px 14px}
+ .vol-canvas-wrap{height:160px}
+ .trend-canvas-wrap{height:110px}
+ .dash-no-data{padding:80px 40px}
 }
 
 
@@ -455,34 +455,34 @@ body.edit-mode .chk{display:flex}
 </head>
 <body>
 <div class="app">
-  <div class="hdr">
-    <div class="hdr-top">
-      <span class="hdr-title">Philadelphia Marathon</span>
-      <div style="display:flex;align-items:center;gap:10px">
-        <span class="hdr-countdown" id="countdown">— days</span>
-        <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">DARK</button>
-      </div>
-    </div>
-    <div class="hdr-sub">William Hogue</div>
-  </div>
-  <div class="tabs">
-    <button class="tab on" onclick="showTab('today',this)">Today</button>
-    <button class="tab" onclick="showTab('plan',this)">Plan</button>
-    <button class="tab" onclick="showTab('ref',this)">Reference</button>
-    <button class="tab" onclick="showTab('gym',this)">Gym</button>
-    <button class="tab" onclick="showTab('stats',this)">Stats</button>
-    <button class="tab" onclick="showTab('crew',this)">Comments</button>
-    <button class="tab" onclick="showTab('bet',this)">Bet</button>
-  </div>
-  <div class="content">
-    <div class="pane on" id="pane-today"></div>
-    <div class="pane" id="pane-plan"></div>
-    <div class="pane" id="pane-ref"></div>
-    <div class="pane" id="pane-gym"></div>
-    <div class="pane" id="pane-stats"></div>
-    <div class="pane" id="pane-crew"></div>
-    <div class="pane" id="pane-bet"></div>
-  </div>
+ <div class="hdr">
+ <div class="hdr-top">
+ <span class="hdr-title">Philadelphia Marathon</span>
+ <div style="display:flex;align-items:center;gap:10px">
+ <span class="hdr-countdown" id="countdown">— days</span>
+ <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">DARK</button>
+ </div>
+ </div>
+ <div class="hdr-sub">William Hogue</div>
+ </div>
+ <div class="tabs">
+ <button class="tab on" onclick="showTab('today',this)">Today</button>
+ <button class="tab" onclick="showTab('plan',this)">Plan</button>
+ <button class="tab" onclick="showTab('ref',this)">Reference</button>
+ <button class="tab" onclick="showTab('gym',this)">Gym</button>
+ <button class="tab" onclick="showTab('stats',this)">Stats</button>
+ <button class="tab" onclick="showTab('crew',this)">Comments</button>
+ <button class="tab" onclick="showTab('bet',this)">Bet</button>
+ </div>
+ <div class="content">
+ <div class="pane on" id="pane-today"></div>
+ <div class="pane" id="pane-plan"></div>
+ <div class="pane" id="pane-ref"></div>
+ <div class="pane" id="pane-gym"></div>
+ <div class="pane" id="pane-stats"></div>
+ <div class="pane" id="pane-crew"></div>
+ <div class="pane" id="pane-bet"></div>
+ </div>
 </div>
 <script>
 const RACE_DATE=new Date("2026-11-22");
@@ -492,43 +492,43 @@ const PIP={e:"pip-e",q:"pip-q",l:"pip-l",r:"pip-r",s:"pip-s",x:"pip-x"};
 
 const W=[
 {n:1,lbl:"Week 1",start:"2026-07-06",ph:"Phase I — Base",cut:false,mi:35,note:"First R session — pre-race sharpener",
-days:[["6mi easy + hip circuit","e","Novablast",null],["Sw-C + Lift A-1 (hip & core)","s",null,null],["R: 1.5mi WU · 4×400m @5:17–5:30/mi · jog 400m · 1.5mi CD","q","Vaporfly",null],["7mi easy","e","Novablast",null],["5mi easy + Lift A-2 (lower body)","e","Novablast",null],["4mi easy","e","Novablast",null],["8mi easy — long run","l","Novablast","1×Beta @40min"]]},
+days:[["6mi easy","e","Novablast",null],["Sw-C + Lift A-1 (hip & core)","s",null,null],["R: 1.5mi WU · 4×400m @5:17–5:30/mi · jog 400m · 1.5mi CD","q","Vaporfly",null],["7mi easy","e","Novablast",null],["5mi easy + Lift A-2 (lower body)","e","Novablast",null],["4mi easy","e","Novablast",null],["8mi easy — long run","l","Novablast","1×Beta @40min"]]},
 {n:2,lbl:"Week 2",start:"2026-07-13",ph:"Phase I — Base",cut:false,mi:40,note:"First T session — Thursday",
-days:[["6mi easy + hip circuit","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["7mi easy + 8×strides","e","Novablast",null],["5mi easy","e","Novablast",null],["T: 1.5mi WU · 3×1mi @6:20/mi · 1min jog · 1.5mi CD","q","Vaporfly",null],["5mi easy + Lift B-2 (lower body)","e","Novablast",null],["10mi easy — long run","l","Nimbus","1×Beta @40min"]]},
+days:[["6mi easy","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["7mi easy + 8×strides","e","Novablast",null],["5mi easy","e","Novablast",null],["T: 1.5mi WU · 3×1mi @6:20/mi · 1min jog · 1.5mi CD","q","Vaporfly",null],["5mi easy + Lift B-2 (lower body)","e","Novablast",null],["10mi easy — long run","l","Nimbus","1×Beta @40min"]]},
 {n:3,lbl:"Week 3",start:"2026-07-20",ph:"Phase I — Base",cut:false,mi:33,note:"5-mile race Sunday Jul 26 · goal: 6:00–6:10/mi",
-days:[["6mi easy + hip circuit","e","Novablast",null],["Sw-A + HC only","s",null,null],["7mi easy + strides (light)","e","Novablast",null],["4mi easy","e","Novablast",null],["4mi easy","e","Novablast",null],["3mi easy + 4×strides — shakeout","e","Novablast",null],["RACE: 5 mile @6:00–6:10/mi · 2mi WU + race + 1.5mi CD","r","Vaporfly","1×Caff 30min before gun"]]},
+days:[["6mi easy","e","Novablast",null],["Sw-A","s",null,null],["7mi easy + strides (light)","e","Novablast",null],["4mi easy","e","Novablast",null],["4mi easy","e","Novablast",null],["3mi easy + 4×strides — shakeout","e","Novablast",null],["RACE: 5 mile @6:00–6:10/mi · 2mi WU + race + 1.5mi CD","r","Vaporfly","1×Caff 30min before gun"]]},
 {n:4,lbl:"Week 4",start:"2026-07-27",ph:"Phase I — Base",cut:false,mi:39,note:"Post-race week — 12mi long run",
-days:[["5mi easy + hip circuit","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["T: 1.5mi WU · 4mi @6:20/mi continuous · 1.5mi CD","q","Vaporfly",null],["5mi easy + Lift B-2 (lower body)","e","Novablast",null],["5mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["12mi easy — long run","l","Nimbus","1×Beta @40min"]]},
+days:[["5mi easy","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["T: 1.5mi WU · 4mi @6:20/mi continuous · 1.5mi CD","q","Vaporfly",null],["5mi easy + Lift B-2 (lower body)","e","Novablast",null],["5mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["12mi easy — long run","l","Nimbus","1×Beta @40min"]]},
 {n:5,lbl:"Week 5",start:"2026-08-03",ph:"Phase I — Base",cut:false,mi:50,note:"First 50-mile week",
-days:[["8mi easy + hip circuit","e","Novablast",null],["Sw-A + Lift A-1 (hip & core)","s",null,null],["T: 2mi WU · 3×1.5mi @6:20/mi · 90sec jog · 2mi CD","q","Vaporfly",null],["7mi easy + Lift A-2 (lower body)","e","Novablast",null],["7mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["14mi easy — long run","l","Nimbus","2×Beta @35+80min"]]},
+days:[["8mi easy","e","Novablast",null],["Sw-A + Lift A-1 (hip & core)","s",null,null],["T: 2mi WU · 3×1.5mi @6:20/mi · 90sec jog · 2mi CD","q","Vaporfly",null],["7mi easy + Lift A-2 (lower body)","e","Novablast",null],["7mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["14mi easy — long run","l","Nimbus","2×Beta @35+80min"]]},
 {n:6,lbl:"Week 6",start:"2026-08-10",ph:"Phase II — Speed",cut:false,mi:46,note:"Upstate Aug 12–16 — quality moved to Tuesday",
-days:[["R: 2mi WU · 8×300m @5:17–5:30/mi · jog 300m · 2mi CD","q","Vaporfly",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["6mi easy + hip circuit (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["13mi easy — long run (upstate)","l","Nimbus","2×Beta @35+80min"]]},
+days:[["R: 2mi WU · 8×300m @5:17–5:30/mi · jog 300m · 2mi CD","q","Vaporfly",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["13mi easy — long run (upstate)","l","Nimbus","2×Beta @35+80min"]]},
 {n:7,lbl:"Week 7",start:"2026-08-17",ph:"Phase II — Speed",cut:false,mi:56,note:"Single quality only — Lift A-1 added to Monday run day since no swim this week",
-days:[["8mi easy + hip circuit + Lift A-1 (hip & core)","e","Nimbus",null],["I: 2mi WU · 5×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["Sw-B + HC only","s",null,null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["18mi easy — long run","l","Nimbus","3×Beta @30+70+110min"]]},
+days:[["8mi easy + Lift A-1 (hip & core)","e","Nimbus",null],["I: 2mi WU · 5×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["Sw-B","s",null,null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["18mi easy — long run","l","Nimbus","3×Beta @30+70+110min"]]},
 {n:8,lbl:"Week 8",start:"2026-08-24",ph:"Phase II — Speed (cutback)",cut:true,mi:46,note:"Cutback week — LR stepped up to 16mi to smooth the jump to Week 9's 19mi (3mi step vs the previous 6mi jump from 13mi)",
-days:[["7mi easy + hip circuit","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["R: 1.5mi WU · 4×400m @5:17–5:30/mi · jog 400m · 1.5mi CD","q","Vaporfly",null],["5mi easy + 6×strides + Lift B-2 (lower body)","e","Novablast",null],["6mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["16mi easy — long run","l","Nimbus","2×Beta @35+80min"]]},
+days:[["7mi easy","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["R: 1.5mi WU · 4×400m @5:17–5:30/mi · jog 400m · 1.5mi CD","q","Vaporfly",null],["5mi easy + 6×strides + Lift B-2 (lower body)","e","Novablast",null],["6mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["16mi easy — long run","l","Nimbus","2×Beta @35+80min"]]},
 {n:9,lbl:"Week 9",start:"2026-08-31",ph:"Phase II — Speed",cut:false,mi:59,note:"Single I quality mid-week · MP introduced in the long run for the first time (last 5mi @M) — cleaner than two separate quality sessions",
-days:[["9mi easy + hip circuit","e","Nimbus",null],["Sw-B + HC only (full lift skipped — quality + MP long run this week)","s",null,null],["I: 2mi WU · 6×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["8mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["19mi (last 5mi @6:43) — long run","l","Alphafly","1×Beta @30min + 1×Beta @65min + 1×Caff @95min"]]},
+days:[["9mi easy","e","Nimbus",null],["Sw-B (full lift skipped — quality + MP long run)","s",null,null],["I: 2mi WU · 6×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["8mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["19mi (last 5mi @6:43) — long run","l","Alphafly","1×Beta @30min + 1×Beta @65min + 1×Caff @95min"]]},
 {n:10,lbl:"Week 10",start:"2026-09-07",ph:"Phase III — Threshold",cut:false,mi:47,note:"1-mile race Sunday Sep 13 · long run moved to Saturday",
-days:[["10mi easy + hip circuit","e","Nimbus",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["T: 1.5mi WU · 4mi @6:20/mi continuous · 1.5mi CD","q","Vaporfly",null],["7mi easy + Lift B-2 (lower body)","e","Novablast",null],["5mi easy","e","Novablast",null],["12mi easy — long run (moved here)","l","Nimbus","2×Beta @30+70min"],["RACE: 1 mile all-out @5:10–5:20/mi · 2mi WU + 1mi + 2mi CD","r","Vaporfly","opt: 1×Caff pre-race"]]},
+days:[["10mi easy","e","Nimbus",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["T: 1.5mi WU · 4mi @6:20/mi continuous · 1.5mi CD","q","Vaporfly",null],["7mi easy + Lift B-2 (lower body)","e","Novablast",null],["5mi easy","e","Novablast",null],["12mi easy — long run (moved here)","l","Nimbus","2×Beta @30+70min"],["RACE: 1 mile all-out @5:10–5:20/mi · 2mi WU + 1mi + 2mi CD","r","Vaporfly","opt: 1×Caff pre-race"]]},
 {n:11,lbl:"Week 11",start:"2026-09-14",ph:"Phase III — Threshold",cut:false,mi:55,note:"10-mile race Saturday Sep 19 · Sunday shortened to 7mi — don't push day after a race",
-days:[["13mi easy + hip circuit","e","Nimbus",null],["Sw-A + HC only","s",null,null],["10mi easy + strides","e","Novablast",null],["8mi easy (fresh for Sat)","e","Novablast",null],["7mi easy","e","Novablast",null],["RACE: 10 mile @6:12–6:20/mi · 1mi WU + 10mi + 1mi CD","r","Vaporfly","1×Beta @20min + 1×Caff @50min"],["7mi easy — short recovery (day after race)","e","Novablast",null]]},
+days:[["13mi easy","e","Nimbus",null],["Sw-A","s",null,null],["10mi easy + strides","e","Novablast",null],["8mi easy (fresh for Sat)","e","Novablast",null],["7mi easy","e","Novablast",null],["RACE: 10 mile @6:12–6:20/mi · 1mi WU + 10mi + 1mi CD","r","Vaporfly","1×Beta @20min + 1×Caff @50min"],["7mi easy — short recovery (day after race)","e","Novablast",null]]},
 {n:12,lbl:"Week 12",start:"2026-09-21",ph:"Phase III — Threshold (cutback)",cut:true,mi:56,note:"Reduced cutback — 56mi keeps the jump to Week 13 at ~20% rather than 37%",
-days:[["9mi easy + hip circuit","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["T: 1.5mi WU · 3mi @6:20/mi continuous · 1.5mi CD","q","Vaporfly",null],["7mi easy + Lift B-2 (lower body)","e","Novablast",null],["8mi easy","e","Novablast",null],["8mi easy","e","Novablast",null],["18mi easy — long run","l","Nimbus","3×Beta @30+70+110min"]]},
+days:[["9mi easy","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["T: 1.5mi WU · 3mi @6:20/mi continuous · 1.5mi CD","q","Vaporfly",null],["7mi easy + Lift B-2 (lower body)","e","Novablast",null],["8mi easy","e","Novablast",null],["8mi easy","e","Novablast",null],["18mi easy — long run","l","Nimbus","3×Beta @30+70+110min"]]},
 {n:13,lbl:"Week 13",start:"2026-09-28",ph:"Phase III — Threshold",cut:false,mi:67,note:"Two quality sessions — Tue T+M + Thu I. Full lift skipped intentionally — highest-load week of Phase III.",
-days:[["11mi easy + hip circuit (full lift skipped — two quality week)","e","Nimbus",null],["T+M: 2mi WU · 3mi @T(6:20) + 4mi @M(6:43) · 2mi CD","q","Alphafly","1×Beta @25min + 1×Caff @60min"],["Sw-B + HC only","s",null,null],["I: 2mi WU · 5×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["8mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["19mi (last 6mi @6:43) — long run","l","Alphafly","2×Beta @30+70 + 1×Caff @100min"]]},
+days:[["11mi easy (full lift skipped — two quality sessions)","e","Nimbus",null],["T+M: 2mi WU · 3mi @T(6:20) + 4mi @M(6:43) · 2mi CD","q","Alphafly","1×Beta @25min + 1×Caff @60min"],["Sw-B","s",null,null],["I: 2mi WU · 5×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["8mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["19mi (last 6mi @6:43) — long run","l","Alphafly","2×Beta @30+70 + 1×Caff @100min"]]},
 {n:14,lbl:"Week 14",start:"2026-10-05",ph:"Phase III — Threshold",cut:false,mi:42,note:"Half marathon Sunday Oct 11 · pace decision race",
-days:[["8mi easy + hip circuit","e","Novablast",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["T+M: 1.5mi WU · 2mi T + 2mi M · 1.5mi CD (lighter)","q","Alphafly","1×Beta @20min"],["6mi easy + 6×strides","e","Novablast",null],["4mi easy","e","Novablast",null],["3mi easy + 4×strides — shakeout","e","Novablast",null],["RACE: Half marathon @6:18–6:26/mi","r","Vaporfly","1×Beta @20 + 1×Caff @50 + 1×Beta @75min"]]},
+days:[["8mi easy","e","Novablast",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["T+M: 1.5mi WU · 2mi T + 2mi M · 1.5mi CD (lighter)","q","Alphafly","1×Beta @20min"],["6mi easy + 6×strides","e","Novablast",null],["4mi easy","e","Novablast",null],["3mi easy + 4×strides — shakeout","e","Novablast",null],["RACE: Half marathon @6:18–6:26/mi","r","Vaporfly","1×Beta @20 + 1×Caff @50 + 1×Beta @75min"]]},
 {n:15,lbl:"Week 15",start:"2026-10-12",ph:"Phase IV — Peak (recovery)",cut:false,mi:46,note:"Recovery from half — standalone MP long run matches exact format of 2024's Sep 15, Sep 29 and Oct 13 sessions that felt so good",
-days:[["5mi very easy","e","Novablast",null],["Sw-A + HC only — no running","s",null,null],["6mi easy + hip circuit","e","Novablast",null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["Standalone MP: 2mi WU · 8mi @M pace · 4mi CD","q","Alphafly","1×Beta @25min + 1×Caff @55min (both during MP block)"]]},
+days:[["5mi very easy","e","Novablast",null],["Sw-A — no running","s",null,null],["6mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["Standalone MP: 2mi WU · 8mi @M pace · 4mi CD","q","Alphafly","1×Beta @25min + 1×Caff @55min (both during MP block)"]]},
 {n:16,lbl:"Week 16",start:"2026-10-19",ph:"Phase IV — Peak (cutback)",cut:true,mi:55,note:"Cutback before peak week · MP volume increased — accepting more risk for specificity",
-days:[["9mi easy + hip circuit","e","Novablast",null],["Lift B-1 (upper body, no swim)","s",null,null],["T: 1.5mi WU · 4mi @T pace continuous · 1.5mi CD","q","Vaporfly",null],["7mi easy + Lift B-2 (lower body)","e","Novablast",null],["8mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["18mi (last 7mi @6:43) — long run","l","Alphafly","2×Beta @30+70 + 1×Caff @85min"]]},
+days:[["9mi easy","e","Novablast",null],["Lift B-1 (upper body, no swim)","s",null,null],["T: 1.5mi WU · 4mi @T pace continuous · 1.5mi CD","q","Vaporfly",null],["7mi easy + Lift B-2 (lower body)","e","Novablast",null],["8mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["18mi (last 7mi @6:43) — long run","l","Alphafly","2×Beta @30+70 + 1×Caff @85min"]]},
 {n:17,lbl:"Week 17",start:"2026-10-26",ph:"Phase IV — Peak (67 miles)",cut:false,mi:67,note:"Peak mileage week — tempo (not MP) midweek; MP increased in long run since that's lower-risk than midweek",
-days:[["13mi easy + hip circuit","e","Nimbus",null],["HC only — no swim","s",null,null],["T: 2mi WU · 6mi @6:20/mi continuous · 2mi CD","q","Vaporfly",null],["9mi easy + 6×strides","e","Novablast",null],["8mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["20mi (last 8mi @6:43) — peak long run","l","Alphafly","3×Beta @25+55+85 + 1×Caff @100min"]]},
+days:[["13mi easy","e","Nimbus",null],[" — no swim","s",null,null],["T: 2mi WU · 6mi @6:20/mi continuous · 2mi CD","q","Vaporfly",null],["9mi easy + 6×strides","e","Novablast",null],["8mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["20mi (last 8mi @6:43) — peak long run","l","Alphafly","3×Beta @25+55+85 + 1×Caff @100min"]]},
 {n:18,lbl:"Week 18",start:"2026-11-02",ph:"Taper — week 1",cut:false,mi:57,note:"MP work concentrated in the long run only — midweek changed to threshold to avoid stacking two MP efforts",
-days:[["9mi easy + hip circuit","e","Novablast",null],["Lift B-1 light (upper body, no swim)","s",null,null],["T: 2mi WU · 6mi @T pace continuous · 2mi CD","q","Vaporfly","1×Beta @25min"],["7mi easy + Lift B-2 (light)","e","Novablast",null],["7mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["18mi (last 10mi @6:43) — long run","l","Alphafly","2×Beta @25+60 (pre-M), then 1×Caff @95 + 1×Beta @125 (during M block)"]]},
+days:[["9mi easy","e","Novablast",null],["Lift B-1 light (upper body, no swim)","s",null,null],["T: 2mi WU · 6mi @T pace continuous · 2mi CD","q","Vaporfly","1×Beta @25min"],["7mi easy + Lift B-2 (light)","e","Novablast",null],["7mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["18mi (last 10mi @6:43) — long run","l","Alphafly","2×Beta @25+60 (pre-M), then 1×Caff @95 + 1×Beta @125 (during M block)"]]},
 {n:19,lbl:"Week 19",start:"2026-11-09",ph:"Taper — week 2",cut:false,mi:41,note:"Sharp taper — legs will feel weird, that's normal",
-days:[["Rest — no swim, no lift","x",null,null],["6mi easy + hip circuit","e","Novablast",null],["M: 1.5mi WU · 3mi @M + 6×strides · 1.5mi CD","q","Alphafly","1×Caff @20min"],["5mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["14mi (last 4mi @6:43) — long run","l","Alphafly","2×Beta @25+65 + 1×Caff @80min"]]},
+days:[["Rest — no swim, no lift","x",null,null],["6mi easy","e","Novablast",null],["M: 1.5mi WU · 3mi @M + 6×strides · 1.5mi CD","q","Alphafly","1×Caff @20min"],["5mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["5mi easy","e","Novablast",null],["14mi (last 4mi @6:43) — long run","l","Alphafly","2×Beta @25+65 + 1×Caff @80min"]]},
 {n:20,lbl:"Week 20",start:"2026-11-16",ph:"Race week",cut:false,mi:"~41",note:"Philadelphia Marathon — Sunday Nov 22 · total includes the 26.2mi race",
 days:[["Rest — no swim, no lift","x",null,null],["4mi very easy","e","Novablast",null],["5mi easy + 4×strides","e","Novablast",null],["4mi very easy","e","Novablast",null],["Rest","x",null,null],["2mi easy + 4×strides — race eve shakeout","e","Novablast",null],["PHILADELPHIA MARATHON · 26.2mi @6:29/mi goal","r","Alphafly","5×Beta + 2×Caff · @20/45/70/90(C)/110/130(C)/150min"]]}
 ];
@@ -538,30 +538,30 @@ const SHOES=[["Novablast","Easy runs ≤9mi"],["Nimbus","Easy 10mi+ · long runs
 const RACES=[["Jul 26","5 mile","6:00–6:10 /mi","Controlled"],["Sep 13","1 mile","5:10–5:20 /mi","All-out"],["Sep 19","10 mile","6:12–6:20 /mi","Controlled"],["Oct 11","Half marathon","6:18–6:26 /mi","Pace decision race"],["Nov 22","Philadelphia Marathon","6:29 /mi","RACE DAY"]];
 
 const LIFT_A=[
-  ["Warm-up","5 min bike + banded lateral walks","Wake glute med before loading"],
-  ["Hip abductor machine","4×15/side, 30s rest (+1 set left)","Primary exercise — most important block"],
-  ["Cable hip abduction","3×12/leg (+1 set left), 45s","Ankle cuff, standing side-on to cable stack"],
-  ["Barbell RDL","4×8, 90s rest","Hinge at hip, soft knee, bar stays close"],
-  ["Leg curl machine","3×12, 60s rest","Hamstring isolation"],
-  ["DB Bulgarian split squat","3×10/leg, 90s","Rear foot elevated on bench"],
-  ["Single-leg leg press","3×10/leg, 60s","Single leg only — bilateral loading aggravates PFPS"],
-  ["Cable glute kickback","3×12/leg, 45s","Ankle cuff, face the stack, extend leg back"],
-  ["SL calf raise","3×15/leg","Machine or weighted step"],
-  ["Side plank","3×45s/side","Core stability"],
-  ["Dead bug","3×8/side","Core stability"]
+ ["Warm-up","5 min bike + banded lateral walks","Wake glute med before loading"],
+ ["Hip abductor machine","4×15/side, 30s rest (+1 set left)","Primary exercise — most important block"],
+ ["Cable hip abduction","3×12/leg (+1 set left), 45s","Ankle cuff, standing side-on to cable stack"],
+ ["Barbell RDL","4×8, 90s rest","Hinge at hip, soft knee, bar stays close"],
+ ["Leg curl machine","3×12, 60s rest","Hamstring isolation"],
+ ["DB Bulgarian split squat","3×10/leg, 90s","Rear foot elevated on bench"],
+ ["Single-leg leg press","3×10/leg, 60s","Single leg only — bilateral loading aggravates PFPS"],
+ ["Cable glute kickback","3×12/leg, 45s","Ankle cuff, face the stack, extend leg back"],
+ ["SL calf raise","3×15/leg","Machine or weighted step"],
+ ["Side plank","3×45s/side","Core stability"],
+ ["Dead bug","3×8/side","Core stability"]
 ];
 const LIFT_B=[
-  ["Warm-up","5 min rowing machine",""],
-  ["Trap-bar deadlift","4×6–8, 2min rest","Primary strength lift — progress weight through the build"],
-  ["Hip abductor machine (lighter)","2×15/side","Maintenance dose"],
-  ["Lat pulldown / cable pull-up","4×10, 60s","Upper back — arm drive and posture"],
-  ["DB bench press","3×10, 60s","Flat or incline"],
-  ["DB step-ups","3×10/leg, 60s","Box at knee height — add weight as you progress"],
-  ["Seated cable row","3×12, 60s","Upper back, posture"],
-  ["Face pulls","3×15, 45s","Rope at face height — shoulder health"],
-  ["DB lateral raise","3×12, 45s","Shoulder health"],
-  ["Pallof press","3×10/side","Cable anti-rotation — core for runners"],
-  ["Plank","3×45s","Core stability"]
+ ["Warm-up","5 min rowing machine",""],
+ ["Trap-bar deadlift","4×6–8, 2min rest","Primary strength lift — progress weight through the build"],
+ ["Hip abductor machine (lighter)","2×15/side","Maintenance dose"],
+ ["Lat pulldown / cable pull-up","4×10, 60s","Upper back — arm drive and posture"],
+ ["DB bench press","3×10, 60s","Flat or incline"],
+ ["DB step-ups","3×10/leg, 60s","Box at knee height — add weight as you progress"],
+ ["Seated cable row","3×12, 60s","Upper back, posture"],
+ ["Face pulls","3×15, 45s","Rope at face height — shoulder health"],
+ ["DB lateral raise","3×12, 45s","Shoulder health"],
+ ["Pallof press","3×10/side","Cable anti-rotation — core for runners"],
+ ["Plank","3×45s","Core stability"]
 ];
 
 // ── VDOT calculation (Daniels & Gilbert) ─────────────────────────
@@ -569,682 +569,682 @@ const LIFT_B=[
 
 // ── Crew comments tab ─────────────────────────────────────────────────────────
 function timeAgo(ts){
-  const d=Date.now()-ts,m=Math.floor(d/60000),h=Math.floor(d/3600000),days=Math.floor(d/86400000);
-  if(m<2)return'just now';if(m<60)return m+'m ago';if(h<24)return h+'h ago';return days+'d ago';
+ const d=Date.now()-ts,m=Math.floor(d/60000),h=Math.floor(d/3600000),days=Math.floor(d/86400000);
+ if(m<2)return'just now';if(m<60)return m+'m ago';if(h<24)return h+'h ago';return days+'d ago';
 }
 
 function renderCrew(){
-  const pane=document.getElementById('pane-crew');
-  const comments=Array.isArray(appData.comments)?appData.comments:[];
-  const savedName=localStorage.getItem('philly_crew_name')||'';
-  pane.innerHTML=`
-    <div class="crew-header">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div class="crew-title">Comments</div>
-          <div class="crew-sub">Leave a message for William · visible to everyone</div>
-        </div>
-        <a href="https://www.paypal.com/donate?business=hoguewd%40gmail.com&currency_code=USD" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#0070BA;color:white;font-family:var(--sans);font-size:12px;font-weight:700;padding:7px 12px;border-radius:4px;text-decoration:none;white-space:nowrap;flex-shrink:0;margin-left:12px">
-          Buy me gels
-        </a>
-      </div>
-    </div>
-    <div class="crew-form">
-      <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:5px">Your name <span style="color:var(--accent)">*</span></label>
-      <input class="crew-inp" id="crew-name" placeholder="Required" maxlength="50" autocomplete="given-name" value="${savedName.replace(/"/g,'&quot;')}" required>
-      <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:5px;margin-top:4px">Message</label>
-      <textarea class="crew-ta" id="crew-msg" placeholder="What's on your mind?" maxlength="500" rows="3"></textarea>
-      <button class="crew-btn" onclick="postComment()">Post</button>
-      <div class="crew-status" id="crew-status"></div>
-    </div>
-    <div class="crew-list">
-      ${comments.length===0?'<div class="crew-empty">No messages yet — be the first</div>':
-        comments.map((c,idx)=>{
-          const replies=(c.replies||[]);
-          return`<div class="crew-comment">
-            <div class="crew-comment-hdr">
-              <span class="crew-name">${c.name||'Anonymous'}</span>
-              <div style="display:flex;align-items:center;gap:10px">
-                <span class="crew-time">${timeAgo(c.ts||0)}</span>
-                ${canWrite()?`<button onclick="deleteComment(${idx})" style="font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0" title="Delete">✕</button>`:''}
-              </div>
-            </div>
-            <div class="crew-msg">${(c.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-            ${replies.map(r=>`<div class="crew-reply">
-              <div class="crew-reply-hdr">
-                <span class="crew-reply-name">${r.name||'Anonymous'}</span>
-                <span class="crew-reply-time">${timeAgo(r.ts||0)}</span>
-              </div>
-              <div class="crew-reply-msg">${(r.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-            </div>`).join('')}
-            <button class="crew-reply-btn" onclick="showReplyForm(${idx})">↩ Reply</button>
-            <div class="crew-reply-form" id="reply-form-${idx}" style="display:none">
-              <input id="reply-name-${idx}" placeholder="Your name (required)" maxlength="50" value="${localStorage.getItem('philly_crew_name')||''}">
-              <textarea id="reply-msg-${idx}" placeholder="Your reply…" maxlength="500" rows="2"></textarea>
-              <div>
-                <button class="crew-reply-submit" onclick="postReply(${idx})">Post reply</button>
-                <button class="crew-reply-cancel" onclick="hideReplyForm(${idx})">Cancel</button>
-              </div>
-              <div class="crew-reply-status" id="reply-status-${idx}"></div>
-            </div>
-          </div>`;
-        }).join('')}
-    </div>`;
+ const pane=document.getElementById('pane-crew');
+ const comments=Array.isArray(appData.comments)?appData.comments:[];
+ const savedName=localStorage.getItem('philly_crew_name')||'';
+ pane.innerHTML=`
+ <div class="crew-header">
+ <div style="display:flex;justify-content:space-between;align-items:flex-start">
+ <div>
+ <div class="crew-title">Comments</div>
+ <div class="crew-sub">Leave a message for William · visible to everyone</div>
+ </div>
+ <a href="https://www.paypal.com/donate?business=hoguewd%40gmail.com&currency_code=USD" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#0070BA;color:white;font-family:var(--sans);font-size:12px;font-weight:700;padding:7px 12px;border-radius:4px;text-decoration:none;white-space:nowrap;flex-shrink:0;margin-left:12px">
+ Buy me gels
+ </a>
+ </div>
+ </div>
+ <div class="crew-form">
+ <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:5px">Your name <span style="color:var(--accent)">*</span></label>
+ <input class="crew-inp" id="crew-name" placeholder="Required" maxlength="50" autocomplete="given-name" value="${savedName.replace(/"/g,'&quot;')}" required>
+ <label style="font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:5px;margin-top:4px">Message</label>
+ <textarea class="crew-ta" id="crew-msg" placeholder="What's on your mind?" maxlength="500" rows="3"></textarea>
+ <button class="crew-btn" onclick="postComment()">Post</button>
+ <div class="crew-status" id="crew-status"></div>
+ </div>
+ <div class="crew-list">
+ ${comments.length===0?'<div class="crew-empty">No messages yet — be the first</div>':
+ comments.map((c,idx)=>{
+ const replies=(c.replies||[]);
+ return`<div class="crew-comment">
+ <div class="crew-comment-hdr">
+ <span class="crew-name">${c.name||'Anonymous'}</span>
+ <div style="display:flex;align-items:center;gap:10px">
+ <span class="crew-time">${timeAgo(c.ts||0)}</span>
+ ${canWrite()?`<button onclick="deleteComment(${idx})" style="font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0" title="Delete">✕</button>`:''}
+ </div>
+ </div>
+ <div class="crew-msg">${(c.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+ ${replies.map(r=>`<div class="crew-reply">
+ <div class="crew-reply-hdr">
+ <span class="crew-reply-name">${r.name||'Anonymous'}</span>
+ <span class="crew-reply-time">${timeAgo(r.ts||0)}</span>
+ </div>
+ <div class="crew-reply-msg">${(r.message||'').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+ </div>`).join('')}
+ <button class="crew-reply-btn" onclick="showReplyForm(${idx})">↩ Reply</button>
+ <div class="crew-reply-form" id="reply-form-${idx}" style="display:none">
+ <input id="reply-name-${idx}" placeholder="Your name (required)" maxlength="50" value="${localStorage.getItem('philly_crew_name')||''}">
+ <textarea id="reply-msg-${idx}" placeholder="Your reply…" maxlength="500" rows="2"></textarea>
+ <div>
+ <button class="crew-reply-submit" onclick="postReply(${idx})">Post reply</button>
+ <button class="crew-reply-cancel" onclick="hideReplyForm(${idx})">Cancel</button>
+ </div>
+ <div class="crew-reply-status" id="reply-status-${idx}"></div>
+ </div>
+ </div>`;
+ }).join('')}
+ </div>`;
 }
 
 
 function showReplyForm(idx){
-  document.querySelectorAll('.crew-reply-form').forEach(f=>f.style.display='none');
-  const f=document.getElementById('reply-form-'+idx);
-  if(f){f.style.display='block';f.querySelector('input')?.focus();}
+ document.querySelectorAll('.crew-reply-form').forEach(f=>f.style.display='none');
+ const f=document.getElementById('reply-form-'+idx);
+ if(f){f.style.display='block';f.querySelector('input')?.focus();}
 }
 function hideReplyForm(idx){
-  const f=document.getElementById('reply-form-'+idx);
-  if(f)f.style.display='none';
+ const f=document.getElementById('reply-form-'+idx);
+ if(f)f.style.display='none';
 }
 
 async function postReply(idx){
-  const nameEl=document.getElementById('reply-name-'+idx);
-  const msgEl=document.getElementById('reply-msg-'+idx);
-  const status=document.getElementById('reply-status-'+idx);
-  const name=(nameEl?.value||'').trim();
-  const message=(msgEl?.value||'').trim();
-  if(!name){nameEl?.focus();status.textContent='Name is required';return;}
-  if(!message){status.textContent='Write something first';return;}
-  status.textContent='Posting…';
-  try{
-    if(canWrite()){
-      await _postReplyDirect(idx,name,message);
-    } else {
-      await _postCommentViaFunction(name,message,idx);
-    }
-    localStorage.setItem('philly_crew_name',name);
-    if(msgEl)msgEl.value='';
-    status.textContent='✓ Posted!';
-    // Refresh
-    try{const r=await fetch(GH_API,{headers:{'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon','Authorization':'Bearer '+ghToken()}});if(r.ok){const file=await r.json();const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));const d=JSON.parse(new TextDecoder().decode(bytes));Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}catch(e){}
-    setTimeout(()=>{hideReplyForm(idx);renderCrew();},800);
-  }catch(e){
-    status.textContent='⚠ '+e.message;
-  }
+ const nameEl=document.getElementById('reply-name-'+idx);
+ const msgEl=document.getElementById('reply-msg-'+idx);
+ const status=document.getElementById('reply-status-'+idx);
+ const name=(nameEl?.value||'').trim();
+ const message=(msgEl?.value||'').trim();
+ if(!name){nameEl?.focus();status.textContent='Name is required';return;}
+ if(!message){status.textContent='Write something first';return;}
+ status.textContent='Posting…';
+ try{
+ if(canWrite()){
+ await _postReplyDirect(idx,name,message);
+ } else {
+ await _postCommentViaFunction(name,message,idx);
+ }
+ localStorage.setItem('philly_crew_name',name);
+ if(msgEl)msgEl.value='';
+ status.textContent='✓ Posted!';
+ // Refresh
+ try{const r=await fetch(GH_API,{headers:{'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon','Authorization':'Bearer '+ghToken()}});if(r.ok){const file=await r.json();const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));const d=JSON.parse(new TextDecoder().decode(bytes));Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}catch(e){}
+ setTimeout(()=>{hideReplyForm(idx);renderCrew();},800);
+ }catch(e){
+ status.textContent='⚠ '+e.message;
+ }
 }
 
 async function _postReplyDirect(idx,name,message){
-  const token=ghToken();
-  const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json','User-Agent':'hoguemarathon'};
-  const r=await fetch(GH_API,{headers});
-  if(!r.ok)throw new Error('Could not load data.json');
-  const file=await r.json();
-  const sha=file.sha;
-  const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
-  const data=JSON.parse(new TextDecoder().decode(bytes));
-  if(!Array.isArray(data.comments[idx].replies))data.comments[idx].replies=[];
-  data.comments[idx].replies.push({name,message,ts:Date.now()});
-  data.updatedAt=Date.now();
-  const json=JSON.stringify(data,null,2);
-  const content=btoa(String.fromCharCode(...new TextEncoder().encode(json)));
-  const put=await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify({message:'Reply from '+name,content,sha})});
-  if(!put.ok){const e=await put.json();throw new Error(e.message||'Write failed');}
-  Object.assign(appData,data);
-  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ const token=ghToken();
+ const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json','User-Agent':'hoguemarathon'};
+ const r=await fetch(GH_API,{headers});
+ if(!r.ok)throw new Error('Could not load data.json');
+ const file=await r.json();
+ const sha=file.sha;
+ const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
+ const data=JSON.parse(new TextDecoder().decode(bytes));
+ if(!Array.isArray(data.comments[idx].replies))data.comments[idx].replies=[];
+ data.comments[idx].replies.push({name,message,ts:Date.now()});
+ data.updatedAt=Date.now();
+ const json=JSON.stringify(data,null,2);
+ const content=btoa(String.fromCharCode(...new TextEncoder().encode(json)));
+ const put=await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify({message:'Reply from '+name,content,sha})});
+ if(!put.ok){const e=await put.json();throw new Error(e.message||'Write failed');}
+ Object.assign(appData,data);
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
 }
 
 function deleteComment(idx){
-  if(!canWrite())return;
-  const pw=prompt('Enter password to delete:');
-  if(pw!=='done')return;
-  if(!Array.isArray(appData.comments))return;
-  appData.comments.splice(idx,1);
-  writeAppData();
-  renderCrew();
+ if(!canWrite())return;
+ const pw=prompt('Enter password to delete:');
+ if(pw!=='done')return;
+ if(!Array.isArray(appData.comments))return;
+ appData.comments.splice(idx,1);
+ writeAppData();
+ renderCrew();
 }
 
 async function postComment(){
-  const nameEl=document.getElementById('crew-name');
-  const msgEl=document.getElementById('crew-msg');
-  const status=document.getElementById('crew-status');
-  const btn=document.querySelector('.crew-btn');
-  const name=(nameEl?.value||'').trim();
-  const message=(msgEl?.value||'').trim();
-  if(!name){document.getElementById('crew-name')?.focus();status.textContent='Name is required ↑';return;}
-  if(!message){status.textContent='Write something first';return;}
-  status.textContent='Posting…';
-  if(btn)btn.disabled=true;
-  try{
-    if(canWrite()){
-      // Token holder: write directly to GitHub
-      await _postCommentDirect(name,message);
-    } else {
-      // Friends: use Cloudflare function
-      await _postCommentViaFunction(name,message);
-    }
-    if(msgEl)msgEl.value='';
-    localStorage.setItem('philly_crew_name',name);
-    status.textContent='✓ Posted!';
-    setTimeout(()=>{status.textContent='';renderCrew();},800);
-  }catch(e){
-    status.textContent='⚠ '+e.message;
-    if(btn)btn.disabled=false;
-  }
+ const nameEl=document.getElementById('crew-name');
+ const msgEl=document.getElementById('crew-msg');
+ const status=document.getElementById('crew-status');
+ const btn=document.querySelector('.crew-btn');
+ const name=(nameEl?.value||'').trim();
+ const message=(msgEl?.value||'').trim();
+ if(!name){document.getElementById('crew-name')?.focus();status.textContent='Name is required ↑';return;}
+ if(!message){status.textContent='Write something first';return;}
+ status.textContent='Posting…';
+ if(btn)btn.disabled=true;
+ try{
+ if(canWrite()){
+ // Token holder: write directly to GitHub
+ await _postCommentDirect(name,message);
+ } else {
+ // Friends: use Cloudflare function
+ await _postCommentViaFunction(name,message);
+ }
+ if(msgEl)msgEl.value='';
+ localStorage.setItem('philly_crew_name',name);
+ status.textContent='✓ Posted!';
+ setTimeout(()=>{status.textContent='';renderCrew();},800);
+ }catch(e){
+ status.textContent='⚠ '+e.message;
+ if(btn)btn.disabled=false;
+ }
 }
 
 async function _postCommentDirect(name,message){
-  const token=ghToken();
-  const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json','User-Agent':'hoguemarathon'};
-  const r=await fetch(GH_API,{headers});
-  if(!r.ok)throw new Error('Could not load data.json');
-  const file=await r.json();
-  const sha=file.sha;
-  const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
-  const data=JSON.parse(new TextDecoder().decode(bytes));
-  if(!Array.isArray(data.comments))data.comments=[];
-  data.comments.unshift({name,message,ts:Date.now()});
-  if(data.comments.length>200)data.comments.length=200;
-  data.updatedAt=Date.now();
-  const json=JSON.stringify(data,null,2);
-  const content=btoa(String.fromCharCode(...new TextEncoder().encode(json)));
-  const put=await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify({message:'Comment from '+name,content,sha})});
-  if(!put.ok){const e=await put.json();throw new Error(e.message||'Write failed');}
-  Object.assign(appData,data);
-  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ const token=ghToken();
+ const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json','User-Agent':'hoguemarathon'};
+ const r=await fetch(GH_API,{headers});
+ if(!r.ok)throw new Error('Could not load data.json');
+ const file=await r.json();
+ const sha=file.sha;
+ const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
+ const data=JSON.parse(new TextDecoder().decode(bytes));
+ if(!Array.isArray(data.comments))data.comments=[];
+ data.comments.unshift({name,message,ts:Date.now()});
+ if(data.comments.length>200)data.comments.length=200;
+ data.updatedAt=Date.now();
+ const json=JSON.stringify(data,null,2);
+ const content=btoa(String.fromCharCode(...new TextEncoder().encode(json)));
+ const put=await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify({message:'Comment from '+name,content,sha})});
+ if(!put.ok){const e=await put.json();throw new Error(e.message||'Write failed');}
+ Object.assign(appData,data);
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
 }
 
 async function _postCommentViaFunction(name,message){
-  let res;
-  try{res=await fetch('/comment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,message})});}
-  catch(e){throw new Error('Could not reach server — check your connection.');}
-  const text=await res.text();
-  let data;
-  try{data=JSON.parse(text);}catch(e){
-    if(res.status===404)throw new Error('Comments service not set up yet.');
-    throw new Error('Server error ('+res.status+')');
-  }
-  if(!data.ok)throw new Error(data.error||'Failed to post');
-  // Refetch to sync
-  try{const r=await fetch(GH_RAW+'?t='+Date.now());if(r.ok){const d=await r.json();Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}catch(e){}
+ let res;
+ try{res=await fetch('/comment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,message})});}
+ catch(e){throw new Error('Could not reach server — check your connection.');}
+ const text=await res.text();
+ let data;
+ try{data=JSON.parse(text);}catch(e){
+ if(res.status===404)throw new Error('Comments service not set up yet.');
+ throw new Error('Server error ('+res.status+')');
+ }
+ if(!data.ok)throw new Error(data.error||'Failed to post');
+ // Refetch to sync
+ try{const r=await fetch(GH_RAW+'?t='+Date.now());if(r.ok){const d=await r.json();Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}}catch(e){}
 }
 
 
 
 // ── Strava Oracle — nudges market odds toward training-implied probabilities ──
 function vdotMaraPaceMins(vdot){
-  // Returns marathon pace in min/mile using Daniels VO2 formula at 82%
-  const target=vdot*0.82;
-  const a=0.000104,b=0.182258,c=-(target+4.60);
-  const v=(-b+Math.sqrt(b*b-4*a*c))/(2*a);
-  return 1609.34/v;
+ // Returns marathon pace in min/mile using Daniels VO2 formula at 82%
+ const target=vdot*0.82;
+ const a=0.000104,b=0.182258,c=-(target+4.60);
+ const v=(-b+Math.sqrt(b*b-4*a*c))/(2*a);
+ return 1609.34/v;
 }
 
 function normCDF(x){
-  const t=1/(1+0.2316419*Math.abs(x));
-  const d=0.3989423*Math.exp(-x*x/2);
-  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.7814779+t*(-1.8212560+t*1.3302744))));
-  return x>0?1-p:p;
+ const t=1/(1+0.2316419*Math.abs(x));
+ const d=0.3989423*Math.exp(-x*x/2);
+ const p=d*t*(0.3193815+t*(-0.3565638+t*(1.7814779+t*(-1.8212560+t*1.3302744))));
+ return x>0?1-p:p;
 }
 
 function stravaImpliedProbs(){
-  const acts=(appData.stravaActivities||[]);
-  const easy=acts.filter(a=>a.mi>3&&a.effort<65&&a.pace>0);
+ const acts=(appData.stravaActivities||[]);
+ const easy=acts.filter(a=>a.mi>3&&a.effort<65&&a.pace>0);
 
-  let vdotEst=workingVDOT;
+ let vdotEst=workingVDOT;
 
-  if(easy.length>=5){
-    // Pace trend: recent 5 vs next 5 — if getting faster, VDOT estimate rises
-    const recentPace=easy.slice(0,5).reduce((s,a)=>s+a.pace,0)/5;
-    const olderSlice=easy.slice(5,10);
-    if(olderSlice.length>=3){
-      const olderPace=olderSlice.reduce((s,a)=>s+a.pace,0)/olderSlice.length;
-      // Each 0.1 min/mi faster ≈ +0.5 VDOT (rough linear)
-      vdotEst=workingVDOT+(olderPace-recentPace)*5;
-    }
-  }
-  // Cap adjustment: Strava can only shift ±2.5 points from working VDOT
-  vdotEst=Math.max(workingVDOT-2.5,Math.min(workingVDOT+2.5,vdotEst));
+ if(easy.length>=5){
+ // Pace trend: recent 5 vs next 5 — if getting faster, VDOT estimate rises
+ const recentPace=easy.slice(0,5).reduce((s,a)=>s+a.pace,0)/5;
+ const olderSlice=easy.slice(5,10);
+ if(olderSlice.length>=3){
+ const olderPace=olderSlice.reduce((s,a)=>s+a.pace,0)/olderSlice.length;
+ // Each 0.1 min/mi faster ≈ +0.5 VDOT (rough linear)
+ vdotEst=workingVDOT+(olderPace-recentPace)*5;
+ }
+ }
+ // Cap adjustment: Strava can only shift ±2.5 points from working VDOT
+ vdotEst=Math.max(workingVDOT-2.5,Math.min(workingVDOT+2.5,vdotEst));
 
-  // Project race-day VDOT (training gains over remaining weeks)
-  const weeksLeft=Math.max(0,(new Date('2026-11-22')-new Date())/(7*864e5));
-  const projectedVDOT=vdotEst+(weeksLeft/20)*3.5; // expect ~3.5 VDOT pts over full cycle
+ // Project race-day VDOT (training gains over remaining weeks)
+ const weeksLeft=Math.max(0,(new Date('2026-11-22')-new Date())/(7*864e5));
+ const projectedVDOT=vdotEst+(weeksLeft/20)*3.5; // expect ~3.5 VDOT pts over full cycle
 
-  // Marathon time from projected VDOT
-  const projMinutes=vdotMaraPaceMins(projectedVDOT)*26.2;
+ // Marathon time from projected VDOT
+ const projMinutes=vdotMaraPaceMins(projectedVDOT)*26.2;
 
-  // Uncertainty: wider early in training, tighter near race day
-  const sigma=7+weeksLeft*0.25;
+ // Uncertainty: wider early in training, tighter near race day
+ const sigma=7+weeksLeft*0.25;
 
-  // Bracket boundaries in minutes: <170, 170-175, 175-180, >180
-  const bounds=[170,175,180];
-  const probs=[
-    normCDF((bounds[0]-projMinutes)/sigma),
-    normCDF((bounds[1]-projMinutes)/sigma)-normCDF((bounds[0]-projMinutes)/sigma),
-    normCDF((bounds[2]-projMinutes)/sigma)-normCDF((bounds[1]-projMinutes)/sigma),
-    1-normCDF((bounds[2]-projMinutes)/sigma),
-  ].map(p=>Math.max(0.03,p));
-  const sum=probs.reduce((a,b)=>a+b,0);
-  return probs.map(p=>p/sum);
+ // Bracket boundaries in minutes: <170, 170-175, 175-180, >180
+ const bounds=[170,175,180];
+ const probs=[
+ normCDF((bounds[0]-projMinutes)/sigma),
+ normCDF((bounds[1]-projMinutes)/sigma)-normCDF((bounds[0]-projMinutes)/sigma),
+ normCDF((bounds[2]-projMinutes)/sigma)-normCDF((bounds[1]-projMinutes)/sigma),
+ 1-normCDF((bounds[2]-projMinutes)/sigma),
+ ].map(p=>Math.max(0.03,p));
+ const sum=probs.reduce((a,b)=>a+b,0);
+ return probs.map(p=>p/sum);
 }
 
 function applyStravaOracle(){
-  if(!(appData.stravaActivities||[]).length)return;
-  const mkt=mktData();
-  const implied=stravaImpliedProbs();
-  const current=lmsrProbs(mkt.q,mkt.b);
-  // Gentle nudge — each sync shifts prices at most ~2-3 percentage points
-  implied.forEach((imp,i)=>{ mkt.q[i]+=(imp-current[i])*6; });
-  mkt.oracleUpdate=Date.now();
-  mkt.oracleVDOT=Math.round(workingVDOT*10)/10;
-  recordHistory();
-  appData.updatedAt=Date.now();
-  _mktWrite();
+ if(!(appData.stravaActivities||[]).length)return;
+ const mkt=mktData();
+ const implied=stravaImpliedProbs();
+ const current=lmsrProbs(mkt.q,mkt.b);
+ // Gentle nudge — each sync shifts prices at most ~2-3 percentage points
+ implied.forEach((imp,i)=>{ mkt.q[i]+=(imp-current[i])*6; });
+ mkt.oracleUpdate=Date.now();
+ mkt.oracleVDOT=Math.round(workingVDOT*10)/10;
+ recordHistory();
+ appData.updatedAt=Date.now();
+ _mktWrite();
 }
 
 // ── Prediction Market (LMSR) ─────────────────────────────────────────────────
 const MKT_B = 20; // liquidity param — higher = less price movement per $
 const MKT_OUTCOMES = ['< 2:50','2:50–2:55','2:55–3:00','> 3:00'];
-const MKT_LABELS   = ['Sub-2:50','2:50–2:55','2:55–3:00','Over 3:00'];
+const MKT_LABELS = ['Sub-2:50','2:50–2:55','2:55–3:00','Over 3:00'];
 const MKT_INIT_BAL = 10;
 
 function mktData(){
-  // Detect stale cache: old equal-odds init had q=[0,0,0,0]
-  const stale=appData.market&&appData.market.q&&appData.market.q.every(v=>v===0);
-  if(!appData.market||stale){
-    appData.market={b:MKT_B,q:[0,12.5,18.6,4.7],resolved:null,trades:[]};
-  }
-  if(!appData.portfolios) appData.portfolios={};
-  return appData.market;
+ // Detect stale cache: old equal-odds init had q=[0,0,0,0]
+ const stale=appData.market&&appData.market.q&&appData.market.q.every(v=>v===0);
+ if(!appData.market||stale){
+ appData.market={b:MKT_B,q:[0,12.5,18.6,4.7],resolved:null,trades:[]};
+ }
+ if(!appData.portfolios) appData.portfolios={};
+ return appData.market;
 }
 
 function mktGetOrCreate(name){
-  if(!appData.portfolios[name]){
-    appData.portfolios[name]={balance:MKT_INIT_BAL,positions:[0,0,0,0],buyCosts:[0,0,0,0]};
-  }
-  return appData.portfolios[name];
+ if(!appData.portfolios[name]){
+ appData.portfolios[name]={balance:MKT_INIT_BAL,positions:[0,0,0,0],buyCosts:[0,0,0,0]};
+ }
+ return appData.portfolios[name];
 }
 
 function lmsrCost(q,b){
-  return b*Math.log(q.reduce((s,qi)=>s+Math.exp(qi/b),0));
+ return b*Math.log(q.reduce((s,qi)=>s+Math.exp(qi/b),0));
 }
 function lmsrProbs(q,b){
-  const exps=q.map(qi=>Math.exp(qi/b));
-  const sum=exps.reduce((a,v)=>a+v,0);
-  return exps.map(e=>e/sum);
+ const exps=q.map(qi=>Math.exp(qi/b));
+ const sum=exps.reduce((a,v)=>a+v,0);
+ return exps.map(e=>e/sum);
 }
 function lmsrBuyCost(q,i,shares,b){
-  const nq=[...q]; nq[i]+=shares;
-  return lmsrCost(nq,b)-lmsrCost(q,b);
+ const nq=[...q]; nq[i]+=shares;
+ return lmsrCost(nq,b)-lmsrCost(q,b);
 }
 function lmsrSellReturn(q,i,shares,b){
-  const nq=[...q]; nq[i]=Math.max(0,nq[i]-shares);
-  return lmsrCost(q,b)-lmsrCost(nq,b);
+ const nq=[...q]; nq[i]=Math.max(0,nq[i]-shares);
+ return lmsrCost(q,b)-lmsrCost(nq,b);
 }
 function lmsrSharesForDollars(q,i,dollars,b){
-  let lo=0,hi=dollars*50;
-  for(let k=0;k<60;k++){
-    const mid=(lo+hi)/2;
-    lmsrBuyCost(q,i,mid,b)<dollars?lo=mid:hi=mid;
-  }
-  return(lo+hi)/2;
+ let lo=0,hi=dollars*50;
+ for(let k=0;k<60;k++){
+ const mid=(lo+hi)/2;
+ lmsrBuyCost(q,i,mid,b)<dollars?lo=mid:hi=mid;
+ }
+ return(lo+hi)/2;
 }
 
 let betName=localStorage.getItem('philly_bet_name')||'';
 
 function saveBetName(){
-  const n=document.getElementById('bet-name-inp')?.value.trim();
-  if(!n)return;
-  betName=n;
-  localStorage.setItem('philly_bet_name',n);
-  mktGetOrCreate(n);
-  _mktWrite();
-  renderBet();
+ const n=document.getElementById('bet-name-inp')?.value.trim();
+ if(!n)return;
+ betName=n;
+ localStorage.setItem('philly_bet_name',n);
+ mktGetOrCreate(n);
+ _mktWrite();
+ renderBet();
 }
 
 function _mktWrite(){
-  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
-  _doGhWrite();
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ _doGhWrite();
 }
 
 
 function recordHistory(){
-  const mkt=mktData();
-  if(!Array.isArray(mkt.history))mkt.history=[];
-  const probs=lmsrProbs(mkt.q,mkt.b);
-  mkt.history.push({ts:Date.now(),probs:[...probs]});
-  if(mkt.history.length>300)mkt.history=mkt.history.slice(-300);
+ const mkt=mktData();
+ if(!Array.isArray(mkt.history))mkt.history=[];
+ const probs=lmsrProbs(mkt.q,mkt.b);
+ mkt.history.push({ts:Date.now(),probs:[...probs]});
+ if(mkt.history.length>300)mkt.history=mkt.history.slice(-300);
 }
 
 function drawOddsChart(canvasId){
-  const canvas=document.getElementById(canvasId);
-  if(!canvas)return;
-  const mkt=mktData();
-  const hist=(mkt.history||[]);
-  // Always include the starting point + current point
-  const starting={ts:(hist[0]?.ts||Date.now())-1000,probs:lmsrProbs([0,12.5,18.6,4.7],mkt.b)};
-  const points=[starting,...hist,{ts:Date.now(),probs:lmsrProbs(mkt.q,mkt.b)}];
-  if(points.length<2)return;
+ const canvas=document.getElementById(canvasId);
+ if(!canvas)return;
+ const mkt=mktData();
+ const hist=(mkt.history||[]);
+ // Always include the starting point + current point
+ const starting={ts:(hist[0]?.ts||Date.now())-1000,probs:lmsrProbs([0,12.5,18.6,4.7],mkt.b)};
+ const points=[starting,...hist,{ts:Date.now(),probs:lmsrProbs(mkt.q,mkt.b)}];
+ if(points.length<2)return;
 
-  const dpr=window.devicePixelRatio||1;
-  const CW=canvas.clientWidth,CH=canvas.clientHeight;
-  canvas.width=CW*dpr;canvas.height=CH*dpr;
-  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+ const dpr=window.devicePixelRatio||1;
+ const CW=canvas.clientWidth,CH=canvas.clientHeight;
+ canvas.width=CW*dpr;canvas.height=CH*dpr;
+ const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
 
-  const isDark=!document.body.classList.contains('light');
-  const gridClr=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
-  const textClr=isDark?'#6B6560':'#888580';
-  const COLORS=['#FF3B24','#5B9BD5','#3FD08A','#F5A623'];
-  const pad={l:36,r:8,t:10,b:28};
-  const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
+ const isDark=!document.body.classList.contains('light');
+ const gridClr=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+ const textClr=isDark?'#6B6560':'#888580';
+ const COLORS=['#FF3B24','#5B9BD5','#3FD08A','#F5A623'];
+ const pad={l:36,r:8,t:10,b:28};
+ const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
 
-  const t0=points[0].ts,t1=points[points.length-1].ts;
-  const xOf=(ts)=>pad.l+(t1===t0?0.5:(ts-t0)/(t1-t0))*w;
-  const yOf=(p)=>pad.t+h-(p*h);
+ const t0=points[0].ts,t1=points[points.length-1].ts;
+ const xOf=(ts)=>pad.l+(t1===t0?0.5:(ts-t0)/(t1-t0))*w;
+ const yOf=(p)=>pad.t+h-(p*h);
 
-  // Grid lines at 0%, 25%, 50%, 75%, 100%
-  [0,0.25,0.5,0.75,1].forEach(p=>{
-    const y=yOf(p);
-    ctx.strokeStyle=gridClr;ctx.lineWidth=0.5;
-    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
-    ctx.fillStyle=textClr;ctx.font=`10px var(--mono,'Courier New',monospace)`;ctx.textAlign='right';
-    ctx.fillText(Math.round(p*100)+'%',pad.l-4,y+3.5);
-  });
+ // Grid lines at 0%, 25%, 50%, 75%, 100%
+ [0,0.25,0.5,0.75,1].forEach(p=>{
+ const y=yOf(p);
+ ctx.strokeStyle=gridClr;ctx.lineWidth=0.5;
+ ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
+ ctx.fillStyle=textClr;ctx.font=`10px var(--mono,'Courier New',monospace)`;ctx.textAlign='right';
+ ctx.fillText(Math.round(p*100)+'%',pad.l-4,y+3.5);
+ });
 
-  // X axis time labels
-  ctx.fillStyle=textClr;ctx.font='9px sans-serif';ctx.textAlign='center';
-  const fmtTs=(ts)=>{const d=new Date(ts);return(d.getMonth()+1)+'/'+(d.getDate());};
-  if(t1>t0){
-    [0,0.5,1].forEach(f=>{
-      const ts=t0+f*(t1-t0);
-      ctx.fillText(fmtTs(ts),xOf(ts),pad.t+h+16);
-    });
-  }
+ // X axis time labels
+ ctx.fillStyle=textClr;ctx.font='9px sans-serif';ctx.textAlign='center';
+ const fmtTs=(ts)=>{const d=new Date(ts);return(d.getMonth()+1)+'/'+(d.getDate());};
+ if(t1>t0){
+ [0,0.5,1].forEach(f=>{
+ const ts=t0+f*(t1-t0);
+ ctx.fillText(fmtTs(ts),xOf(ts),pad.t+h+16);
+ });
+ }
 
-  // Draw lines
-  MKT_OUTCOMES.forEach((_,oi)=>{
-    ctx.beginPath();
-    points.forEach((pt,i)=>{
-      const x=xOf(pt.ts),y=yOf(pt.probs[oi]);
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-    });
-    ctx.strokeStyle=COLORS[oi];ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
-    // Dot at current value
-    const last=points[points.length-1];
-    ctx.beginPath();ctx.arc(xOf(last.ts),yOf(last.probs[oi]),3.5,0,Math.PI*2);
-    ctx.fillStyle=COLORS[oi];ctx.fill();
-  });
+ // Draw lines
+ MKT_OUTCOMES.forEach((_,oi)=>{
+ ctx.beginPath();
+ points.forEach((pt,i)=>{
+ const x=xOf(pt.ts),y=yOf(pt.probs[oi]);
+ i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+ });
+ ctx.strokeStyle=COLORS[oi];ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
+ // Dot at current value
+ const last=points[points.length-1];
+ ctx.beginPath();ctx.arc(xOf(last.ts),yOf(last.probs[oi]),3.5,0,Math.PI*2);
+ ctx.fillStyle=COLORS[oi];ctx.fill();
+ });
 }
 function renderBet(){
-  const pane=document.getElementById('pane-bet');
-  if(!pane)return;
-  const mkt=mktData();
-  const probs=lmsrProbs(mkt.q,mkt.b);
-  const portfolio=betName?mktGetOrCreate(betName):null;
-  const resolved=mkt.resolved;
+ const pane=document.getElementById('pane-bet');
+ if(!pane)return;
+ const mkt=mktData();
+ const probs=lmsrProbs(mkt.q,mkt.b);
+ const portfolio=betName?mktGetOrCreate(betName):null;
+ const resolved=mkt.resolved;
 
-  const outcomeCard=(i)=>{
-    const prob=probs[i];
-    const priceEa=prob.toFixed(2);
-    const pos=portfolio?portfolio.positions[i]:0;
-    const buyCostTotal=portfolio?portfolio.buyCosts[i]:0;
-    const sellVal=pos>0?lmsrSellReturn(mkt.q,i,pos,mkt.b):0;
-    const pnl=pos>0?sellVal-buyCostTotal:0;
-    const isWinner=resolved===i;
-    const winVal=pos>0&&isWinner?pos:0;
+ const outcomeCard=(i)=>{
+ const prob=probs[i];
+ const priceEa=prob.toFixed(2);
+ const pos=portfolio?portfolio.positions[i]:0;
+ const buyCostTotal=portfolio?portfolio.buyCosts[i]:0;
+ const sellVal=pos>0?lmsrSellReturn(mkt.q,i,pos,mkt.b):0;
+ const pnl=pos>0?sellVal-buyCostTotal:0;
+ const isWinner=resolved===i;
+ const winVal=pos>0&&isWinner?pos:0;
 
-    return`<div class="mkt-card${isWinner?' sel':''}">
-      <div class="mkt-card-label">${MKT_LABELS[i]}</div>
-      <div class="mkt-card-time">${MKT_OUTCOMES[i]}</div>
-      <div class="mkt-card-prob">${Math.round(prob*100)}%</div>
-      <div class="mkt-card-price">${(prob*100).toFixed(1)}¢ per share · pays $1 if correct</div>
-      ${pos>0?`<div class="mkt-card-pos">
-        <span class="mkt-card-pos-val">${pos.toFixed(1)} shares</span>
-        ${resolved!==null
-          ?(isWinner?`<div class="mkt-card-pos-pnl up">Won $${winVal.toFixed(2)}!</div>`:`<div class="mkt-card-pos-pnl dn">Lost</div>`)
-          :`<div class="mkt-card-pos-pnl ${pnl>=0?'up':'dn'}">${pnl>=0?'+':'-'}$${Math.abs(pnl).toFixed(2)} current P&L</div>`}
-        ${resolved===null&&pos>0?`<button class="mkt-sell-btn" onclick="cashOut(${i})">Cash out $${sellVal.toFixed(2)}</button>`:''}
-      </div>`:''}
-      ${resolved===null&&betName?`<div class="mkt-bet-inp">
-        <input class="mkt-bet-input" id="bet-inp-${i}" type="number" placeholder="$" min="0.50" step="0.50" oninput="betPreview(${i})">
-        <button class="mkt-buy-btn" onclick="placeBet(${i})">Buy</button>
-      </div>
-      <div class="mkt-preview" id="bet-prev-${i}"></div>`:''}
-    </div>`;
-  };
+ return`<div class="mkt-card${isWinner?' sel':''}">
+ <div class="mkt-card-label">${MKT_LABELS[i]}</div>
+ <div class="mkt-card-time">${MKT_OUTCOMES[i]}</div>
+ <div class="mkt-card-prob">${Math.round(prob*100)}%</div>
+ <div class="mkt-card-price">${(prob*100).toFixed(1)}¢ per share · pays $1 if correct</div>
+ ${pos>0?`<div class="mkt-card-pos">
+ <span class="mkt-card-pos-val">${pos.toFixed(1)} shares</span>
+ ${resolved!==null
+ ?(isWinner?`<div class="mkt-card-pos-pnl up">Won $${winVal.toFixed(2)}!</div>`:`<div class="mkt-card-pos-pnl dn">Lost</div>`)
+ :`<div class="mkt-card-pos-pnl ${pnl>=0?'up':'dn'}">${pnl>=0?'+':'-'}$${Math.abs(pnl).toFixed(2)} current P&L</div>`}
+ ${resolved===null&&pos>0?`<button class="mkt-sell-btn" onclick="cashOut(${i})">Cash out $${sellVal.toFixed(2)}</button>`:''}
+ </div>`:''}
+ ${resolved===null&&betName?`<div class="mkt-bet-inp">
+ <input class="mkt-bet-input" id="bet-inp-${i}" type="number" placeholder="$" min="0.50" step="0.50" oninput="betPreview(${i})">
+ <button class="mkt-buy-btn" onclick="placeBet(${i})">Buy</button>
+ </div>
+ <div class="mkt-preview" id="bet-prev-${i}"></div>`:''}
+ </div>`;
+ };
 
-  const trades=(mkt.trades||[]).slice(0,8).map(t=>`
-    <div class="mkt-trade-row">
-      <span><span class="mkt-trade-name">${t.name}</span> ${t.type==='sell'?'sold':'bet'} $${t.amt.toFixed(2)} on ${MKT_OUTCOMES[t.outcome]}</span>
-      <span>${t.shares.toFixed(1)} shares @ ${(t.price*100).toFixed(0)}¢</span>
-    </div>`).join('');
+ const trades=(mkt.trades||[]).slice(0,8).map(t=>`
+ <div class="mkt-trade-row">
+ <span><span class="mkt-trade-name">${t.name}</span> ${t.type==='sell'?'sold':'bet'} $${t.amt.toFixed(2)} on ${MKT_OUTCOMES[t.outcome]}</span>
+ <span>${t.shares.toFixed(1)} shares @ ${(t.price*100).toFixed(0)}¢</span>
+ </div>`).join('');
 
-  // Leaderboard — total portfolio value
-  const lb=Object.entries(appData.portfolios||{}).map(([name,p])=>{
-    let totalVal=p.balance;
-    if(resolved!==null){
-      totalVal+=p.positions[resolved]||0;
-    } else {
-      p.positions.forEach((sh,i)=>{
-        if(sh>0)totalVal+=lmsrSellReturn(mkt.q,i,sh,mkt.b);
-      });
-    }
-    return{name,totalVal,balance:p.balance};
-  }).sort((a,b)=>b.totalVal-a.totalVal).slice(0,8);
+ // Leaderboard — total portfolio value
+ const lb=Object.entries(appData.portfolios||{}).map(([name,p])=>{
+ let totalVal=p.balance;
+ if(resolved!==null){
+ totalVal+=p.positions[resolved]||0;
+ } else {
+ p.positions.forEach((sh,i)=>{
+ if(sh>0)totalVal+=lmsrSellReturn(mkt.q,i,sh,mkt.b);
+ });
+ }
+ return{name,totalVal,balance:p.balance};
+ }).sort((a,b)=>b.totalVal-a.totalVal).slice(0,8);
 
-  pane.innerHTML=`<div class="mkt-wrap">
-  <div class="mkt-hdr">
-    <div class="mkt-title">Philadelphia Marathon Market</div>
-    <div class="mkt-sub">Predict William's finish time · Everyone gets $10 of play money · Payouts after Nov 22</div>
-    <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5">Odds calibrated from Strava training data · market updates after each Strava sync · ${appData.market?.oracleUpdate?`Last oracle update: ${timeAgo(appData.market.oracleUpdate)} · VDOT ${appData.market.oracleVDOT||workingVDOT}`:'Sync Strava to update'}</div>
-  </div>
+ pane.innerHTML=`<div class="mkt-wrap">
+ <div class="mkt-hdr">
+ <div class="mkt-title">Philadelphia Marathon Market</div>
+ <div class="mkt-sub">Predict William's finish time · Everyone gets $10 of play money · Payouts after Nov 22</div>
+ <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5">Odds calibrated from Strava training data · market updates after each Strava sync · ${appData.market?.oracleUpdate?`Last oracle update: ${timeAgo(appData.market.oracleUpdate)} · VDOT ${appData.market.oracleVDOT||workingVDOT}`:'Sync Strava to update'}</div>
+ </div>
 
-  ${resolved!==null?`<div class="mkt-resolved">🏁 Market resolved — winning outcome: <strong>${MKT_OUTCOMES[resolved]}</strong>${canWrite()&&resolved===null?'':''}</div>`:''}
+ ${resolved!==null?`<div class="mkt-resolved">🏁 Market resolved — winning outcome: <strong>${MKT_OUTCOMES[resolved]}</strong>${canWrite()&&resolved===null?'':''}</div>`:''}
 
-  <div class="mkt-bal-bar">
-    <div class="mkt-bal">${betName?`$${(portfolio?.balance||0).toFixed(2)} balance`:'Enter your name to play'}</div>
-    <div class="mkt-name-row">
-      <button onclick="(async()=>{document.getElementById('mkt-status').textContent='Refreshing…';await loadAppData();renderBet();})()" style="font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;padding:4px 8px;font-family:var(--sans)">↻ Refresh</button>
-      <input class="mkt-name-inp" id="bet-name-inp" placeholder="Your name" value="${betName}" maxlength="30">
-      <button class="mkt-name-btn" onclick="saveBetName()">${betName?'Switch':'Play →'}</button>
-    </div>
-  </div>
+ <div class="mkt-bal-bar">
+ <div class="mkt-bal">${betName?`$${(portfolio?.balance||0).toFixed(2)} balance`:'Enter your name to play'}</div>
+ <div class="mkt-name-row">
+ <button onclick="(async()=>{document.getElementById('mkt-status').textContent='Refreshing…';await loadAppData();renderBet();})()" style="font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;padding:4px 8px;font-family:var(--sans)">↻ Refresh</button>
+ <input class="mkt-name-inp" id="bet-name-inp" placeholder="Your name" value="${betName}" maxlength="30">
+ <button class="mkt-name-btn" onclick="saveBetName()">${betName?'Switch':'Play →'}</button>
+ </div>
+ </div>
 
-  <div class="mkt-grid">${[0,1,2,3].map(outcomeCard).join('')}</div>
+ <div class="mkt-grid">${[0,1,2,3].map(outcomeCard).join('')}</div>
 
-  <div class="mkt-status" id="mkt-status"></div>
+ <div class="mkt-status" id="mkt-status"></div>
 
-  ${canWrite()&&resolved===null?`<div style="padding:8px 18px;border-top:1px solid var(--border)">
-    <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Admin: resolve market after Nov 22</div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap">
-      ${MKT_OUTCOMES.map((o,i)=>`<button onclick="resolveMarket(${i})" style="font-size:12px;padding:5px 10px;cursor:pointer;background:var(--card2);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);border-radius:3px">Resolve: ${o}</button>`).join('')}
-    </div>
-  </div>`:''}
+ ${canWrite()&&resolved===null?`<div style="padding:8px 18px;border-top:1px solid var(--border)">
+ <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Admin: resolve market after Nov 22</div>
+ <div style="display:flex;gap:6px;flex-wrap:wrap">
+ ${MKT_OUTCOMES.map((o,i)=>`<button onclick="resolveMarket(${i})" style="font-size:12px;padding:5px 10px;cursor:pointer;background:var(--card2);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);border-radius:3px">Resolve: ${o}</button>`).join('')}
+ </div>
+ </div>`:''}
 
-  ${trades?`<div class="mkt-activity">
-    <div class="mkt-activity-title">Recent activity</div>
-    ${trades}
-  </div>`:''}
+ ${trades?`<div class="mkt-activity">
+ <div class="mkt-activity-title">Recent activity</div>
+ ${trades}
+ </div>`:''}
 
-  ${lb.length?`<div class="mkt-leaderboard">
-    <div class="mkt-activity-title">Leaderboard</div>
-    ${lb.map((p,rank)=>`<div class="mkt-lb-row">
-      <span class="mkt-lb-name">${rank+1}. ${p.name}</span>
-      <span class="mkt-lb-val">$${p.totalVal.toFixed(2)} total value</span>
-    </div>`).join('')}
-  </div>`:''}
-  <div style="padding:14px 18px 0;border-top:1px solid var(--border)">
-    <div class="mkt-activity-title">Odds over time</div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;font-size:11px">
-      ${MKT_OUTCOMES.map((o,i)=>`<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;border-radius:2px;display:inline-block;background:${['#FF3B24','#5B9BD5','#3FD08A','#F5A623'][i]}"></span>${o}</span>`).join('')}
-    </div>
-    <canvas id="odds-chart" style="width:100%;height:180px;display:block"></canvas>
-  </div>
-  </div>`;
-  setTimeout(()=>drawOddsChart('odds-chart'),30);
+ ${lb.length?`<div class="mkt-leaderboard">
+ <div class="mkt-activity-title">Leaderboard</div>
+ ${lb.map((p,rank)=>`<div class="mkt-lb-row">
+ <span class="mkt-lb-name">${rank+1}. ${p.name}</span>
+ <span class="mkt-lb-val">$${p.totalVal.toFixed(2)} total value</span>
+ </div>`).join('')}
+ </div>`:''}
+ <div style="padding:14px 18px 0;border-top:1px solid var(--border)">
+ <div class="mkt-activity-title">Odds over time</div>
+ <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;font-size:11px">
+ ${MKT_OUTCOMES.map((o,i)=>`<span style="display:flex;align-items:center;gap:4px"><span style="width:12px;height:3px;border-radius:2px;display:inline-block;background:${['#FF3B24','#5B9BD5','#3FD08A','#F5A623'][i]}"></span>${o}</span>`).join('')}
+ </div>
+ <canvas id="odds-chart" style="width:100%;height:180px;display:block"></canvas>
+ </div>
+ </div>`;
+ setTimeout(()=>drawOddsChart('odds-chart'),30);
 }
 
 function betPreview(i){
-  const mkt=mktData();
-  const inp=document.getElementById('bet-inp-'+i);
-  const prev=document.getElementById('bet-prev-'+i);
-  if(!inp||!prev)return;
-  const dollars=parseFloat(inp.value)||0;
-  if(dollars<=0){prev.textContent='';return;}
-  const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
-  const probs=lmsrProbs(mkt.q,mkt.b);
-  prev.textContent=`→ ${shares.toFixed(1)} shares at ${(probs[i]*100).toFixed(1)}¢ each`;
+ const mkt=mktData();
+ const inp=document.getElementById('bet-inp-'+i);
+ const prev=document.getElementById('bet-prev-'+i);
+ if(!inp||!prev)return;
+ const dollars=parseFloat(inp.value)||0;
+ if(dollars<=0){prev.textContent='';return;}
+ const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
+ const probs=lmsrProbs(mkt.q,mkt.b);
+ prev.textContent=`→ ${shares.toFixed(1)} shares at ${(probs[i]*100).toFixed(1)}¢ each`;
 }
 
 async function _mktApiCall(payload, retries=2){
-  // Token holders write directly; friends use Cloudflare function
-  if(canWrite()){
-    // Apply locally and write direct
-    return true; // handled by caller
-  }
-  for(let attempt=0; attempt<=retries; attempt++){
-    try{
-      const res=await fetch('/bet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-      const data=await res.json();
-      if(data.retry&&attempt<retries){await new Promise(r=>setTimeout(r,500+attempt*500));continue;}
-      if(!data.ok)throw new Error(data.error||'Bet failed');
-      // Sync fresh data back
-      if(data.newQ)appData.market.q=data.newQ;
-      if(data.portfolio&&payload.name)appData.portfolios[payload.name]=data.portfolio;
-      // Full refresh from GitHub
-      try{
-        const r=await fetch(GH_API,{headers:{'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon'}});
-        if(r.ok){const file=await r.json();const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));const d=JSON.parse(new TextDecoder().decode(bytes));Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}
-      }catch(e){}
-      return true;
-    }catch(e){if(attempt===retries)throw e;}
-  }
+ // Token holders write directly; friends use Cloudflare function
+ if(canWrite()){
+ // Apply locally and write direct
+ return true; // handled by caller
+ }
+ for(let attempt=0; attempt<=retries; attempt++){
+ try{
+ const res=await fetch('/bet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+ const data=await res.json();
+ if(data.retry&&attempt<retries){await new Promise(r=>setTimeout(r,500+attempt*500));continue;}
+ if(!data.ok)throw new Error(data.error||'Bet failed');
+ // Sync fresh data back
+ if(data.newQ)appData.market.q=data.newQ;
+ if(data.portfolio&&payload.name)appData.portfolios[payload.name]=data.portfolio;
+ // Full refresh from GitHub
+ try{
+ const r=await fetch(GH_API,{headers:{'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon'}});
+ if(r.ok){const file=await r.json();const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));const d=JSON.parse(new TextDecoder().decode(bytes));Object.assign(appData,d);localStorage.setItem('philly_app_cache',JSON.stringify(appData));}
+ }catch(e){}
+ return true;
+ }catch(e){if(attempt===retries)throw e;}
+ }
 }
 
 async function placeBet(i){
-  const mkt=mktData();
-  const status=document.getElementById('mkt-status');
-  if(!betName){status.textContent='Enter your name first';return;}
-  const inp=document.getElementById('bet-inp-'+i);
-  const dollars=parseFloat(inp?.value)||0;
-  if(dollars<0.50){status.textContent='Minimum bet is $0.50';return;}
-  const portfolio=mktGetOrCreate(betName);
-  if(dollars>portfolio.balance){status.textContent=`Not enough balance (have $${portfolio.balance.toFixed(2)})`;return;}
+ const mkt=mktData();
+ const status=document.getElementById('mkt-status');
+ if(!betName){status.textContent='Enter your name first';return;}
+ const inp=document.getElementById('bet-inp-'+i);
+ const dollars=parseFloat(inp?.value)||0;
+ if(dollars<0.50){status.textContent='Minimum bet is $0.50';return;}
+ const portfolio=mktGetOrCreate(betName);
+ if(dollars>portfolio.balance){status.textContent=`Not enough balance (have $${portfolio.balance.toFixed(2)})`;return;}
 
-  const btn=inp?.nextElementSibling;
-  if(btn)btn.disabled=true;
-  status.textContent='Placing bet…';
+ const btn=inp?.nextElementSibling;
+ if(btn)btn.disabled=true;
+ status.textContent='Placing bet…';
 
-  try{
-    if(canWrite()){
-      // Direct write
-      const probs=lmsrProbs(mkt.q,mkt.b);
-      const price=probs[i];
-      const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
-      const actualCost=lmsrBuyCost(mkt.q,i,shares,mkt.b);
-      mkt.q[i]+=shares;
-      portfolio.balance-=actualCost;
-      portfolio.positions[i]=(portfolio.positions[i]||0)+shares;
-      portfolio.buyCosts[i]=(portfolio.buyCosts[i]||0)+actualCost;
-      mkt.trades.unshift({name:betName,outcome:i,shares,amt:actualCost,price,type:'buy',ts:Date.now()});
-      if(mkt.trades.length>50)mkt.trades.length=50;
-      recordHistory();
-      appData.updatedAt=Date.now();
-      _mktWrite();
-      status.textContent=`✓ Bought ${shares.toFixed(1)} shares at ${(price*100).toFixed(0)}¢`;
-    } else {
-      await _mktApiCall({name:betName,outcome:i,dollars,action:'buy'});
-      status.textContent='✓ Bet placed!';
-    }
-    if(inp)inp.value='';
-    renderBet();
-  }catch(e){
-    status.textContent='⚠ '+e.message;
-    if(btn)btn.disabled=false;
-  }
+ try{
+ if(canWrite()){
+ // Direct write
+ const probs=lmsrProbs(mkt.q,mkt.b);
+ const price=probs[i];
+ const shares=lmsrSharesForDollars(mkt.q,i,dollars,mkt.b);
+ const actualCost=lmsrBuyCost(mkt.q,i,shares,mkt.b);
+ mkt.q[i]+=shares;
+ portfolio.balance-=actualCost;
+ portfolio.positions[i]=(portfolio.positions[i]||0)+shares;
+ portfolio.buyCosts[i]=(portfolio.buyCosts[i]||0)+actualCost;
+ mkt.trades.unshift({name:betName,outcome:i,shares,amt:actualCost,price,type:'buy',ts:Date.now()});
+ if(mkt.trades.length>50)mkt.trades.length=50;
+ recordHistory();
+ appData.updatedAt=Date.now();
+ _mktWrite();
+ status.textContent=`✓ Bought ${shares.toFixed(1)} shares at ${(price*100).toFixed(0)}¢`;
+ } else {
+ await _mktApiCall({name:betName,outcome:i,dollars,action:'buy'});
+ status.textContent='✓ Bet placed!';
+ }
+ if(inp)inp.value='';
+ renderBet();
+ }catch(e){
+ status.textContent='⚠ '+e.message;
+ if(btn)btn.disabled=false;
+ }
 }
 
 async function cashOut(i){
-  const mkt=mktData();
-  const status=document.getElementById('mkt-status');
-  if(!betName)return;
-  const portfolio=mktGetOrCreate(betName);
-  const shares=portfolio.positions[i]||0;
-  if(shares<=0){status.textContent='No shares to sell';return;}
-  status.textContent='Selling…';
+ const mkt=mktData();
+ const status=document.getElementById('mkt-status');
+ if(!betName)return;
+ const portfolio=mktGetOrCreate(betName);
+ const shares=portfolio.positions[i]||0;
+ if(shares<=0){status.textContent='No shares to sell';return;}
+ status.textContent='Selling…';
 
-  try{
-    if(canWrite()){
-      const probs=lmsrProbs(mkt.q,mkt.b);
-      const price=probs[i];
-      const sellReturn=lmsrSellReturn(mkt.q,i,shares,mkt.b);
-      mkt.q[i]=Math.max(0,mkt.q[i]-shares);
-      portfolio.balance+=sellReturn;
-      portfolio.positions[i]=0;
-      portfolio.buyCosts[i]=0;
-      mkt.trades.unshift({name:betName,outcome:i,shares,amt:sellReturn,price,type:'sell',ts:Date.now()});
-      if(mkt.trades.length>50)mkt.trades.length=50;
-      recordHistory();
-      appData.updatedAt=Date.now();
-      _mktWrite();
-      status.textContent=`✓ Sold for $${sellReturn.toFixed(2)}`;
-    } else {
-      await _mktApiCall({name:betName,outcome:i,action:'sell'});
-      status.textContent='✓ Cashed out!';
-    }
-    renderBet();
-  }catch(e){
-    status.textContent='⚠ '+e.message;
-  }
+ try{
+ if(canWrite()){
+ const probs=lmsrProbs(mkt.q,mkt.b);
+ const price=probs[i];
+ const sellReturn=lmsrSellReturn(mkt.q,i,shares,mkt.b);
+ mkt.q[i]=Math.max(0,mkt.q[i]-shares);
+ portfolio.balance+=sellReturn;
+ portfolio.positions[i]=0;
+ portfolio.buyCosts[i]=0;
+ mkt.trades.unshift({name:betName,outcome:i,shares,amt:sellReturn,price,type:'sell',ts:Date.now()});
+ if(mkt.trades.length>50)mkt.trades.length=50;
+ recordHistory();
+ appData.updatedAt=Date.now();
+ _mktWrite();
+ status.textContent=`✓ Sold for $${sellReturn.toFixed(2)}`;
+ } else {
+ await _mktApiCall({name:betName,outcome:i,action:'sell'});
+ status.textContent='✓ Cashed out!';
+ }
+ renderBet();
+ }catch(e){
+ status.textContent='⚠ '+e.message;
+ }
 }
 
 async function resolveMarket(i){
-  if(!canWrite())return;
-  const pw=prompt('Password to resolve:');
-  if(pw!=='done')return;
-  const mkt=mktData();
-  mkt.resolved=i;
-  // Pay out winners
-  Object.entries(appData.portfolios||{}).forEach(([name,p])=>{
-    const winShares=p.positions[i]||0;
-    if(winShares>0){
-      p.balance+=winShares;
-      p.positions[i]=0;
-    }
-  });
-  appData.updatedAt=Date.now();
-  _mktWrite();
-  renderBet();
+ if(!canWrite())return;
+ const pw=prompt('Password to resolve:');
+ if(pw!=='done')return;
+ const mkt=mktData();
+ mkt.resolved=i;
+ // Pay out winners
+ Object.entries(appData.portfolios||{}).forEach(([name,p])=>{
+ const winShares=p.positions[i]||0;
+ if(winShares>0){
+ p.balance+=winShares;
+ p.positions[i]=0;
+ }
+ });
+ appData.updatedAt=Date.now();
+ _mktWrite();
+ renderBet();
 }
 
 // ── Swipe to switch tabs ──────────────────────────────────────────────────────
 (()=>{
-  let _sx=null,_sy=null;
-  const content=document.querySelector('.content');
-  if(!content)return;
-  content.addEventListener('touchstart',e=>{
-    _sx=e.touches[0].clientX;
-    _sy=e.touches[0].clientY;
-  },{passive:true});
-  content.addEventListener('touchend',e=>{
-    if(_sx===null)return;
-    const dx=e.changedTouches[0].clientX-_sx;
-    const dy=e.changedTouches[0].clientY-_sy;
-    _sx=null;_sy=null;
-    // Only horizontal swipes, with enough distance and dominant direction
-    if(Math.abs(dx)<50||Math.abs(dx)<Math.abs(dy)*1.5)return;
-    const tabs=[...document.querySelectorAll('.tab')];
-    const cur=tabs.findIndex(t=>t.classList.contains('on'));
-    const next=dx<0?cur+1:cur-1;
-    if(next<0||next>=tabs.length)return;
-    tabs[next].click();
-  },{passive:true});
+ let _sx=null,_sy=null;
+ const content=document.querySelector('.content');
+ if(!content)return;
+ content.addEventListener('touchstart',e=>{
+ _sx=e.touches[0].clientX;
+ _sy=e.touches[0].clientY;
+ },{passive:true});
+ content.addEventListener('touchend',e=>{
+ if(_sx===null)return;
+ const dx=e.changedTouches[0].clientX-_sx;
+ const dy=e.changedTouches[0].clientY-_sy;
+ _sx=null;_sy=null;
+ // Only horizontal swipes, with enough distance and dominant direction
+ if(Math.abs(dx)<50||Math.abs(dx)<Math.abs(dy)*1.5)return;
+ const tabs=[...document.querySelectorAll('.tab')];
+ const cur=tabs.findIndex(t=>t.classList.contains('on'));
+ const next=dx<0?cur+1:cur-1;
+ if(next<0||next>=tabs.length)return;
+ tabs[next].click();
+ },{passive:true});
 })();
 
 // ── Cross-device sync via GitHub ──────────────────────────────
 const GH_REPO = 'hoguewd/hoguemarathon';
-const GH_DATA  = 'data.json';
-const GH_RAW   = `https://raw.githubusercontent.com/${GH_REPO}/main/${GH_DATA}`;
-const GH_API   = `https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA}`;
+const GH_DATA = 'data.json';
+const GH_RAW = `https://raw.githubusercontent.com/${GH_REPO}/main/${GH_DATA}`;
+const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA}`;
 
 let appData = {
-  v:1, notes:{}, dayEdits:{}, dayOrders:{}, done:{},
-  vdot:55, stravaActuals:{}, stravaActivities:[], stravaLastSync:0, updatedAt:0
+ v:1, notes:{}, dayEdits:{}, dayOrders:{}, done:{},
+ vdot:55, stravaActuals:{}, stravaActivities:[], stravaLastSync:0, updatedAt:0
 };
 
 function ghToken(){ return localStorage.getItem('philly_gh_token')||''; }
@@ -1253,288 +1253,288 @@ function canWrite(){ return !!ghToken(); }
 // Debounced GitHub write
 let _ghTimer=null;
 function writeAppData(){
-  // Instant local cache
-  localStorage.setItem('philly_app_cache', JSON.stringify(appData));
-  if(!canWrite()) return;
-  clearTimeout(_ghTimer);
-  _ghTimer=setTimeout(_doGhWrite, 1500);
+ // Instant local cache
+ localStorage.setItem('philly_app_cache', JSON.stringify(appData));
+ if(!canWrite()) return;
+ clearTimeout(_ghTimer);
+ _ghTimer=setTimeout(_doGhWrite, 1500);
 }
 
 async function _doGhWrite(){
-  const token=ghToken();
-  if(!token){
-    // No token — use Cloudflare /sync function instead
-    // Only send fields that change on-device (not market/comments which have own functions)
-    const patch={
-      done:appData.done||{},
-      notes:appData.notes||{},
-      dayEdits:appData.dayEdits||{},
-      dayOrders:appData.dayOrders||{},
-      vdot:appData.vdot||null,
-      stravaActuals:appData.stravaActuals||{},
-      stravaActivities:appData.stravaActivities||[],
-      stravaLastSync:appData.stravaLastSync||0,
-    };
-    try{
-      const res=await fetch('/sync',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({patch})});
-      const d=await res.json();
-      if(d.retry){
-        // Conflict — retry once after a short delay
-        await new Promise(r=>setTimeout(r,800));
-        await _doGhWrite();
-      }
-    }catch(e){ /* silent fail */ }
-    return;
-  }
-  const body=JSON.stringify({...appData, updatedAt:Date.now()}, null, 2);
-  const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};
-  try{
-    let sha=null;
-    const r=await fetch(GH_API,{headers});
-    if(r.ok){ const d=await r.json(); sha=d.sha; }
-    const payload={message:'Sync app data',content:btoa(unescape(encodeURIComponent(body)))};
-    if(sha)payload.sha=sha;
-    await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify(payload)});
-  }catch(e){ /* silent fail — data stays in cache */ }
+ const token=ghToken();
+ if(!token){
+ // No token — use Cloudflare /sync function instead
+ // Only send fields that change on-device (not market/comments which have own functions)
+ const patch={
+ done:appData.done||{},
+ notes:appData.notes||{},
+ dayEdits:appData.dayEdits||{},
+ dayOrders:appData.dayOrders||{},
+ vdot:appData.vdot||null,
+ stravaActuals:appData.stravaActuals||{},
+ stravaActivities:appData.stravaActivities||[],
+ stravaLastSync:appData.stravaLastSync||0,
+ };
+ try{
+ const res=await fetch('/sync',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({patch})});
+ const d=await res.json();
+ if(d.retry){
+ // Conflict — retry once after a short delay
+ await new Promise(r=>setTimeout(r,800));
+ await _doGhWrite();
+ }
+ }catch(e){ /* silent fail */ }
+ return;
+ }
+ const body=JSON.stringify({...appData, updatedAt:Date.now()}, null, 2);
+ const headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};
+ try{
+ let sha=null;
+ const r=await fetch(GH_API,{headers});
+ if(r.ok){ const d=await r.json(); sha=d.sha; }
+ const payload={message:'Sync app data',content:btoa(unescape(encodeURIComponent(body)))};
+ if(sha)payload.sha=sha;
+ await fetch(GH_API,{method:'PUT',headers,body:JSON.stringify(payload)});
+ }catch(e){ /* silent fail — data stays in cache */ }
 }
 
 async function loadAppData(){
-  // 1. Load from localStorage cache immediately (fast, enables offline)
-  try{
-    const cached=localStorage.getItem('philly_app_cache');
-    if(cached){ const c=JSON.parse(cached); Object.assign(appData,c); applyAppData(); }
-  }catch(e){}
+ // 1. Load from localStorage cache immediately (fast, enables offline)
+ try{
+ const cached=localStorage.getItem('philly_app_cache');
+ if(cached){ const c=JSON.parse(cached); Object.assign(appData,c); applyAppData(); }
+ }catch(e){}
 
-  // 2. Fetch fresh via GitHub API (no CDN cache — always current)
-  try{
-    const headers={'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon'};
-    if(ghToken())headers['Authorization']='Bearer '+ghToken();
-    const r=await fetch(GH_API,{headers});
-    if(r.ok){
-      const file=await r.json();
-      const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
-      const d=JSON.parse(new TextDecoder().decode(bytes));
-      if(d.updatedAt>=(appData.updatedAt||0)){
-        Object.assign(appData,d);
-        applyAppData();
-        localStorage.setItem('philly_app_cache',JSON.stringify(appData));
-        renderToday();renderPlan();renderStats();
-        if(document.getElementById('pane-crew')?.classList.contains('on'))renderCrew();
-        if(document.getElementById('pane-bet')?.classList.contains('on'))renderBet();
-      }
-    }
-  }catch(e){
-    // Fallback to raw URL if API fails
-    try{
-      const r=await fetch(GH_RAW+'?t='+Date.now());
-      if(r.ok){const d=await r.json();if(d.updatedAt>=(appData.updatedAt||0)){Object.assign(appData,d);applyAppData();localStorage.setItem('philly_app_cache',JSON.stringify(appData));renderToday();renderPlan();renderStats();}}
-    }catch(e2){}
-  }
+ // 2. Fetch fresh via GitHub API (no CDN cache — always current)
+ try{
+ const headers={'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'hoguemarathon'};
+ if(ghToken())headers['Authorization']='Bearer '+ghToken();
+ const r=await fetch(GH_API,{headers});
+ if(r.ok){
+ const file=await r.json();
+ const bytes=Uint8Array.from(atob(file.content.replace(/\n/g,'')),c=>c.charCodeAt(0));
+ const d=JSON.parse(new TextDecoder().decode(bytes));
+ if(d.updatedAt>=(appData.updatedAt||0)){
+ Object.assign(appData,d);
+ applyAppData();
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ renderToday();renderPlan();renderStats();
+ if(document.getElementById('pane-crew')?.classList.contains('on'))renderCrew();
+ if(document.getElementById('pane-bet')?.classList.contains('on'))renderBet();
+ }
+ }
+ }catch(e){
+ // Fallback to raw URL if API fails
+ try{
+ const r=await fetch(GH_RAW+'?t='+Date.now());
+ if(r.ok){const d=await r.json();if(d.updatedAt>=(appData.updatedAt||0)){Object.assign(appData,d);applyAppData();localStorage.setItem('philly_app_cache',JSON.stringify(appData));renderToday();renderPlan();renderStats();}}
+ }catch(e2){}
+ }
 }
 
 function applyAppData(){
-  stravaActuals = appData.stravaActuals||{};
-  // Write to localStorage so stats tab and other consumers can read
-  if(appData.stravaActuals && Object.keys(appData.stravaActuals).length>0)
-    localStorage.setItem('philly_strava_actuals', JSON.stringify(appData.stravaActuals));
-  if(appData.stravaActivities && appData.stravaActivities.length>0)
-    localStorage.setItem('philly_strava_activities', JSON.stringify(appData.stravaActivities));
-  if(appData.vdot&&appData.vdot!==workingVDOT){
-    workingVDOT=appData.vdot;
-    const el=document.getElementById('vdot-hdr');
-    if(el)el.textContent=workingVDOT.toFixed(1);
-  }
+ stravaActuals = appData.stravaActuals||{};
+ // Write to localStorage so stats tab and other consumers can read
+ if(appData.stravaActuals && Object.keys(appData.stravaActuals).length>0)
+ localStorage.setItem('philly_strava_actuals', JSON.stringify(appData.stravaActuals));
+ if(appData.stravaActivities && appData.stravaActivities.length>0)
+ localStorage.setItem('philly_strava_activities', JSON.stringify(appData.stravaActivities));
+ if(appData.vdot&&appData.vdot!==workingVDOT){
+ workingVDOT=appData.vdot;
+ const el=document.getElementById('vdot-hdr');
+ if(el)el.textContent=workingVDOT.toFixed(1);
+ }
 }
 
 let workingVDOT = parseFloat(localStorage.getItem('philly_2026_vdot') || '55');
 
 function calcVDOT(distM, timeMins) {
-  const v = distM / timeMins;
-  const vo2 = -4.60 + 0.182258*v + 0.000104*v*v;
-  const pct = 0.8 + 0.1894393*Math.exp(-0.012778*timeMins) + 0.2989558*Math.exp(-0.1932605*timeMins);
-  return Math.round((vo2/pct)*10)/10;
+ const v = distM / timeMins;
+ const vo2 = -4.60 + 0.182258*v + 0.000104*v*v;
+ const pct = 0.8 + 0.1894393*Math.exp(-0.012778*timeMins) + 0.2989558*Math.exp(-0.1932605*timeMins);
+ return Math.round((vo2/pct)*10)/10;
 }
 
 function vdotPace(vdot, pct) {
-  // Find speed (m/min) that requires pct% of vdot VO2
-  const target = vdot * pct / 100;
-  const a=0.000104, b=0.182258, c=-(target+4.60);
-  const v = (-b + Math.sqrt(b*b - 4*a*c)) / (2*a);
-  const mpm = 1609.34 / v;
-  const mins = Math.floor(mpm);
-  const secs = Math.round((mpm-mins)*60);
-  return secs===60 ? `${mins+1}:00` : `${mins}:${String(secs).padStart(2,'0')}`;
+ // Find speed (m/min) that requires pct% of vdot VO2
+ const target = vdot * pct / 100;
+ const a=0.000104, b=0.182258, c=-(target+4.60);
+ const v = (-b + Math.sqrt(b*b - 4*a*c)) / (2*a);
+ const mpm = 1609.34 / v;
+ const mins = Math.floor(mpm);
+ const secs = Math.round((mpm-mins)*60);
+ return secs===60 ? `${mins+1}:00` : `${mins}:${String(secs).padStart(2,'0')}`;
 }
 
 function getDynPaces(vdot) {
-  return [
-    ["Easy (E)",       `${vdotPace(vdot,59)}–${vdotPace(vdot,74)} /mi`],
-    ["Marathon (M)",   `${vdotPace(vdot,82)} /mi`],
-    ["Threshold (T)",  `${vdotPace(vdot,88)} /mi`],
-    ["Interval (I)",   `${vdotPace(vdot,95)}–${vdotPace(vdot,100)} /mi`],
-    ["Repetition (R)", `${vdotPace(vdot,105)}–${vdotPace(vdot,110)} /mi`],
-  ];
+ return [
+ ["Easy (E)", `${vdotPace(vdot,59)}–${vdotPace(vdot,74)} /mi`],
+ ["Marathon (M)", `${vdotPace(vdot,82)} /mi`],
+ ["Threshold (T)", `${vdotPace(vdot,88)} /mi`],
+ ["Interval (I)", `${vdotPace(vdot,95)}–${vdotPace(vdot,100)} /mi`],
+ ["Repetition (R)", `${vdotPace(vdot,105)}–${vdotPace(vdot,110)} /mi`],
+ ];
 }
 
 function setWorkingVDOT(v) {
-  workingVDOT = v;
-  localStorage.setItem('philly_2026_vdot', v);
-  appData.vdot = v; writeAppData();
-  const el = document.getElementById('vdot-hdr');
-  if (el) el.textContent = v.toFixed(1);
-  // Refresh reference paces if visible
-  if (document.getElementById('pane-ref').classList.contains('on')) renderRef();
+ workingVDOT = v;
+ localStorage.setItem('philly_2026_vdot', v);
+ appData.vdot = v; writeAppData();
+ const el = document.getElementById('vdot-hdr');
+ if (el) el.textContent = v.toFixed(1);
+ // Refresh reference paces if visible
+ if (document.getElementById('pane-ref').classList.contains('on')) renderRef();
 }
 
 function parseTime(str) {
-  // Accepts MM:SS or H:MM:SS
-  const parts = str.trim().split(':').map(Number);
-  if (parts.some(isNaN)) return null;
-  if (parts.length === 2) return parts[0] + parts[1]/60;
-  if (parts.length === 3) return parts[0]*60 + parts[1] + parts[2]/60;
-  return null;
+ // Accepts MM:SS or H:MM:SS
+ const parts = str.trim().split(':').map(Number);
+ if (parts.some(isNaN)) return null;
+ if (parts.length === 2) return parts[0] + parts[1]/60;
+ if (parts.length === 3) return parts[0]*60 + parts[1] + parts[2]/60;
+ return null;
 }
 
 // ── Race tracker ─────────────────────────────────────────────────────────────
 const RACE_TRACKER = [
-  {dateStr:"Jul 26", isoDate:"2026-07-26", name:"5 Mile",              dist:8046.72},
-  {dateStr:"Sep 13", isoDate:"2026-09-13", name:"1 Mile",              dist:1609.34},
-  {dateStr:"Sep 19", isoDate:"2026-09-19", name:"10 Mile",             dist:16093.4},
-  {dateStr:"Oct 11", isoDate:"2026-10-11", name:"Half Marathon",       dist:21097.5},
-  {dateStr:"Nov 22", isoDate:"2026-11-22", name:"Philadelphia Marathon",dist:42195}
+ {dateStr:"Jul 26", isoDate:"2026-07-26", name:"5 Mile", dist:8046.72},
+ {dateStr:"Sep 13", isoDate:"2026-09-13", name:"1 Mile", dist:1609.34},
+ {dateStr:"Sep 19", isoDate:"2026-09-19", name:"10 Mile", dist:16093.4},
+ {dateStr:"Oct 11", isoDate:"2026-10-11", name:"Half Marathon", dist:21097.5},
+ {dateStr:"Nov 22", isoDate:"2026-11-22", name:"Philadelphia Marathon",dist:42195}
 ];
 
 function parseRaceTime(s){
-  const p=s.trim().split(':').map(Number);
-  if(p.some(isNaN)||p.length<2||p.length>3)return null;
-  return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];
+ const p=s.trim().split(':').map(Number);
+ if(p.some(isNaN)||p.length<2||p.length>3)return null;
+ return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1];
 }
 function loadRaceResult(i){
-  try{
-    const r=(appData.raceResults||{})[String(i)];
-    if(r)return r;
-    return JSON.parse(localStorage.getItem('philly_race_result_'+i));
-  }catch(e){return null;}
+ try{
+ const r=(appData.raceResults||{})[String(i)];
+ if(r)return r;
+ return JSON.parse(localStorage.getItem('philly_race_result_'+i));
+ }catch(e){return null;}
 }
 function saveRaceResult(idx){
-  const inp=document.getElementById('race-time-'+idx);
-  if(!inp)return;
-  const secs=parseRaceTime(inp.value);
-  if(!secs){alert('Enter time as H:MM:SS or M:SS');return;}
-  const dist=RACE_TRACKER[idx].dist;
-  const vdot=calcVDOT(dist,secs/60);
-  const pps=secs/(dist/1609.34);
-  const pace=Math.floor(pps/60)+':'+String(Math.round(pps%60)).padStart(2,'0');
-  localStorage.setItem('philly_race_result_'+idx,JSON.stringify({time:inp.value.trim(),vdot:Math.round(vdot*10)/10,pace}));
-  if(!appData.raceResults)appData.raceResults={};
-  appData.raceResults[String(idx)]={time:inp.value.trim(),vdot:Math.round(vdot*10)/10,pace};
-  _doGhWrite();
-  updateWorkingVDOTFromRaces();
-  renderStats();
+ const inp=document.getElementById('race-time-'+idx);
+ if(!inp)return;
+ const secs=parseRaceTime(inp.value);
+ if(!secs){alert('Enter time as H:MM:SS or M:SS');return;}
+ const dist=RACE_TRACKER[idx].dist;
+ const vdot=calcVDOT(dist,secs/60);
+ const pps=secs/(dist/1609.34);
+ const pace=Math.floor(pps/60)+':'+String(Math.round(pps%60)).padStart(2,'0');
+ localStorage.setItem('philly_race_result_'+idx,JSON.stringify({time:inp.value.trim(),vdot:Math.round(vdot*10)/10,pace}));
+ if(!appData.raceResults)appData.raceResults={};
+ appData.raceResults[String(idx)]={time:inp.value.trim(),vdot:Math.round(vdot*10)/10,pace};
+ _doGhWrite();
+ updateWorkingVDOTFromRaces();
+ renderStats();
 }
 function clearRaceResult(idx){
-  localStorage.removeItem('philly_race_result_'+idx);
-  updateWorkingVDOTFromRaces();
-  renderStats();
+ localStorage.removeItem('philly_race_result_'+idx);
+ updateWorkingVDOTFromRaces();
+ renderStats();
 }
 function updateWorkingVDOTFromRaces(){
-  for(let i=RACE_TRACKER.length-1;i>=0;i--){
-    const r=loadRaceResult(i);
-    if(r&&r.vdot){setWorkingVDOT(r.vdot);return;}
-  }
+ for(let i=RACE_TRACKER.length-1;i>=0;i--){
+ const r=loadRaceResult(i);
+ if(r&&r.vdot){setWorkingVDOT(r.vdot);return;}
+ }
 }
 
 const LIFT_A1=[
-  ["Warm-up","5 min bike + banded lateral walks",""],
-  ["Hip abductor machine","4×15/side, 30s rest (+1 set left)","Most important — do first while fresh"],
-  ["Cable hip abduction","3×12/leg (+1 set left), 45s","Ankle cuff, standing side-on to stack"],
-  ["Cable glute kickback","3×12/leg, 45s","Ankle cuff, face stack, extend leg back"],
-  ["Side plank","3×45s/side",""],
-  ["Dead bug","3×8/side",""],
+ ["Warm-up","5 min bike + banded lateral walks",""],
+ ["Hip abductor machine","4×15/side, 30s rest (+1 set left)","Most important — do first while fresh"],
+ ["Cable hip abduction","3×12/leg (+1 set left), 45s","Ankle cuff, standing side-on to stack"],
+ ["Cable glute kickback","3×12/leg, 45s","Ankle cuff, face stack, extend leg back"],
+ ["Side plank","3×45s/side",""],
+ ["Dead bug","3×8/side",""],
 ];
 const LIFT_A2=[
-  ["Barbell RDL","4×8, 90s rest","Hinge at hip, soft knee, bar stays close"],
-  ["Leg curl machine","3×12, 60s rest",""],
-  ["DB Bulgarian split squat","3×10/leg, 90s","Rear foot elevated on bench"],
-  ["Single-leg leg press","3×10/leg, 60s","Single leg only"],
-  ["SL calf raise","3×15/leg","Machine or weighted step"],
+ ["Barbell RDL","4×8, 90s rest","Hinge at hip, soft knee, bar stays close"],
+ ["Leg curl machine","3×12, 60s rest",""],
+ ["DB Bulgarian split squat","3×10/leg, 90s","Rear foot elevated on bench"],
+ ["Single-leg leg press","3×10/leg, 60s","Single leg only"],
+ ["SL calf raise","3×15/leg","Machine or weighted step"],
 ];
 const LIFT_B1=[
-  ["Lat pulldown / cable pull-up","4×10, 60s",""],
-  ["DB bench press","3×10, 60s","Flat or incline"],
-  ["Seated cable row","3×12, 60s",""],
-  ["Face pulls","3×15, 45s","Rope at face height — shoulder health"],
-  ["DB lateral raise","3×12, 45s",""],
-  ["Pallof press","3×10/side, 45s","Cable anti-rotation — core for runners"],
-  ["Plank","3×45s",""],
+ ["Lat pulldown / cable pull-up","4×10, 60s",""],
+ ["DB bench press","3×10, 60s","Flat or incline"],
+ ["Seated cable row","3×12, 60s",""],
+ ["Face pulls","3×15, 45s","Rope at face height — shoulder health"],
+ ["DB lateral raise","3×12, 45s",""],
+ ["Pallof press","3×10/side, 45s","Cable anti-rotation — core for runners"],
+ ["Plank","3×45s",""],
 ];
 const LIFT_B2=[
-  ["Warm-up","5 min rowing machine",""],
-  ["Trap-bar deadlift","4×6–8, 2min rest","Main strength lift — progress weight through the build"],
-  ["Hip abductor machine","2×15/side","Lighter maintenance dose"],
-  ["DB step-ups","3×10/leg, 60s","Box at knee height — add weight as you progress"],
+ ["Warm-up","5 min rowing machine",""],
+ ["Trap-bar deadlift","4×6–8, 2min rest","Main strength lift — progress weight through the build"],
+ ["Hip abductor machine","2×15/side","Lighter maintenance dose"],
+ ["DB step-ups","3×10/leg, 60s","Box at knee height — add weight as you progress"],
 ];
 const HIP_CIRCUIT=[
-  ["Banded lateral walks","2×15 steps each way","Band above knees"],
-  ["Clamshells","2×20/side, +1 extra set left","Band above knees"],
-  ["SL glute bridge","2×15/leg, +1 extra set left","Floor only — no equipment needed"],
+ ["Banded lateral walks","2×15 steps each way","Band above knees"],
+ ["Clamshells","2×20/side, +1 extra set left","Band above knees"],
+ ["SL glute bridge","2×15/leg, +1 extra set left","Floor only — no equipment needed"],
 ];
 
 function gymKey(listId,idx){return'philly_2026_gym_'+listId+'_'+idx;}
 function isGymDone(listId,idx){return localStorage.getItem(gymKey(listId,idx))==='1';}
 function toggleGymDone(listId,idx){
-  const cur=isGymDone(listId,idx);
-  localStorage.setItem(gymKey(listId,idx),cur?'0':'1');
-  renderGym();
+ const cur=isGymDone(listId,idx);
+ localStorage.setItem(gymKey(listId,idx),cur?'0':'1');
+ renderGym();
 }
 function clearGymChecks(){
-  ['a1','a2','b1','b2','hc'].forEach(listId=>{
-    for(let i=0;i<15;i++) localStorage.removeItem(gymKey(listId,i));
-  });
-  renderGym();
+ ['a1','a2','b1','b2','hc'].forEach(listId=>{
+ for(let i=0;i<15;i++) localStorage.removeItem(gymKey(listId,i));
+ });
+ renderGym();
 }
 
 function renderGym(){
-  function exList(arr,listId){
-    return arr.map(([n,s,note],i)=>{
-      const done=isGymDone(listId,i);
-      return`<div class="ex-item" style="display:flex;align-items:flex-start;gap:10px">
-        <div class="chk${done?' on':''}" style="margin-top:1px;margin-left:0" onclick="toggleGymDone('${listId}',${i})">✓</div>
-        <div style="flex:1${done?';opacity:.4':''}">
-          <div class="ex-name" style="${done?'text-decoration:line-through':''}">${n}</div>
-          <div class="ex-sets">${s}</div>
-          ${note?`<div class="ex-note">${note}</div>`:''}
-        </div>
-      </div>`;
-    }).join('');
-  }
-  function partHdr(label,day,dur,col){
-    return`<div style="font-size:11px;color:var(--muted);margin:0 0 10px;padding:8px 12px;background:var(--card);border-left:2px solid ${col}">
-      <span style="color:var(--text);font-weight:500">${label}</span><br>${day} · ${dur}</div>`;
-  }
-  document.getElementById('pane-gym').innerHTML=`<div class="ref">
-  <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
-    <button class="nbtn" style="flex:0 0 auto;padding:7px 14px" onclick="clearGymChecks()">Clear all checks</button>
-  </div>
-  <div class="ref-sec">
-    <div class="ref-title">Lift A — hip / PFPS focus</div>
-    ${partHdr('Part 1','With swim','~25 min','var(--blue-border)')}
-    ${exList(LIFT_A1,'a1')}
-    ${partHdr('Part 2','After easy run','~30 min','var(--green-border)')}
-    ${exList(LIFT_A2,'a2')}
-  </div>
-  <div class="ref-sec">
-    <div class="ref-title">Lift B — general strength</div>
-    ${partHdr('Part 1','With swim','~25 min','var(--blue-border)')}
-    ${exList(LIFT_B1,'b1')}
-    ${partHdr('Part 2','After easy run','~25 min','var(--green-border)')}
-    ${exList(LIFT_B2,'b2')}
-  </div>
-  <div class="ref-sec">
-    <div class="ref-title">Hip circuit · after any run · band + floor · 12–15 min</div>
-    ${exList(HIP_CIRCUIT,'hc')}
-  </div>
-  </div>`;
+ function exList(arr,listId){
+ return arr.map(([n,s,note],i)=>{
+ const done=isGymDone(listId,i);
+ return`<div class="ex-item" style="display:flex;align-items:flex-start;gap:10px">
+ <div class="chk${done?' on':''}" style="margin-top:1px;margin-left:0" onclick="toggleGymDone('${listId}',${i})">✓</div>
+ <div style="flex:1${done?';opacity:.4':''}">
+ <div class="ex-name" style="${done?'text-decoration:line-through':''}">${n}</div>
+ <div class="ex-sets">${s}</div>
+ ${note?`<div class="ex-note">${note}</div>`:''}
+ </div>
+ </div>`;
+ }).join('');
+ }
+ function partHdr(label,day,dur,col){
+ return`<div style="font-size:11px;color:var(--muted);margin:0 0 10px;padding:8px 12px;background:var(--card);border-left:2px solid ${col}">
+ <span style="color:var(--text);font-weight:500">${label}</span><br>${day} · ${dur}</div>`;
+ }
+ document.getElementById('pane-gym').innerHTML=`<div class="ref">
+ <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
+ <button class="nbtn" style="flex:0 0 auto;padding:7px 14px" onclick="clearGymChecks()">Clear all checks</button>
+ </div>
+ <div class="ref-sec">
+ <div class="ref-title">Lift A — hip / PFPS focus</div>
+ ${partHdr('Part 1','With swim','~25 min','var(--blue-border)')}
+ ${exList(LIFT_A1,'a1')}
+ ${partHdr('Part 2','After easy run','~30 min','var(--green-border)')}
+ ${exList(LIFT_A2,'a2')}
+ </div>
+ <div class="ref-sec">
+ <div class="ref-title">Lift B — general strength</div>
+ ${partHdr('Part 1','With swim','~25 min','var(--blue-border)')}
+ ${exList(LIFT_B1,'b1')}
+ ${partHdr('Part 2','After easy run','~25 min','var(--green-border)')}
+ ${exList(LIFT_B2,'b2')}
+ </div>
+ <div class="ref-sec">
+ <div class="ref-title"> · after any run · band + floor · 12–15 min</div>
+ ${exList(HIP_CIRCUIT,'hc')}
+ </div>
+ </div>`;
 }
 
 let _unlocked=sessionStorage.getItem('philly_unlocked')==='1';
@@ -1542,23 +1542,23 @@ let _unlocked=sessionStorage.getItem('philly_unlocked')==='1';
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
 
 function startEditNotes(i){
-  const dw=document.getElementById('ndw-'+i);
-  const ew=document.getElementById('new-'+i);
-  if(dw)dw.style.display='none';
-  if(ew){ew.style.display='block';const ta=document.getElementById('notes-'+i);if(ta)ta.focus();}
+ const dw=document.getElementById('ndw-'+i);
+ const ew=document.getElementById('new-'+i);
+ if(dw)dw.style.display='none';
+ if(ew){ew.style.display='block';const ta=document.getElementById('notes-'+i);if(ta)ta.focus();}
 }
 
 
 function toggleTheme(){
-  const isLight=document.body.classList.toggle('light');
-  document.getElementById('theme-btn').textContent=isLight?'LIGHT':'DARK';
-  localStorage.setItem('philly_2026_theme',isLight?'light':'dark');
+ const isLight=document.body.classList.toggle('light');
+ document.getElementById('theme-btn').textContent=isLight?'LIGHT':'DARK';
+ localStorage.setItem('philly_2026_theme',isLight?'light':'dark');
 }
 function initTheme(){
-  if(localStorage.getItem('philly_2026_theme')==='light'){
-    document.body.classList.add('light');
-    document.getElementById('theme-btn').textContent='LIGHT';
-  }
+ if(localStorage.getItem('philly_2026_theme')==='light'){
+ document.body.classList.add('light');
+ document.getElementById('theme-btn').textContent='LIGHT';
+ }
 }
 
 const PLAN_START = parseLocal(W[0].start); // Week 1 start date
@@ -1566,14 +1566,14 @@ const PLAN_START = parseLocal(W[0].start); // Week 1 start date
 function planStarted(){ return new Date() >= PLAN_START; }
 
 function getWeekIdx(){
-  const t=new Date();
-  if(t<PLAN_START) return 0; // before plan: Week 1
-  for(let i=W.length-1;i>=0;i--){if(t>=parseLocal(W[i].start))return i;}
-  return 0;
+ const t=new Date();
+ if(t<PLAN_START) return 0; // before plan: Week 1
+ for(let i=W.length-1;i>=0;i--){if(t>=parseLocal(W[i].start))return i;}
+ return 0;
 }
 function getDayIdx(){
-  if(!planStarted()) return 0; // before plan: Day 1 (Monday)
-  const d=new Date().getDay();return d===0?6:d-1;
+ if(!planStarted()) return 0; // before plan: Day 1 (Monday)
+ const d=new Date().getDay();return d===0?6:d-1;
 }
 function parseLocal(s){const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);}
 function fmtDate(d){return d.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});}
@@ -1584,126 +1584,126 @@ let selWeek=todayWk,selDay=todayDay;
 // Storage helpers — backed by GitHub data.json for cross-device sync
 function isDone(wk,d){return!!(appData.done||{})[wk+'_'+d];}
 function toggleDone(wk,d){
-  if(!appData.done)appData.done={};
-  const key=wk+'_'+d;
-  if(appData.done[key])delete appData.done[key];
-  else appData.done[key]=true;
-  // Write immediately (no debounce) — checkboxes must sync reliably
-  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
-  _doGhWrite();
-  renderToday();renderPlan();
+ if(!appData.done)appData.done={};
+ const key=wk+'_'+d;
+ if(appData.done[key])delete appData.done[key];
+ else appData.done[key]=true;
+ // Write immediately (no debounce) — checkboxes must sync reliably
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ _doGhWrite();
+ renderToday();renderPlan();
 }
 function saveNotes(i){
-  const el=document.getElementById('notes-'+i);
-  if(!el)return;
-  const val=el.value;
-  if(!appData.notes)appData.notes={};
-  if(val)appData.notes[i]=val; else delete appData.notes[i];
-  writeAppData();
-  const tick=document.getElementById('tick-'+i);
-  if(tick){tick.style.opacity='1';setTimeout(()=>tick.style.opacity='0',1500);}
-  renderPlan();
+ const el=document.getElementById('notes-'+i);
+ if(!el)return;
+ const val=el.value;
+ if(!appData.notes)appData.notes={};
+ if(val)appData.notes[i]=val; else delete appData.notes[i];
+ writeAppData();
+ const tick=document.getElementById('tick-'+i);
+ if(tick){tick.style.opacity='1';setTimeout(()=>tick.style.opacity='0',1500);}
+ renderPlan();
 }
 function loadNotes(i){return(appData.notes||{})[i]||'';}
 
 function wxCls(f){return f<=65?'wx-good':f<=76?'wx-warm':'wx-hot';}
 
 function wxScore(feels,rain,aqi){
-  let s;
-  if(feels<25)s=20; else if(feels<35)s=45; else if(feels<45)s=72;
-  else if(feels<=62)s=100; else if(feels<=68)s=85; else if(feels<=74)s=65;
-  else if(feels<=80)s=40; else if(feels<=86)s=20; else s=8;
-  if(aqi>200)s-=60; else if(aqi>150)s-=40; else if(aqi>100)s-=20; else if(aqi>50)s-=8;
-  return Math.max(0, s - (rain||0)*0.3);
+ let s;
+ if(feels<25)s=20; else if(feels<35)s=45; else if(feels<45)s=72;
+ else if(feels<=62)s=100; else if(feels<=68)s=85; else if(feels<=74)s=65;
+ else if(feels<=80)s=40; else if(feels<=86)s=20; else s=8;
+ if(aqi>200)s-=60; else if(aqi>150)s-=40; else if(aqi>100)s-=20; else if(aqi>50)s-=8;
+ return Math.max(0, s - (rain||0)*0.3);
 }
 
 function aqiLabel(v){
-  if(!v&&v!==0)return'';
-  if(v<=50)return'Good';if(v<=100)return'Moderate';
-  if(v<=150)return'Sensitive groups';if(v<=200)return'Unhealthy';
-  if(v<=300)return'Very unhealthy';return'Hazardous';
+ if(!v&&v!==0)return'';
+ if(v<=50)return'Good';if(v<=100)return'Moderate';
+ if(v<=150)return'Sensitive groups';if(v<=200)return'Unhealthy';
+ if(v<=300)return'Very unhealthy';return'Hazardous';
 }
 function aqiCls(v){
-  if(!v&&v!==0)return'';
-  if(v<=50)return'wx-good';if(v<=100)return'wx-warm';return'wx-hot';
+ if(!v&&v!==0)return'';
+ if(v<=50)return'wx-good';if(v<=100)return'wx-warm';return'wx-hot';
 }
 
 function wxRec(am,pm){
-  const aqiBad=v=>v&&v>150;
-  if(aqiBad(am.aqi)&&aqiBad(pm.aqi))
-    return{time:'Treadmill',why:`AQI ${Math.min(am.aqi,pm.aqi)}+ both windows — run inside`};
-  if(am.feels>82&&pm.feels>82&&!aqiBad(am.aqi))
-    return{time:'Early AM',why:'Both windows very hot — aim for 5–6am or adjust effort'};
-  const d=wxScore(am.feels,am.rain,am.aqi||0)-wxScore(pm.feels,pm.rain,pm.aqi||0);
-  if(d>18)return{time:'AM',why:`Better at 7am (${am.feels}° feels, AQI ${am.aqi||'—'})`};
-  if(d>7) return{time:'AM',why:'Slightly better at 7am'};
-  if(d<-18)return{time:'PM',why:`Better at 7pm (${pm.feels}° feels, AQI ${pm.aqi||'—'})`};
-  if(d<-7) return{time:'PM',why:'Slightly better at 7pm'};
-  if(am.feels<=62&&pm.feels<=62)return{time:'Either',why:'Good running weather both windows'};
-  return{time:'Either',why:'Similar conditions — pick what fits your schedule'};
+ const aqiBad=v=>v&&v>150;
+ if(aqiBad(am.aqi)&&aqiBad(pm.aqi))
+ return{time:'Treadmill',why:`AQI ${Math.min(am.aqi,pm.aqi)}+ both windows — run inside`};
+ if(am.feels>82&&pm.feels>82&&!aqiBad(am.aqi))
+ return{time:'Early AM',why:'Both windows very hot — aim for 5–6am or adjust effort'};
+ const d=wxScore(am.feels,am.rain,am.aqi||0)-wxScore(pm.feels,pm.rain,pm.aqi||0);
+ if(d>18)return{time:'AM',why:`Better at 7am (${am.feels}° feels, AQI ${am.aqi||'—'})`};
+ if(d>7) return{time:'AM',why:'Slightly better at 7am'};
+ if(d<-18)return{time:'PM',why:`Better at 7pm (${pm.feels}° feels, AQI ${pm.aqi||'—'})`};
+ if(d<-7) return{time:'PM',why:'Slightly better at 7pm'};
+ if(am.feels<=62&&pm.feels<=62)return{time:'Either',why:'Good running weather both windows'};
+ return{time:'Either',why:'Similar conditions — pick what fits your schedule'};
 }
 
 function wxHtml(wx){
-  const rec=wxRec(wx.am,wx.pm);
-  const col=(d)=>`
-    <div class="wx-col">
-      <div class="wx-time">${d.label}</div>
-      <div class="wx-icon">${wmoIcon(d.code)}</div>
-      <div class="wx-temp ${wxCls(d.feels)}">${d.temp}°</div>
-      <div class="wx-feels">Feels ${d.feels}°</div>
-      ${d.rain>10?`<div class="wx-rain">${d.rain}% rain</div>`:''}
-      ${d.aqi!=null?`<div class="wx-rain ${aqiCls(d.aqi)}">AQI ${d.aqi} · ${aqiLabel(d.aqi)}</div>`:''}
-    </div>`;
-  wx.am.label='7 AM'; wx.pm.label='7 PM';
-  return`<div class="wx-wrap"><div class="wx-strip">
-    ${col(wx.am)}
-    <div class="wx-rec">
-      <div class="wx-rec-lbl">Best window</div>
-      <div class="wx-rec-time">${rec.time}</div>
-      <div class="wx-rec-why">${rec.why}</div>
-    </div>
-    ${col(wx.pm)}
-  </div></div>`;
+ const rec=wxRec(wx.am,wx.pm);
+ const col=(d)=>`
+ <div class="wx-col">
+ <div class="wx-time">${d.label}</div>
+ <div class="wx-icon">${wmoIcon(d.code)}</div>
+ <div class="wx-temp ${wxCls(d.feels)}">${d.temp}°</div>
+ <div class="wx-feels">Feels ${d.feels}°</div>
+ ${d.rain>10?`<div class="wx-rain">${d.rain}% rain</div>`:''}
+ ${d.aqi!=null?`<div class="wx-rain ${aqiCls(d.aqi)}">AQI ${d.aqi} · ${aqiLabel(d.aqi)}</div>`:''}
+ </div>`;
+ wx.am.label='7 AM'; wx.pm.label='7 PM';
+ return`<div class="wx-wrap"><div class="wx-strip">
+ ${col(wx.am)}
+ <div class="wx-rec">
+ <div class="wx-rec-lbl">Best window</div>
+ <div class="wx-rec-time">${rec.time}</div>
+ <div class="wx-rec-why">${rec.why}</div>
+ </div>
+ ${col(wx.pm)}
+ </div></div>`;
 }
 
 const wxCache={};
 function wmoIcon(code){
-  if(code===0)return'CLR';
-  if(code<=2)return'PC';
-  if(code===3)return'OVC';
-  if(code<=48)return'FOG';
-  if(code<=57)return'DRZ';
-  if(code<=67)return'RN';
-  if(code<=77)return'SN';
-  if(code<=82)return'SHWR';
-  if(code<=86)return'SN';
-  return'STM';
+ if(code===0)return'CLR';
+ if(code<=2)return'PC';
+ if(code===3)return'OVC';
+ if(code<=48)return'FOG';
+ if(code<=57)return'DRZ';
+ if(code<=67)return'RN';
+ if(code<=77)return'SN';
+ if(code<=82)return'SHWR';
+ if(code<=86)return'SN';
+ return'STM';
 }
 async function loadWx(dateStr){
-  const el=document.getElementById('wx-panel');
-  if(!el)return;
-  const today=new Date();today.setHours(0,0,0,0);
-  const target=new Date(dateStr+'T00:00:00');
-  const diff=Math.round((target-today)/864e5);
-  if(diff<0||diff>14){el.innerHTML='';return;}
-  if(wxCache[dateStr]){el.innerHTML=wxHtml(wxCache[dateStr]);return;}
-  el.innerHTML='<div class="wx-loading">Loading weather…</div>';
-  try{
-    const wxUrl=`https://api.open-meteo.com/v1/forecast?latitude=40.7128&longitude=-74.006&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode&temperature_unit=fahrenheit&timezone=America%2FNew_York&start_date=${dateStr}&end_date=${dateStr}`;
-    const aqUrl=`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=40.7128&longitude=-74.006&hourly=us_aqi&timezone=America%2FNew_York&start_date=${dateStr}&end_date=${dateStr}`;
-    const [wxRes,aqRes]=await Promise.all([fetch(wxUrl),fetch(aqUrl)]);
-    const d=(await wxRes.json()).hourly;
-    const aq=aqRes.ok?(await aqRes.json()).hourly:null;
-    const fi=(hr)=>d.time.findIndex(t=>t.endsWith('T'+hr+':00'));
-    const ai=fi('07'),pi=fi('19');
-    const getAqi=(idx)=>aq?Math.round(aq.us_aqi[idx]):null;
-    const wx={
-      am:{temp:Math.round(d.temperature_2m[ai]),feels:Math.round(d.apparent_temperature[ai]),rain:d.precipitation_probability[ai],code:d.weathercode[ai],aqi:getAqi(ai)},
-      pm:{temp:Math.round(d.temperature_2m[pi]),feels:Math.round(d.apparent_temperature[pi]),rain:d.precipitation_probability[pi],code:d.weathercode[pi],aqi:getAqi(pi)}
-    };
-    wxCache[dateStr]=wx;
-    el.innerHTML=wxHtml(wx);
-  }catch(e){el.innerHTML='';}
+ const el=document.getElementById('wx-panel');
+ if(!el)return;
+ const today=new Date();today.setHours(0,0,0,0);
+ const target=new Date(dateStr+'T00:00:00');
+ const diff=Math.round((target-today)/864e5);
+ if(diff<0||diff>14){el.innerHTML='';return;}
+ if(wxCache[dateStr]){el.innerHTML=wxHtml(wxCache[dateStr]);return;}
+ el.innerHTML='<div class="wx-loading">Loading weather…</div>';
+ try{
+ const wxUrl=`https://api.open-meteo.com/v1/forecast?latitude=40.7128&longitude=-74.006&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode&temperature_unit=fahrenheit&timezone=America%2FNew_York&start_date=${dateStr}&end_date=${dateStr}`;
+ const aqUrl=`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=40.7128&longitude=-74.006&hourly=us_aqi&timezone=America%2FNew_York&start_date=${dateStr}&end_date=${dateStr}`;
+ const [wxRes,aqRes]=await Promise.all([fetch(wxUrl),fetch(aqUrl)]);
+ const d=(await wxRes.json()).hourly;
+ const aq=aqRes.ok?(await aqRes.json()).hourly:null;
+ const fi=(hr)=>d.time.findIndex(t=>t.endsWith('T'+hr+':00'));
+ const ai=fi('07'),pi=fi('19');
+ const getAqi=(idx)=>aq?Math.round(aq.us_aqi[idx]):null;
+ const wx={
+ am:{temp:Math.round(d.temperature_2m[ai]),feels:Math.round(d.apparent_temperature[ai]),rain:d.precipitation_probability[ai],code:d.weathercode[ai],aqi:getAqi(ai)},
+ pm:{temp:Math.round(d.temperature_2m[pi]),feels:Math.round(d.apparent_temperature[pi]),rain:d.precipitation_probability[pi],code:d.weathercode[pi],aqi:getAqi(pi)}
+ };
+ wxCache[dateStr]=wx;
+ el.innerHTML=wxHtml(wx);
+ }catch(e){el.innerHTML='';}
 }
 
 
@@ -1713,243 +1713,243 @@ async function loadWx(dateStr){
 function isEditMode(){ return document.body.classList.contains('edit-mode'); }
 // ── Day ordering / swap ───────────────────────────────────────────────────────
 function getDayOrder(wkIdx){
-  try{const a=(appData.dayOrders||{})[wkIdx];if(a&&a.length===7)return a;}catch(e){}
-  return[0,1,2,3,4,5,6];
+ try{const a=(appData.dayOrders||{})[wkIdx];if(a&&a.length===7)return a;}catch(e){}
+ return[0,1,2,3,4,5,6];
 }
 function saveDayOrder(wkIdx,order){
-  if(!appData.dayOrders)appData.dayOrders={};
-  appData.dayOrders[wkIdx]=order;
-  // Write immediately — same as toggleDone, swaps must sync reliably
-  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
-  _doGhWrite();
+ if(!appData.dayOrders)appData.dayOrders={};
+ appData.dayOrders[wkIdx]=order;
+ // Write immediately — same as toggleDone, swaps must sync reliably
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ _doGhWrite();
 }
 function resetDayOrder(wkIdx){
-  if(appData.dayOrders)delete appData.dayOrders[wkIdx];
-  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
-  _doGhWrite();
+ if(appData.dayOrders)delete appData.dayOrders[wkIdx];
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ _doGhWrite();
 }
 
 let swapPickIdx=null;
 
 function pickSwap(displayIdx){
-  if(swapPickIdx===displayIdx){
-    // cancel
-    swapPickIdx=null;
-    renderToday();
-    return;
-  }
-  if(swapPickIdx!==null){
-    // execute swap
-    const order=getDayOrder(selWeek);
-    const newOrder=[...order];
-    [newOrder[swapPickIdx],newOrder[displayIdx]]=[newOrder[displayIdx],newOrder[swapPickIdx]];
-    saveDayOrder(selWeek,newOrder);
-    swapPickIdx=null;
-    renderToday();
-    return;
-  }
-  // enter pick mode
-  swapPickIdx=displayIdx;
-  renderToday();
+ if(swapPickIdx===displayIdx){
+ // cancel
+ swapPickIdx=null;
+ renderToday();
+ return;
+ }
+ if(swapPickIdx!==null){
+ // execute swap
+ const order=getDayOrder(selWeek);
+ const newOrder=[...order];
+ [newOrder[swapPickIdx],newOrder[displayIdx]]=[newOrder[displayIdx],newOrder[swapPickIdx]];
+ saveDayOrder(selWeek,newOrder);
+ swapPickIdx=null;
+ renderToday();
+ return;
+ }
+ // enter pick mode
+ swapPickIdx=displayIdx;
+ renderToday();
 }
 
 // ── Day edit ─────────────────────────────────────────────────────────────────
 function loadDayEdit(w,d){try{return(appData.dayEdits||{})[w+'_'+d]||null;}catch(e){return null;}}
 function saveDayEdit(w,d,val){
-  if(!appData.dayEdits)appData.dayEdits={};
-  if(val===null)delete appData.dayEdits[w+'_'+d];
-  else appData.dayEdits[w+'_'+d]=val;
-  // Write immediately — user explicitly saved an edit
-  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
-  _doGhWrite();
+ if(!appData.dayEdits)appData.dayEdits={};
+ if(val===null)delete appData.dayEdits[w+'_'+d];
+ else appData.dayEdits[w+'_'+d]=val;
+ // Write immediately — user explicitly saved an edit
+ localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+ _doGhWrite();
 }
 
 function startEditDay(w,d){
-  const wrap=document.getElementById('day-ew-'+w+'-'+d);
-  const btn=document.getElementById('day-eb-'+w+'-'+d);
-  if(wrap)wrap.style.display='block';
-  if(btn)btn.style.display='none';
-  const ta=document.getElementById('day-ta-'+w+'-'+d);
-  if(ta){ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);}
+ const wrap=document.getElementById('day-ew-'+w+'-'+d);
+ const btn=document.getElementById('day-eb-'+w+'-'+d);
+ if(wrap)wrap.style.display='block';
+ if(btn)btn.style.display='none';
+ const ta=document.getElementById('day-ta-'+w+'-'+d);
+ if(ta){ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);}
 }
 function cancelEditDay(w,d){
-  const wrap=document.getElementById('day-ew-'+w+'-'+d);
-  const btn=document.getElementById('day-eb-'+w+'-'+d);
-  if(wrap)wrap.style.display='none';
-  if(btn)btn.style.display='';
+ const wrap=document.getElementById('day-ew-'+w+'-'+d);
+ const btn=document.getElementById('day-eb-'+w+'-'+d);
+ if(wrap)wrap.style.display='none';
+ if(btn)btn.style.display='';
 }
 function confirmEditDay(w,d){
-  const ta=document.getElementById('day-ta-'+w+'-'+d);
-  if(!ta)return;
-  saveDayEdit(w,d,ta.value.trim()||null);
-  renderToday();
+ const ta=document.getElementById('day-ta-'+w+'-'+d);
+ if(!ta)return;
+ saveDayEdit(w,d,ta.value.trim()||null);
+ renderToday();
 }
 function resetDayEdit(w,d){
-  saveDayEdit(w,d,null);
-  renderToday();
+ saveDayEdit(w,d,null);
+ renderToday();
 }
 
 // ── IT Band Risk ─────────────────────────────────────────────────────────────
 function itbRisk(wkIdx) {
-  // Use actual miles from Strava where available, fall back to plan
-  const actualCur  = stravaActuals[wkIdx]   != null ? stravaActuals[wkIdx]   : null;
-  const actualPrev = stravaActuals[wkIdx-1] != null ? stravaActuals[wkIdx-1] : null;
-  const cur  = actualCur  != null ? actualCur  : W[wkIdx].mi;
-  const prev = actualPrev != null ? actualPrev : (wkIdx > 0 ? W[wkIdx-1].mi : 28);
-  const jump = prev > 0 ? (cur - prev) / prev : 0;
+ // Use actual miles from Strava where available, fall back to plan
+ const actualCur = stravaActuals[wkIdx] != null ? stravaActuals[wkIdx] : null;
+ const actualPrev = stravaActuals[wkIdx-1] != null ? stravaActuals[wkIdx-1] : null;
+ const cur = actualCur != null ? actualCur : W[wkIdx].mi;
+ const prev = actualPrev != null ? actualPrev : (wkIdx > 0 ? W[wkIdx-1].mi : 28);
+ const jump = prev > 0 ? (cur - prev) / prev : 0;
 
-  // Quality sessions and long run from plan (structure risk)
-  const quals = W[wkIdx].days.filter(d => d[1]==='q').length;
-  const lr = W[wkIdx].days.reduce((mx,d) => {
-    if (d[1]!=='l') return mx;
-    const m = d[0].match(/(\d+)mi/); return m ? Math.max(mx,+m[1]) : mx;
-  }, 0);
+ // Quality sessions and long run from plan (structure risk)
+ const quals = W[wkIdx].days.filter(d => d[1]==='q').length;
+ const lr = W[wkIdx].days.reduce((mx,d) => {
+ if (d[1]!=='l') return mx;
+ const m = d[0].match(/(\d+)mi/); return m ? Math.max(mx,+m[1]) : mx;
+ }, 0);
 
-  // Flag if actual miles are tracking significantly over plan
-  const overPlan = actualCur != null ? actualCur - W[wkIdx].mi : 0;
+ // Flag if actual miles are tracking significantly over plan
+ const overPlan = actualCur != null ? actualCur - W[wkIdx].mi : 0;
 
-  if (jump>0.45||(quals>=2&&jump>0.3)||(lr>=20&&jump>0.35)||overPlan>8) return 'red';
-  if (jump>0.28||(quals>=2&&jump>0.1)||lr>=20||overPlan>4) return 'amber';
-  return 'green';
+ if (jump>0.45||(quals>=2&&jump>0.3)||(lr>=20&&jump>0.35)||overPlan>8) return 'red';
+ if (jump>0.28||(quals>=2&&jump>0.1)||lr>=20||overPlan>4) return 'amber';
+ return 'green';
 }
 function itbLabel(r) {
-  const src = (stravaActuals[selWeek]!=null||stravaActuals[selWeek-1]!=null) ? '' : ' (plan)';
-  return r==='green'?`Load: manageable${src}`:r==='amber'?`Load: watch knee${src}`:`Load: high — protect knee${src}`;
+ const src = (stravaActuals[selWeek]!=null||stravaActuals[selWeek-1]!=null) ? '' : ' (plan)';
+ return r==='green'?`Load: manageable${src}`:r==='amber'?`Load: watch knee${src}`:`Load: high — protect knee${src}`;
 }
 function itbDot(r) { return '●'; }
 
 function renderToday(){
-  const wk=W[selWeek];
-  const _ord=getDayOrder(selWeek);const _dataIdx=_ord[selDay];const [_rawWorkout,type,shoe,gel]=wk.days[_dataIdx];const workout=loadDayEdit(selWeek,_dataIdx)||_rawWorkout;
-  const date=parseLocal(wk.start);date.setDate(date.getDate()+selDay);
-  const dateStr=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
-  const isToday=selWeek===todayWk&&selDay===todayDay;
-  const savedNotes=loadNotes(selWeek);
+ const wk=W[selWeek];
+ const _ord=getDayOrder(selWeek);const _dataIdx=_ord[selDay];const [_rawWorkout,type,shoe,gel]=wk.days[_dataIdx];const workout=loadDayEdit(selWeek,_dataIdx)||_rawWorkout;
+ const date=parseLocal(wk.start);date.setDate(date.getDate()+selDay);
+ const dateStr=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+ const isToday=selWeek===todayWk&&selDay===todayDay;
+ const savedNotes=loadNotes(selWeek);
 
-  const dots=wk.days.map(([,t],i)=>{
-    const isTd=i===todayDay&&selWeek===todayWk,isSel=i===selDay,done=isDone(selWeek,i);
-    return`<div class="dg-cell${isTd?' today-cell':''}${isSel?' sel':''}" onclick="selDay=${i};renderToday()">
-      <div class="dg-name">${DAY_NAMES[i]}</div>
-      <div class="dg-pip ${PIP[t]}" style="${done?'opacity:.3':''}"></div>
-      ${done?'<div class="dg-done">✓</div>':''}
-    </div>`;
-  }).join('');
+ const dots=wk.days.map(([,t],i)=>{
+ const isTd=i===todayDay&&selWeek===todayWk,isSel=i===selDay,done=isDone(selWeek,i);
+ return`<div class="dg-cell${isTd?' today-cell':''}${isSel?' sel':''}" onclick="selDay=${i};renderToday()">
+ <div class="dg-name">${DAY_NAMES[i]}</div>
+ <div class="dg-pip ${PIP[t]}" style="${done?'opacity:.3':''}"></div>
+ ${done?'<div class="dg-done">✓</div>':''}
+ </div>`;
+ }).join('');
 
-  const _dayOrder=getDayOrder(selWeek);
-  const dayList=_dayOrder.map((dataIdx,displayIdx)=>{
-    const [w,t,sh,g]=wk.days[dataIdx];
-    const isSel=displayIdx===selDay,done=isDone(selWeek,displayIdx);
-    const ov=loadDayEdit(selWeek,dataIdx);
-    const disp=ov||w;
-    const edited=!!ov;
-    const isSwapSrc=swapPickIdx===displayIdx;
-    const isSwapTgt=swapPickIdx!==null&&swapPickIdx!==displayIdx;
-    const isOrderChanged=dataIdx!==displayIdx;
-    return`<div class="dl-item${isSel?' sel':''}${done?' done-run':''} ${t}${isSwapSrc?' swap-source':''}${isSwapTgt?' swap-target':''}" style="display:flex;align-items:center">
-      <div class="dl-inner" onclick="${isSwapTgt?`pickSwap(${displayIdx})`:`selDay=${displayIdx};renderToday()`}" style="flex:1;min-width:0;cursor:pointer">
-        <div class="dl-day">${DAY_NAMES[displayIdx]}${displayIdx===todayDay&&selWeek===todayWk?' · Today':''}${edited?'<span class="day-edited-mark">✎</span>':''}${isOrderChanged?'<span style="font-size:10px;color:var(--muted);margin-left:4px">↕</span>':''}</div>
-        <div class="dl-workout ${t}">${isSwapTgt?'<span style="color:var(--accent);font-size:11px">Tap to swap here</span><br>':''} ${disp}</div>
-        ${isSel&&g?`<div class="dl-meta">${g}</div>`:''}
-      </div>
-      <div style="display:flex;align-items:center;gap:3px">
-        ${swapPickIdx===null||isSwapSrc?`<button class="day-swap-btn${isSwapSrc?' swap-pick':''}" onclick="event.stopPropagation();pickSwap(${displayIdx})" title="${isSwapSrc?'Cancel move':'Move this day'}">⇅</button>`:''}
-        <button id="day-eb-${selWeek}-${dataIdx}" class="day-edit-btn" onclick="event.stopPropagation();startEditDay(${selWeek},${dataIdx})" title="Edit">✎</button>
-        <div class="chk${done?' on':''}" onclick="event.stopPropagation();toggleDone(${selWeek},${displayIdx})">✓</div>
-      </div>
-    </div>
-    ${swapPickIdx===displayIdx?`<div class="swap-hint">Tap another day to swap with it · tap ⇅ again to cancel</div>`:''}
-    <div id="day-ew-${selWeek}-${dataIdx}" class="day-edit-wrap" style="display:none">
-      <textarea id="day-ta-${selWeek}-${dataIdx}" class="day-edit-ta">${disp}</textarea>
-      <div class="day-edit-btns">
-        <button class="day-save-btn" onclick="confirmEditDay(${selWeek},${dataIdx})">Save</button>
-        <button class="day-cancel-btn" onclick="cancelEditDay(${selWeek},${dataIdx})">Cancel</button>
-        ${edited?`<button class="day-reset-btn" onclick="resetDayEdit(${selWeek},${dataIdx})">Reset to plan</button>`:''}
-      </div>
-    </div>`;
-  }).join('');
+ const _dayOrder=getDayOrder(selWeek);
+ const dayList=_dayOrder.map((dataIdx,displayIdx)=>{
+ const [w,t,sh,g]=wk.days[dataIdx];
+ const isSel=displayIdx===selDay,done=isDone(selWeek,displayIdx);
+ const ov=loadDayEdit(selWeek,dataIdx);
+ const disp=ov||w;
+ const edited=!!ov;
+ const isSwapSrc=swapPickIdx===displayIdx;
+ const isSwapTgt=swapPickIdx!==null&&swapPickIdx!==displayIdx;
+ const isOrderChanged=dataIdx!==displayIdx;
+ return`<div class="dl-item${isSel?' sel':''}${done?' done-run':''} ${t}${isSwapSrc?' swap-source':''}${isSwapTgt?' swap-target':''}" style="display:flex;align-items:center">
+ <div class="dl-inner" onclick="${isSwapTgt?`pickSwap(${displayIdx})`:`selDay=${displayIdx};renderToday()`}" style="flex:1;min-width:0;cursor:pointer">
+ <div class="dl-day">${DAY_NAMES[displayIdx]}${displayIdx===todayDay&&selWeek===todayWk?' · Today':''}${edited?'<span class="day-edited-mark">✎</span>':''}${isOrderChanged?'<span style="font-size:10px;color:var(--muted);margin-left:4px">↕</span>':''}</div>
+ <div class="dl-workout ${t}">${isSwapTgt?'<span style="color:var(--accent);font-size:11px">Tap to swap here</span><br>':''} ${disp}</div>
+ ${isSel&&g?`<div class="dl-meta">${g}</div>`:''}
+ </div>
+ <div style="display:flex;align-items:center;gap:3px">
+ ${swapPickIdx===null||isSwapSrc?`<button class="day-swap-btn${isSwapSrc?' swap-pick':''}" onclick="event.stopPropagation();pickSwap(${displayIdx})" title="${isSwapSrc?'Cancel move':'Move this day'}">⇅</button>`:''}
+ <button id="day-eb-${selWeek}-${dataIdx}" class="day-edit-btn" onclick="event.stopPropagation();startEditDay(${selWeek},${dataIdx})" title="Edit">✎</button>
+ <div class="chk${done?' on':''}" onclick="event.stopPropagation();toggleDone(${selWeek},${displayIdx})">✓</div>
+ </div>
+ </div>
+ ${swapPickIdx===displayIdx?`<div class="swap-hint">Tap another day to swap with it · tap ⇅ again to cancel</div>`:''}
+ <div id="day-ew-${selWeek}-${dataIdx}" class="day-edit-wrap" style="display:none">
+ <textarea id="day-ta-${selWeek}-${dataIdx}" class="day-edit-ta">${disp}</textarea>
+ <div class="day-edit-btns">
+ <button class="day-save-btn" onclick="confirmEditDay(${selWeek},${dataIdx})">Save</button>
+ <button class="day-cancel-btn" onclick="cancelEditDay(${selWeek},${dataIdx})">Cancel</button>
+ ${edited?`<button class="day-reset-btn" onclick="resetDayEdit(${selWeek},${dataIdx})">Reset to plan</button>`:''}
+ </div>
+ </div>`;
+ }).join('');
 
-  const daysToStart=Math.ceil((PLAN_START-new Date())/864e5);
-  const metaPrefix=!planStarted()?`Starts in ${daysToStart} day${daysToStart===1?'':'s'} · `:(isToday?'Today · ':'');
+ const daysToStart=Math.ceil((PLAN_START-new Date())/864e5);
+ const metaPrefix=!planStarted()?`Starts in ${daysToStart} day${daysToStart===1?'':'s'} · `:(isToday?'Today · ':'');
 
-  document.getElementById('pane-today').innerHTML=`
-  <div class="today-hero">
-    <div class="today-meta">${metaPrefix}${fmtDate(date)} · ${wk.lbl}</div>
-    ${(()=>{const r=itbRisk(selWeek);return`<div class="itb-flag ${r}">${itbDot(r)} ${itbLabel(r)}</div>`;})()} 
-    <div class="today-pill ${type}">${TYPE_LABEL[type]}</div>
-    <div class="today-workout ${type}">${workout}</div>
-    ${gel?`<div class="today-gel">${gel}</div>`:''}
-    <div id="wx-panel"></div>
-  </div>
-  <div class="today-col-left">
-  <div class="week-strip">
-    <div class="week-strip-hdr">
-      <span class="ws-label">${wk.lbl} · ${wk.ph}</span>
-      <span class="ws-miles">${wk.mi} mi${wk.cut?' · cutback':''}</span>
-    </div>
-    <div class="day-grid">${dots}</div>
-    ${wk.note?`<div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.4">${wk.note}</div>`:''}
-  </div>
-  <div class="day-list">${dayList}</div>
-  <div class="week-nav">
-    <button class="wnav-btn" onclick="navWeek(-1)" ${selWeek===0?'disabled':''}>← ${selWeek>0?W[selWeek-1].lbl:'—'}</button>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
-      <span class="wnav-cur">${selWeek+1} / ${W.length}</span>
-      ${selWeek!==todayWk?`<button onclick="goToToday()" style="font-size:11px;font-weight:700;color:var(--accent);background:none;border:1px solid var(--accent);cursor:pointer;padding:2px 10px;font-family:var(--sans);border-radius:3px;letter-spacing:.03em">↩ Today</button>`:''}
-    </div>
-    <button class="wnav-btn" onclick="navWeek(1)" ${selWeek===W.length-1?'disabled':''}>→ ${selWeek<W.length-1?W[selWeek+1].lbl:'—'}</button>
-  </div>
-  </div>
-  <div class="notes-section">
-    <div class="notes-hdr">Week notes <span class="saved-tick" id="tick-${selWeek}">Saved</span></div>
-    <textarea class="notes-input" id="notes-${selWeek}" placeholder="How did this week feel? Energy levels, any aches, how quality sessions went, PFPS / knee check-in...">${savedNotes}</textarea>
-    <div class="notes-actions">
-      <button class="nbtn" onclick="saveNotes(${selWeek})">Save notes</button>
-    </div>
-  </div>`;
-  loadWx(dateStr);
+ document.getElementById('pane-today').innerHTML=`
+ <div class="today-hero">
+ <div class="today-meta">${metaPrefix}${fmtDate(date)} · ${wk.lbl}</div>
+ ${(()=>{const r=itbRisk(selWeek);return`<div class="itb-flag ${r}">${itbDot(r)} ${itbLabel(r)}</div>`;})()} 
+ <div class="today-pill ${type}">${TYPE_LABEL[type]}</div>
+ <div class="today-workout ${type}">${workout}</div>
+ ${gel?`<div class="today-gel">${gel}</div>`:''}
+ <div id="wx-panel"></div>
+ </div>
+ <div class="today-col-left">
+ <div class="week-strip">
+ <div class="week-strip-hdr">
+ <span class="ws-label">${wk.lbl} · ${wk.ph}</span>
+ <span class="ws-miles">${wk.mi} mi${wk.cut?' · cutback':''}</span>
+ </div>
+ <div class="day-grid">${dots}</div>
+ ${wk.note?`<div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.4">${wk.note}</div>`:''}
+ </div>
+ <div class="day-list">${dayList}</div>
+ <div class="week-nav">
+ <button class="wnav-btn" onclick="navWeek(-1)" ${selWeek===0?'disabled':''}>← ${selWeek>0?W[selWeek-1].lbl:'—'}</button>
+ <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+ <span class="wnav-cur">${selWeek+1} / ${W.length}</span>
+ ${selWeek!==todayWk?`<button onclick="goToToday()" style="font-size:11px;font-weight:700;color:var(--accent);background:none;border:1px solid var(--accent);cursor:pointer;padding:2px 10px;font-family:var(--sans);border-radius:3px;letter-spacing:.03em">↩ Today</button>`:''}
+ </div>
+ <button class="wnav-btn" onclick="navWeek(1)" ${selWeek===W.length-1?'disabled':''}>→ ${selWeek<W.length-1?W[selWeek+1].lbl:'—'}</button>
+ </div>
+ </div>
+ <div class="notes-section">
+ <div class="notes-hdr">Week notes <span class="saved-tick" id="tick-${selWeek}">Saved</span></div>
+ <textarea class="notes-input" id="notes-${selWeek}" placeholder="How did this week feel? Energy levels, any aches, how quality sessions went, PFPS / knee check-in...">${savedNotes}</textarea>
+ <div class="notes-actions">
+ <button class="nbtn" onclick="saveNotes(${selWeek})">Save notes</button>
+ </div>
+ </div>`;
+ loadWx(dateStr);
 }
 
 function goToToday(){
-  selWeek=todayWk;
-  selDay=todayDay;
-  renderToday();
+ selWeek=todayWk;
+ selDay=todayDay;
+ renderToday();
 }
 function navWeek(dir){
-  const nw=selWeek+dir;
-  if(nw>=0&&nw<W.length){selWeek=nw;selDay=(nw===todayWk)?todayDay:0;renderToday();document.querySelector('.content').scrollTop=0;}
+ const nw=selWeek+dir;
+ if(nw>=0&&nw<W.length){selWeek=nw;selDay=(nw===todayWk)?todayDay:0;renderToday();document.querySelector('.content').scrollTop=0;}
 }
 
 const expanded={};
 function renderPlan(){
-  const rows=W.map((wk,i)=>{
-    const isCur=i===todayWk;
-    const pips=wk.days.map(([,t])=>`<div class="wk-pip ${PIP[t]}"></div>`).join('');
-    const hasNotes=!!loadNotes(i);
-    return`
-    <div class="wk-row${isCur?' cur':''}" onclick="expandWk(${i})">
-      <div class="wk-num-col">
-        <div class="wk-lbl">${wk.lbl}${isCur?' ◀':''}</div>
-        <div class="wk-phase">${wk.ph}</div>
-        ${hasNotes?`<div class="wk-note-indicator">✎ notes saved</div>`:''}
-      </div>
-      <div class="wk-right">
-        <div class="wk-mi">${wk.mi} mi${wk.cut?'<span class="wk-cut">cutback ↓</span>':''}</div>
-        <div class="wk-pips">${pips}</div>
-      </div>
-    </div>
-    <div class="wk-expand" id="exp-${i}" style="display:${expanded[i]?'block':'none'}">
-      ${wk.days.map(([w,t],j)=>`<div class="wk-exp-day ${t}"><span class="dn">${DAY_NAMES[j]}</span><span class="dt">${w}</span></div>`).join('')}
-    </div>`;
-  }).join('');
-  document.getElementById('pane-plan').innerHTML=`<div class="plan-list">${rows}</div>`;
+ const rows=W.map((wk,i)=>{
+ const isCur=i===todayWk;
+ const pips=wk.days.map(([,t])=>`<div class="wk-pip ${PIP[t]}"></div>`).join('');
+ const hasNotes=!!loadNotes(i);
+ return`
+ <div class="wk-row${isCur?' cur':''}" onclick="expandWk(${i})">
+ <div class="wk-num-col">
+ <div class="wk-lbl">${wk.lbl}${isCur?' ◀':''}</div>
+ <div class="wk-phase">${wk.ph}</div>
+ ${hasNotes?`<div class="wk-note-indicator">✎ notes saved</div>`:''}
+ </div>
+ <div class="wk-right">
+ <div class="wk-mi">${wk.mi} mi${wk.cut?'<span class="wk-cut">cutback ↓</span>':''}</div>
+ <div class="wk-pips">${pips}</div>
+ </div>
+ </div>
+ <div class="wk-expand" id="exp-${i}" style="display:${expanded[i]?'block':'none'}">
+ ${wk.days.map(([w,t],j)=>`<div class="wk-exp-day ${t}"><span class="dn">${DAY_NAMES[j]}</span><span class="dt">${w}</span></div>`).join('')}
+ </div>`;
+ }).join('');
+ document.getElementById('pane-plan').innerHTML=`<div class="plan-list">${rows}</div>`;
 }
 
 function expandWk(i){
-  expanded[i]=!expanded[i];
-  const el=document.getElementById('exp-'+i);
-  if(el)el.style.display=expanded[i]?'block':'none';
-  selWeek=i;selDay=(i===todayWk)?todayDay:0;
-  renderToday();
+ expanded[i]=!expanded[i];
+ const el=document.getElementById('exp-'+i);
+ if(el)el.style.display=expanded[i]?'block':'none';
+ selWeek=i;selDay=(i===todayWk)?todayDay:0;
+ renderToday();
 }
 
 
@@ -1960,203 +1960,203 @@ let stravaActuals = JSON.parse(localStorage.getItem('philly_strava_actuals')||'{
 
 
 function stravaConnectHtml(){
-  const INP='background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:13px;padding:9px 10px;border-radius:3px;width:100%;box-sizing:border-box';
-  const BTN='padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid #fc4c02;color:#fc4c02;font-family:var(--sans);border-radius:3px';
-  const DBTN='padding:9px 16px;font-size:13px;cursor:pointer;background:none;border:1px solid var(--border2);color:var(--muted);font-family:var(--sans);border-radius:3px';
-  const synced=localStorage.getItem('philly_strava_synced');
-  const syncAgo=synced?Math.round((Date.now()-parseInt(synced))/60000):null;
-  const syncLbl=syncAgo===null?'Never synced':syncAgo<2?'Just now':syncAgo<60?syncAgo+'m ago':Math.round(syncAgo/60)+'h ago';
-  if(stravaIsConnected()){
-    return`<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-      <div>
-        <span style="font-size:13px;color:var(--green);font-weight:500">Connected</span>
-        <span style="font-size:12px;color:var(--muted);margin-left:10px">${syncLbl}</span>
-        <div id="strava-status" style="font-size:12px;color:var(--muted);margin-top:3px"></div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button onclick="statsSyncAndRender()" style="${BTN}">↺ Sync now</button>
-        <button onclick="stravaDisconnect()" style="${DBTN}">Disconnect</button>
-      </div>
-    </div>`;
-  }
-  return`<div>
-    <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">One-time setup. You'll need the Client ID and Client Secret from <a href="https://www.strava.com/settings/api" target="_blank" style="color:var(--accent)">strava.com/settings/api ↗</a></div>
-    <div style="margin-bottom:12px">
-      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">1. Enter your app credentials</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-        <input id="strava-client-id" placeholder="Client ID" value="${localStorage.getItem('philly_strava_client_id')||''}" style="${INP}">
-        <input id="strava-client-secret" type="password" placeholder="Client Secret" value="${localStorage.getItem('philly_strava_client_secret')||''}" style="${INP}">
-      </div>
-    </div>
-    <div style="margin-bottom:12px">
-      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">2. Authorize on Strava</div>
-      <button onclick="stravaOpenAuth()" style="${BTN}">Open Strava authorization ↗</button>
-    </div>
-    <div id="strava-step3" style="display:${localStorage.getItem('philly_strava_client_id')?'block':'none'}">
-      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px">3. Paste the URL from your browser after authorizing</div>
-      <div style="font-size:12px;color:var(--muted);margin-bottom:6px">Strava redirects to localhost which won't load — just copy the full URL from your address bar and paste it here.</div>
-      <div style="display:flex;gap:8px">
-        <input id="strava-auth-code" placeholder="Paste full redirect URL" style="${INP};flex:1;width:auto">
-        <button onclick="stravaConnect()" style="${BTN}">Connect</button>
-      </div>
-      <div id="strava-status" style="font-size:12px;color:var(--muted);margin-top:8px"></div>
-    </div>
-  </div>`;
+ const INP='background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:13px;padding:9px 10px;border-radius:3px;width:100%;box-sizing:border-box';
+ const BTN='padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid #fc4c02;color:#fc4c02;font-family:var(--sans);border-radius:3px';
+ const DBTN='padding:9px 16px;font-size:13px;cursor:pointer;background:none;border:1px solid var(--border2);color:var(--muted);font-family:var(--sans);border-radius:3px';
+ const synced=localStorage.getItem('philly_strava_synced');
+ const syncAgo=synced?Math.round((Date.now()-parseInt(synced))/60000):null;
+ const syncLbl=syncAgo===null?'Never synced':syncAgo<2?'Just now':syncAgo<60?syncAgo+'m ago':Math.round(syncAgo/60)+'h ago';
+ if(stravaIsConnected()){
+ return`<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+ <div>
+ <span style="font-size:13px;color:var(--green);font-weight:500">Connected</span>
+ <span style="font-size:12px;color:var(--muted);margin-left:10px">${syncLbl}</span>
+ <div id="strava-status" style="font-size:12px;color:var(--muted);margin-top:3px"></div>
+ </div>
+ <div style="display:flex;gap:8px">
+ <button onclick="statsSyncAndRender()" style="${BTN}">↺ Sync now</button>
+ <button onclick="stravaDisconnect()" style="${DBTN}">Disconnect</button>
+ </div>
+ </div>`;
+ }
+ return`<div>
+ <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6">One-time setup. You'll need the Client ID and Client Secret from <a href="https://www.strava.com/settings/api" target="_blank" style="color:var(--accent)">strava.com/settings/api ↗</a></div>
+ <div style="margin-bottom:12px">
+ <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">1. Enter your app credentials</div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+ <input id="strava-client-id" placeholder="Client ID" value="${localStorage.getItem('philly_strava_client_id')||''}" style="${INP}">
+ <input id="strava-client-secret" type="password" placeholder="Client Secret" value="${localStorage.getItem('philly_strava_client_secret')||''}" style="${INP}">
+ </div>
+ </div>
+ <div style="margin-bottom:12px">
+ <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px">2. Authorize on Strava</div>
+ <button onclick="stravaOpenAuth()" style="${BTN}">Open Strava authorization ↗</button>
+ </div>
+ <div id="strava-step3" style="display:${localStorage.getItem('philly_strava_client_id')?'block':'none'}">
+ <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px">3. Paste the URL from your browser after authorizing</div>
+ <div style="font-size:12px;color:var(--muted);margin-bottom:6px">Strava redirects to localhost which won't load — just copy the full URL from your address bar and paste it here.</div>
+ <div style="display:flex;gap:8px">
+ <input id="strava-auth-code" placeholder="Paste full redirect URL" style="${INP};flex:1;width:auto">
+ <button onclick="stravaConnect()" style="${BTN}">Connect</button>
+ </div>
+ <div id="strava-status" style="font-size:12px;color:var(--muted);margin-top:8px"></div>
+ </div>
+ </div>`;
 }
 function saveGhToken(){
-  const val=document.getElementById('gh-token-inp').value.trim();
-  if(val)localStorage.setItem('philly_gh_token',val);
-  else localStorage.removeItem('philly_gh_token');
-  renderRef();
-  if(val)writeAppData(); // push current data immediately
+ const val=document.getElementById('gh-token-inp').value.trim();
+ if(val)localStorage.setItem('philly_gh_token',val);
+ else localStorage.removeItem('philly_gh_token');
+ renderRef();
+ if(val)writeAppData(); // push current data immediately
 }
 function stravaIsConnected() {
-  return !!localStorage.getItem('philly_strava_refresh_token');
+ return !!localStorage.getItem('philly_strava_refresh_token');
 }
 
 function stravaOpenAuth() {
-  const clientId = document.getElementById('strava-client-id').value.trim();
-  const secret   = document.getElementById('strava-client-secret').value.trim();
-  if (!clientId || !secret) { alert('Enter your Client ID and Client Secret first.'); return; }
-  localStorage.setItem('philly_strava_client_id', clientId);
-  localStorage.setItem('philly_strava_client_secret', secret);
-  const url = 'https://www.strava.com/oauth/authorize?client_id='+clientId
-    +'&response_type=code&redirect_uri=http://localhost&approval_prompt=force&scope=activity:read';
-  window.open(url, '_blank');
-  document.getElementById('strava-step3').style.display = 'block';
+ const clientId = document.getElementById('strava-client-id').value.trim();
+ const secret = document.getElementById('strava-client-secret').value.trim();
+ if (!clientId || !secret) { alert('Enter your Client ID and Client Secret first.'); return; }
+ localStorage.setItem('philly_strava_client_id', clientId);
+ localStorage.setItem('philly_strava_client_secret', secret);
+ const url = 'https://www.strava.com/oauth/authorize?client_id='+clientId
+ +'&response_type=code&redirect_uri=http://localhost&approval_prompt=force&scope=activity:read';
+ window.open(url, '_blank');
+ document.getElementById('strava-step3').style.display = 'block';
 }
 
 function extractStravaCode(raw) {
-  // Accept full URL or bare code
-  if (raw.includes('code=')) {
-    const m = raw.match(/[?&]code=([^&]+)/);
-    return m ? m[1] : raw.trim();
-  }
-  return raw.trim();
+ // Accept full URL or bare code
+ if (raw.includes('code=')) {
+ const m = raw.match(/[?&]code=([^&]+)/);
+ return m ? m[1] : raw.trim();
+ }
+ return raw.trim();
 }
 
 async function stravaConnect() {
-  const clientId = localStorage.getItem('philly_strava_client_id');
-  const secret   = localStorage.getItem('philly_strava_client_secret');
-  const raw      = document.getElementById('strava-auth-code').value;
-  const code     = extractStravaCode(raw);
-  if (!clientId || !secret || !code) { alert('Complete all three steps first.'); return; }
-  const statusEl = document.getElementById('strava-status');
-  statusEl.textContent = 'Connecting…';
-  try {
-    const res = await fetch('https://www.strava.com/oauth/token', {
-      method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body: new URLSearchParams({client_id:clientId, client_secret:secret, code:code, grant_type:'authorization_code'})
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message||'Authorization failed ('+res.status+')');
-    localStorage.setItem('philly_strava_access_token', data.access_token);
-    localStorage.setItem('philly_strava_refresh_token', data.refresh_token);
-    localStorage.setItem('philly_strava_expires_at', data.expires_at);
-    statusEl.textContent = 'Connected! Syncing…';
-    await _stravaFetchAndStore(data.access_token, statusEl);
-    renderRef();
-  } catch(e) {
-    statusEl.textContent = 'Error: '+e.message;
-  }
+ const clientId = localStorage.getItem('philly_strava_client_id');
+ const secret = localStorage.getItem('philly_strava_client_secret');
+ const raw = document.getElementById('strava-auth-code').value;
+ const code = extractStravaCode(raw);
+ if (!clientId || !secret || !code) { alert('Complete all three steps first.'); return; }
+ const statusEl = document.getElementById('strava-status');
+ statusEl.textContent = 'Connecting…';
+ try {
+ const res = await fetch('https://www.strava.com/oauth/token', {
+ method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+ body: new URLSearchParams({client_id:clientId, client_secret:secret, code:code, grant_type:'authorization_code'})
+ });
+ const data = await res.json();
+ if (!res.ok) throw new Error(data.message||'Authorization failed ('+res.status+')');
+ localStorage.setItem('philly_strava_access_token', data.access_token);
+ localStorage.setItem('philly_strava_refresh_token', data.refresh_token);
+ localStorage.setItem('philly_strava_expires_at', data.expires_at);
+ statusEl.textContent = 'Connected! Syncing…';
+ await _stravaFetchAndStore(data.access_token, statusEl);
+ renderRef();
+ } catch(e) {
+ statusEl.textContent = 'Error: '+e.message;
+ }
 }
 
 async function stravaRefreshAndSync() {
-  const clientId = localStorage.getItem('philly_strava_client_id');
-  const secret   = localStorage.getItem('philly_strava_client_secret');
-  const refresh  = localStorage.getItem('philly_strava_refresh_token');
-  const statusEl = document.getElementById('strava-status');
-  if (!clientId||!secret||!refresh) { if(statusEl) statusEl.textContent='Not connected — complete setup below'; renderRef(); return; }
-  if (statusEl) statusEl.textContent = 'Refreshing token…';
-  try {
-    const res = await fetch('https://www.strava.com/oauth/token', {
-      method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body: new URLSearchParams({client_id:clientId, client_secret:secret, refresh_token:refresh, grant_type:'refresh_token'})
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message||'Refresh failed');
-    localStorage.setItem('philly_strava_access_token', data.access_token);
-    localStorage.setItem('philly_strava_refresh_token', data.refresh_token);
-    localStorage.setItem('philly_strava_expires_at', data.expires_at);
-    await _stravaFetchAndStore(data.access_token, statusEl);
-    renderRef();
-  } catch(e) {
-    if (statusEl) statusEl.textContent = 'Error: '+e.message;
-  }
+ const clientId = localStorage.getItem('philly_strava_client_id');
+ const secret = localStorage.getItem('philly_strava_client_secret');
+ const refresh = localStorage.getItem('philly_strava_refresh_token');
+ const statusEl = document.getElementById('strava-status');
+ if (!clientId||!secret||!refresh) { if(statusEl) statusEl.textContent='Not connected — complete setup below'; renderRef(); return; }
+ if (statusEl) statusEl.textContent = 'Refreshing token…';
+ try {
+ const res = await fetch('https://www.strava.com/oauth/token', {
+ method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+ body: new URLSearchParams({client_id:clientId, client_secret:secret, refresh_token:refresh, grant_type:'refresh_token'})
+ });
+ const data = await res.json();
+ if (!res.ok) throw new Error(data.message||'Refresh failed');
+ localStorage.setItem('philly_strava_access_token', data.access_token);
+ localStorage.setItem('philly_strava_refresh_token', data.refresh_token);
+ localStorage.setItem('philly_strava_expires_at', data.expires_at);
+ await _stravaFetchAndStore(data.access_token, statusEl);
+ renderRef();
+ } catch(e) {
+ if (statusEl) statusEl.textContent = 'Error: '+e.message;
+ }
 }
 
 async function stravaSync() {
-  const statusEl = document.getElementById('strava-status');
-  const expiresAt = parseInt(localStorage.getItem('philly_strava_expires_at')||'0');
-  const token = localStorage.getItem('philly_strava_access_token');
-  // Auto-refresh if expired or expiring within 5 min
-  if (!token || Math.floor(Date.now()/1000) > expiresAt - 300) {
-    return stravaRefreshAndSync();
-  }
-  if (statusEl) statusEl.textContent = 'Syncing…';
-  await _stravaFetchAndStore(token, statusEl);
-  renderRef();
+ const statusEl = document.getElementById('strava-status');
+ const expiresAt = parseInt(localStorage.getItem('philly_strava_expires_at')||'0');
+ const token = localStorage.getItem('philly_strava_access_token');
+ // Auto-refresh if expired or expiring within 5 min
+ if (!token || Math.floor(Date.now()/1000) > expiresAt - 300) {
+ return stravaRefreshAndSync();
+ }
+ if (statusEl) statusEl.textContent = 'Syncing…';
+ await _stravaFetchAndStore(token, statusEl);
+ renderRef();
 }
 
 async function _stravaFetchAndStore(token, statusEl) {
-  const planStart = Math.floor(PLAN_START.getTime()/1000);
-  const res = await fetch(
-    'https://www.strava.com/api/v3/athlete/activities?after='+planStart+'&per_page=200',
-    {headers:{Authorization:'Bearer '+token}}
-  );
-  if (!res.ok) throw new Error('Strava API error '+res.status);
-  const acts = await res.json();
-  const runs = acts.filter(a=>a.sport_type==='Run'||a.type==='Run');
+ const planStart = Math.floor(PLAN_START.getTime()/1000);
+ const res = await fetch(
+ 'https://www.strava.com/api/v3/athlete/activities?after='+planStart+'&per_page=200',
+ {headers:{Authorization:'Bearer '+token}}
+ );
+ if (!res.ok) throw new Error('Strava API error '+res.status);
+ const acts = await res.json();
+ const runs = acts.filter(a=>a.sport_type==='Run'||a.type==='Run');
 
-  const newActuals = {};
-  const activities = [];
+ const newActuals = {};
+ const activities = [];
 
-  runs.forEach(run=>{
-    const d=new Date(run.start_date_local); d.setHours(0,0,0,0);
-    const dateStr=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    let wkIdx=-1;
-    for(let i=0;i<W.length;i++){
-      const wkStart=parseLocal(W[i].start);
-      const wkEnd=new Date(wkStart); wkEnd.setDate(wkEnd.getDate()+7);
-      if(d>=wkStart&&d<wkEnd){ wkIdx=i; break; }
-    }
-    if(wkIdx>=0){
-      if(!newActuals[wkIdx])newActuals[wkIdx]=0;
-      newActuals[wkIdx]+=run.distance/1609.34;
-    }
-    const mi=run.distance/1609.34;
-    const pace=run.moving_time>0&&mi>0?(run.moving_time/60)/mi:0;
-    activities.push({
-      id:run.id,date:dateStr,name:run.name,
-      mi:Math.round(mi*100)/100,
-      pace:Math.round(pace*100)/100,
-      duration:run.moving_time,
-      cadence:run.average_cadence||0,
-      effort:run.relative_effort||0,
-      elevation:Math.round((run.total_elevation_gain||0)*3.28084),
-      wkIdx:wkIdx
-    });
-  });
+ runs.forEach(run=>{
+ const d=new Date(run.start_date_local); d.setHours(0,0,0,0);
+ const dateStr=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+ let wkIdx=-1;
+ for(let i=0;i<W.length;i++){
+ const wkStart=parseLocal(W[i].start);
+ const wkEnd=new Date(wkStart); wkEnd.setDate(wkEnd.getDate()+7);
+ if(d>=wkStart&&d<wkEnd){ wkIdx=i; break; }
+ }
+ if(wkIdx>=0){
+ if(!newActuals[wkIdx])newActuals[wkIdx]=0;
+ newActuals[wkIdx]+=run.distance/1609.34;
+ }
+ const mi=run.distance/1609.34;
+ const pace=run.moving_time>0&&mi>0?(run.moving_time/60)/mi:0;
+ activities.push({
+ id:run.id,date:dateStr,name:run.name,
+ mi:Math.round(mi*100)/100,
+ pace:Math.round(pace*100)/100,
+ duration:run.moving_time,
+ cadence:run.average_cadence||0,
+ effort:run.relative_effort||0,
+ elevation:Math.round((run.total_elevation_gain||0)*3.28084),
+ wkIdx:wkIdx
+ });
+ });
 
-  activities.sort((a,b)=>b.date.localeCompare(a.date));
-  stravaActuals=newActuals;
-  localStorage.setItem('philly_strava_actuals',JSON.stringify(stravaActuals));
-  appData.stravaActuals=stravaActuals;
-  appData.stravaActivities=activities;
-  appData.stravaLastSync=Date.now();
-  writeAppData();
-  localStorage.setItem('philly_strava_activities',JSON.stringify(activities));
-  localStorage.setItem('philly_strava_synced',Date.now());
-  if(statusEl) statusEl.textContent=runs.length+' runs synced · '+Object.keys(newActuals).length+' training weeks';
-  // Nudge prediction market toward training-implied odds
-  try{applyStravaOracle();}catch(e){}
+ activities.sort((a,b)=>b.date.localeCompare(a.date));
+ stravaActuals=newActuals;
+ localStorage.setItem('philly_strava_actuals',JSON.stringify(stravaActuals));
+ appData.stravaActuals=stravaActuals;
+ appData.stravaActivities=activities;
+ appData.stravaLastSync=Date.now();
+ writeAppData();
+ localStorage.setItem('philly_strava_activities',JSON.stringify(activities));
+ localStorage.setItem('philly_strava_synced',Date.now());
+ if(statusEl) statusEl.textContent=runs.length+' runs synced · '+Object.keys(newActuals).length+' training weeks';
+ // Nudge prediction market toward training-implied odds
+ try{applyStravaOracle();}catch(e){}
 }
 
 function stravaDisconnect() {
-  if(!confirm('Disconnect Strava and clear synced data?')) return;
-  ['philly_strava_access_token','philly_strava_refresh_token','philly_strava_expires_at','philly_strava_actuals','philly_strava_activities','philly_strava_synced'].forEach(k=>localStorage.removeItem(k));
-  stravaActuals={};
-  renderStats();
+ if(!confirm('Disconnect Strava and clear synced data?')) return;
+ ['philly_strava_access_token','philly_strava_refresh_token','philly_strava_expires_at','philly_strava_actuals','philly_strava_activities','philly_strava_synced'].forEach(k=>localStorage.removeItem(k));
+ stravaActuals={};
+ renderStats();
 }
 
 
@@ -2167,359 +2167,359 @@ function fmtDur(s){const h=Math.floor(s/3600),m=Math.floor((s%3600)/60);return h
 function runBarClass(e){return e>80?'hard':e>45?'mod':'easy';}
 
 function drawVolChart(canvasId){
-  const canvas=document.getElementById(canvasId);if(!canvas)return;
-  const dpr=window.devicePixelRatio||1;
-  const CW=canvas.clientWidth,CH=canvas.clientHeight;
-  canvas.width=CW*dpr;canvas.height=CH*dpr;
-  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
-  const isDark=!document.body.classList.contains('light');
-  const pad={l:28,r:6,t:8,b:22};
-  const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
-  const n=W.length,maxMi=75;
-  const borderClr=isDark?'#2A2724':'#DDD6C9';
-  const textClr=isDark?'#6B6560':'#857F77';
-  const barW=w/n;
+ const canvas=document.getElementById(canvasId);if(!canvas)return;
+ const dpr=window.devicePixelRatio||1;
+ const CW=canvas.clientWidth,CH=canvas.clientHeight;
+ canvas.width=CW*dpr;canvas.height=CH*dpr;
+ const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+ const isDark=!document.body.classList.contains('light');
+ const pad={l:28,r:6,t:8,b:22};
+ const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
+ const n=W.length,maxMi=75;
+ const borderClr=isDark?'#2A2724':'#DDD6C9';
+ const textClr=isDark?'#6B6560':'#857F77';
+ const barW=w/n;
 
-  [25,50,75].forEach(mi=>{
-    const y=pad.t+h-(mi/maxMi)*h;
-    ctx.strokeStyle=borderClr;ctx.lineWidth=0.5;
-    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
-    ctx.fillStyle=textClr;ctx.font='9px Arial';ctx.textAlign='right';
-    ctx.fillText(mi,pad.l-3,y+3);
-  });
+ [25,50,75].forEach(mi=>{
+ const y=pad.t+h-(mi/maxMi)*h;
+ ctx.strokeStyle=borderClr;ctx.lineWidth=0.5;
+ ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
+ ctx.fillStyle=textClr;ctx.font='9px Arial';ctx.textAlign='right';
+ ctx.fillText(mi,pad.l-3,y+3);
+ });
 
-  W.forEach((wk,i)=>{
-    const x=pad.l+i*barW;
-    const bw=barW*0.38;
-    const planH=(wk.mi/maxMi)*h;
-    ctx.fillStyle=isDark?'rgba(91,155,213,0.18)':'rgba(37,99,171,0.15)';
-    ctx.fillRect(x+barW*0.05,pad.t+h-planH,bw,planH);
+ W.forEach((wk,i)=>{
+ const x=pad.l+i*barW;
+ const bw=barW*0.38;
+ const planH=(wk.mi/maxMi)*h;
+ ctx.fillStyle=isDark?'rgba(91,155,213,0.18)':'rgba(37,99,171,0.15)';
+ ctx.fillRect(x+barW*0.05,pad.t+h-planH,bw,planH);
 
-    const actual=stravaActuals[i];
-    if(actual!=null){
-      const actH=(Math.min(actual,maxMi)/maxMi)*h;
-      const ok=actual>=wk.mi-2;
-      ctx.fillStyle=ok?(isDark?'#1a4030':'#B6E2C8'):(isDark?'#3A2800':'#EAD4A0');
-      ctx.fillRect(x+barW*0.52,pad.t+h-actH,bw,actH);
-    }
-    if(i%5===0||i===n-1){
-      ctx.fillStyle=textClr;ctx.font='9px Arial';ctx.textAlign='center';
-      ctx.fillText('W'+(i+1),x+barW/2,pad.t+h+14);
-    }
-  });
+ const actual=stravaActuals[i];
+ if(actual!=null){
+ const actH=(Math.min(actual,maxMi)/maxMi)*h;
+ const ok=actual>=wk.mi-2;
+ ctx.fillStyle=ok?(isDark?'#1a4030':'#B6E2C8'):(isDark?'#3A2800':'#EAD4A0');
+ ctx.fillRect(x+barW*0.52,pad.t+h-actH,bw,actH);
+ }
+ if(i%5===0||i===n-1){
+ ctx.fillStyle=textClr;ctx.font='9px Arial';ctx.textAlign='center';
+ ctx.fillText('W'+(i+1),x+barW/2,pad.t+h+14);
+ }
+ });
 }
 
 function drawTrendChart(canvasId,data,colorFn,labelFn,invertY,yFmt){
-  const canvas=document.getElementById(canvasId);if(!canvas||data.length<2)return;
-  const dpr=window.devicePixelRatio||1;
-  const CW=canvas.clientWidth,CH=canvas.clientHeight;
-  canvas.width=CW*dpr;canvas.height=CH*dpr;
-  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
-  const isDark=!document.body.classList.contains('light');
-  const textClr=isDark?'#7E7E86':'#888580';
-  const gridClr=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
-  const lPad=yFmt?44:6;
-  const pad={l:lPad,r:6,t:8,b:6};
-  const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
-  const vals=data.map(d=>d.v);
-  let mn=Math.min(...vals),mx=Math.max(...vals);
-  if(mx-mn<0.5){mn-=0.25;mx+=0.25;}
-  const xOf=(i)=>pad.l+(i/(data.length-1))*w;
-  const yOf=(v)=>invertY?pad.t+((v-mn)/(mx-mn))*h:pad.t+h-((v-mn)/(mx-mn))*h;
+ const canvas=document.getElementById(canvasId);if(!canvas||data.length<2)return;
+ const dpr=window.devicePixelRatio||1;
+ const CW=canvas.clientWidth,CH=canvas.clientHeight;
+ canvas.width=CW*dpr;canvas.height=CH*dpr;
+ const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+ const isDark=!document.body.classList.contains('light');
+ const textClr=isDark?'#7E7E86':'#888580';
+ const gridClr=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+ const lPad=yFmt?44:6;
+ const pad={l:lPad,r:6,t:8,b:6};
+ const w=CW-pad.l-pad.r,h=CH-pad.t-pad.b;
+ const vals=data.map(d=>d.v);
+ let mn=Math.min(...vals),mx=Math.max(...vals);
+ if(mx-mn<0.5){mn-=0.25;mx+=0.25;}
+ const xOf=(i)=>pad.l+(i/(data.length-1))*w;
+ const yOf=(v)=>invertY?pad.t+((v-mn)/(mx-mn))*h:pad.t+h-((v-mn)/(mx-mn))*h;
 
-  // Y axis grid lines + labels
-  if(yFmt){
-    ctx.font=`10px var(--mono,'JetBrains Mono',monospace)`;
-    ctx.textAlign='right';
-    const steps=4;
-    for(let i=0;i<=steps;i++){
-      const v=mn+(i/steps)*(mx-mn);
-      const y=yOf(v);
-      ctx.strokeStyle=gridClr;ctx.lineWidth=0.5;
-      ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
-      ctx.fillStyle=textClr;
-      ctx.fillText(yFmt(v),pad.l-5,y+3.5);
-    }
-  }
+ // Y axis grid lines + labels
+ if(yFmt){
+ ctx.font=`10px var(--mono,'JetBrains Mono',monospace)`;
+ ctx.textAlign='right';
+ const steps=4;
+ for(let i=0;i<=steps;i++){
+ const v=mn+(i/steps)*(mx-mn);
+ const y=yOf(v);
+ ctx.strokeStyle=gridClr;ctx.lineWidth=0.5;
+ ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
+ ctx.fillStyle=textClr;
+ ctx.fillText(yFmt(v),pad.l-5,y+3.5);
+ }
+ }
 
-  ctx.beginPath();
-  data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
-  ctx.lineTo(xOf(data.length-1),pad.t+h);ctx.lineTo(pad.l,pad.t+h);ctx.closePath();
-  const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+h);
-  grad.addColorStop(0,isDark?'rgba(255,59,36,0.28)':'rgba(255,59,36,0.16)');
-  grad.addColorStop(1,'transparent');
-  ctx.fillStyle=grad;ctx.fill();
+ ctx.beginPath();
+ data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
+ ctx.lineTo(xOf(data.length-1),pad.t+h);ctx.lineTo(pad.l,pad.t+h);ctx.closePath();
+ const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+h);
+ grad.addColorStop(0,isDark?'rgba(255,59,36,0.28)':'rgba(255,59,36,0.16)');
+ grad.addColorStop(1,'transparent');
+ ctx.fillStyle=grad;ctx.fill();
 
-  ctx.beginPath();
-  data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
-  ctx.strokeStyle='#FF3B24';ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
+ ctx.beginPath();
+ data.forEach((d,i)=>{i===0?ctx.moveTo(xOf(i),yOf(d.v)):ctx.lineTo(xOf(i),yOf(d.v));});
+ ctx.strokeStyle='#FF3B24';ctx.lineWidth=2;ctx.lineJoin='round';ctx.stroke();
 
-  data.forEach((d,i)=>{
-    ctx.beginPath();ctx.arc(xOf(i),yOf(d.v),3,0,Math.PI*2);
-    ctx.fillStyle='#FF3B24';ctx.fill();
-  });
+ data.forEach((d,i)=>{
+ ctx.beginPath();ctx.arc(xOf(i),yOf(d.v),3,0,Math.PI*2);
+ ctx.fillStyle='#FF3B24';ctx.fill();
+ });
 }
 
 function renderStats(){
-  // Use appData as primary source (populated from data.json on all devices)
-  // Fall back to localStorage for the device that did the sync
-  const acts=(appData.stravaActivities||[]).length>0
-    ? appData.stravaActivities
-    : JSON.parse(localStorage.getItem('philly_strava_activities')||'[]');
-  const connected=stravaIsConnected();
-  const synced=localStorage.getItem('philly_strava_synced')||appData.stravaLastSync||null;
-  const hasRemoteData=acts.length>0||Object.keys(appData.stravaActuals||{}).length>0;
-  const pane=document.getElementById('pane-stats');
+ // Use appData as primary source (populated from data.json on all devices)
+ // Fall back to localStorage for the device that did the sync
+ const acts=(appData.stravaActivities||[]).length>0
+ ? appData.stravaActivities
+ : JSON.parse(localStorage.getItem('philly_strava_activities')||'[]');
+ const connected=stravaIsConnected();
+ const synced=localStorage.getItem('philly_strava_synced')||appData.stravaLastSync||null;
+ const hasRemoteData=acts.length>0||Object.keys(appData.stravaActuals||{}).length>0;
+ const pane=document.getElementById('pane-stats');
 
-  if(!connected && !hasRemoteData){
-    pane.innerHTML=`<div class="dash-hdr">
-      <span class="dash-hdr-title">Training Dashboard</span>
-    </div>
-    <div style="padding:24px 18px">
-      <div style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:16px">Connect Strava</div>
-      ${stravaConnectHtml()}
-    </div>`;
-    return;
-  }
+ if(!connected && !hasRemoteData){
+ pane.innerHTML=`<div class="dash-hdr">
+ <span class="dash-hdr-title">Training Dashboard</span>
+ </div>
+ <div style="padding:24px 18px">
+ <div style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:16px">Connect Strava</div>
+ ${stravaConnectHtml()}
+ </div>`;
+ return;
+ }
 
-  if(acts.length===0){
-    pane.innerHTML=`<div class="dash-hdr">
-      <span class="dash-hdr-title">Training Dashboard</span>
-      <div class="dash-sync-row">
-        <span class="dash-sync-lbl">No data yet</span>
-        <button class="dash-sync-btn" onclick="statsSyncAndRender()">Sync Strava</button>
-      </div>
-    </div>
-    <div class="dash-no-data">
-      <div class="dash-no-data-title">No runs synced yet</div>
-      <div class="dash-no-data-sub">Hit Sync to pull your training data from Strava.</div>
-    </div>`;
-    return;
-  }
+ if(acts.length===0){
+ pane.innerHTML=`<div class="dash-hdr">
+ <span class="dash-hdr-title">Training Dashboard</span>
+ <div class="dash-sync-row">
+ <span class="dash-sync-lbl">No data yet</span>
+ <button class="dash-sync-btn" onclick="statsSyncAndRender()">Sync Strava</button>
+ </div>
+ </div>
+ <div class="dash-no-data">
+ <div class="dash-no-data-title">No runs synced yet</div>
+ <div class="dash-no-data-sub">Hit Sync to pull your training data from Strava.</div>
+ </div>`;
+ return;
+ }
 
-  // ── Compute summary stats ─────────────────────────────────────────────────
-  const now=new Date(); now.setHours(0,0,0,0);
-  const weekStart=new Date(now); weekStart.setDate(now.getDate()-now.getDay()+(now.getDay()===0?-6:1));
-  const thisWeek=acts.filter(a=>new Date(a.date+'T00:00:00')>=weekStart);
-  const thisWeekMi=thisWeek.reduce((s,a)=>s+a.mi,0);
-  const totalMi=acts.reduce((s,a)=>s+a.mi,0);
-  const easyRuns=acts.filter(a=>a.mi>2&&a.effort<65&&a.pace>0);
-  const avgPace=easyRuns.length>0?easyRuns.reduce((s,a)=>s+a.pace,0)/easyRuns.length:0;
-  const avgCad=acts.filter(a=>a.cadence>0).reduce((s,a,_,arr)=>s+a.cadence/arr.length,0);
-  const syncAgo=synced?Math.round((Date.now()-parseInt(synced))/60000):null;
-  const syncLbl=syncAgo===null?'Never':syncAgo<2?'Just now':syncAgo<60?syncAgo+'m ago':Math.round(syncAgo/60)+'h ago';
+ // ── Compute summary stats ─────────────────────────────────────────────────
+ const now=new Date(); now.setHours(0,0,0,0);
+ const weekStart=new Date(now); weekStart.setDate(now.getDate()-now.getDay()+(now.getDay()===0?-6:1));
+ const thisWeek=acts.filter(a=>new Date(a.date+'T00:00:00')>=weekStart);
+ const thisWeekMi=thisWeek.reduce((s,a)=>s+a.mi,0);
+ const totalMi=acts.reduce((s,a)=>s+a.mi,0);
+ const easyRuns=acts.filter(a=>a.mi>2&&a.effort<65&&a.pace>0);
+ const avgPace=easyRuns.length>0?easyRuns.reduce((s,a)=>s+a.pace,0)/easyRuns.length:0;
+ const avgCad=acts.filter(a=>a.cadence>0).reduce((s,a,_,arr)=>s+a.cadence/arr.length,0);
+ const syncAgo=synced?Math.round((Date.now()-parseInt(synced))/60000):null;
+ const syncLbl=syncAgo===null?'Never':syncAgo<2?'Just now':syncAgo<60?syncAgo+'m ago':Math.round(syncAgo/60)+'h ago';
 
-  // ── Plan week for this week ───────────────────────────────────────────────
-  const curWkPlan=todayWk>=0&&todayWk<W.length?W[todayWk].mi:null;
+ // ── Plan week for this week ───────────────────────────────────────────────
+ const curWkPlan=todayWk>=0&&todayWk<W.length?W[todayWk].mi:null;
 
-  // ── Pace trend (easy runs, last 12) ──────────────────────────────────────
-  const paceTrend=easyRuns.slice(0,12).reverse().map(a=>({v:a.pace,d:a.date}));
-  const cadTrend=acts.filter(a=>a.cadence>70).slice(0,12).reverse().map(a=>({v:a.cadence,d:a.date}));
+ // ── Pace trend (easy runs, last 12) ──────────────────────────────────────
+ const paceTrend=easyRuns.slice(0,12).reverse().map(a=>({v:a.pace,d:a.date}));
+ const cadTrend=acts.filter(a=>a.cadence>70).slice(0,12).reverse().map(a=>({v:a.cadence,d:a.date}));
 
-  pane.innerHTML=`<div class="dash">
-  <div class="dash-hdr">
-    <span class="dash-hdr-title">Training Dashboard</span>
-    <div class="dash-sync-row">
-      <span class="dash-sync-lbl">Synced ${syncLbl}</span>
-      <button class="dash-sync-btn" onclick="statsSyncAndRender()">↺ Sync</button>
-    </div>
-  </div>
+ pane.innerHTML=`<div class="dash">
+ <div class="dash-hdr">
+ <span class="dash-hdr-title">Training Dashboard</span>
+ <div class="dash-sync-row">
+ <span class="dash-sync-lbl">Synced ${syncLbl}</span>
+ <button class="dash-sync-btn" onclick="statsSyncAndRender()">↺ Sync</button>
+ </div>
+ </div>
 
-  <div class="stat-cards">
-    <div class="stat-card">
-      <div class="stat-card-val">${fmtMi(thisWeekMi)}</div>
-      <div class="stat-card-lbl">This week (mi)</div>
-      ${curWkPlan?`<div class="stat-card-sub">Plan: ${curWkPlan}mi</div>`:''}
-    </div>
-    <div class="stat-card">
-      <div class="stat-card-val">${fmtMi(totalMi)}</div>
-      <div class="stat-card-lbl">Total this cycle</div>
-      <div class="stat-card-sub">${acts.length} runs</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-card-val">${avgPace>0?fmtPace(avgPace):'—'}</div>
-      <div class="stat-card-lbl">Avg easy pace</div>
-      <div class="stat-card-sub">from ${easyRuns.length} easy runs</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-card-val">${avgCad>0?Math.round(avgCad):'—'}</div>
-      <div class="stat-card-lbl">Avg cadence (spm)</div>
-      <div class="stat-card-sub">target: 80+</div>
-    </div>
-  </div>
+ <div class="stat-cards">
+ <div class="stat-card">
+ <div class="stat-card-val">${fmtMi(thisWeekMi)}</div>
+ <div class="stat-card-lbl">This week (mi)</div>
+ ${curWkPlan?`<div class="stat-card-sub">Plan: ${curWkPlan}mi</div>`:''}
+ </div>
+ <div class="stat-card">
+ <div class="stat-card-val">${fmtMi(totalMi)}</div>
+ <div class="stat-card-lbl">Total this cycle</div>
+ <div class="stat-card-sub">${acts.length} runs</div>
+ </div>
+ <div class="stat-card">
+ <div class="stat-card-val">${avgPace>0?fmtPace(avgPace):'—'}</div>
+ <div class="stat-card-lbl">Avg easy pace</div>
+ <div class="stat-card-sub">from ${easyRuns.length} easy runs</div>
+ </div>
+ <div class="stat-card">
+ <div class="stat-card-val">${avgCad>0?Math.round(avgCad):'—'}</div>
+ <div class="stat-card-lbl">Avg cadence (spm)</div>
+ <div class="stat-card-sub">target: 80+</div>
+ </div>
+ </div>
 
-  <div class="dash-sec">
-    <div class="dash-sec-title">Weekly volume — planned vs actual</div>
-    <div class="vol-canvas-wrap"><canvas id="vol-chart" style="width:100%;height:100%"></canvas></div>
-    <div style="display:flex;gap:16px;margin-top:6px;font-size:11px;color:var(--muted)">
-      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:rgba(91,155,213,0.4);display:inline-block"></span>Planned</span>
-      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#1a4030;display:inline-block"></span>Actual</span>
-    </div>
-  </div>
+ <div class="dash-sec">
+ <div class="dash-sec-title">Weekly volume — planned vs actual</div>
+ <div class="vol-canvas-wrap"><canvas id="vol-chart" style="width:100%;height:100%"></canvas></div>
+ <div style="display:flex;gap:16px;margin-top:6px;font-size:11px;color:var(--muted)">
+ <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:rgba(91,155,213,0.4);display:inline-block"></span>Planned</span>
+ <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;background:#1a4030;display:inline-block"></span>Actual</span>
+ </div>
+ </div>
 
-  <div class="dash-sec" style="margin-top:0;padding-top:0;border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:22px">
-    <div class="dash-sec-title">Races</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Working VDOT: <span style="color:var(--accent);font-weight:700">${workingVDOT.toFixed(1)}</span> · paces in Reference update automatically</div>
-    <div class="rr-list">
-    ${RACE_TRACKER.map((race,i)=>{
-      const result=loadRaceResult(i);
-      const rd=new Date(race.isoDate+'T12:00:00');
-      const isPast=rd<new Date();
-      if(result){return`<div class="rr-card rr-done">
-        <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div><div class="rr-vdot-chip">VDOT ${result.vdot} · ${result.pace}/mi</div></div>
-        <div style="display:flex;align-items:center"><div class="rr-time">${result.time}</div><button class="rr-clear" onclick="clearRaceResult(${i})" title="Clear">✕</button></div>
-      </div>`;}
-      if(isPast){return`<div class="rr-card">
-        <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div></div>
-        <div style="display:flex;gap:6px;align-items:center"><input id="race-time-${i}" class="rr-input" placeholder="H:MM:SS"><button class="rr-save" onclick="saveRaceResult(${i})">Save</button></div>
-      </div>`;}
-      return`<div class="rr-card">
-        <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div></div>
-        <div class="rr-badge">Upcoming</div>
-      </div>`;
-    }).join('')}
-    </div>
-  </div>
-  <div class="dash-sec" style="margin-top:22px">
-    <div class="dash-sec-title">Recent runs</div>
-  </div>
-  <div class="run-cards">
-    ${acts.slice(0,10).map(a=>`
-    <div class="run-card">
-      <div class="run-card-bar ${runBarClass(a.effort)}"></div>
-      <div class="run-card-body">
-        <div class="run-card-top">
-          <span class="run-card-name">${a.name}</span>
-          <span class="run-card-dist">${fmtMi(a.mi)} mi</span>
-        </div>
-        <div class="run-card-meta">${a.pace>0?fmtPace(a.pace)+'/mi · ':''}${a.duration>0?fmtDur(a.duration)+' · ':''}${a.cadence>0?'cad '+Math.round(a.cadence)+' · ':''}${a.effort>0?'RE '+a.effort:''}${a.elevation>0?' · '+a.elevation+'ft':''}</div>
-      </div>
-      <div class="run-card-date">${new Date(a.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
-    </div>`).join('')}
-  </div>
+ <div class="dash-sec" style="margin-top:0;padding-top:0;border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:22px">
+ <div class="dash-sec-title">Races</div>
+ <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Working VDOT: <span style="color:var(--accent);font-weight:700">${workingVDOT.toFixed(1)}</span> · paces in Reference update automatically</div>
+ <div class="rr-list">
+ ${RACE_TRACKER.map((race,i)=>{
+ const result=loadRaceResult(i);
+ const rd=new Date(race.isoDate+'T12:00:00');
+ const isPast=rd<new Date();
+ if(result){return`<div class="rr-card rr-done">
+ <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div><div class="rr-vdot-chip">VDOT ${result.vdot} · ${result.pace}/mi</div></div>
+ <div style="display:flex;align-items:center"><div class="rr-time">${result.time}</div><button class="rr-clear" onclick="clearRaceResult(${i})" title="Clear">✕</button></div>
+ </div>`;}
+ if(isPast){return`<div class="rr-card">
+ <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div></div>
+ <div style="display:flex;gap:6px;align-items:center"><input id="race-time-${i}" class="rr-input" placeholder="H:MM:SS"><button class="rr-save" onclick="saveRaceResult(${i})">Save</button></div>
+ </div>`;}
+ return`<div class="rr-card">
+ <div><div class="rr-name">${race.name}</div><div class="rr-date">${race.dateStr}</div></div>
+ <div class="rr-badge">Upcoming</div>
+ </div>`;
+ }).join('')}
+ </div>
+ </div>
+ <div class="dash-sec" style="margin-top:22px">
+ <div class="dash-sec-title">Recent runs</div>
+ </div>
+ <div class="run-cards">
+ ${acts.slice(0,10).map(a=>`
+ <div class="run-card">
+ <div class="run-card-bar ${runBarClass(a.effort)}"></div>
+ <div class="run-card-body">
+ <div class="run-card-top">
+ <span class="run-card-name">${a.name}</span>
+ <span class="run-card-dist">${fmtMi(a.mi)} mi</span>
+ </div>
+ <div class="run-card-meta">${a.pace>0?fmtPace(a.pace)+'/mi · ':''}${a.duration>0?fmtDur(a.duration)+' · ':''}${a.cadence>0?'cad '+Math.round(a.cadence)+' · ':''}${a.effort>0?'RE '+a.effort:''}${a.elevation>0?' · '+a.elevation+'ft':''}</div>
+ </div>
+ <div class="run-card-date">${new Date(a.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
+ </div>`).join('')}
+ </div>
 
-  <div class="trend-grid" style="margin-top:1px">
-    <div class="trend-cell">
-      <div class="dash-sec-title" style="margin-bottom:0">Easy pace trend</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px">last ${paceTrend.length} runs · lower = faster</div>
-      <div class="trend-canvas-wrap"><canvas id="pace-chart" style="width:100%;height:100%"></canvas></div>
-    </div>
-    <div class="trend-cell">
-      <div class="dash-sec-title" style="margin-bottom:0">Cadence trend</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:2px">last ${cadTrend.length} runs · target 80+</div>
-      <div class="trend-canvas-wrap"><canvas id="cad-chart" style="width:100%;height:100%"></canvas></div>
-    </div>
-  </div>
+ <div class="trend-grid" style="margin-top:1px">
+ <div class="trend-cell">
+ <div class="dash-sec-title" style="margin-bottom:0">Easy pace trend</div>
+ <div style="font-size:11px;color:var(--muted);margin-top:2px">last ${paceTrend.length} runs · lower = faster</div>
+ <div class="trend-canvas-wrap"><canvas id="pace-chart" style="width:100%;height:100%"></canvas></div>
+ </div>
+ <div class="trend-cell">
+ <div class="dash-sec-title" style="margin-bottom:0">Cadence trend</div>
+ <div style="font-size:11px;color:var(--muted);margin-top:2px">last ${cadTrend.length} runs · target 80+</div>
+ <div class="trend-canvas-wrap"><canvas id="cad-chart" style="width:100%;height:100%"></canvas></div>
+ </div>
+ </div>
 </div>`;
 
-  setTimeout(()=>{
-    drawVolChart('vol-chart');
-    drawTrendChart('pace-chart',paceTrend,null,null,true,fmtPace);
-    drawTrendChart('cad-chart',cadTrend,null,null,false,v=>Math.round(v));
-  },30);
+ setTimeout(()=>{
+ drawVolChart('vol-chart');
+ drawTrendChart('pace-chart',paceTrend,null,null,true,fmtPace);
+ drawTrendChart('cad-chart',cadTrend,null,null,false,v=>Math.round(v));
+ },30);
 }
 
 async function statsSyncAndRender(){
-  const statusEl=document.getElementById('dash-status');
-  await stravaSync();
-  renderStats();
+ const statusEl=document.getElementById('dash-status');
+ await stravaSync();
+ renderStats();
 }
 
 function renderRef(){
-  const dynPaces=getDynPaces(workingVDOT);
-  const paceHtml=dynPaces.map(([k,v])=>`<div class="ref-row"><span class="ref-key">${k}</span><span class="ref-val">${v}</span></div>`).join('');
-  const shoeHtml='';
-  const raceHtml=RACES.map(([d,n,p,e])=>`<div class="race-row"><div class="race-date">${d}</div><div class="race-name">${n}</div><div class="race-pace">${p} · ${e}</div></div>`).join('');
+ const dynPaces=getDynPaces(workingVDOT);
+ const paceHtml=dynPaces.map(([k,v])=>`<div class="ref-row"><span class="ref-key">${k}</span><span class="ref-val">${v}</span></div>`).join('');
+ const shoeHtml='';
+ const raceHtml=RACES.map(([d,n,p,e])=>`<div class="race-row"><div class="race-date">${d}</div><div class="race-name">${n}</div><div class="race-pace">${p} · ${e}</div></div>`).join('');
 
 
-  document.getElementById('pane-ref').innerHTML=`<div class="ref">
-  <div class="ref-sec">
-    <div class="ref-title">Training paces · VDOT 55</div>
-    ${paceHtml}
-  </div>
-  <div class="ref-sec">
-    <div class="ref-title">Race calendar</div>
-    ${raceHtml}
-  </div>
+ document.getElementById('pane-ref').innerHTML=`<div class="ref">
+ <div class="ref-sec">
+ <div class="ref-title">Training paces · VDOT 55</div>
+ ${paceHtml}
+ </div>
+ <div class="ref-sec">
+ <div class="ref-title">Race calendar</div>
+ ${raceHtml}
+ </div>
 
 
-  <div class="ref-sec">
-    <div class="ref-title">Swim sessions</div>
-    <div class="swim-block"><div class="swim-name">Sw-A · ~1,600m</div><div class="swim-desc">WU 400m easy continuous · Main 4×200m mod-hard (25s rest) · CD 400m easy continuous</div></div>
-    <div class="swim-block"><div class="swim-name">Sw-B · ~1,900m</div><div class="swim-desc">WU 400m easy continuous · Main 3×300m mod-hard (30s rest) + 4×50m hard · CD 400m easy continuous</div></div>
-    <div class="swim-block"><div class="swim-name">Sw-C · ~1,500m</div><div class="swim-desc">WU 200m easy continuous · Main 6×150m easy-mod (20s rest) · CD 400m easy continuous</div></div>
-    <div class="swim-block"><div class="swim-name">Sw-D · ~1,300m</div><div class="swim-desc">WU 200m easy continuous · Main 6×150m easy (20s rest) · CD 200m easy continuous · Use during flare-ups or taper</div></div>
-  </div>
-  <div class="ref-sec">
-    <div class="ref-title">Gel protocol</div>
-    <div class="ref-row"><span class="ref-key">SIS Beta Fuel</span><span class="ref-val">40g carbs</span></div>
-    <div class="ref-row"><span class="ref-key">SIS Caffeinated</span><span class="ref-val">20g carbs + caffeine</span></div>
-    <div class="ref-row"><span class="ref-key">Marathon total</span><span class="ref-val">5×Beta + 2×Caff ≈ 82g/hr</span></div>
-    <div class="ref-row" style="flex-direction:column;align-items:flex-start;gap:4px">
-      <span class="ref-key">Marathon timing</span>
-      <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">@20 · @45 · @70 · @90(C) · @110 · @130(C) · @150min</span>
-    </div>
-  </div>
-  <div class="ref-sec">
-    <div class="ref-title">Cross-device sync</div>
-    <div style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.5">Enter your GitHub token to sync notes, check-offs and Strava data across all your devices. Anyone viewing the app sees your data automatically — no token needed to read.</div>
-    <div style="display:flex;gap:8px;margin-bottom:6px">
-      <input id="gh-token-inp" type="password"
-        style="flex:1;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px"
-        placeholder="GitHub personal access token (ghp_...)"
-        value="${ghToken()}">
-      <button onclick="saveGhToken()"
-        style="padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid var(--green-border);color:var(--green);font-family:Arial,sans-serif;border-radius:3px;white-space:nowrap">
-        Save
-      </button>
-    </div>
-    <div style="font-size:12px;color:var(--muted)">${canWrite()?'● Write access enabled — your data syncs automatically':'○ Read-only — enter token to enable sync'}</div>
-  </div>
-  </div>`;
+ <div class="ref-sec">
+ <div class="ref-title">Swim sessions</div>
+ <div class="swim-block"><div class="swim-name">Sw-A · ~1,600m</div><div class="swim-desc">WU 400m easy continuous · Main 4×200m mod-hard (25s rest) · CD 400m easy continuous</div></div>
+ <div class="swim-block"><div class="swim-name">Sw-B · ~1,900m</div><div class="swim-desc">WU 400m easy continuous · Main 3×300m mod-hard (30s rest) + 4×50m hard · CD 400m easy continuous</div></div>
+ <div class="swim-block"><div class="swim-name">Sw-C · ~1,500m</div><div class="swim-desc">WU 200m easy continuous · Main 6×150m easy-mod (20s rest) · CD 400m easy continuous</div></div>
+ <div class="swim-block"><div class="swim-name">Sw-D · ~1,300m</div><div class="swim-desc">WU 200m easy continuous · Main 6×150m easy (20s rest) · CD 200m easy continuous · Use during flare-ups or taper</div></div>
+ </div>
+ <div class="ref-sec">
+ <div class="ref-title">Gel protocol</div>
+ <div class="ref-row"><span class="ref-key">SIS Beta Fuel</span><span class="ref-val">40g carbs</span></div>
+ <div class="ref-row"><span class="ref-key">SIS Caffeinated</span><span class="ref-val">20g carbs + caffeine</span></div>
+ <div class="ref-row"><span class="ref-key">Marathon total</span><span class="ref-val">5×Beta + 2×Caff ≈ 82g/hr</span></div>
+ <div class="ref-row" style="flex-direction:column;align-items:flex-start;gap:4px">
+ <span class="ref-key">Marathon timing</span>
+ <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">@20 · @45 · @70 · @90(C) · @110 · @130(C) · @150min</span>
+ </div>
+ </div>
+ <div class="ref-sec">
+ <div class="ref-title">Cross-device sync</div>
+ <div style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.5">Enter your GitHub token to sync notes, check-offs and Strava data across all your devices. Anyone viewing the app sees your data automatically — no token needed to read.</div>
+ <div style="display:flex;gap:8px;margin-bottom:6px">
+ <input id="gh-token-inp" type="password"
+ style="flex:1;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:Arial,sans-serif;font-size:13px;padding:9px 10px;border-radius:3px"
+ placeholder="GitHub personal access token (ghp_...)"
+ value="${ghToken()}">
+ <button onclick="saveGhToken()"
+ style="padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card2);border:1px solid var(--green-border);color:var(--green);font-family:Arial,sans-serif;border-radius:3px;white-space:nowrap">
+ Save
+ </button>
+ </div>
+ <div style="font-size:12px;color:var(--muted)">${canWrite()?'● Write access enabled — your data syncs automatically':'○ Read-only — enter token to enable sync'}</div>
+ </div>
+ </div>`;
 }
 
 
 function showTab(id,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
-  btn.classList.add('on');
-  document.getElementById('pane-'+id).classList.add('on');
-  document.querySelector('.content').scrollTop=0;
-  if(id==='stats')renderStats();
-  if(id==='crew'){renderCrew();loadAppData();}
-  if(id==='bet'){
-    renderBet();
-    loadAppData().then(()=>renderBet());
-    // Poll for updated odds every 15s while tab is open
-    if(window._betPoll)clearInterval(window._betPoll);
-    window._betPoll=setInterval(async()=>{
-      if(!document.getElementById('pane-bet')?.classList.contains('on')){clearInterval(window._betPoll);return;}
-      await loadAppData();
-      renderBet();
-    },15000);
-  } else {
-    if(window._betPoll){clearInterval(window._betPoll);window._betPoll=null;}
-  }
-  if(id==='vdot'){}  // removed
+ document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+ document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+ btn.classList.add('on');
+ document.getElementById('pane-'+id).classList.add('on');
+ document.querySelector('.content').scrollTop=0;
+ if(id==='stats')renderStats();
+ if(id==='crew'){renderCrew();loadAppData();}
+ if(id==='bet'){
+ renderBet();
+ loadAppData().then(()=>renderBet());
+ // Poll for updated odds every 15s while tab is open
+ if(window._betPoll)clearInterval(window._betPoll);
+ window._betPoll=setInterval(async()=>{
+ if(!document.getElementById('pane-bet')?.classList.contains('on')){clearInterval(window._betPoll);return;}
+ await loadAppData();
+ renderBet();
+ },15000);
+ } else {
+ if(window._betPoll){clearInterval(window._betPoll);window._betPoll=null;}
+ }
+ if(id==='vdot'){} // removed
 }
 
 function updateCountdown(){
-  const days=Math.ceil((RACE_DATE-new Date())/864e5);
-  document.getElementById('countdown').textContent=days+' days';
+ const days=Math.ceil((RACE_DATE-new Date())/864e5);
+ document.getElementById('countdown').textContent=days+' days';
 }
 
 function refreshToday(){
-  const newWk=getWeekIdx(),newDay=getDayIdx();
-  const wkChanged=newWk!==todayWk;
-  const changed=wkChanged||newDay!==todayDay;
-  const wasOnCurrentWk=selWeek===todayWk;
-  todayWk=newWk;todayDay=newDay;
-  updateCountdown();
-  if(changed){
-    // If user was viewing the current week, auto-advance with it
-    if(wasOnCurrentWk){selWeek=todayWk;selDay=todayDay;}
-    renderToday();renderPlan();
-  }
+ const newWk=getWeekIdx(),newDay=getDayIdx();
+ const wkChanged=newWk!==todayWk;
+ const changed=wkChanged||newDay!==todayDay;
+ const wasOnCurrentWk=selWeek===todayWk;
+ todayWk=newWk;todayDay=newDay;
+ updateCountdown();
+ if(changed){
+ // If user was viewing the current week, auto-advance with it
+ if(wasOnCurrentWk){selWeek=todayWk;selDay=todayDay;}
+ renderToday();renderPlan();
+ }
 }
 
 // Refresh when tab becomes visible again (catches overnight / next day)
@@ -2528,13 +2528,13 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshTod
 // Also check every minute in case app stays open past midnight
 let _lastDate=new Date().toDateString();
 setInterval(()=>{
-  const now=new Date().toDateString();
-  if(now!==_lastDate){_lastDate=now;refreshToday();}
+ const now=new Date().toDateString();
+ if(now!==_lastDate){_lastDate=now;refreshToday();}
 },60000);
 
 if(new URLSearchParams(location.search).get('edit')==='done'){
-  sessionStorage.setItem('philly_edit','1');
-  history.replaceState({},'',location.pathname);
+ sessionStorage.setItem('philly_edit','1');
+ history.replaceState({},'',location.pathname);
 }
 if(sessionStorage.getItem('philly_edit')==='1') document.body.classList.add('edit-mode');
 
@@ -2547,15 +2547,15 @@ loadAppData();
 
 // Auto-sync Strava on open if connected and last sync was >1 hour ago
 (async()=>{
-  if(!stravaIsConnected())return;
-  const lastSync=parseInt(localStorage.getItem('philly_strava_last_sync')||'0');
-  const hourMs=60*60*1000;
-  if(Date.now()-lastSync<hourMs)return;
-  try{
-    await stravaSync();
-    localStorage.setItem('philly_strava_last_sync',Date.now().toString());
-    renderToday(); // refresh load flag with fresh data
-  }catch(e){}
+ if(!stravaIsConnected())return;
+ const lastSync=parseInt(localStorage.getItem('philly_strava_last_sync')||'0');
+ const hourMs=60*60*1000;
+ if(Date.now()-lastSync<hourMs)return;
+ try{
+ await stravaSync();
+ localStorage.setItem('philly_strava_last_sync',Date.now().toString());
+ renderToday(); // refresh load flag with fresh data
+ }catch(e){}
 })();
 </script>
 </body>
