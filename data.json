@@ -7,7 +7,8 @@
   "dayEdits": {
     "3_3": "5mi easy",
     "4_3": "7mi easy + Lift A-2 (lower body)",
-    "5_2": "3mi easy (upstate)"
+    "5_2": "3mi easy (upstate)",
+    "5_4": "9mi easy (upstate)"
   },
   "dayOrders": {
     "2": [
@@ -422,7 +423,7 @@
     }
   ],
   "stravaLastSync": 1785943055492,
-  "updatedAt": 1786028640962,
+  "updatedAt": 1786028647057,
   "comments": [
     {
       "name": "John Boy and Bill",
