@@ -79,9 +79,21 @@
     "1": 40.61745808840891,
     "2": 34.95992145848609,
     "3": 38.613220326344965,
-    "4": 20.154100438689156
+    "4": 27.190773857606228
   },
   "stravaActivities": [
+    {
+      "id": 19625708011,
+      "date": "2026-08-06",
+      "name": "Morning Run",
+      "mi": 7.04,
+      "pace": 8.74,
+      "duration": 3691,
+      "cadence": 77.7,
+      "effort": 0,
+      "elevation": 354,
+      "wkIdx": 4
+    },
     {
       "id": 19613120848,
       "date": "2026-08-05",
@@ -431,8 +443,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1785943055492,
-  "updatedAt": 1786028674043,
+  "stravaLastSync": 1786131945925,
+  "updatedAt": 1786131946182,
   "comments": [
     {
       "name": "John Boy and Bill",
