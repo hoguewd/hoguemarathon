@@ -8,7 +8,8 @@
     "3_3": "5mi easy",
     "4_3": "7mi easy + Lift A-2 (lower body)",
     "5_2": "3mi easy (upstate)",
-    "5_4": "9mi easy (upstate)"
+    "5_4": "9mi easy (upstate)",
+    "4_6": "16mi easy — long run (originally 14, but felt good so I bumped to 16)"
   },
   "dayOrders": {
     "2": [
@@ -446,7 +447,7 @@
     }
   ],
   "stravaLastSync": 1786132031336,
-  "updatedAt": 1786205301980,
+  "updatedAt": 1786205330136,
   "comments": [
     {
       "name": "John Boy and Bill",
