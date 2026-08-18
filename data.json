@@ -15,7 +15,8 @@
     "5_3": "6 mi easy (upstate)",
     "5_6": "12mi — long run (4 mile warm up, 10k race, 2 mile cooldown)",
     "5_5": "10mi easy (upstate)",
-    "6_0": "8mi easy"
+    "6_0": "8mi easy",
+    "6_3": "7mi easy —Lift A-1"
   },
   "dayOrders": {
     "2": [
@@ -495,7 +496,7 @@
     }
   ],
   "stravaLastSync": 1786287677169,
-  "updatedAt": 1787020777440,
+  "updatedAt": 1787020824318,
   "comments": [
     {
       "name": "John Boy and Bill",
