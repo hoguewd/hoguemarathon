@@ -17,7 +17,8 @@
     "5_5": "10mi easy (upstate)",
     "6_0": "8mi easy",
     "6_3": "7mi easy —Lift A-1",
-    "6_2": "Rest—feeling sick"
+    "6_2": "Rest—feeling sick",
+    "6_1": "Rest --still feeling sick"
   },
   "dayOrders": {
     "2": [
@@ -643,7 +644,7 @@
     }
   ],
   "stravaLastSync": 1787147550119,
-  "updatedAt": 1787147550360,
+  "updatedAt": 1787147886707,
   "comments": [
     {
       "name": "John Boy and Bill",
