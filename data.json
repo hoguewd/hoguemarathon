@@ -108,9 +108,155 @@
     "1": 40.61745808840891,
     "2": 34.95992145848609,
     "3": 38.613220326344965,
-    "4": 48.30346601712504
+    "4": 55.3083872891993,
+    "5": 50.39370176594132,
+    "6": 8.015335479140518
   },
   "stravaActivities": [
+    {
+      "id": 19786908926,
+      "date": "2026-08-17",
+      "name": "Evening Run",
+      "mi": 8.02,
+      "pace": 8.46,
+      "duration": 4069,
+      "cadence": 78.8,
+      "effort": 0,
+      "elevation": 413,
+      "wkIdx": 6
+    },
+    {
+      "id": 19767121015,
+      "date": "2026-08-16",
+      "name": "Rail trail",
+      "mi": 10.05,
+      "pace": 8,
+      "duration": 4827,
+      "cadence": 79.3,
+      "effort": 0,
+      "elevation": 272,
+      "wkIdx": 5
+    },
+    {
+      "id": 19752247213,
+      "date": "2026-08-15",
+      "name": "Wu",
+      "mi": 4.15,
+      "pace": 8.77,
+      "duration": 2181,
+      "cadence": 78.5,
+      "effort": 0,
+      "elevation": 344,
+      "wkIdx": 5
+    },
+    {
+      "id": 19752963381,
+      "date": "2026-08-15",
+      "name": "Olga Memorial 10k",
+      "mi": 5.81,
+      "pace": 6.4,
+      "duration": 2231,
+      "cadence": 84.6,
+      "effort": 0,
+      "elevation": 312,
+      "wkIdx": 5
+    },
+    {
+      "id": 19753770509,
+      "date": "2026-08-15",
+      "name": "Cd",
+      "mi": 2.03,
+      "pace": 8.65,
+      "duration": 1055,
+      "cadence": 78.2,
+      "effort": 0,
+      "elevation": 220,
+      "wkIdx": 5
+    },
+    {
+      "id": 19740548174,
+      "date": "2026-08-14",
+      "name": "Morning Run",
+      "mi": 6.1,
+      "pace": 8.28,
+      "duration": 3029,
+      "cadence": 79.2,
+      "effort": 0,
+      "elevation": 610,
+      "wkIdx": 5
+    },
+    {
+      "id": 19726798702,
+      "date": "2026-08-13",
+      "name": "Upstate",
+      "mi": 9.11,
+      "pace": 7.98,
+      "duration": 4359,
+      "cadence": 79.1,
+      "effort": 0,
+      "elevation": 758,
+      "wkIdx": 5
+    },
+    {
+      "id": 19695747664,
+      "date": "2026-08-11",
+      "name": "Wu",
+      "mi": 2,
+      "pace": 8.24,
+      "duration": 990,
+      "cadence": 80.2,
+      "effort": 0,
+      "elevation": 85,
+      "wkIdx": 5
+    },
+    {
+      "id": 19695747543,
+      "date": "2026-08-11",
+      "name": "Workout",
+      "mi": 3.04,
+      "pace": 7.4,
+      "duration": 1351,
+      "cadence": 84.2,
+      "effort": 0,
+      "elevation": 131,
+      "wkIdx": 5
+    },
+    {
+      "id": 19695747347,
+      "date": "2026-08-11",
+      "name": "Cooldown",
+      "mi": 2.1,
+      "pace": 8.58,
+      "duration": 1081,
+      "cadence": 79.6,
+      "effort": 0,
+      "elevation": 95,
+      "wkIdx": 5
+    },
+    {
+      "id": 19687322942,
+      "date": "2026-08-10",
+      "name": "Afternoon Run",
+      "mi": 6.01,
+      "pace": 8.63,
+      "duration": 3109,
+      "cadence": 77.2,
+      "effort": 0,
+      "elevation": 171,
+      "wkIdx": 5
+    },
+    {
+      "id": 19675350202,
+      "date": "2026-08-09",
+      "name": "Recovery",
+      "mi": 7,
+      "pace": 9.19,
+      "duration": 3862,
+      "cadence": 76.5,
+      "effort": 0,
+      "elevation": 292,
+      "wkIdx": 4
+    },
     {
       "id": 19654736424,
       "date": "2026-08-08",
@@ -496,8 +642,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1786287677169,
-  "updatedAt": 1787058983356,
+  "stravaLastSync": 1787147550119,
+  "updatedAt": 1787147550360,
   "comments": [
     {
       "name": "John Boy and Bill",
