@@ -113,9 +113,33 @@
     "3": 38.613220326344965,
     "4": 55.3083872891993,
     "5": 50.39370176594132,
-    "6": 8.015335479140518
+    "6": 22.039780282600322
   },
   "stravaActivities": [
+    {
+      "id": 19843527096,
+      "date": "2026-08-21",
+      "name": "Evening Run",
+      "mi": 7.01,
+      "pace": 8.83,
+      "duration": 3715,
+      "cadence": 76,
+      "effort": 0,
+      "elevation": 331,
+      "wkIdx": 6
+    },
+    {
+      "id": 19831620617,
+      "date": "2026-08-20",
+      "name": "Afternoon Run",
+      "mi": 7.02,
+      "pace": 8.17,
+      "duration": 3440,
+      "cadence": 78.7,
+      "effort": 0,
+      "elevation": 367,
+      "wkIdx": 6
+    },
     {
       "id": 19786908926,
       "date": "2026-08-17",
@@ -645,8 +669,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1787171105561,
-  "updatedAt": 1787171105767,
+  "stravaLastSync": 1787398935474,
+  "updatedAt": 1787398935746,
   "comments": [
     {
       "name": "John Boy and Bill",
