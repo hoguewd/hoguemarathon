@@ -115,9 +115,33 @@
     "3": 38.613220326344965,
     "4": 55.3083872891993,
     "5": 50.39370176594132,
-    "6": 22.039780282600322
+    "6": 43.053114941528825
   },
   "stravaActivities": [
+    {
+      "id": 19864251822,
+      "date": "2026-08-23",
+      "name": "Pre work",
+      "mi": 7.01,
+      "pace": 8.76,
+      "duration": 3683,
+      "cadence": 77.3,
+      "effort": 0,
+      "elevation": 226,
+      "wkIdx": 6
+    },
+    {
+      "id": 19851186526,
+      "date": "2026-08-22",
+      "name": "LR b4 work",
+      "mi": 14.01,
+      "pace": 7.84,
+      "duration": 6588,
+      "cadence": 79.9,
+      "effort": 0,
+      "elevation": 384,
+      "wkIdx": 6
+    },
     {
       "id": 19843527096,
       "date": "2026-08-21",
@@ -671,8 +695,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1787398935474,
-  "updatedAt": 1787398946365,
+  "stravaLastSync": 1787504799005,
+  "updatedAt": 1787504799339,
   "comments": [
     {
       "name": "John Boy and Bill",
