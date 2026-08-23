@@ -106,7 +106,8 @@
     "6_2": true,
     "6_3": true,
     "6_4": true,
-    "6_5": true
+    "6_5": true,
+    "6_6": true
   },
   "vdot": 55,
   "stravaActuals": {
@@ -697,7 +698,7 @@
     }
   ],
   "stravaLastSync": 1787504799005,
-  "updatedAt": 1787507015508,
+  "updatedAt": 1787507017290,
   "comments": [
     {
       "name": "John Boy and Bill",
