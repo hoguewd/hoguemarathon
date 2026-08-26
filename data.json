@@ -22,7 +22,7 @@
     "8_3": "R: 2mi WU ·2 x 2.5mi at Threshold· 2mi CD",
     "9_5": "6mi easy with strides",
     "9_6": "RACE: 1 mile all-out @5:10–5:20/mi · 2mi WU + 1mi + 12 mi cooldown",
-    "10_2": "4 mi warm up+ 2 miles at 10 mile race pace + 2 miles cooldown PT session"
+    "10_2": "4 mi warm up+ 2 miles at 10 mile race pace + 2 miles cooldown -- cancel this weeks PT session"
   },
   "dayOrders": {
     "2": [
@@ -754,7 +754,7 @@
     }
   ],
   "stravaLastSync": 1787770433839,
-  "updatedAt": 1787773531036,
+  "updatedAt": 1787773543517,
   "comments": [
     {
       "name": "John Boy and Bill",
