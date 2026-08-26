@@ -18,7 +18,8 @@
     "6_0": "8mi easy",
     "6_3": "7mi easy",
     "6_2": "Rest—feeling sick",
-    "6_1": "Rest—feeling sick"
+    "6_1": "Rest—feeling sick",
+    "8_3": "R: 2mi WU ·2 x 2.5mi at Threshold· 2mi CD"
   },
   "dayOrders": {
     "2": [
@@ -750,7 +751,7 @@
     }
   ],
   "stravaLastSync": 1787770433839,
-  "updatedAt": 1787770434052,
+  "updatedAt": 1787772343838,
   "comments": [
     {
       "name": "John Boy and Bill",
