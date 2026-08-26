@@ -120,9 +120,58 @@
     "3": 38.613220326344965,
     "4": 55.3083872891993,
     "5": 50.39370176594132,
-    "6": 43.053114941528825
+    "6": 43.053114941528825,
+    "7": 16.359749959610774
   },
   "stravaActivities": [
+    {
+      "id": 19908861192,
+      "date": "2026-08-26",
+      "name": "Wu",
+      "mi": 2.01,
+      "pace": 8.18,
+      "duration": 984,
+      "cadence": 79.7,
+      "effort": 0,
+      "elevation": 98,
+      "wkIdx": 7
+    },
+    {
+      "id": 19908861198,
+      "date": "2026-08-26",
+      "name": "Intervals",
+      "mi": 4.62,
+      "pace": 6.91,
+      "duration": 1914,
+      "cadence": 84.9,
+      "effort": 0,
+      "elevation": 141,
+      "wkIdx": 7
+    },
+    {
+      "id": 19908861173,
+      "date": "2026-08-26",
+      "name": "Cd",
+      "mi": 2.37,
+      "pace": 8.61,
+      "duration": 1224,
+      "cadence": 78.7,
+      "effort": 0,
+      "elevation": 56,
+      "wkIdx": 7
+    },
+    {
+      "id": 19885169366,
+      "date": "2026-08-24",
+      "name": "Evening Run",
+      "mi": 7.37,
+      "pace": 7.89,
+      "duration": 3490,
+      "cadence": 78.4,
+      "effort": 0,
+      "elevation": 289,
+      "wkIdx": 7
+    },
     {
       "id": 19864251822,
       "date": "2026-08-23",
@@ -700,8 +749,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1787588000803,
-  "updatedAt": 1787755532977,
+  "stravaLastSync": 1787770433839,
+  "updatedAt": 1787770434052,
   "comments": [
     {
       "name": "John Boy and Bill",
