@@ -20,7 +20,8 @@
     "6_2": "Rest—feeling sick",
     "6_1": "Rest—feeling sick",
     "8_3": "R: 2mi WU ·2 x 2.5mi at Threshold· 2mi CD",
-    "9_5": "6mi easy with strides"
+    "9_5": "6mi easy with strides",
+    "9_6": "RACE: 1 mile all-out @5:10–5:20/mi · 2mi WU + 1mi + 12 mi cooldown"
   },
   "dayOrders": {
     "2": [
@@ -752,7 +753,7 @@
     }
   ],
   "stravaLastSync": 1787770433839,
-  "updatedAt": 1787773451773,
+  "updatedAt": 1787773466949,
   "comments": [
     {
       "name": "John Boy and Bill",
