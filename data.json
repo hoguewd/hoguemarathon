@@ -25,7 +25,8 @@
     "10_2": "4 mi warm up+ 2 miles at 10 mile race pace + 2 miles cooldown -- cancel this weeks PT session",
     "12_3": "I: 2mi WU · 6×1000m @5:43–5:57/mi · jog half time it took to do 1000m · 2mi CD",
     "11_3": "T: 6 mi easy (removed workout to aid recovery) + Lift B-2 (lower body)",
-    "7_3": "5mi easy + 6×strides"
+    "7_3": "5mi easy + 6×strides",
+    "7_4": "6mi easy  + Lower body B2"
   },
   "dayOrders": {
     "2": [
@@ -766,7 +767,7 @@
     }
   ],
   "stravaLastSync": 1787770433839,
-  "updatedAt": 1787834231582,
+  "updatedAt": 1787834248174,
   "comments": [
     {
       "name": "John Boy and Bill",
