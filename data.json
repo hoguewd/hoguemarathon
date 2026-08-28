@@ -139,9 +139,21 @@
     "4": 55.3083872891993,
     "5": 50.39370176594132,
     "6": 43.053114941528825,
-    "7": 16.359749959610774
+    "7": 23.20137447649347
   },
   "stravaActivities": [
+    {
+      "id": 19929034762,
+      "date": "2026-08-27",
+      "name": "With Alfredo",
+      "mi": 6.84,
+      "pace": 7.49,
+      "duration": 3073,
+      "cadence": 79.8,
+      "effort": 0,
+      "elevation": 331,
+      "wkIdx": 7
+    },
     {
       "id": 19908861192,
       "date": "2026-08-26",
@@ -767,8 +779,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1787770433839,
-  "updatedAt": 1787874073190,
+  "stravaLastSync": 1787915652044,
+  "updatedAt": 1787915652272,
   "comments": [
     {
       "name": "John Boy and Bill",
