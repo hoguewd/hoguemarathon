@@ -27,7 +27,8 @@
     "11_3": "T: 6 mi easy (removed workout to aid recovery) + Lift B-2 (lower body)",
     "7_3": "6 mi easy + 6×strides",
     "7_4": "6mi easy",
-    "7_5": "6mi easy"
+    "7_5": "6mi easy",
+    "7_6": "18mi easy — long run"
   },
   "dayOrders": {
     "2": [
@@ -784,7 +785,7 @@
     }
   ],
   "stravaLastSync": 1787915657025,
-  "updatedAt": 1788133588020,
+  "updatedAt": 1788133674017,
   "comments": [
     {
       "name": "John Boy and Bill",
