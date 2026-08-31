@@ -53,7 +53,8 @@
     "14_5": "7mi easy",
     "16_1": "Rest",
     "16_3": "9mi easy + 6×strides",
-    "16_4": "8mi easy"
+    "16_4": "8mi easy",
+    "16_5": "7mi eas"
   },
   "dayOrders": {
     "2": [
@@ -837,7 +838,7 @@
     }
   ],
   "stravaLastSync": 1787915657025,
-  "updatedAt": 1788195740637,
+  "updatedAt": 1788195744365,
   "comments": [
     {
       "name": "John Boy and Bill",
