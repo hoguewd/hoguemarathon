@@ -43,7 +43,8 @@
     "12_1": "T+M: 2mi WU · 2mi @T(6:20) + 3mi @M(6:43) · 2mi CD",
     "12_5": "7mi easy",
     "15_2": "T: 1.5mi WU ·10x800 @2:55 reps · 1.5mi CD",
-    "15_3": "7mi easy + Lift B-2 (lower body)"
+    "15_3": "7mi easy + Lift B-2 (lower body)",
+    "15_4": "8mi easy"
   },
   "dayOrders": {
     "2": [
@@ -818,7 +819,7 @@
     }
   ],
   "stravaLastSync": 1787915657025,
-  "updatedAt": 1788195204302,
+  "updatedAt": 1788195208648,
   "comments": [
     {
       "name": "John Boy and Bill",
