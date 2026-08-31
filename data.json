@@ -41,7 +41,8 @@
     "11_6": "18mi easy — long run (Progress to MP and hold for 2-3 miles)",
     "12_0": "11mi easy",
     "12_1": "T+M: 2mi WU · 2mi @T(6:20) + 3mi @M(6:43) · 2mi CD",
-    "12_5": "7mi easy"
+    "12_5": "7mi easy",
+    "15_2": "T: 1.5mi WU ·10x800 @2:55 reps · 1.5mi CD"
   },
   "dayOrders": {
     "2": [
@@ -816,7 +817,7 @@
     }
   ],
   "stravaLastSync": 1787915657025,
-  "updatedAt": 1788195070063,
+  "updatedAt": 1788195197397,
   "comments": [
     {
       "name": "John Boy and Bill",
