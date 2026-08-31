@@ -31,7 +31,8 @@
     "7_6": "18mi easy — long run",
     "8_5": "7mi easy to moderate",
     "8_1": "Lift A-1 (hip & core) — pool closed until Sep 7 + PT session",
-    "9_3": "T: 1.5mi WU · 3mi @6:20/mi continuous · 6x200@5:00/mi + 1.5mi CD"
+    "9_3": "T: 1.5mi WU · 3mi @6:20/mi continuous · 6x200@5:00/mi + 1.5mi CD",
+    "9_4": "6mi easy"
   },
   "dayOrders": {
     "2": [
@@ -788,7 +789,7 @@
     }
   ],
   "stravaLastSync": 1787915657025,
-  "updatedAt": 1788194477961,
+  "updatedAt": 1788194570630,
   "comments": [
     {
       "name": "John Boy and Bill",
