@@ -35,7 +35,8 @@
     "9_4": "16mi easy",
     "9_2": "5mi easy + PT session",
     "9_1": "Lift B-1 (upper body)",
-    "10_3": "8mi easy"
+    "10_3": "8mi easy",
+    "10_4": "7mi easy"
   },
   "dayOrders": {
     "2": [
@@ -810,7 +811,7 @@
     }
   ],
   "stravaLastSync": 1787915657025,
-  "updatedAt": 1788194856692,
+  "updatedAt": 1788194861849,
   "comments": [
     {
       "name": "John Boy and Bill",
