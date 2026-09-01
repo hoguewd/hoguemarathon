@@ -60,7 +60,8 @@
     "8_4": "5mi easy/moderate",
     "13_6": "{\"text\":\"RACE: 1.5 mi WU, Half marathon @6:18–6:26/mi, 0.5 CD\",\"type\":null}",
     "13_4": "{\"text\":\"6mi easy\",\"type\":null}",
-    "13_5": "{\"text\":\"4mi easy + 4×strides — shakeout\",\"type\":null}"
+    "13_5": "{\"text\":\"4mi easy + 4×strides — shakeout\",\"type\":null}",
+    "14_6": "{\"text\":\"Standalone MP: 2mi WU · 8mi @M pace · 4mi CD\",\"type\":null}"
   },
   "dayOrders": {
     "2": [
@@ -895,7 +896,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788287749678,
+  "updatedAt": 1788287777336,
   "comments": [
     {
       "name": "John Boy and Bill",
