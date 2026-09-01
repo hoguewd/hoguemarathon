@@ -51,7 +51,7 @@
     "14_3": "7mi easy",
     "14_4": "7mi easy",
     "14_5": "7mi easy",
-    "16_1": "Rest",
+    "16_1": "{\"text\":\"Rest\",\"type\":\"x\"}",
     "16_3": "9mi easy + 6×strides",
     "16_4": "8mi easy",
     "16_5": "7mi easy",
@@ -896,7 +896,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788287822715,
+  "updatedAt": 1788287832415,
   "comments": [
     {
       "name": "John Boy and Bill",
