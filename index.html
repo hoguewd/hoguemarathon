@@ -495,7 +495,7 @@ body.edit-mode .chk{display:flex}
 <script>
 const RACE_DATE=new Date("2026-11-22");
 const DAY_NAMES=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-const TYPE_LABEL={e:"Easy run",q:"Quality session",l:"Long run",r:"Race day",s:"Gym / swim",x:"Rest"};
+const TYPE_LABEL={e:"Easy run",q:"Quality session",l:"Long run",r:"Race day",s:"Swim / Workout",x:"Rest"};
 const PIP={e:"pip-e",q:"pip-q",l:"pip-l",r:"pip-r",s:"pip-s",x:"pip-x"};
 
 const W=[
@@ -1897,7 +1897,7 @@ function renderToday(){
  </div>
  ${swapPickIdx===displayIdx?`<div class="swap-hint">Tap another day to swap with it · tap ⇅ again to cancel</div>`:''}
  <div id="day-ew-${selWeek}-${dataIdx}" class="day-edit-wrap" style="display:none">
- <div style="display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap">${['e','q','l','s','r','x'].map(x=>`<button id="etp-${selWeek}-${dataIdx}-${x}" class="type-pill${effType===x?' sel-'+x:''}" onclick="event.stopPropagation();setEditType(${selWeek},${dataIdx},'${x}')">${{e:'Easy',q:'Quality',l:'Long',s:'Swim',r:'Race',x:'Rest'}[x]}</button>`).join('')}</div>
+ <div style="display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap">${['e','q','l','s','r','x'].map(x=>`<button id="etp-${selWeek}-${dataIdx}-${x}" class="type-pill${effType===x?' sel-'+x:''}" onclick="event.stopPropagation();setEditType(${selWeek},${dataIdx},'${x}')">${{e:'Easy',q:'Quality',l:'Long',s:'Swim',r:'Race',x:'Rest',s:'Swim/WO'}[x]}</button>`).join('')}</div>
  <textarea id="day-ta-${selWeek}-${dataIdx}" class="day-edit-ta">${disp}</textarea>
  <div class="day-edit-btns">
  <button class="day-save-btn" onclick="confirmEditDay(${selWeek},${dataIdx})">Save</button>
