@@ -456,7 +456,8 @@ body.edit-mode .chk{display:flex}
 .type-pill.sel-q{background:var(--accent);color:white;border-color:var(--accent)}
 .type-pill.sel-l{background:#5B9BD5;color:white;border-color:#5B9BD5}
 .type-pill.sel-s{background:#5B9BD5;color:white;border-color:#5B9BD5}
-.type-pill.sel-r{background:var(--muted);color:white;border-color:var(--muted)}
+.type-pill.sel-r{background:#F5A623;color:white;border-color:#F5A623}
+.type-pill.sel-x{background:var(--muted);color:white;border-color:var(--muted)}
 .mi-edit-inp{width:48px;font-family:var(--mono);font-size:12px;background:var(--bg);border:1.5px solid var(--accent);color:var(--text);padding:1px 5px;border-radius:3px}
 </style>
 </head>
@@ -509,9 +510,9 @@ days:[["5mi easy","e","Novablast",null],["Sw-C + Lift B-1 (upper body) + PT sess
 {n:5,lbl:"Week 5",start:"2026-08-03",ph:"Phase I — Base",cut:false,mi:50,note:"First 50-mile week",
 days:[["8mi easy","e","Novablast",null],["PT (hips & quads) + 3mi easy shakeout — gym closed (flooding)","s",null,null],["T: 2mi WU · 3×1.5mi @6:20/mi · 90sec jog · 2mi CD","q","Vaporfly",null],["7mi easy + Lift A-2 (lower body) ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["7mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["5mi easy","e","Novablast",null],["14mi easy — long run","l","Nimbus","2×Beta @35+80min"]]},
 {n:6,lbl:"Week 6",start:"2026-08-10",ph:"Phase II — Speed",cut:false,mi:50,note:"Upstate Aug 12–16 — quality moved to Tuesday",
-days:[["6mi easy — recovery from LR","e","Novablast",null],["R: 2mi WU · 8×300m @5:17–5:30/mi · jog 300m · 2mi CD","q","Vaporfly",null],["Rest — travel day upstate","r",null,null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["13mi easy — long run (upstate)","l","Nimbus","2×Beta @35+80min"]]},
+days:[["6mi easy — recovery from LR","e","Novablast",null],["R: 2mi WU · 8×300m @5:17–5:30/mi · jog 300m · 2mi CD","q","Vaporfly",null],["Rest — travel day upstate","x",null,null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["6mi easy (upstate)","e","Novablast",null],["13mi easy — long run (upstate)","l","Nimbus","2×Beta @35+80min"]]},
 {n:7,lbl:"Week 7",start:"2026-08-17",ph:"Phase II — Speed (cutback)",cut:true,mi:38,note:"Illness cutback — quality dropped, long run reduced to 14mi. Ramp back up Week 8.",
-days:[["Rest day — nauseous post-travel, body needs recovery","r",null,null],["Rest day — still recovering from illness + PT session","r",null,null],["Lift B-1 (upper body) — pool closed until Sep 7","s",null,null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["14mi easy — long run (reduced due to illness)","l","Nimbus","2×Beta @35+80min"]]},
+days:[["Rest day — nauseous post-travel, body needs recovery","x",null,null],["Rest day — still recovering from illness + PT session","x",null,null],["Lift B-1 (upper body) — pool closed until Sep 7","s",null,null],["7mi easy","e","Novablast",null],["7mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["14mi easy — long run (reduced due to illness)","l","Nimbus","2×Beta @35+80min"]]},
 {n:8,lbl:"Week 8",start:"2026-08-24",ph:"Phase II — Speed",cut:false,mi:50,note:"Bridge week — 5×1000m moved from Week 7. Steps up from illness cutback toward Week 9's 59mi.",
 days:[["7mi easy","e","Novablast",null],["Lift B-1 (upper body) — pool closed until Sep 7 + PT session","s",null,null],["I: 2mi WU · 5×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["5mi easy + 6×strides + Lift B-2 (lower body)","e","Novablast",null],["6mi easy","e","Novablast",null],["6mi easy","e","Novablast",null],["16mi easy — long run","l","Nimbus","2×Beta @35+80min"]]},
 {n:9,lbl:"Week 9",start:"2026-08-31",ph:"Phase II — Speed",cut:false,mi:59,note:"Single I quality mid-week · MP introduced in the long run for the first time (last 5mi @M) — cleaner than two separate quality sessions",
@@ -1780,10 +1781,11 @@ function editWeekMi(){
   localStorage.setItem('philly_app_cache',JSON.stringify(appData));
   _doGhWrite();
   renderToday();
+  if(document.getElementById('pane-stats')?.classList.contains('on'))renderStats();
 }
 function setEditType(wk,di,t){
   _editType=t;
-  ['e','q','l','s','r'].forEach(x=>{
+  ['e','q','l','s','r','x'].forEach(x=>{
     const b=document.getElementById('etp-'+wk+'-'+di+'-'+x);
     if(b)b.className='type-pill'+(t===x?' sel-'+x:'');
   });
@@ -1895,7 +1897,7 @@ function renderToday(){
  </div>
  ${swapPickIdx===displayIdx?`<div class="swap-hint">Tap another day to swap with it · tap ⇅ again to cancel</div>`:''}
  <div id="day-ew-${selWeek}-${dataIdx}" class="day-edit-wrap" style="display:none">
- <div style="display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap">${['e','q','l','s','r'].map(x=>`<button id="etp-${selWeek}-${dataIdx}-${x}" class="type-pill${effType===x?' sel-'+x:''}" onclick="event.stopPropagation();setEditType(${selWeek},${dataIdx},'${x}')">${{e:'Easy',q:'Quality',l:'Long',s:'Swim',r:'Rest'}[x]}</button>`).join('')}</div>
+ <div style="display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap">${['e','q','l','s','r','x'].map(x=>`<button id="etp-${selWeek}-${dataIdx}-${x}" class="type-pill${effType===x?' sel-'+x:''}" onclick="event.stopPropagation();setEditType(${selWeek},${dataIdx},'${x}')">${{e:'Easy',q:'Quality',l:'Long',s:'Swim',r:'Race',x:'Rest'}[x]}</button>`).join('')}</div>
  <textarea id="day-ta-${selWeek}-${dataIdx}" class="day-edit-ta">${disp}</textarea>
  <div class="day-edit-btns">
  <button class="day-save-btn" onclick="confirmEditDay(${selWeek},${dataIdx})">Save</button>
@@ -2228,7 +2230,8 @@ function drawVolChart(canvasId){
  W.forEach((wk,i)=>{
  const x=pad.l+i*barW;
  const bw=barW*0.38;
- const planH=(wk.mi/maxMi)*h;
+ const planMi=(appData.weekMileage||{})[i]||wk.mi;
+ const planH=(planMi/maxMi)*h;
  ctx.fillStyle=isDark?'rgba(91,155,213,0.18)':'rgba(37,99,171,0.15)';
  ctx.fillRect(x+barW*0.05,pad.t+h-planH,bw,planH);
 
