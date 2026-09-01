@@ -62,7 +62,8 @@
     "13_4": "{\"text\":\"6mi easy\",\"type\":null}",
     "13_5": "{\"text\":\"4mi easy + 4×strides — shakeout\",\"type\":null}",
     "14_6": "{\"text\":\"Standalone MP: 2mi WU · 8mi @M pace · 4mi CD\",\"type\":null}",
-    "18_0": "{\"text\":\"Rest\",\"type\":null}"
+    "18_0": "{\"text\":\"Rest\",\"type\":null}",
+    "19_0": "{\"text\":\"Rest\",\"type\":null}"
   },
   "dayOrders": {
     "2": [
@@ -897,7 +898,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788287890856,
+  "updatedAt": 1788287934495,
   "comments": [
     {
       "name": "John Boy and Bill",
