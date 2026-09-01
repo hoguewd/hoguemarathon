@@ -34,7 +34,7 @@
     "9_3": "T+R: 1.5mi WU · 3mi @6:20/mi continuous · 6x200@5:00/mi + 1.5mi CD",
     "9_4": "16mi easy",
     "9_2": "5mi easy + PT session",
-    "9_1": "Lift B-1 (upper body)",
+    "9_1": "{\"text\":\"Lift B-1 (upper body)\",\"type\":null}",
     "10_3": "8mi easy",
     "10_4": "7mi easy",
     "10_5": "RACE: 10 mile @6:05/mi · 1mi WU + 10mi + 1mi CD",
@@ -892,7 +892,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788287312033,
+  "updatedAt": 1788287318599,
   "comments": [
     {
       "name": "John Boy and Bill",
