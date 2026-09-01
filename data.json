@@ -65,7 +65,8 @@
     "18_0": "{\"text\":\"Rest\",\"type\":null}",
     "19_0": "{\"text\":\"Rest\",\"type\":null}",
     "0_3": "{\"text\":\"7mi easy\",\"type\":null}",
-    "2_6": "{\"text\":\"RACE: 5 mile @6:00–6:10/mi · 2mi WU + race + 1.5mi CD\",\"type\":null}"
+    "2_6": "{\"text\":\"RACE: 5 mile @6:00–6:10/mi · 2mi WU + race + 1.5mi CD\",\"type\":null}",
+    "4_1": "{\"text\":\"PT (hips & quads) + 3mi easy shakeout — gym closed (flooding)\",\"type\":null}"
   },
   "dayOrders": {
     "2": [
@@ -900,7 +901,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788287981242,
+  "updatedAt": 1788288005384,
   "comments": [
     {
       "name": "John Boy and Bill",
