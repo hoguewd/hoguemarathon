@@ -64,7 +64,8 @@
     "14_6": "{\"text\":\"Standalone MP: 2mi WU · 8mi @M pace · 4mi CD\",\"type\":null}",
     "18_0": "{\"text\":\"Rest\",\"type\":null}",
     "19_0": "{\"text\":\"Rest\",\"type\":null}",
-    "0_3": "{\"text\":\"7mi easy\",\"type\":null}"
+    "0_3": "{\"text\":\"7mi easy\",\"type\":null}",
+    "2_6": "{\"text\":\"RACE: 5 mile @6:00–6:10/mi · 2mi WU + race + 1.5mi CD\",\"type\":null}"
   },
   "dayOrders": {
     "2": [
@@ -899,7 +900,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788287950366,
+  "updatedAt": 1788287981242,
   "comments": [
     {
       "name": "John Boy and Bill",
