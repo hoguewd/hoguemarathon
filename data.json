@@ -24,7 +24,7 @@
     "9_6": "{\"text\":\"RACE: 1 mile all-out @5:10–5:20/mi · 2mi WU + 1mi + 2mi cooldown\",\"type\":null}",
     "10_2": "T: 1 mi WU + 3 mi at T+ 3x3mins at 10 mi race pace + 2 mi CD",
     "12_3": "I: 2mi WU · 6×1000m @5:43–5:57/mi · jog half time it took to do 1000m · 2mi CD",
-    "11_3": "T: 6 mi easy + Lift B-2 (lower body)",
+    "11_3": "{\"text\":\"6 mi easy + Lift B-2 (lower body)\",\"type\":null}",
     "7_3": "6 mi easy + 6×strides",
     "7_4": "6mi easy",
     "7_5": "6mi easy",
@@ -892,7 +892,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788287406100,
+  "updatedAt": 1788287502230,
   "comments": [
     {
       "name": "John Boy and Bill",
