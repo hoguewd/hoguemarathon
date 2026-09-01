@@ -201,9 +201,58 @@
     "4": 55.3083872891993,
     "5": 50.39370176594132,
     "6": 43.053114941528825,
-    "7": 23.20137447649347
+    "7": 53.54188673617756,
+    "8": 9.007294915928268
   },
   "stravaActivities": [
+    {
+      "id": 19983255453,
+      "date": "2026-08-31",
+      "name": "Evening Run",
+      "mi": 9.01,
+      "pace": 8.11,
+      "duration": 4382,
+      "cadence": 79.4,
+      "effort": 0,
+      "elevation": 509,
+      "wkIdx": 8
+    },
+    {
+      "id": 19963494270,
+      "date": "2026-08-30",
+      "name": "Morning Run",
+      "mi": 18,
+      "pace": 7.96,
+      "duration": 8596,
+      "cadence": 80.1,
+      "effort": 0,
+      "elevation": 1424,
+      "wkIdx": 7
+    },
+    {
+      "id": 19952127492,
+      "date": "2026-08-29",
+      "name": "Trail run with the boys",
+      "mi": 5.65,
+      "pace": 9.71,
+      "duration": 3293,
+      "cadence": 77.4,
+      "effort": 0,
+      "elevation": 1234,
+      "wkIdx": 7
+    },
+    {
+      "id": 19935287961,
+      "date": "2026-08-28",
+      "name": "Morning Run",
+      "mi": 6.68,
+      "pace": 8.47,
+      "duration": 3397,
+      "cadence": 78.3,
+      "effort": 0,
+      "elevation": 226,
+      "wkIdx": 7
+    },
     {
       "id": 19929034762,
       "date": "2026-08-27",
@@ -841,8 +890,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1787915657025,
-  "updatedAt": 1788268773064,
+  "stravaLastSync": 1788287069061,
+  "updatedAt": 1788287069298,
   "comments": [
     {
       "name": "John Boy and Bill",
