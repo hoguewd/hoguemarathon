@@ -17,7 +17,7 @@
     "5_5": "10mi easy (upstate)",
     "6_0": "8mi easy",
     "6_3": "7mi easy",
-    "6_2": "Rest—feeling sick",
+    "6_2": "{\"text\":\"Rest—feeling sick\",\"type\":\"x\"}",
     "6_1": "Rest—feeling sick",
     "8_3": "T: 2mi WU ·2 x 2.5mi @ 6:20/mi · 2mi CD",
     "9_5": "{\"text\":\"6mi easy with strides\",\"type\":\"e\"}",
@@ -901,7 +901,7 @@
     }
   ],
   "stravaLastSync": 1788287069061,
-  "updatedAt": 1788288005384,
+  "updatedAt": 1788288025014,
   "comments": [
     {
       "name": "John Boy and Bill",
