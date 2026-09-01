@@ -451,6 +451,13 @@ body.edit-mode .day-swap-btn{display:initial}
 .day-swap-btn{display:none}
 body.edit-mode .chk{display:flex}
 .chk{display:none}
+.type-pill{padding:3px 9px;font-size:11px;font-weight:700;cursor:pointer;border:1.5px solid var(--border2);border-radius:3px;background:none;font-family:var(--sans);color:var(--muted)}
+.type-pill.sel-e{background:#3FD08A;color:white;border-color:#3FD08A}
+.type-pill.sel-q{background:var(--accent);color:white;border-color:var(--accent)}
+.type-pill.sel-l{background:#5B9BD5;color:white;border-color:#5B9BD5}
+.type-pill.sel-s{background:#5B9BD5;color:white;border-color:#5B9BD5}
+.type-pill.sel-r{background:var(--muted);color:white;border-color:var(--muted)}
+.mi-edit-inp{width:48px;font-family:var(--mono);font-size:12px;background:var(--bg);border:1.5px solid var(--accent);color:var(--text);padding:1px 5px;border-radius:3px}
 </style>
 </head>
 <body>
@@ -1754,17 +1761,43 @@ function pickSwap(displayIdx){
 }
 
 // ── Day edit ─────────────────────────────────────────────────────────────────
-function loadDayEdit(w,d){try{return(appData.dayEdits||{})[w+'_'+d]||null;}catch(e){return null;}}
-function saveDayEdit(w,d,val){
+function loadDayEdit(w,d){
+  try{
+    const v=(appData.dayEdits||{})[w+'_'+d];
+    if(!v)return null;
+    try{const p=JSON.parse(v);return p;}catch(e){return{text:v,type:null};}
+  }catch(e){return null;}
+}
+function loadDayEditText(w,d){const e=loadDayEdit(w,d);if(!e)return null;return typeof e==='string'?e:e.text||null;}
+function loadDayEditType(w,d){const e=loadDayEdit(w,d);return e&&typeof e==='object'?e.type||null:null;}
+let _editType=null;
+function editWeekMi(){
+  const cur=(appData.weekMileage||{})[selWeek]||W[selWeek].mi;
+  const val=prompt('Week mileage:',cur);
+  if(!val||isNaN(parseFloat(val)))return;
+  if(!appData.weekMileage)appData.weekMileage={};
+  appData.weekMileage[selWeek]=parseFloat(val);
+  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
+  _doGhWrite();
+  renderToday();
+}
+function setEditType(wk,di,t){
+  _editType=t;
+  ['e','q','l','s','r'].forEach(x=>{
+    const b=document.getElementById('etp-'+wk+'-'+di+'-'+x);
+    if(b)b.className='type-pill'+(t===x?' sel-'+x:'');
+  });
+}
+function saveDayEdit(w,d,val,typ){
  if(!appData.dayEdits)appData.dayEdits={};
- if(val===null)delete appData.dayEdits[w+'_'+d];
- else appData.dayEdits[w+'_'+d]=val;
- // Write immediately — user explicitly saved an edit
+ if(val===null){delete appData.dayEdits[w+'_'+d];}
+ else{appData.dayEdits[w+'_'+d]=JSON.stringify({text:val,type:typ||null});}
  localStorage.setItem('philly_app_cache',JSON.stringify(appData));
  _doGhWrite();
 }
 
 function startEditDay(w,d){
+ _editType=loadDayEditType(w,d);
  const wrap=document.getElementById('day-ew-'+w+'-'+d);
  const btn=document.getElementById('day-eb-'+w+'-'+d);
  if(wrap)wrap.style.display='block';
@@ -1781,7 +1814,7 @@ function cancelEditDay(w,d){
 function confirmEditDay(w,d){
  const ta=document.getElementById('day-ta-'+w+'-'+d);
  if(!ta)return;
- saveDayEdit(w,d,ta.value.trim()||null);
+ saveDayEdit(w,d,ta.value.trim()||null,_editType);
  renderToday();
 }
 function resetDayEdit(w,d){
@@ -1839,8 +1872,11 @@ function renderToday(){
  const dayList=_dayOrder.map((dataIdx,displayIdx)=>{
  const [w,t,sh,g]=wk.days[dataIdx];
  const isSel=displayIdx===selDay,done=isDone(selWeek,displayIdx);
- const ov=loadDayEdit(selWeek,dataIdx);
+ const _de=loadDayEdit(selWeek,dataIdx);
+ const ov=_de?(_de.text||_de):null;
+ const ovType=_de&&_de.type?_de.type:null;
  const disp=ov||w;
+ const effType=ovType||t;
  const edited=!!ov;
  const isSwapSrc=swapPickIdx===displayIdx;
  const isSwapTgt=swapPickIdx!==null&&swapPickIdx!==displayIdx;
@@ -1848,7 +1884,7 @@ function renderToday(){
  return`<div class="dl-item${isSel?' sel':''}${done?' done-run':''} ${t}${isSwapSrc?' swap-source':''}${isSwapTgt?' swap-target':''}" style="display:flex;align-items:center">
  <div class="dl-inner" onclick="${isSwapTgt?`pickSwap(${displayIdx})`:`selDay=${displayIdx};renderToday()`}" style="flex:1;min-width:0;cursor:pointer">
  <div class="dl-day">${DAY_NAMES[displayIdx]}${displayIdx===todayDay&&selWeek===todayWk?' · Today':''}${edited?'<span class="day-edited-mark">✎</span>':''}${isOrderChanged?'<span style="font-size:10px;color:var(--muted);margin-left:4px">↕</span>':''}</div>
- <div class="dl-workout ${t}">${isSwapTgt?'<span style="color:var(--accent);font-size:11px">Tap to swap here</span><br>':''} ${disp}</div>
+ <div class="dl-workout ${effType}">${isSwapTgt?'<span style="color:var(--accent);font-size:11px">Tap to swap here</span><br>':''} ${disp}</div>
  ${isSel&&g?`<div class="dl-meta">${g}</div>`:''}
  </div>
  <div style="display:flex;align-items:center;gap:3px">
@@ -1859,6 +1895,7 @@ function renderToday(){
  </div>
  ${swapPickIdx===displayIdx?`<div class="swap-hint">Tap another day to swap with it · tap ⇅ again to cancel</div>`:''}
  <div id="day-ew-${selWeek}-${dataIdx}" class="day-edit-wrap" style="display:none">
+ <div style="display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap">${['e','q','l','s','r'].map(x=>`<button id="etp-${selWeek}-${dataIdx}-${x}" class="type-pill${effType===x?' sel-'+x:''}" onclick="event.stopPropagation();setEditType(${selWeek},${dataIdx},'${x}')">${{e:'Easy',q:'Quality',l:'Long',s:'Swim',r:'Rest'}[x]}</button>`).join('')}</div>
  <textarea id="day-ta-${selWeek}-${dataIdx}" class="day-edit-ta">${disp}</textarea>
  <div class="day-edit-btns">
  <button class="day-save-btn" onclick="confirmEditDay(${selWeek},${dataIdx})">Save</button>
@@ -1884,7 +1921,7 @@ function renderToday(){
  <div class="week-strip">
  <div class="week-strip-hdr">
  <span class="ws-label">${wk.lbl} · ${wk.ph}</span>
- <span class="ws-miles">${wk.mi} mi${wk.cut?' · cutback':''}</span>
+ <span class="ws-miles">${(()=>{const omi=(appData.weekMileage||{})[selWeek];return omi||wk.mi;})()}mi${wk.cut?' · cutback':''} ${isEditMode()?`<button onclick="event.stopPropagation();editWeekMi()" style="font-size:10px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0 3px">✎</button>`:''}</span>
  </div>
  <div class="day-grid">${dots}</div>
  ${wk.note?`<div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.4">${wk.note}</div>`:''}
@@ -1933,7 +1970,7 @@ function renderPlan(){
  ${hasNotes?`<div class="wk-note-indicator">✎ notes saved</div>`:''}
  </div>
  <div class="wk-right">
- <div class="wk-mi">${wk.mi} mi${wk.cut?'<span class="wk-cut">cutback ↓</span>':''}</div>
+ <div class="wk-mi">${(()=>{const omi=(appData.weekMileage||{})[i];return omi||wk.mi;})()}mi${wk.cut?'<span class="wk-cut">cutback ↓</span>':''}</div>
  <div class="wk-pips">${pips}</div>
  </div>
  </div>
