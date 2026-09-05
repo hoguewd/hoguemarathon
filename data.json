@@ -67,7 +67,8 @@
     "0_3": "{\"text\":\"7mi easy\",\"type\":null}",
     "2_6": "{\"text\":\"RACE: 5 mile @6:00–6:10/mi · 2mi WU + race + 1.5mi CD\",\"type\":null}",
     "4_1": "{\"text\":\"PT (hips & quads) + 3mi easy shakeout — gym closed (flooding)\",\"type\":null}",
-    "8_2": "{\"text\":\"8mi easy/moderate\",\"type\":null}"
+    "8_2": "{\"text\":\"8mi easy/moderate\",\"type\":null}",
+    "8_6": "{\"text\":\"20 mi  (8 miles of pickup) — long run\",\"type\":null}"
   },
   "dayOrders": {
     "2": [
@@ -906,7 +907,7 @@
     }
   ],
   "stravaLastSync": 1788288239362,
-  "updatedAt": 1788623828866,
+  "updatedAt": 1788623849021,
   "comments": [
     {
       "name": "John Boy and Bill",
