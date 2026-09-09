@@ -21,7 +21,7 @@
     "6_1": "{\"text\":\"Rest—feeling sick\",\"type\":null}",
     "8_3": "{\"text\":\"T: 2mi WU ·2 x 2.5mi @ 6:20/mi • strides · 2mi CD\",\"type\":null}",
     "9_5": "{\"text\":\"6mi easy with strides\",\"type\":\"e\"}",
-    "9_6": "{\"text\":\"RACE: 1 mile all-out @5:10–5:20/mi · 2mi WU + 1mi + 2mi cooldown\",\"type\":null}",
+    "9_6": "{\"text\":\"RACE: 1 mile all-out @5:10–5:20/mi · 2mi WU + 1mi + 14mi cooldown\",\"type\":null}",
     "10_2": "T: 1 mi WU + 3 mi at T+ 3x3mins at 10 mi race pace + 2 mi CD",
     "12_3": "I: 2mi WU · 6×1000m @5:43–5:57/mi · jog half time it took to do 1000m · 2mi CD",
     "11_3": "{\"text\":\"6 mi easy + Lift B-2 (lower body)\",\"type\":null}",
@@ -911,7 +911,7 @@
     }
   ],
   "stravaLastSync": 1788288239362,
-  "updatedAt": 1788975488523,
+  "updatedAt": 1788975511797,
   "comments": [
     {
       "name": "John Boy and Bill",
