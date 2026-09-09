@@ -1855,7 +1855,7 @@ function itbDot(r) { return '●'; }
 
 function renderToday(){
  const wk=W[selWeek];
- const _ord=getDayOrder(selWeek);const _dataIdx=_ord[selDay];const [_rawWorkout,type,shoe,gel]=wk.days[_dataIdx];const workout=loadDayEdit(selWeek,_dataIdx)||_rawWorkout;
+ const _ord=getDayOrder(selWeek);const _dataIdx=_ord[selDay];const [_rawWorkout,type,shoe,gel]=wk.days[_dataIdx];const workout=loadDayEditText(selWeek,_dataIdx)||_rawWorkout;
  const date=parseLocal(wk.start);date.setDate(date.getDate()+selDay);
  const dateStr=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
  const isToday=selWeek===todayWk&&selDay===todayDay;
