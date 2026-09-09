@@ -222,9 +222,106 @@
     "5": 50.39370176594132,
     "6": 43.053114941528825,
     "7": 53.54188673617756,
-    "8": 9.007294915928268
+    "8": 60.264891197633816,
+    "9": 22.409869884548947
   },
   "stravaActivities": [
+    {
+      "id": 20102475738,
+      "date": "2026-09-09",
+      "name": "Morning Run",
+      "mi": 5.44,
+      "pace": 8.07,
+      "duration": 2633,
+      "cadence": 79.5,
+      "effort": 0,
+      "elevation": 149,
+      "wkIdx": 9
+    },
+    {
+      "id": 20088519651,
+      "date": "2026-09-08",
+      "name": "Morning Run",
+      "mi": 6.97,
+      "pace": 7.07,
+      "duration": 2955,
+      "cadence": 84.2,
+      "effort": 0,
+      "elevation": 377,
+      "wkIdx": 9
+    },
+    {
+      "id": 20082128697,
+      "date": "2026-09-07",
+      "name": "Evening Run",
+      "mi": 10,
+      "pace": 8.82,
+      "duration": 5297,
+      "cadence": 77.9,
+      "effort": 0,
+      "elevation": 574,
+      "wkIdx": 9
+    },
+    {
+      "id": 20060542781,
+      "date": "2026-09-06",
+      "name": "Morning Run",
+      "mi": 8.61,
+      "pace": 8.63,
+      "duration": 4455,
+      "cadence": 79.5,
+      "effort": 0,
+      "elevation": 410,
+      "wkIdx": 8
+    },
+    {
+      "id": 20047992493,
+      "date": "2026-09-05",
+      "name": "Hellgate lighthouse run",
+      "mi": 20.15,
+      "pace": 7.62,
+      "duration": 9219,
+      "cadence": 81,
+      "effort": 0,
+      "elevation": 715,
+      "wkIdx": 8
+    },
+    {
+      "id": 20032729189,
+      "date": "2026-09-04",
+      "name": "Morning Run",
+      "mi": 5.05,
+      "pace": 8.03,
+      "duration": 2435,
+      "cadence": 80.7,
+      "effort": 0,
+      "elevation": 233,
+      "wkIdx": 8
+    },
+    {
+      "id": 20026184828,
+      "date": "2026-09-03",
+      "name": "With Alfredo",
+      "mi": 8,
+      "pace": 7.76,
+      "duration": 3729,
+      "cadence": 80,
+      "effort": 0,
+      "elevation": 312,
+      "wkIdx": 8
+    },
+    {
+      "id": 20005752289,
+      "date": "2026-09-02",
+      "name": "Threshold",
+      "mi": 9.44,
+      "pace": 7.17,
+      "duration": 4062,
+      "cadence": 84.6,
+      "effort": 0,
+      "elevation": 472,
+      "wkIdx": 8
+    },
     {
       "id": 19983255453,
       "date": "2026-08-31",
@@ -910,8 +1007,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1788288239362,
-  "updatedAt": 1788976027811,
+  "stravaLastSync": 1788994922225,
+  "updatedAt": 1788994922482,
   "comments": [
     {
       "name": "John Boy and Bill",
