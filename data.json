@@ -32,7 +32,7 @@
     "8_5": "{\"text\":\"8mi easy\",\"type\":null}",
     "8_1": "Lift B-1 (upper body)  + PT session",
     "9_3": "T+R: 1.5mi WU · 3mi @6:20/mi continuous · 6x200@5:00/mi + 1.5mi CD",
-    "9_4": "{\"text\":\"7 mi easy\",\"type\":\"l\"}",
+    "9_4": "{\"text\":\"7 mi easy\",\"type\":\"e\"}",
     "9_2": "5mi easy + PT session",
     "9_1": "{\"text\":\"Lift B-1 (upper body) + 5 mi easy run to soccer\",\"type\":null}",
     "10_3": "8mi easy",
@@ -1009,7 +1009,7 @@
     }
   ],
   "stravaLastSync": 1789047041282,
-  "updatedAt": 1789047069029,
+  "updatedAt": 1789047076725,
   "comments": [
     {
       "name": "John Boy and Bill",
