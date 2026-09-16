@@ -37,7 +37,7 @@
     "9_1": "{\"text\":\"6 mi easy run to soccer\",\"type\":\"e\"}",
     "10_3": "{\"text\":\"8mi easy\",\"type\":null}",
     "10_4": "{\"text\":\"5mi easy + strides\",\"type\":null}",
-    "10_5": "RACE: 10 mile @6:05/mi · 1mi WU + 10mi + 1mi CD",
+    "10_5": "{\"text\":\"RACE: 10 mile @6:05/mi · 1mi WU + 10mi + 6mi CD\",\"type\":null}",
     "11_6": "18mi easy — long run (Progress to MP and hold for 2-3 miles)",
     "12_0": "11mi easy",
     "12_1": "T+M: 2mi WU · 2mi @T(6:20) + 3mi @M(6:43) · 2mi CD",
@@ -1126,7 +1126,7 @@
     }
   ],
   "stravaLastSync": 1789588201032,
-  "updatedAt": 1789598017108,
+  "updatedAt": 1789598036351,
   "comments": [
     {
       "name": "John Boy and Bill",
