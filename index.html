@@ -1977,7 +1977,7 @@ function renderPlan(){
  </div>
  </div>
  <div class="wk-expand" id="exp-${i}" style="display:${expanded[i]?'block':'none'}">
- ${wk.days.map(([w,t],j)=>`<div class="wk-exp-day ${t}"><span class="dn">${DAY_NAMES[j]}</span><span class="dt">${w}</span></div>`).join('')}
+ ${wk.days.map(([w,t],j)=>{const et=loadDayEditText(i,j)||w;const ety=loadDayEditType(i,j)||t;return`<div class="wk-exp-day ${ety}"><span class="dn">${DAY_NAMES[j]}</span><span class="dt">${et}</span></div>`;}).join('')}
  </div>`;
  }).join('');
  document.getElementById('pane-plan').innerHTML=`<div class="plan-list">${rows}</div>`;
