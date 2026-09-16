@@ -1923,7 +1923,13 @@ function renderToday(){
  <div class="week-strip">
  <div class="week-strip-hdr">
  <span class="ws-label">${wk.lbl} · ${wk.ph}</span>
- <span class="ws-miles">${(()=>{const omi=(appData.weekMileage||{})[selWeek];return omi||wk.mi;})()}mi${wk.cut?' · cutback':''} ${isEditMode()?`<button onclick="event.stopPropagation();editWeekMi()" style="font-size:10px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0 3px">✎</button>`:''}</span>
+ <span class="ws-miles">${(()=>{
+  const plan=(appData.weekMileage||{})[selWeek]||wk.mi;
+  const actual=stravaActuals[selWeek];
+  const actualStr=actual?`<span style="color:var(--green)"> · ${actual.toFixed(1)} actual</span>`:'';
+  const editBtn=isEditMode()?`<button onclick="event.stopPropagation();editWeekMi()" style="font-size:10px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0 3px">✎</button>`:'';
+  return plan+'mi planned'+actualStr+(wk.cut?' · cutback':'')+editBtn;
+})()}</span>
  </div>
  <div class="day-grid">${dots}</div>
  ${wk.note?`<div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.4">${wk.note}</div>`:''}
@@ -1972,7 +1978,12 @@ function renderPlan(){
  ${hasNotes?`<div class="wk-note-indicator">✎ notes saved</div>`:''}
  </div>
  <div class="wk-right">
- <div class="wk-mi">${(()=>{const omi=(appData.weekMileage||{})[i];return omi||wk.mi;})()}mi${wk.cut?'<span class="wk-cut">cutback ↓</span>':''}</div>
+ <div class="wk-mi">${(()=>{
+  const plan=(appData.weekMileage||{})[i]||wk.mi;
+  const actual=stravaActuals[i];
+  const actualStr=actual?`<span style="color:var(--green);font-size:11px;font-weight:400"> · ${actual.toFixed(1)} actual</span>`:'';
+  return plan+'mi planned'+actualStr+(wk.cut?'<span class="wk-cut">cutback ↓</span>':'');
+})()}</div>
  <div class="wk-pips">${pips}</div>
  </div>
  </div>
