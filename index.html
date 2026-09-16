@@ -2474,6 +2474,8 @@ async function statsSyncAndRender(){
  const statusEl=document.getElementById('dash-status');
  await stravaSync();
  renderStats();
+ renderToday();
+ renderPlan();
 }
 
 function renderRef(){
