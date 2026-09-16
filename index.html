@@ -1780,7 +1780,7 @@ function editWeekMi(){
   appData.weekMileage[selWeek]=parseFloat(val);
   localStorage.setItem('philly_app_cache',JSON.stringify(appData));
   _doGhWrite();
-  renderToday();
+  renderToday();renderPlan();
   if(document.getElementById('pane-stats')?.classList.contains('on'))renderStats();
 }
 function setEditType(wk,di,t){
