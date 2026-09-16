@@ -244,9 +244,34 @@
     "6": 43.053114941528825,
     "7": 53.54188673617756,
     "8": 60.264891197633816,
-    "9": 63.1537773248661
+    "9": 63.1537773248661,
+    "10": 15.276200181440839
   },
   "stravaActivities": [
+    {
+      "id": 20200036486,
+      "date": "2026-09-16",
+      "name": "Thresh and race pace",
+      "mi": 7.28,
+      "pace": 6.84,
+      "duration": 2985,
+      "cadence": 82.8,
+      "effort": 0,
+      "elevation": 269,
+      "wkIdx": 10
+    },
+    {
+      "id": 20177323460,
+      "date": "2026-09-14",
+      "name": "Recover",
+      "mi": 8,
+      "pace": 8.16,
+      "duration": 3915,
+      "cadence": 78.4,
+      "effort": 0,
+      "elevation": 525,
+      "wkIdx": 10
+    },
     {
       "id": 20159851949,
       "date": "2026-09-13",
@@ -1100,8 +1125,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1789385495791,
-  "updatedAt": 1789567969190,
+  "stravaLastSync": 1789588135002,
+  "updatedAt": 1789588135330,
   "comments": [
     {
       "name": "John Boy and Bill",
