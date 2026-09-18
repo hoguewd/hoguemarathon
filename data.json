@@ -69,7 +69,7 @@
     "4_1": "{\"text\":\"PT (hips & quads) + 3mi easy shakeout — gym closed (flooding)\",\"type\":null}",
     "8_2": "{\"text\":\"8mi easy/moderate\",\"type\":null}",
     "8_6": "{\"text\":\"20 mi  (6 miles of pickup) — long run\",\"type\":null}",
-    "10_0": "{\"text\":\"7mi easy\",\"type\":null}",
+    "10_0": "{\"text\":\"6mi easy\",\"type\":null}",
     "11_2": "{\"text\":\"7mi easy\",\"type\":null}",
     "11_1": "{\"text\":\"PT + Sw-C + sauna\",\"type\":null}",
     "11_0": "{\"text\":\"9mi easy + lift?\",\"type\":null}",
@@ -1138,7 +1138,7 @@
     }
   ],
   "stravaLastSync": 1789742323667,
-  "updatedAt": 1789742324077,
+  "updatedAt": 1789742328708,
   "comments": [
     {
       "name": "John Boy and Bill",
