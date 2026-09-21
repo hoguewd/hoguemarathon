@@ -72,7 +72,7 @@
     "10_0": "{\"text\":\"6mi easy\",\"type\":null}",
     "11_2": "{\"text\":\"7mi easy\",\"type\":null}",
     "11_1": "{\"text\":\"PT + Sw-C + sauna\",\"type\":null}",
-    "11_0": "{\"text\":\"9mi easy + lift?\",\"type\":null}",
+    "11_0": "{\"text\":\"9mi easy\",\"type\":null}",
     "12_2": "{\"text\":\"Sw-B + sauna\",\"type\":null}"
   },
   "dayOrders": {
@@ -1202,7 +1202,7 @@
     }
   ],
   "stravaLastSync": 1789997087706,
-  "updatedAt": 1789997089955,
+  "updatedAt": 1789997106346,
   "comments": [
     {
       "name": "John Boy and Bill",
