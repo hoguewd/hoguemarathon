@@ -248,9 +248,69 @@
     "7": 53.54188673617756,
     "8": 60.264891197633816,
     "9": 63.1537773248661,
-    "10": 21.29699131320914
+    "10": 48.267053574757355
   },
   "stravaActivities": [
+    {
+      "id": 20261086111,
+      "date": "2026-09-20",
+      "name": "Afternoon Run",
+      "mi": 7.03,
+      "pace": 8.76,
+      "duration": 3697,
+      "cadence": 78,
+      "effort": 0,
+      "elevation": 344,
+      "wkIdx": 10
+    },
+    {
+      "id": 20240500174,
+      "date": "2026-09-19",
+      "name": "Morning Run",
+      "mi": 1.87,
+      "pace": 7.82,
+      "duration": 878,
+      "cadence": 80.8,
+      "effort": 0,
+      "elevation": 89,
+      "wkIdx": 10
+    },
+    {
+      "id": 20240500579,
+      "date": "2026-09-19",
+      "name": "Bronx 10 miler",
+      "mi": 10.05,
+      "pace": 6.29,
+      "duration": 3792,
+      "cadence": 85.2,
+      "effort": 0,
+      "elevation": 404,
+      "wkIdx": 10
+    },
+    {
+      "id": 20241723263,
+      "date": "2026-09-19",
+      "name": "Morning Run",
+      "mi": 4.73,
+      "pace": 8.58,
+      "duration": 2432,
+      "cadence": 80.4,
+      "effort": 0,
+      "elevation": 223,
+      "wkIdx": 10
+    },
+    {
+      "id": 20232975271,
+      "date": "2026-09-18",
+      "name": "Shakeout",
+      "mi": 3.29,
+      "pace": 8.64,
+      "duration": 1707,
+      "cadence": 78.5,
+      "effort": 0,
+      "elevation": 85,
+      "wkIdx": 10
+    },
     {
       "id": 20212509307,
       "date": "2026-09-17",
@@ -1140,8 +1200,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1789742323667,
-  "updatedAt": 1789854465214,
+  "stravaLastSync": 1789997087706,
+  "updatedAt": 1789997087979,
   "comments": [
     {
       "name": "John Boy and Bill",
