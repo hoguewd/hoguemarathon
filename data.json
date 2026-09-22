@@ -70,7 +70,7 @@
     "8_2": "{\"text\":\"8mi easy/moderate\",\"type\":null}",
     "8_6": "{\"text\":\"20 mi  (6 miles of pickup) — long run\",\"type\":null}",
     "10_0": "{\"text\":\"6mi easy\",\"type\":null}",
-    "11_2": "{\"text\":\"Rest\",\"type\":null}",
+    "11_2": "{\"text\":\"Rest\",\"type\":\"x\"}",
     "11_1": "{\"text\":\"PT + Sw-C + sauna\",\"type\":null}",
     "11_0": "{\"text\":\"7.5 mi easy\",\"type\":null}",
     "12_2": "{\"text\":\"Sw-B + sauna\",\"type\":null}"
@@ -1202,7 +1202,7 @@
     }
   ],
   "stravaLastSync": 1790002680306,
-  "updatedAt": 1790108884652,
+  "updatedAt": 1790108890392,
   "comments": [
     {
       "name": "John Boy and Bill",
