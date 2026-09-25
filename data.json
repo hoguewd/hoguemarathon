@@ -254,9 +254,70 @@
     "7": 53.54188673617756,
     "8": 60.264891197633816,
     "9": 63.1537773248661,
-    "10": 48.267053574757355
+    "10": 48.267053574757355,
+    "11": 31.956392061341916
   },
   "stravaActivities": [
+    {
+      "id": 20323194761,
+      "date": "2026-09-25",
+      "name": "Morning Run",
+      "mi": 8.03,
+      "pace": 7.97,
+      "duration": 3837,
+      "cadence": 79.4,
+      "effort": 0,
+      "elevation": 525,
+      "wkIdx": 11
+    },
+    {
+      "id": 20317038029,
+      "date": "2026-09-24",
+      "name": "Afternoon Run",
+      "mi": 6.58,
+      "pace": 8.21,
+      "duration": 3244,
+      "cadence": 79.6,
+      "effort": 0,
+      "elevation": 328,
+      "wkIdx": 11
+    },
+    {
+      "id": 20317830059,
+      "date": "2026-09-24",
+      "name": "Evening Run",
+      "mi": 1.41,
+      "pace": 9.03,
+      "duration": 761,
+      "cadence": 78.8,
+      "effort": 0,
+      "elevation": 72,
+      "wkIdx": 11
+    },
+    {
+      "id": 20296717468,
+      "date": "2026-09-23",
+      "name": "Morning Run",
+      "mi": 8.45,
+      "pace": 8.25,
+      "duration": 4186,
+      "cadence": 78.8,
+      "effort": 0,
+      "elevation": 531,
+      "wkIdx": 11
+    },
+    {
+      "id": 20273884303,
+      "date": "2026-09-21",
+      "name": "Afternoon Run",
+      "mi": 7.49,
+      "pace": 8.34,
+      "duration": 3750,
+      "cadence": 77.9,
+      "effort": 0,
+      "elevation": 505,
+      "wkIdx": 11
+    },
     {
       "id": 20261086111,
       "date": "2026-09-20",
@@ -1206,8 +1267,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1790002680306,
-  "updatedAt": 1790340231652,
+  "stravaLastSync": 1790355984307,
+  "updatedAt": 1790355984526,
   "comments": [
     {
       "name": "John Boy and Bill",
