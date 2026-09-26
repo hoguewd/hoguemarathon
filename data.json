@@ -40,7 +40,7 @@
     "10_5": "{\"text\":\"RACE: 10 mile @6:20 mi · 2mi WU + 10mi + 6mi CD\",\"type\":null}",
     "11_6": "18mi easy — long run (Progress to MP and hold for 2-3 miles)",
     "12_0": "11mi easy",
-    "12_1": "T+M: 2mi WU · 2mi @T(6:20) + 3mi @M(6:43) · 2mi CD",
+    "12_1": "{\"text\":\"T+M: 2mi WU · 2mi @T(6:20) + 3mi @M(6:43) · 2mi CD (arguably get rid of since I did during long run)\",\"type\":null}",
     "12_5": "7mi easy",
     "15_2": "T: 1.5mi WU ·10x800 @2:55 reps · 1.5mi CD",
     "15_3": "7mi easy + Lift B-2 (lower body)",
@@ -1282,7 +1282,7 @@
     }
   ],
   "stravaLastSync": 1790439925375,
-  "updatedAt": 1790440024821,
+  "updatedAt": 1790440382197,
   "comments": [
     {
       "name": "John Boy and Bill",
