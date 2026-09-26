@@ -151,9 +151,9 @@
     "12": [
       2,
       3,
-      0,
-      1,
       4,
+      1,
+      0,
       6,
       5
     ]
@@ -1282,7 +1282,7 @@
     }
   ],
   "stravaLastSync": 1790450299146,
-  "updatedAt": 1790450330437,
+  "updatedAt": 1790450335456,
   "comments": [
     {
       "name": "John Boy and Bill",
