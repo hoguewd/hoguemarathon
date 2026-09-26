@@ -46,7 +46,7 @@
     "15_3": "7mi easy + Lift B-2 (lower body)",
     "15_4": "8mi easy",
     "11_4": "8mi easy",
-    "11_5": "8mi easy",
+    "11_5": "{\"text\":\"8mi easy\",\"type\":null}",
     "12_4": "8mi easy",
     "14_3": "7mi easy",
     "14_4": "{\"text\":\"10mi easy\",\"type\":null}",
@@ -1283,7 +1283,7 @@
     }
   ],
   "stravaLastSync": 1790450299146,
-  "updatedAt": 1790450637910,
+  "updatedAt": 1790450647454,
   "comments": [
     {
       "name": "John Boy and Bill",
