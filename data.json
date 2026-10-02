@@ -271,9 +271,82 @@
     "8": 60.264891197633816,
     "9": 63.1537773248661,
     "10": 48.267053574757355,
-    "11": 51.961798004150765
+    "11": 60.07394335566132,
+    "12": 31.36670933426125
   },
   "stravaActivities": [
+    {
+      "id": 20405699511,
+      "date": "2026-10-01",
+      "name": "Morning Run",
+      "mi": 7.25,
+      "pace": 8.29,
+      "duration": 3609,
+      "cadence": 79.3,
+      "effort": 0,
+      "elevation": 650,
+      "wkIdx": 12
+    },
+    {
+      "id": 20413126307,
+      "date": "2026-10-01",
+      "name": "Pre soccer",
+      "mi": 2.5,
+      "pace": 9.21,
+      "duration": 1383,
+      "cadence": 77.6,
+      "effort": 0,
+      "elevation": 52,
+      "wkIdx": 12
+    },
+    {
+      "id": 20414140758,
+      "date": "2026-10-01",
+      "name": "Evening Run",
+      "mi": 1.15,
+      "pace": 10.24,
+      "duration": 709,
+      "cadence": 76.3,
+      "effort": 0,
+      "elevation": 43,
+      "wkIdx": 12
+    },
+    {
+      "id": 20393682410,
+      "date": "2026-09-30",
+      "name": "Intervals",
+      "mi": 11.43,
+      "pace": 7.97,
+      "duration": 5470,
+      "cadence": 80,
+      "effort": 0,
+      "elevation": 446,
+      "wkIdx": 12
+    },
+    {
+      "id": 20370798979,
+      "date": "2026-09-28",
+      "name": "Evening Run",
+      "mi": 9.02,
+      "pace": 7.16,
+      "duration": 3877,
+      "cadence": 81.3,
+      "effort": 0,
+      "elevation": 489,
+      "wkIdx": 12
+    },
+    {
+      "id": 20353502395,
+      "date": "2026-09-27",
+      "name": "Morning Run",
+      "mi": 8.11,
+      "pace": 8.38,
+      "duration": 4077,
+      "cadence": 78,
+      "effort": 0,
+      "elevation": 387,
+      "wkIdx": 11
+    },
     {
       "id": 20337670949,
       "date": "2026-09-26",
@@ -1295,8 +1368,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1790450299146,
-  "updatedAt": 1790859134435,
+  "stravaLastSync": 1790908525417,
+  "updatedAt": 1790908525724,
   "comments": [
     {
       "name": "John Boy and Bill",
