@@ -286,9 +286,191 @@
     "9": 63.1537773248661,
     "10": 48.267053574757355,
     "11": 60.07394335566132,
-    "12": 31.36670933426125
+    "12": 64.889830613792,
+    "13": 56.94129270384133,
+    "14": 12.584662035368536
   },
   "stravaActivities": [
+    {
+      "id": 20566991073,
+      "date": "2026-10-13",
+      "name": "Morning Run",
+      "mi": 7.53,
+      "pace": 8.88,
+      "duration": 4015,
+      "cadence": 77.8,
+      "effort": 0,
+      "elevation": 328,
+      "wkIdx": 14
+    },
+    {
+      "id": 20561539839,
+      "date": "2026-10-12",
+      "name": "Evening Run",
+      "mi": 5.05,
+      "pace": 8.28,
+      "duration": 2510,
+      "cadence": 78.5,
+      "effort": 0,
+      "elevation": 259,
+      "wkIdx": 14
+    },
+    {
+      "id": 20542272465,
+      "date": "2026-10-11",
+      "name": "Morning Run",
+      "mi": 1.91,
+      "pace": 8.19,
+      "duration": 936,
+      "cadence": 79.7,
+      "effort": 0,
+      "elevation": 39,
+      "wkIdx": 13
+    },
+    {
+      "id": 20542272658,
+      "date": "2026-10-11",
+      "name": "Staten Island Half",
+      "mi": 13.21,
+      "pace": 6.21,
+      "duration": 4920,
+      "cadence": 85.3,
+      "effort": 0,
+      "elevation": 440,
+      "wkIdx": 13
+    },
+    {
+      "id": 20542812759,
+      "date": "2026-10-11",
+      "name": "Morning Run",
+      "mi": 1.47,
+      "pace": 9.27,
+      "duration": 817,
+      "cadence": 78.9,
+      "effort": 0,
+      "elevation": 49,
+      "wkIdx": 13
+    },
+    {
+      "id": 20528235507,
+      "date": "2026-10-10",
+      "name": "Shake",
+      "mi": 4.18,
+      "pace": 8.31,
+      "duration": 2085,
+      "cadence": 79,
+      "effort": 0,
+      "elevation": 213,
+      "wkIdx": 13
+    },
+    {
+      "id": 20514353672,
+      "date": "2026-10-09",
+      "name": "Morning Run",
+      "mi": 7.16,
+      "pace": 7.9,
+      "duration": 3394,
+      "cadence": 79.7,
+      "effort": 0,
+      "elevation": 390,
+      "wkIdx": 13
+    },
+    {
+      "id": 20508107411,
+      "date": "2026-10-08",
+      "name": "Afternoon Run",
+      "mi": 5.7,
+      "pace": 8.13,
+      "duration": 2778,
+      "cadence": 78.1,
+      "effort": 0,
+      "elevation": 105,
+      "wkIdx": 13
+    },
+    {
+      "id": 20508226560,
+      "date": "2026-10-08",
+      "name": "Afternoon Run",
+      "mi": 1.27,
+      "pace": 6.85,
+      "duration": 522,
+      "cadence": 80,
+      "effort": 0,
+      "elevation": 79,
+      "wkIdx": 13
+    },
+    {
+      "id": 20489855828,
+      "date": "2026-10-07",
+      "name": "Morning Run",
+      "mi": 7.06,
+      "pace": 8.44,
+      "duration": 3574,
+      "cadence": 77.5,
+      "effort": 0,
+      "elevation": 538,
+      "wkIdx": 13
+    },
+    {
+      "id": 20474366394,
+      "date": "2026-10-06",
+      "name": "Morning Run",
+      "mi": 7.39,
+      "pace": 7.08,
+      "duration": 3140,
+      "cadence": 83,
+      "effort": 0,
+      "elevation": 384,
+      "wkIdx": 13
+    },
+    {
+      "id": 20466532461,
+      "date": "2026-10-05",
+      "name": "Afternoon Run",
+      "mi": 7.6,
+      "pace": 8.61,
+      "duration": 3928,
+      "cadence": 77.4,
+      "effort": 0,
+      "elevation": 276,
+      "wkIdx": 13
+    },
+    {
+      "id": 20454990477,
+      "date": "2026-10-04",
+      "name": "Evening Run",
+      "mi": 7.23,
+      "pace": 8.43,
+      "duration": 3660,
+      "cadence": 77.6,
+      "effort": 0,
+      "elevation": 436,
+      "wkIdx": 12
+    },
+    {
+      "id": 20437452764,
+      "date": "2026-10-03",
+      "name": "Lunch Run",
+      "mi": 20.01,
+      "pace": 7.85,
+      "duration": 9426,
+      "cadence": 79.8,
+      "effort": 0,
+      "elevation": 863,
+      "wkIdx": 12
+    },
+    {
+      "id": 20426007482,
+      "date": "2026-10-02",
+      "name": "Evening Run",
+      "mi": 6.28,
+      "pace": 9.09,
+      "duration": 3423,
+      "cadence": 76.6,
+      "effort": 0,
+      "elevation": 279,
+      "wkIdx": 12
+    },
     {
       "id": 20405699511,
       "date": "2026-10-01",
@@ -1382,8 +1564,8 @@
       "wkIdx": 0
     }
   ],
-  "stravaLastSync": 1790908525417,
-  "updatedAt": 1791899931806,
+  "stravaLastSync": 1791899933738,
+  "updatedAt": 1791899933968,
   "comments": [
     {
       "name": "John Boy and Bill",
