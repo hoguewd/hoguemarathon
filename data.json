@@ -48,7 +48,7 @@
     "11_4": "8mi easy",
     "11_5": "{\"text\":\"8mi easy\",\"type\":null}",
     "12_4": "8mi easy",
-    "14_3": "7mi easy",
+    "14_3": "{\"text\":\"Feeling sick\",\"type\":\"r\"}",
     "14_4": "{\"text\":\"10mi easy\",\"type\":null}",
     "14_5": "7mi easy",
     "16_1": "{\"text\":\"Rest\",\"type\":\"x\"}",
@@ -1580,7 +1580,7 @@
     }
   ],
   "stravaLastSync": 1792083249605,
-  "updatedAt": 1792083249866,
+  "updatedAt": 1792083256963,
   "comments": [
     {
       "name": "John Boy and Bill",
