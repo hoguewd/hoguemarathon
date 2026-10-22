@@ -150,19 +150,11 @@ a:hover{color:var(--text)}
 .wnav-btn:disabled{opacity:.3;cursor:default}
 .wnav-cur{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--muted);text-align:center}
 
-.notes-section{padding:18px 20px 22px;border-top:1px solid var(--border)}
-.notes-hdr{font-family:var(--display);font-size:13px;font-weight:700;color:var(--text);letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center}
-.notes-hdr::before{content:"";width:14px;height:2px;background:var(--accent);margin-right:8px}
-.notes-input{width:100%;background:var(--card);border:1px solid var(--border2);color:var(--text);font-family:var(--sans);font-size:14px;padding:12px;resize:vertical;min-height:90px;line-height:1.55;display:block;border-radius:3px}
-.notes-input:focus{outline:none;border-color:var(--accent);background:var(--card2)}
-.notes-input::placeholder{color:var(--faint)}
-.notes-actions{display:flex;gap:8px;margin-top:9px}
 .nbtn{flex:1;padding:11px;font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;background:var(--card2);border:1px solid var(--border2);color:var(--muted);transition:all .1s;border-radius:3px}
 .nbtn:hover:not(:disabled){color:var(--text);border-color:var(--muted)}
 .nbtn.primary{color:var(--accent);border-color:var(--accent)}
 .nbtn.primary:hover:not(:disabled){background:var(--accent-soft);color:var(--accent)}
 .nbtn:disabled{opacity:.4;cursor:default}
-.saved-tick{font-family:var(--mono);font-size:11px;color:var(--green);margin-left:8px;opacity:0;transition:opacity .3s;font-weight:600;letter-spacing:.04em;text-transform:none}
 
 .plan-list{padding:0 20px}
 .wk-row{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;gap:10px}
@@ -183,7 +175,6 @@ a:hover{color:var(--text)}
 .wk-exp-day.q .dt{color:var(--blue)}
 .wk-exp-day.l .dt{color:var(--green)}
 .wk-exp-day.r .dt{color:var(--amber)}
-.wk-note-indicator{font-family:var(--mono);font-size:10px;color:var(--green);margin-top:4px;text-transform:uppercase;letter-spacing:.03em}
 
 .ref{padding:20px}
 .ref-sec{margin-bottom:26px}
@@ -245,17 +236,13 @@ a:hover{color:var(--text)}
 .del-btn:hover{color:var(--accent)}
 .pc-input:focus{outline:none;border-color:var(--accent)}
 
-.notes-display-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.notes-display-label{font-family:var(--display);font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .edit-link{font-family:var(--mono);font-size:12px;color:var(--accent);background:none;border:none;cursor:pointer;padding:0;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
 .edit-link:hover{text-decoration:underline}
-.notes-display-text{font-size:14px;color:var(--text);line-height:1.6;background:var(--card);padding:12px 14px;border-left:2px solid var(--border2);border-radius:0 3px 3px 0}
 .regen-btn:hover{color:var(--accent)}
 
 #pane-today.on{display:flex;flex-direction:column}
 .today-col-left{order:2}
 .today-hero{order:1}
-.notes-section{order:3}
 
 .itb-flag{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px 3px;border-radius:3px;margin-bottom:13px}
 .itb-flag.green{background:var(--card2);color:var(--muted);border:1px solid var(--border2)}
@@ -341,11 +328,10 @@ a:hover{color:var(--text)}
  .tab{flex:none;padding:14px 34px;font-size:15px}
  .content{height:calc(100vh - 132px);overflow:hidden}
  .pane.on:not(#pane-today){overflow-y:auto;height:100%}
- #pane-today.on{display:grid;grid-template-columns:420px 1fr;grid-template-rows:auto 1fr;grid-template-areas:"left hero" "left notes";height:100%;overflow:hidden}
+ #pane-today.on{display:grid;grid-template-columns:420px 1fr;grid-template-rows:auto 1fr;grid-template-areas:"left hero" "left hero";height:100%;overflow:hidden}
  .today-col-left{grid-area:left;overflow-y:hidden;border-right:1px solid var(--border);order:unset;display:flex;flex-direction:column}
  .today-hero{grid-area:hero;order:unset;padding:36px 48px 26px;border-bottom:1px solid var(--border)}
  .today-workout{font-size:27px}
- .notes-section{grid-area:notes;overflow-y:auto;order:unset;padding:28px 48px 36px}
  .week-strip{flex-shrink:0;padding:24px 24px 18px}
  .day-list{flex:1;overflow-y:auto;padding:6px 24px 16px}
  .week-nav{flex-shrink:0;position:static;left:unset;right:unset;z-index:10;padding:15px 24px}
@@ -481,6 +467,7 @@ body.edit-mode .chk{display:flex}
  <button class="tab" onclick="showTab('stats',this)">Stats</button>
  <button class="tab" onclick="showTab('crew',this)">Comments</button>
  <button class="tab" onclick="showTab('bet',this)">Bet</button>
+ <button class="tab" onclick="showTab('macros',this)">Macros</button>
  </div>
  <div class="content">
  <div class="pane on" id="pane-today"></div>
@@ -490,6 +477,7 @@ body.edit-mode .chk{display:flex}
  <div class="pane" id="pane-stats"></div>
  <div class="pane" id="pane-crew"></div>
  <div class="pane" id="pane-bet"></div>
+ <div class="pane" id="pane-macros"></div>
  </div>
 </div>
 <script>
@@ -525,8 +513,8 @@ days:[["13mi easy","e","Nimbus",null],["Sw-A","s",null,null],["2mi WU · 3×1km 
 days:[["9mi easy","e","Novablast",null],["Sw-C + Lift B-1 (upper body)","s",null,null],["7mi easy + PT session","e","Novablast",null],["7mi easy + Lift B-2 (lower body)","e","Novablast",null],["8mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["8mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["18mi easy — long run","l","Nimbus","3×Beta @30+70+110min"]]},
 {n:13,lbl:"Week 13",start:"2026-09-28",ph:"Phase III — Threshold",cut:false,mi:67,note:"Two quality sessions — Tue T+M + Thu I. Full lift skipped intentionally — highest-load week of Phase III.",
 days:[["11mi easy (full lift skipped — two quality sessions)","e","Nimbus",null],["T+M: 2mi WU · 3mi @T(6:20) + 4mi @M(6:43) · 2mi CD","q","Alphafly","1×Beta @25min + 1×Caff @60min"],["Sw-B","s",null,null],["I: 2mi WU · 5×1000m @5:43–5:57/mi · jog equal time · 2mi CD","q","Vaporfly",null],["8mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["7mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["19mi (last 6mi @6:43) — long run","l","Alphafly","2×Beta @30+70 + 1×Caff @100min"]]},
-{n:14,lbl:"Week 14",start:"2026-10-05",ph:"Phase III — Threshold",cut:false,mi:42,note:"Half marathon Sunday Oct 11 · pace decision race",
-days:[["8mi easy","e","Novablast",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["T+M: 1.5mi WU · 2mi T + 2mi M · 1.5mi CD (lighter)","q","Alphafly","1×Beta @20min"],["6mi easy + 6×strides","e","Novablast",null],["4mi easy","e","Novablast",null],["3mi easy + 4×strides — shakeout","e","Novablast",null],["RACE: Half marathon @6:18–6:26/mi","r","Vaporfly","1×Beta @20 + 1×Caff @50 + 1×Beta @75min"]]},
+{n:14,lbl:"Week 14",start:"2026-10-05",ph:"Phase III — Threshold",cut:false,mi:53,note:"Half marathon Sunday Oct 11 · pace decision race · 67→53mi smooths drop to ~21% vs prior 37%",
+days:[["11mi easy","e","Novablast",null],["Sw-A + Lift B-1 (upper body)","s",null,null],["T+M: 1.5mi WU · 2mi T + 2mi M · 1.5mi CD (lighter)","q","Alphafly","1×Beta @20min"],["9mi easy + 6×strides","e","Novablast",null],["6mi easy","e","Novablast",null],["3mi easy + 4×strides — shakeout","e","Novablast",null],["RACE: Half marathon @6:18–6:26/mi","r","Vaporfly","1×Beta @20 + 1×Caff @50 + 1×Beta @75min"]]},
 {n:15,lbl:"Week 15",start:"2026-10-12",ph:"Phase IV — Peak (recovery)",cut:false,mi:46,note:"Recovery from half — standalone MP long run matches exact format of 2024's Sep 15, Sep 29 and Oct 13 sessions that felt so good",
 days:[["5mi very easy","e","Novablast",null],["Sw-A — no running","s",null,null],["6mi easy","e","Novablast",null],["7mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["7mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["7mi easy ← could drift to Mod pace (7:15–7:30) if running with others or feeling strong","e","Novablast",null],["Standalone MP: 2mi WU · 8mi @M pace · 4mi CD","q","Alphafly","1×Beta @25min + 1×Caff @55min (both during MP block)"]]},
 {n:16,lbl:"Week 16",start:"2026-10-19",ph:"Phase IV — Peak",cut:false,mi:55,note:"Building toward peak Week 17 · MP volume increased",
@@ -1601,18 +1589,6 @@ function toggleDone(wk,d){
  _doGhWrite();
  renderToday();renderPlan();
 }
-function saveNotes(i){
- const el=document.getElementById('notes-'+i);
- if(!el)return;
- const val=el.value;
- if(!appData.notes)appData.notes={};
- if(val)appData.notes[i]=val; else delete appData.notes[i];
- writeAppData();
- const tick=document.getElementById('tick-'+i);
- if(tick){tick.style.opacity='1';setTimeout(()=>tick.style.opacity='0',1500);}
- renderPlan();
-}
-function loadNotes(i){return(appData.notes||{})[i]||'';}
 
 function wxCls(f){return f<=65?'wx-good':f<=76?'wx-warm':'wx-hot';}
 
@@ -1859,8 +1835,6 @@ function renderToday(){
  const date=parseLocal(wk.start);date.setDate(date.getDate()+selDay);
  const dateStr=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
  const isToday=selWeek===todayWk&&selDay===todayDay;
- const savedNotes=loadNotes(selWeek);
-
  const dots=wk.days.map(([,t],i)=>{
  const isTd=i===todayDay&&selWeek===todayWk,isSel=i===selDay,done=isDone(selWeek,i);
  return`<div class="dg-cell${isTd?' today-cell':''}${isSel?' sel':''}" onclick="selDay=${i};renderToday()">
@@ -1944,13 +1918,7 @@ function renderToday(){
  <button class="wnav-btn" onclick="navWeek(1)" ${selWeek===W.length-1?'disabled':''}>→ ${selWeek<W.length-1?W[selWeek+1].lbl:'—'}</button>
  </div>
  </div>
- <div class="notes-section">
- <div class="notes-hdr">Week notes <span class="saved-tick" id="tick-${selWeek}">Saved</span></div>
- <textarea class="notes-input" id="notes-${selWeek}" placeholder="How did this week feel? Energy levels, any aches, how quality sessions went, PFPS / knee check-in...">${savedNotes}</textarea>
- <div class="notes-actions">
- <button class="nbtn" onclick="saveNotes(${selWeek})">Save notes</button>
- </div>
- </div>`;
+ `;
  loadWx(dateStr);
 }
 
@@ -1969,13 +1937,11 @@ function renderPlan(){
  const rows=W.map((wk,i)=>{
  const isCur=i===todayWk;
  const pips=wk.days.map(([,t])=>`<div class="wk-pip ${PIP[t]}"></div>`).join('');
- const hasNotes=!!loadNotes(i);
  return`
  <div class="wk-row${isCur?' cur':''}" onclick="expandWk(${i})">
  <div class="wk-num-col">
  <div class="wk-lbl">${wk.lbl}${isCur?' ◀':''}</div>
  <div class="wk-phase">${wk.ph}</div>
- ${hasNotes?`<div class="wk-note-indicator">✎ notes saved</div>`:''}
  </div>
  <div class="wk-right">
  <div class="wk-mi">${(()=>{
@@ -2557,6 +2523,7 @@ function showTab(id,btn){
  } else {
  if(window._betPoll){clearInterval(window._betPoll);window._betPoll=null;}
  }
+ if(id==='macros')renderMacros();
  if(id==='vdot'){} // removed
 }
 
@@ -2601,6 +2568,147 @@ initTheme();
 renderToday();renderPlan();renderRef();renderGym();
 // Load cross-device data from GitHub after initial render
 loadAppData();
+
+// ── MACROS TAB ──────────────────────────────────────────────────────────────
+const MACRO_PROTEIN_TARGET=125;
+const MACRO_FAT_TARGET=80;
+const MACRO_CARB={rest:275,easy:380,quality:480,long:620};
+
+function macroKey(){
+  const d=new Date();
+  return'macros_v2_'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function loadMacroState(){
+  try{const s=localStorage.getItem(macroKey());return s?JSON.parse(s):{dayType:'easy',entries:[]};}catch{return{dayType:'easy',entries:[]};}
+}
+function saveMacroState(s){try{localStorage.setItem(macroKey(),JSON.stringify(s));}catch{}}
+function macroTotals(entries){
+  return entries.reduce((a,e)=>({p:a.p+(+e.p||0),c:a.c+(+e.c||0),f:a.f+(+e.f||0)}),{p:0,c:0,f:0});
+}
+function macroBar(val,target,colorVar,bgVar,borderVar){
+  const pct=Math.min((val/target)*100,110);
+  const over=val>target*1.1;
+  const good=val>=target*0.9&&val<=target*1.1;
+  const barColor=good?'var(--green)':over?'var(--accent)':'var('+colorVar+')';
+  return`<div style="margin:4px 0 8px">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:3px">
+      <span>${val}g</span><span>${target}g target</span>
+    </div>
+    <div style="height:7px;border-radius:4px;background:var(${bgVar});border:1px solid var(${borderVar});overflow:hidden">
+      <div style="height:100%;width:${pct}%;background:${barColor};border-radius:4px;transition:width .3s"></div>
+    </div>
+  </div>`;
+}
+function renderMacros(){
+  const st=loadMacroState();
+  const tot=macroTotals(st.entries);
+  const carbTarget=MACRO_CARB[st.dayType]||380;
+  const dayLabels={rest:'Rest Day',easy:'Easy Run',quality:'Quality Run',long:'Long Run'};
+
+  const dayPills=['rest','easy','quality','long'].map(t=>
+    `<button onclick="macroSetDay('${t}')" style="padding:5px 12px;border-radius:20px;border:1px solid ${st.dayType===t?'var(--blue)':'var(--border)'};background:${st.dayType===t?'var(--blue-bg)':'transparent'};color:${st.dayType===t?'var(--blue)':'var(--muted)'};font-size:12px;cursor:pointer;font-family:var(--sans)">${{rest:'Rest',easy:'Easy',quality:'Quality',long:'Long Run'}[t]}</button>`
+  ).join(' ');
+
+  const rows=st.entries.length===0
+    ?`<div style="text-align:center;color:var(--muted);padding:20px;font-size:13px">No entries yet — add something above</div>`
+    :st.entries.map(e=>`
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2)">
+        <span style="flex:1;font-size:13px">${e.name||'—'}</span>
+        <span style="min-width:38px;text-align:right;font-size:12px;color:var(--blue);font-family:var(--mono)">${e.p||0}P</span>
+        <span style="min-width:38px;text-align:right;font-size:12px;color:var(--amber);font-family:var(--mono)">${e.c||0}C</span>
+        <span style="min-width:38px;text-align:right;font-size:12px;color:var(--purple);font-family:var(--mono)">${e.f||0}F</span>
+        <button onclick="macroDelete('${e.id}')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:0 2px;line-height:1">×</button>
+      </div>`).join('');
+
+  document.getElementById('pane-macros').innerHTML=`
+  <div style="padding:16px;max-width:520px;margin:0 auto">
+
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px">
+      <span style="font-family:var(--display);font-size:22px;font-weight:700">Macros</span>
+      <span style="font-size:12px;color:var(--muted);font-family:var(--mono)">${new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}</span>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:16px">Resets at midnight · 69 kg · endurance targets</div>
+
+    <!-- Day type selector -->
+    <div style="margin-bottom:16px">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Day Type — ${dayLabels[st.dayType]}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">${dayPills}</div>
+    </div>
+
+    <!-- Totals -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+        <div>
+          <div style="font-size:11px;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Protein</div>
+          <div style="font-size:24px;font-family:var(--mono);font-weight:700">${tot.p}<span style="font-size:13px;color:var(--muted)">g</span></div>
+          ${macroBar(tot.p,MACRO_PROTEIN_TARGET,'--blue','--blue-bg','--blue-border')}
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Carbs</div>
+          <div style="font-size:24px;font-family:var(--mono);font-weight:700">${tot.c}<span style="font-size:13px;color:var(--muted)">g</span></div>
+          ${macroBar(tot.c,carbTarget,'--amber','--amber-bg','--amber-border')}
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Fat</div>
+          <div style="font-size:24px;font-family:var(--mono);font-weight:700">${tot.f}<span style="font-size:13px;color:var(--muted)">g</span></div>
+          ${macroBar(tot.f,MACRO_FAT_TARGET,'--purple','--purple-bg','--purple-border')}
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);text-align:center">${tot.p*4+tot.c*4+tot.f*9} kcal logged · target ~${MACRO_PROTEIN_TARGET*4+carbTarget*4+MACRO_FAT_TARGET*9} kcal</div>
+    </div>
+
+    <!-- Add entry form -->
+    <div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px">
+      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Add Food</div>
+      <input id="mfood" placeholder="Food / meal name" style="width:100%;box-sizing:border-box;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:9px 11px;color:var(--text);font-size:13px;font-family:var(--sans);margin-bottom:8px;outline:none" onkeydown="if(event.key==='Enter')macroAdd()">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px">
+        <div>
+          <div style="font-size:10px;color:var(--blue);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Protein (g)</div>
+          <input id="mprot" type="number" min="0" placeholder="0" style="width:100%;box-sizing:border-box;background:var(--bg);border:1px solid var(--blue-border);border-radius:7px;padding:8px 10px;color:var(--text);font-size:14px;font-family:var(--mono);outline:none" onkeydown="if(event.key==='Enter')macroAdd()">
+        </div>
+        <div>
+          <div style="font-size:10px;color:var(--amber);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Carbs (g)</div>
+          <input id="mcarb" type="number" min="0" placeholder="0" style="width:100%;box-sizing:border-box;background:var(--bg);border:1px solid var(--amber-border);border-radius:7px;padding:8px 10px;color:var(--text);font-size:14px;font-family:var(--mono);outline:none" onkeydown="if(event.key==='Enter')macroAdd()">
+        </div>
+        <div>
+          <div style="font-size:10px;color:var(--purple);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Fat (g)</div>
+          <input id="mfat" type="number" min="0" placeholder="0" style="width:100%;box-sizing:border-box;background:var(--bg);border:1px solid var(--purple-border);border-radius:7px;padding:8px 10px;color:var(--text);font-size:14px;font-family:var(--mono);outline:none" onkeydown="if(event.key==='Enter')macroAdd()">
+        </div>
+      </div>
+      <button onclick="macroAdd()" style="width:100%;padding:10px;border-radius:7px;border:none;background:var(--blue);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans)">Add Entry</button>
+    </div>
+
+    <!-- Log -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px">
+      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Today's Log</div>
+      <div id="macro-log">${rows}</div>
+      ${st.entries.length>0?`<button onclick="macroClear()" style="margin-top:10px;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 12px;color:var(--muted);font-size:11px;cursor:pointer;font-family:var(--sans)">Clear all</button>`:''}
+    </div>
+
+  </div>`;
+}
+function macroSetDay(t){
+  const st=loadMacroState();st.dayType=t;saveMacroState(st);renderMacros();
+}
+function macroAdd(){
+  const name=document.getElementById('mfood')?.value.trim()||'';
+  const p=parseFloat(document.getElementById('mprot')?.value)||0;
+  const c=parseFloat(document.getElementById('mcarb')?.value)||0;
+  const f=parseFloat(document.getElementById('mfat')?.value)||0;
+  if(!name&&!p&&!c&&!f)return;
+  const st=loadMacroState();
+  st.entries.push({id:Date.now().toString(36),name,p,c,f});
+  saveMacroState(st);renderMacros();
+}
+function macroDelete(id){
+  const st=loadMacroState();
+  st.entries=st.entries.filter(e=>e.id!==id);
+  saveMacroState(st);renderMacros();
+}
+function macroClear(){
+  const st=loadMacroState();st.entries=[];saveMacroState(st);renderMacros();
+}
+// ── END MACROS TAB ────────────────────────────────────────────────────────────
 
 // Auto-sync Strava on open if connected and last sync was >1 hour ago
 (async()=>{
