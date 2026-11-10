@@ -79,7 +79,8 @@
     "13_1": "{\"text\":\"7 mi easy\",\"type\":\"e\"}",
     "13_3": "{\"text\":\"6.5mi easy + 6×strides\",\"type\":null}",
     "14_1": "{\"text\":\"7.5 mi run\",\"type\":\"e\"}",
-    "15_1": "{\"text\":\"7mi easy\",\"type\":\"e\"}"
+    "15_1": "{\"text\":\"7mi easy\",\"type\":\"e\"}",
+    "17_1": "{\"text\":\"5 mi easy\",\"type\":\"e\"}"
   },
   "dayOrders": {
     "2": [
@@ -1941,7 +1942,7 @@
     }
   ],
   "stravaLastSync": 1794315573216,
-  "updatedAt": 1794315574717,
+  "updatedAt": 1794315609401,
   "comments": [
     {
       "name": "John Boy and Bill",
