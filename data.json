@@ -56,7 +56,7 @@
     "16_4": "8mi easy",
     "16_5": "7mi easy",
     "17_3": "{\"text\":\"Rest (injured)\",\"type\":\"x\"}",
-    "17_4": "7mi easy",
+    "17_4": "{\"text\":\"3 mi easy\",\"type\":null}",
     "8_4": "5mi easy/moderate",
     "13_6": "{\"text\":\"RACE: 1.5 mi WU, Half marathon @6:18–6:26/mi, 1 mi CD\",\"type\":null}",
     "13_4": "{\"text\":\"7mi easy\",\"type\":null}",
@@ -1942,7 +1942,7 @@
     }
   ],
   "stravaLastSync": 1794315573216,
-  "updatedAt": 1794315619350,
+  "updatedAt": 1794315630399,
   "comments": [
     {
       "name": "John Boy and Bill",
