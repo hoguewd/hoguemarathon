@@ -81,7 +81,7 @@
     "14_1": "{\"text\":\"7.5 mi run\",\"type\":\"e\"}",
     "15_1": "{\"text\":\"7mi easy\",\"type\":\"e\"}",
     "17_1": "{\"text\":\"5 mi easy\",\"type\":\"e\"}",
-    "17_5": "{\"text\":\"Rest (injured)\",\"type\":null}"
+    "17_5": "{\"text\":\"Rest (injured)\",\"type\":\"x\"}"
   },
   "dayOrders": {
     "2": [
@@ -1943,7 +1943,7 @@
     }
   ],
   "stravaLastSync": 1794315573216,
-  "updatedAt": 1794315637167,
+  "updatedAt": 1794315642983,
   "comments": [
     {
       "name": "John Boy and Bill",
